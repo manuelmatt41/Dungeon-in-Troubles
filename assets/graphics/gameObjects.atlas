@@ -1,0 +1,41 @@
+
+gameObjects.png
+size: 128, 64
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+player/hit
+  rotate: false
+  xy: 2, 4
+  size: 16, 28
+  orig: 16, 28
+  offset: 0, 0
+  index: 0
+player/run
+  rotate: false
+  xy: 20, 4
+  size: 16, 28
+  orig: 16, 28
+  offset: 0, 0
+  index: 0
+player/run
+  rotate: false
+  xy: 38, 4
+  size: 16, 28
+  orig: 16, 28
+  offset: 0, 0
+  index: 1
+player/run
+  rotate: false
+  xy: 56, 4
+  size: 16, 28
+  orig: 16, 28
+  offset: 0, 0
+  index: 2
+player/run
+  rotate: false
+  xy: 74, 4
+  size: 16, 28
+  orig: 16, 28
+  offset: 0, 0
+  index: 3

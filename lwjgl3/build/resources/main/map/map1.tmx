@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="64" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="2">
+ <tileset firstgid="1" source="DarkDungeon.tsx"/>
+ <tileset firstgid="145" source="entities.tsx"/>
+ <layer id="2" name="bgd" width="64" height="16">
+  <data encoding="base64" compression="zlib">
+   eJzlls0KgCAQhH2yILpVtzoWnvp5/yeoIEFk19xtFcXDRxBJ6zQzNiqltpsxAX2i91Dx7b8TfM8kPLfOQDvKnAthzQHwtWZ4ry2g+xx5j9CMewbaG91X4ho7q6X47EGqy6CsSnZBiO4+QrwFPePew3JGySoHLNe27mbWFLr/8Ylkt3B1x3wf+2zHugXrDO63dDs9Njl7zobiP1+3+DoeyqqErzjnozsn5j9ovtD/L+65rRGtciF2p0tSSv5K56ycpnIuE7g4SA==
+  </data>
+ </layer>
+ <layer id="6" name="floor" width="64" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztwwENAAAMAiDj2j+BPX7YSAAAAOC+Pj9EwxoB
+  </data>
+ </layer>
+ <layer id="7" name="decoration" width="64" height="16">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4A0UDjC7a8a4faPglEwVMFAlB0DXV4hg4EoO8i1czCF20CA0XKePoBe6awGiGuBuI5O9hELSE1nriSqd4fSrUDcBsTtVDYfm120BH5I7Dwi1AdA6T4g7gfiCQT0+2ERIxYEEFZCFMDnr3AkdjkBc8yAOBKPPDb94VjEkAE+t+GzixRzCPmLWGBGJXOQAbXcBjIHANpbEtI=
+  </data>
+ </layer>
+ <objectgroup id="8" name="entities">
+  <object id="1" name="Player" gid="145" x="9.58333" y="38.8333" width="16" height="28"/>
+ </objectgroup>
+</map>
