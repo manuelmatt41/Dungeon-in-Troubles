@@ -1,0 +1,3 @@
+com.github.manu.dungeonintroubles:style/GdxTheme = 0x7f030000
+com.github.manu.dungeonintroubles:string/app_name = 0x7f020000
+com.github.manu.dungeonintroubles:drawable/ic_launcher = 0x7f010000

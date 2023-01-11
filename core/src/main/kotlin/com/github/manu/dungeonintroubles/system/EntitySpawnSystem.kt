@@ -70,12 +70,11 @@ class EntitySpawnSystem(
                     }
 
                     if (config.bodyType != StaticBody) {
-                        //collision box
-                        val collH = scalingHeight * 0.4f
+                        val collH = scalingHeight
                         val collOffset = vec2().apply { set(config.physicOffset) }
-                        collOffset.y -= scalingHeight * 0.5f - collH * 0.5f
+                        collOffset.y += scalingHeight * 0.5f
 
-                        box(scalingWidth, collH, collOffset)
+                        box(scalingWidth, scalingHeight, collOffset)
                     }
                 }
 
@@ -104,7 +103,7 @@ class EntitySpawnSystem(
         when (type) {
             "Player" -> SpawnConfiguration(
                 AnimationModel.PLAYER,
-                physicScaling = vec2(0.4f, 0.3f),        //TODO Ajustar valores
+                physicScaling = vec2(0.4f, 0.4f),        //TODO Ajustar valores
                 physicOffset = vec2(0f, -5f * UNIT_SCALE)
             )
 
