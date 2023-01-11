@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.9" tiledversion="1.9.2" name="dessert_dungeon" tilewidth="16" tileheight="16" tilecount="130" columns="10">
- <image source="../../assets-raw/assets/custom-dungeon-tileset/custom-dungeon-tileset/omnibo_dessert_dungeon.png" width="160" height="208"/>
+ <image source="omnibo_dessert_dungeon.png" width="160" height="208"/>
  <tile id="40">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="16" height="16"/>
