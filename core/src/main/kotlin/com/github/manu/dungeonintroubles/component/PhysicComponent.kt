@@ -14,6 +14,7 @@ class PhysicComponent {
     lateinit var body: Body
 
     companion object {
+        val TMP_VEC = vec2()
         class PhysicComponentListener : ComponentListener<PhysicComponent> {
             override fun onComponentAdded(entity: Entity, component: PhysicComponent) {
                 component.body.userData = entity

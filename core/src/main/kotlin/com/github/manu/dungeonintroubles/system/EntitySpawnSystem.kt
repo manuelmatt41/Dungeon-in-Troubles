@@ -2,7 +2,6 @@ package com.github.manu.dungeonintroubles.system
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.math.Vector2
-import com.badlogic.gdx.physics.box2d.BodyDef
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType.StaticBody
 import com.badlogic.gdx.physics.box2d.World
 import com.badlogic.gdx.scenes.scene2d.Event
@@ -62,12 +61,38 @@ class EntitySpawnSystem(
 
                     physicComponent.offset.set(config.physicOffset)
                     physicComponent.size.set(scalingWidth, scalingHeight)
-
+                    
                     // hitbox
                     box(scalingWidth, scalingHeight, config.physicOffset) {
                         isSensor = config.bodyType != StaticBody
                         userData = HIT_BOX_SENSOR
+                        friction = 0f
                     }
+
+                    if (config.bodyType != StaticBody) {
+                        //collision box
+                        val collH = scalingHeight * 0.4f
+                        val collOffset = vec2().apply { set(config.physicOffset) }
+                        collOffset.y -= scalingHeight * 0.5f - collH * 0.5f
+
+                        box(scalingWidth, collH, collOffset)
+                    }
+                }
+
+                if (config.speedScaling > 0f) {
+                    add<MoveComponent> {
+                        speedX = DEFAULT_SPEED_X * config.speedScaling
+                        speedY = DEFAULT_SPEED_Y * config.speedScaling
+                    }
+                }
+
+                if (type == "Player") {
+                    add<PlayerComponent>()
+                }
+
+                if (config.bodyType != StaticBody) {
+                    //such entities will create/remove collision objects
+                    add<CollisionComponent>()
                 }
             }
         }
@@ -79,8 +104,8 @@ class EntitySpawnSystem(
         when (type) {
             "Player" -> SpawnConfiguration(
                 AnimationModel.PLAYER,
-                physicScaling = vec2(0.3f, 0.3f),        //TODO Ajustar valores
-                physicOffset = vec2(0f, -2f * UNIT_SCALE)
+                physicScaling = vec2(0.4f, 0.3f),        //TODO Ajustar valores
+                physicOffset = vec2(0f, -5f * UNIT_SCALE)
             )
 
             else -> gdxError("Type $type has no SpawnCfg setup.")

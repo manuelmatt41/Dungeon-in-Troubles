@@ -5,6 +5,8 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType.DynamicBody
 import ktx.math.vec2
 
+const val DEFAULT_SPEED_X = 5F
+const val DEFAULT_SPEED_Y = 10F
 data class SpawnConfiguration(
     val model: AnimationModel,
     val speedScaling: Float = 1f,
