@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="96" height="9" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="2">
+ <tileset firstgid="1" source="castle.tsx"/>
+ <tileset firstgid="4097" source="entities.tsx"/>
+ <layer id="2" name="bgd" width="96" height="9">
+  <data encoding="base64" compression="zlib">
+   eJxzYWBgcBnFo3gUDynMxAjBA2XvQNg9ikfxKKY9PswIwQPtjpHqj6Hqbmz+IKQGuT4ZxaN4pGEASYu2/A==
+  </data>
+ </layer>
+ <layer id="3" name="decoration" width="96" height="9">
+  <data encoding="base64" compression="zlib">
+   eJztld9KwzAYxZMWldnNP8+jV4Nd1Hb+eSVBcHOb7tJHUrepz6MXntB8tHykSZquE8EDPxrSnJx8aUqECNdhC6+vcjBmfT3W7oNBw3lD195jz9/aA6WLFnMmnuNMGSn4kkJ8y6IdoiZrr641Zc+me+Bbd9fKWngn4CwS4jwq2l2rulaV97zfTS59m7uDsu9WIwzvuM80xsfP++v+NxpzjHN/ojmV9szEM5M8I8c6+8gbgCNpn3NP+NdOou98r8elMf4vkIE8Lt8NRQH18bPs8ptk8/AxV6j9WnMj7f4sMLPOkyNvDC4N+58wH83J86qKLEzgnYIHMIvtY7flV545WNR41L33iNqfNEtZ9LXN9PGonBny5mDBcpvWQdj0At8reAOruOyj8z8M8LukPGuwqfGoe+8dtX9oPtkdHJrp41E5K+StwcZx97vq+Ksy3Xu7uINNObvK/Vd3+gHGjFfc
+  </data>
+ </layer>
+ <objectgroup id="5" name="entities">
+  <object id="1" name="Player" gid="4097" x="21.6667" y="105.667" width="16" height="28"/>
+ </objectgroup>
+</map>

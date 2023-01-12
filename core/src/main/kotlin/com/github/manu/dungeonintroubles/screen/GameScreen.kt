@@ -14,6 +14,7 @@ import com.github.manu.dungeonintroubles.event.MapChangeEvent
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.manu.dungeonintroubles.input.PlayerKeyBoardInput
 import com.github.manu.dungeonintroubles.system.*
+import com.github.manu.dungeonintroubles.system.GenerateMapSystem.Companion.NUMBER_OF_MAPS
 import com.github.quillraven.fleks.world
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
@@ -25,7 +26,7 @@ class GameScreen : KtxScreen {
     private val gameStage: Stage = Stage(ExtendViewport(16f, 9f))
     private val textureAtlas: TextureAtlas = TextureAtlas(Gdx.files.internal("graphics/gameObjects.atlas"))
     private var currentMap: TiledMap? = null
-    private val physichWorld = createWorld(vec2(0f, 0f)).apply {
+    private val physichWorld = createWorld(vec2(0f, -10f)).apply {
         autoClearForces = false
 
     }
@@ -65,7 +66,7 @@ class GameScreen : KtxScreen {
             }
         }
 
-        currentMap = TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(1, 2)}.tmx").path())
+        currentMap = TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(1, 3)}.tmx").path())
         gameStage.fire(MapChangeEvent(currentMap!!))
 
         PlayerKeyBoardInput(eWorld)

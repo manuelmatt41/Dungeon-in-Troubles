@@ -11,6 +11,7 @@ import com.github.quillraven.fleks.*
 import ktx.log.logger
 import ktx.math.component1
 import ktx.math.component2
+import ktx.math.vec2
 
 @AllOf([PhysicComponent::class, ImageComponent::class])
 class PhysicSystem(

@@ -19,9 +19,9 @@ class GenerateMapSystem(
 
     override fun onTickEntity(entity: Entity) {
         with(imgCmps[entity]) {
-            if (image.x > 60f) { //TODO Reaction with a collision not with coordinate
+            if (image.x > 80f) { //TODO Reaction with a collision not with coordinate
                 world.remove(entity)
-                gameStage.fire(MapChangeEvent(TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(1, 2)}.tmx").path())!!))
+                gameStage.fire(MapChangeEvent(TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx").path())!!))
                 log.debug { "Map change" }
             }
         }
@@ -29,5 +29,6 @@ class GenerateMapSystem(
 
     companion object {
         private val log = logger<GenerateMapSystem>()
+        const val NUMBER_OF_MAPS = 2
     }
 }

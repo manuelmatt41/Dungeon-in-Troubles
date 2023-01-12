@@ -24,7 +24,7 @@ class MoveSystem(
 
 
         physcmp.impulse.set(
-            mass * (moveCmp.speedX - velX),
+            moveCmp.speedX - velX,
             mass * (moveCmp.speedY * moveCmp.sin - velY)
         )
     }
