@@ -42,27 +42,25 @@ class CollisionSpawnSystem(
         val (entityX, entityY) = physicCmps[entity].body.position
 
         tiledLayer.forEach { layer ->
-            if (layer.name == "floor") {
-                layer.forEachCell(entityX.toInt(), entityY.toInt(), SPAWN_AREA_SIZE) { tileCell, x, y ->
-                    if (tileCell.tile.objects.isEmpty()) {
-                        //cell is not linked to a collision object -> do nothing
-                        return@forEachCell
-                    }
+            layer.forEachCell(entityX.toInt(), entityY.toInt(), SPAWN_AREA_SIZE) { tileCell, x, y ->
+                if (tileCell.tile.objects.isEmpty()) {
+                    //cell is not linked to a collision object -> do nothing
+                    return@forEachCell
+                }
 
-                    if (tileCell in processedCells) {
-                        // tileCell already processed -> do nothing
-                        return@forEachCell
-                    }
+                if (tileCell in processedCells) {
+                    // tileCell already processed -> do nothing
+                    return@forEachCell
+                }
 
-                    processedCells.add(tileCell)
+                processedCells.add(tileCell)
 
-                    tileCell.tile.objects.forEach { mapObject ->
-                        world.entity {
-                            physicCmpFromShape2D(physicWorld, x, y, mapObject.shape)
-                            add<TiledComponent> {
-                                this.cell = tileCell
-                                nearbyEntities.add(entity)
-                            }
+                tileCell.tile.objects.forEach { mapObject ->
+                    world.entity {
+                        physicCmpFromShape2D(physicWorld, x, y, mapObject.shape)
+                        add<TiledComponent> {
+                            this.cell = tileCell
+                            nearbyEntities.add(entity)
                         }
                     }
                 }
@@ -85,10 +83,22 @@ class CollisionSpawnSystem(
                             position.set(0f, 0f)
                             fixedRotation = true
                             allowSleep = false
+
+                            // collision with top of the map
                             chain(
                                 vec2(0f, height),
                                 vec2(width, height)
-                            )
+                            ) {
+                                friction = 0f
+                            }
+
+                            // collision with de ground
+                            chain(
+                                vec2(0f, 1.5f),
+                                vec2(width, 1.5f)
+                            ) {
+                                friction = 0f
+                            }
                         }
                     }
                 }

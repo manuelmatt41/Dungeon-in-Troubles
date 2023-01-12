@@ -4,7 +4,7 @@
  <tileset firstgid="145" source="entities.tsx"/>
  <layer id="2" name="bgd" width="64" height="16">
   <data encoding="base64" compression="zlib">
-   eJzlls0KgCAQhH2yILpVtzoWnvp5/yeoIEFk19xtFcXDRxBJ6zQzNiqltpsxAX2i91Dx7b8TfM8kPLfOQDvKnAthzQHwtWZ4ry2g+xx5j9CMewbaG91X4ho7q6X47EGqy6CsSnZBiO4+QrwFPePew3JGySoHLNe27mbWFLr/8Ylkt3B1x3wf+2zHugXrDO63dDs9Njl7zobiP1+3+DoeyqqErzjnozsn5j9ovtD/L+65rRGtciF2p0tSSv5K56ycpnIuE7g4SA==
+   eJzlls0KgCAQhL32UkF0q251LDz18/5PUEGCyK652ypKh48gktZpZmxQSq0XQwK6RO+h4tt/K/ieUXhunYF2lDlnwpod4G1N/1wbQPcp8h6hGbcMtDe6L8Q1dlZL8dmNVJdBWZXsghDdfYR4C3rGvYfljJJVDliubd3NrCl0/+ITyW7h6o75PvbZjnUL1hncb+l2emxy9pwNxX++bvF1PJRVCV9xzkd3Tsx/0Hyh/1/cc1sjWuVC7E6XpJT8lc7xc6qL+sec3qk4Ew==
   </data>
  </layer>
  <layer id="6" name="floor" width="64" height="16">
