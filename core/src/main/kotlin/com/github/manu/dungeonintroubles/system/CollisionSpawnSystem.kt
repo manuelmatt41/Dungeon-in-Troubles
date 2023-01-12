@@ -84,7 +84,7 @@ class CollisionSpawnSystem(
                             fixedRotation = true
                             allowSleep = false
 
-                            // collision with top of the map
+                            // collision with top of the map without friction
                             chain(
                                 vec2(0f, height),
                                 vec2(width, height)
@@ -92,8 +92,8 @@ class CollisionSpawnSystem(
                                 friction = 0f
                             }
 
-                            // collision with de ground
-                            chain(
+                            // collision with de ground without friction
+                            var cahin = chain(
                                 vec2(0f, 1.5f),
                                 vec2(width, 1.5f)
                             ) {

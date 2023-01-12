@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TmxMapLoader
+import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.ExtendViewport
@@ -49,6 +50,7 @@ class GameScreen : KtxScreen {
             add<AnimationSystem>()
             add<CameraSystem>()
             add<RenderSystem>()
+            add<GenerateMapSystem>()
             add<DebugSystem>()
         }
     }
@@ -63,7 +65,7 @@ class GameScreen : KtxScreen {
             }
         }
 
-        currentMap = TmxMapLoader().load(Gdx.files.internal("map/desser_map.tmx").path())
+        currentMap = TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(1, 2)}.tmx").path())
         gameStage.fire(MapChangeEvent(currentMap!!))
 
         PlayerKeyBoardInput(eWorld)

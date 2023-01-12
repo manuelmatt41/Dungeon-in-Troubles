@@ -20,6 +20,7 @@ import ktx.app.gdxError
 import ktx.box2d.box
 import ktx.math.vec2
 import ktx.tiled.layer
+import ktx.tiled.width
 import ktx.tiled.x
 import ktx.tiled.y
 
@@ -35,7 +36,7 @@ class EntitySpawnSystem(
 
     override fun onTickEntity(entity: Entity) {
         with(spawnCmps[entity]) {
-            val config = spawnCfg(type)
+            val config = spawnCfg(name)
             val relativeSize = size(config.model)
 
             world.entity {
@@ -61,7 +62,7 @@ class EntitySpawnSystem(
 
                     physicComponent.offset.set(config.physicOffset)
                     physicComponent.size.set(scalingWidth, scalingHeight)
-                    
+
                     // hitbox
                     box(scalingWidth, scalingHeight, config.physicOffset) {
                         isSensor = config.bodyType != StaticBody
@@ -85,7 +86,7 @@ class EntitySpawnSystem(
                     }
                 }
 
-                if (type == "Player") {
+                if (name == "Player") {
                     add<PlayerComponent>()
                 }
 
@@ -128,17 +129,18 @@ class EntitySpawnSystem(
                 val entityLayer = event.map.layer("entities")
 
                 entityLayer.objects.forEach { mapObject ->
-                    val type = mapObject.name ?: gdxError("MapObject $mapObject does not have a name!")
+                    val name = mapObject.name ?: gdxError("MapObject $mapObject does not have a name!")
 
                     world.entity {
                         add<SpawnComponent> {
-                            this.type = type
+                            this.name = name
                             this.location.set(mapObject.x * UNIT_SCALE, mapObject.y * UNIT_SCALE)
                         }
                     }
                 }
                 true
             }
+
             else -> false
         }
     }
