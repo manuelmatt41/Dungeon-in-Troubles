@@ -24,9 +24,11 @@ class MoveSystem(
 
 
         physcmp.impulse.set(
-            moveCmp.speedX - velX,
+            10f - velX,//            moveCmp.speedX - velX,
             mass * (moveCmp.speedY * moveCmp.sin - velY)
         )
+
+        log.debug { "Speed: ${moveCmp.speedY}" }
     }
 
     companion object {

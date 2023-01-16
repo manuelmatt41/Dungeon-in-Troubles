@@ -13,7 +13,7 @@ class PlayerKeyBoardInput(
     private val moveCmps: ComponentMapper<MoveComponent> = world.mapper(),
 ) : KtxInputAdapter {
 
-    private var playerSin = -1f
+    private var playerSin = 0f
     private val playerEntities = world.family(allOf = arrayOf(PlayerComponent::class))
 
     init {
@@ -23,6 +23,7 @@ class PlayerKeyBoardInput(
         playerEntities.forEach { player ->
             with(moveCmps[player]) {
                 sin = playerSin
+                speedY = 35f
             }
         }
     }
@@ -34,7 +35,7 @@ class PlayerKeyBoardInput(
     }
 
     override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
-        playerSin = -1f
+        playerSin = 0f
         updatePlayerMovement()
         return true
     }

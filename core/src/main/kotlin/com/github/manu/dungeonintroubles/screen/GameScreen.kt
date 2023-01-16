@@ -28,7 +28,6 @@ class GameScreen : KtxScreen {
     private var currentMap: TiledMap? = null
     private val physichWorld = createWorld(vec2(0f, -10f)).apply {
         autoClearForces = false
-
     }
 
     private val eWorld = world {
@@ -66,7 +65,7 @@ class GameScreen : KtxScreen {
             }
         }
 
-        currentMap = TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(1, 3)}.tmx").path())
+        currentMap = TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(3, 3)}.tmx").path())
         gameStage.fire(MapChangeEvent(currentMap!!))
 
         PlayerKeyBoardInput(eWorld)

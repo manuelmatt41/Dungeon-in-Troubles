@@ -5,4 +5,9 @@
  <tile id="73" probability="25"/>
  <tile id="82" probability="0.25"/>
  <tile id="91" probability="0.25"/>
+ <tile id="103">
+  <objectgroup draworder="index" id="2">
+   <object id="13" x="0" y="0" width="16" height="16"/>
+  </objectgroup>
+ </tile>
 </tileset>

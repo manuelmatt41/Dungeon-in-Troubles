@@ -81,8 +81,8 @@ class EntitySpawnSystem(
 
                 if (config.speedScaling > 0f) {
                     add<MoveComponent> {
-                        speedX = DEFAULT_SPEED_X * config.speedScaling
-                        speedY = DEFAULT_SPEED_Y * config.speedScaling
+                        speedX = 0f//DEFAULT_SPEED_X * config.speedScaling
+                        speedY = 35f//DEFAULT_SPEED_Y * config.speedScaling
                     }
                 }
 

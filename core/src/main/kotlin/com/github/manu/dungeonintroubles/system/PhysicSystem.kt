@@ -49,7 +49,7 @@ class PhysicSystem(
 
         if (!physicCmp.impulse.isZero) {
 //            physicCmp.body.applyLinearImpulse(physicCmp.impulse, physicCmp.body.worldCenter, true)
-            physicCmp.body.applyLinearImpulse(physicCmp.impulse, physicCmp.body.worldCenter, true)
+            physicCmp.body.applyForce(physicCmp.impulse, physicCmp.body.worldCenter, true)
             physicCmp.impulse.setZero()
         }
     }
@@ -93,15 +93,15 @@ class PhysicSystem(
                 tilesCmps[entityB].nearbyEntities += entityA
             }
 
-            entityA in moveCmps && isEntityBCollisionFixture -> {
-                moveCmps[entityA].speedY = 0f
-                log.debug { "Entity $entityA" }
-            }
-
-            entityB in moveCmps && isEntityACollisionFixture -> {
-                moveCmps[entityB].speedY = 0f
-                log.debug { "Entity $entityB" }
-            }
+//            entityA in moveCmps && isEntityBCollisionFixture -> {
+//                moveCmps[entityA].speedY = 0f
+//                log.debug { "Entity $entityA" }
+//            }
+//
+//            entityB in moveCmps && isEntityACollisionFixture -> {
+//                moveCmps[entityB].speedY = 0f
+//                log.debug { "Entity $entityB" }
+//            }
 //            isEntityAAiSensor && isEntityBCollisionFixture -> {
 //                aiCmps[entityA].nearbyEntities += entityB
 //            }
@@ -130,13 +130,13 @@ class PhysicSystem(
                 tilesCmps[entityB].nearbyEntities -= entityA
             }
 
-            entityA in moveCmps -> {
-                moveCmps[entityA].speedY = DEFAULT_SPEED_Y
-            }
-
-            entityB in moveCmps -> {
-                moveCmps[entityB].speedY = DEFAULT_SPEED_Y
-            }
+//            entityA in moveCmps -> {
+//                moveCmps[entityA].speedY = DEFAULT_SPEED_Y
+//            }
+//
+//            entityB in moveCmps -> {
+//                moveCmps[entityB].speedY = DEFAULT_SPEED_Y
+//            }
 //            isEntityAAiSensor && !contact.fixtureB.isSensor -> {
 //                aiCmps[entityA].nearbyEntities -= entityB
 //            }
