@@ -1,6 +1,8 @@
 package com.github.manu.dungeonintroubles.component
 
-class MoveComponent(
+import ktx.math.vec2
+
+data class JumpComponent(
     var speed: Float = 0f,
-    var cos: Float = 0f,
+    var sin: Float = 0f,
 )

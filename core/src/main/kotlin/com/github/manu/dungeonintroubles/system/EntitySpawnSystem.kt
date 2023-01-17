@@ -20,7 +20,6 @@ import ktx.app.gdxError
 import ktx.box2d.box
 import ktx.math.vec2
 import ktx.tiled.layer
-import ktx.tiled.width
 import ktx.tiled.x
 import ktx.tiled.y
 
@@ -75,14 +74,19 @@ class EntitySpawnSystem(
                         val collOffset = vec2().apply { set(config.physicOffset) }
                         collOffset.y += scalingHeight * 0.5f
 
-                        box(scalingWidth, scalingHeight, collOffset)
+                        box(scalingWidth, scalingHeight, collOffset) {
+                            friction = 0f
+                        }
                     }
                 }
 
                 if (config.speedScaling > 0f) {
                     add<MoveComponent> {
-                        speedX = 0f//DEFAULT_SPEED_X * config.speedScaling
-                        speedY = 35f//DEFAULT_SPEED_Y * config.speedScaling
+                        speed = DEFAULT_SPEED_X
+                        cos = 1f
+                    }
+                    add<JumpComponent> {
+                        speed = DEFAULT_SPEED_Y
                     }
                 }
 

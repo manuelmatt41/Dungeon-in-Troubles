@@ -1,6 +1,7 @@
 package com.github.manu.dungeonintroubles.input
 
 import com.badlogic.gdx.Gdx
+import com.github.manu.dungeonintroubles.component.JumpComponent
 import com.github.manu.dungeonintroubles.component.MoveComponent
 import com.github.manu.dungeonintroubles.component.PlayerComponent
 import com.github.quillraven.fleks.ComponentMapper
@@ -10,10 +11,12 @@ import ktx.log.logger
 
 class PlayerKeyBoardInput(
     world: World,
-    private val moveCmps: ComponentMapper<MoveComponent> = world.mapper(),
+    private val jumpCmps: ComponentMapper<JumpComponent> = world.mapper(),
+//    private val moveCmps: ComponentMapper<MoveComponent> = world.mapper(),
 ) : KtxInputAdapter {
 
     private var playerSin = 0f
+    private var playerCos = 0f
     private val playerEntities = world.family(allOf = arrayOf(PlayerComponent::class))
 
     init {
@@ -21,10 +24,12 @@ class PlayerKeyBoardInput(
     }
     private fun updatePlayerMovement() {
         playerEntities.forEach { player ->
-            with(moveCmps[player]) {
+            with(jumpCmps[player]) {
                 sin = playerSin
-                speedY = 35f
             }
+//            with(moveCmps[player]) {
+//                cos = playerCos
+//            }
         }
     }
 

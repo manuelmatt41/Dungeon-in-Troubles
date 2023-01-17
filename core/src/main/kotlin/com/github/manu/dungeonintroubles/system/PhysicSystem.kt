@@ -1,5 +1,6 @@
 package com.github.manu.dungeonintroubles.system
 
+import com.badlogic.gdx.math.Interpolation
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.physics.box2d.*
 import com.badlogic.gdx.physics.box2d.World
@@ -47,11 +48,10 @@ class PhysicSystem(
 
         physicCmp.prevPosition.set(physicCmp.body.position)
 
-        if (!physicCmp.impulse.isZero) {
-//            physicCmp.body.applyLinearImpulse(physicCmp.impulse, physicCmp.body.worldCenter, true)
-            physicCmp.body.applyForce(physicCmp.impulse, physicCmp.body.worldCenter, true)
-            physicCmp.impulse.setZero()
-        }
+//            log.debug { "Impulse: ${ physicCmp.impulse}" }
+        physicCmp.body.applyLinearImpulse(physicCmp.impulse, physicCmp.body.worldCenter, true)
+        physicCmp.impulse.setZero()
+//            log.debug { "Impulse: ${ physicCmp.impulse}" }
     }
 
     override fun onAlphaEntity(entity: Entity, alpha: Float) {
@@ -80,35 +80,14 @@ class PhysicSystem(
         val isEntityACollisionFixture = entityA in collisionCmps && !contact.fixtureA.isSensor
         val isEntityBTiledCollisionSensor = entityB in tilesCmps && contact.fixtureB.isSensor
 
-//        val isEntityAAiSensor = entityA in aiCmps && contact.fixtureA.isSensor && contact.fixtureA.userData == AI_SENSOR
-//        val isEntityBAiSensor = entityB in aiCmps && contact.fixtureB.isSensor && contact.fixtureB.userData == AI_SENSOR
-
         when {
             isEntityATiledCollisionSensor && isEntityBCollisionFixture -> {
                 tilesCmps[entityA].nearbyEntities += entityB
-                moveCmps[entityB].speedY = 0f;
             }
 
             isEntityBTiledCollisionSensor && isEntityACollisionFixture -> {
                 tilesCmps[entityB].nearbyEntities += entityA
             }
-
-//            entityA in moveCmps && isEntityBCollisionFixture -> {
-//                moveCmps[entityA].speedY = 0f
-//                log.debug { "Entity $entityA" }
-//            }
-//
-//            entityB in moveCmps && isEntityACollisionFixture -> {
-//                moveCmps[entityB].speedY = 0f
-//                log.debug { "Entity $entityB" }
-//            }
-//            isEntityAAiSensor && isEntityBCollisionFixture -> {
-//                aiCmps[entityA].nearbyEntities += entityB
-//            }
-//
-//            isEntityBAiSensor && isEntityACollisionFixture -> {
-//                aiCmps[entityB].nearbyEntities += entityA
-//            }
         }
     }
 
@@ -118,9 +97,6 @@ class PhysicSystem(
         val isEntityATiledCollisionSensor = entityA in tilesCmps && contact.fixtureA.isSensor
         val isEntityBTiledCollisionSensor = entityB in tilesCmps && contact.fixtureB.isSensor
 
-//        val isEntityAAiSensor = entityA in aiCmps && contact.fixtureA.isSensor && contact.fixtureA.userData == AI_SENSOR
-//        val isEntityBAiSensor = entityB in aiCmps && contact.fixtureB.isSensor && contact.fixtureB.userData == AI_SENSOR
-
         when {
             isEntityATiledCollisionSensor && !contact.fixtureB.isSensor -> {
                 tilesCmps[entityA].nearbyEntities -= entityB
@@ -129,21 +105,6 @@ class PhysicSystem(
             isEntityBTiledCollisionSensor && !contact.fixtureA.isSensor -> {
                 tilesCmps[entityB].nearbyEntities -= entityA
             }
-
-//            entityA in moveCmps -> {
-//                moveCmps[entityA].speedY = DEFAULT_SPEED_Y
-//            }
-//
-//            entityB in moveCmps -> {
-//                moveCmps[entityB].speedY = DEFAULT_SPEED_Y
-//            }
-//            isEntityAAiSensor && !contact.fixtureB.isSensor -> {
-//                aiCmps[entityA].nearbyEntities -= entityB
-//            }
-//
-//            isEntityBAiSensor && !contact.fixtureA.isSensor -> {
-//                aiCmps[entityB].nearbyEntities -= entityA
-//            }
         }
     }
 
