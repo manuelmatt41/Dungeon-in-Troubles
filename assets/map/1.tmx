@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="64" height="9" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="4">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="256" height="9" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="4">
+ <properties>
+  <property name="music" value="audio/music/2.ogg"/>
+ </properties>
  <tileset firstgid="1" source="dessert_dungeon.tsx"/>
  <tileset firstgid="131" source="entities.tsx"/>
- <layer id="2" name="bgd" width="64" height="9">
+ <layer id="2" name="bgd" width="256" height="9">
   <data encoding="base64" compression="zlib">
-   eJxLYmBgSBrFo3gUj+JRPIpHGNZEwvZofGKxLRDbkamXXEyMW4lxl9EIxwBiicK/
+   eJztwwENAAAIA6AHeBH7F7SHwkaTVFVVVVVVVT1xVNV3F++PpgE=
   </data>
  </layer>
- <layer id="3" name="floor" width="64" height="9">
+ <layer id="6" name="decoration" width="256" height="9">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMAqoBwwH2gFEAsMRjjXRsBYWMVpjetmJzR4AOxAWtQ==
-  </data>
- </layer>
- <layer id="4" name="decoration" width="64" height="9">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgF9AS+QOw30I4gE1DD7eFAHEEFt2ADtA5bbG4XhmJqAUrMokbYilKon9rmUNtsQnqFcbBBgINMO1lwiOMzD5ceYgC57iQEhMjUx4fEVsJjHrIcHwP5gFx3EgIyZOqTQGLr4DEPWU6CgXxArjtHIgAABPUGJA==
+   eJztl7FOw0AMhg8GhARTkm5dUdkQHZgz9XU60JV3J1FzwjK273d8SUHKL53aOqm/s8++S1L6UTd9PqbfOgk2ryS/f4VXQ9lvuzIPtW+8+rzOuLYEL6KS3xxLE2Dw2qdqyPUds0e1E2yaX83epdh6lnjePU2Kiea3Ue6z8mnNga+d5VeaByotx5zvXb+oluJpPRHlWb1m+S39LxqvVLfZr8TW7JrQHqVxdIqd9wO6B0h95F1P7/pFeO3KPEne/Q/lIbGV9lIPLyLk3JvL0/rO8mv1Y7ReEL5mn3sWI+eSdm4isv6D7Dc15e3/NXk1mHydWmZH5KkhtF5qvJtyXuR5iko6zyS/aB1r9/G8Ijnhz8Ge9405vYrUa5vwva5US6Nf67kAiSFSr973N+98ljgfrXjn8CK9SeszjxLPqp3SXKTn0N1kz2uDnIPoPivtN3fDuGejEWw1RkN4Dxtv4228m/OehvGcrvvP8zTG+z7I71qjIbwDs9dmZb+nKZYDiWlJXo7vRYlPyms+ayK810I+rfVE2Uh8li9vTXnqpUa9evJZI8Zb9AOPT9J+GP0wzsr1udqT7+/M/lmZRXn9xOuFeUi6pHmxU79vir1P9UT9HhU7ykXyj8RnqTQHi8frJerb4o25KOVT0ziPyzRQ3igrvi8HH+Ud1buuQua/6X9rzhqfU/1zYS3lea9R22vk6JLwvUbTN+HRMfM=
   </data>
  </layer>
  <objectgroup id="5" name="entities">
-  <object id="1" name="Player" gid="131" x="38" y="74" width="16" height="28"/>
+  <object id="1" name="Player" gid="131" x="0" y="115" width="16" height="28"/>
  </objectgroup>
 </map>

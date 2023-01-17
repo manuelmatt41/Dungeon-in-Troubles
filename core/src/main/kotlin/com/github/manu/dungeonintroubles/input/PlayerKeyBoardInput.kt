@@ -12,7 +12,6 @@ import ktx.log.logger
 class PlayerKeyBoardInput(
     world: World,
     private val jumpCmps: ComponentMapper<JumpComponent> = world.mapper(),
-//    private val moveCmps: ComponentMapper<MoveComponent> = world.mapper(),
 ) : KtxInputAdapter {
 
     private var playerSin = 0f

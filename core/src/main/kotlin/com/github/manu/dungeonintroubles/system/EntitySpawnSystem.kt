@@ -111,7 +111,13 @@ class EntitySpawnSystem(
                 physicScaling = vec2(0.4f, 0.4f),        //TODO Ajustar valores
                 physicOffset = vec2(0f, -5f * UNIT_SCALE)
             )
-
+            "Trap" -> SpawnConfiguration(
+                AnimationModel.TRAP,
+                physicScaling = vec2(0.4f, 0.4f),
+                physicOffset = vec2(0f, -5f * UNIT_SCALE),
+                speedScaling = 0f,
+                bodyType = StaticBody
+            )
             else -> gdxError("Type $type has no SpawnCfg setup.")
         }
     }
@@ -131,8 +137,20 @@ class EntitySpawnSystem(
         return when (event) {
             is MapChangeEvent -> {
                 val entityLayer = event.map.layer("entities")
+                val trapLayer = event.trapMap.layer("traps")
 
                 entityLayer.objects.forEach { mapObject ->
+                    val name = mapObject.name ?: gdxError("MapObject $mapObject does not have a name!")
+
+                    world.entity {
+                        add<SpawnComponent> {
+                            this.name = name
+                            this.location.set(mapObject.x * UNIT_SCALE, mapObject.y * UNIT_SCALE)
+                        }
+                    }
+                }
+
+                trapLayer.objects.forEach { mapObject ->
                     val name = mapObject.name ?: gdxError("MapObject $mapObject does not have a name!")
 
                     world.entity {

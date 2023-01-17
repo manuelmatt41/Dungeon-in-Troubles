@@ -19,9 +19,11 @@ class GenerateMapSystem(
 
     override fun onTickEntity(entity: Entity) {
         with(imgCmps[entity]) {
-            if (image.x > 80f) { //TODO Reaction with a collision not with coordinate
+            if (image.x > 250f) { //TODO Reaction with a collision not with coordinate
                 world.remove(entity)
-                gameStage.fire(MapChangeEvent(TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx").path())!!))
+                val nextMap = TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx").path())
+                val trapMap = TmxMapLoader().load(Gdx.files.internal("map/traps.tmx").path())
+                gameStage.fire(MapChangeEvent(nextMap, trapMap))
                 log.debug { "Map change" }
             }
         }
@@ -29,6 +31,6 @@ class GenerateMapSystem(
 
     companion object {
         private val log = logger<GenerateMapSystem>()
-        const val NUMBER_OF_MAPS = 2
+        const val NUMBER_OF_MAPS = 3
     }
 }

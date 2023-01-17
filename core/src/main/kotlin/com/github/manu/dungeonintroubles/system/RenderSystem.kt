@@ -24,6 +24,7 @@ class RenderSystem(
     private val bgdLayers = mutableListOf<TiledMapTileLayer>()
     private val floorLayers = mutableListOf<TiledMapTileLayer>()
     private val decorationLayers = mutableListOf<TiledMapTileLayer>()
+
     private val mapRenderer = OrthogonalTiledMapRenderer(null, UNIT_SCALE, gameStage.batch)
     private val orthoCam = gameStage.camera as OrthographicCamera
 

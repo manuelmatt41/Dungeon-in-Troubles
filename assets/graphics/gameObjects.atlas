@@ -1,6 +1,6 @@
 
 gameObjects.png
-size: 128, 64
+size: 1024, 64
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
@@ -13,29 +13,141 @@ player/hit
   index: 0
 player/run
   rotate: false
-  xy: 20, 4
+  xy: 27, 4
   size: 16, 28
   orig: 16, 28
   offset: 0, 0
   index: 0
 player/run
   rotate: false
-  xy: 38, 4
+  xy: 52, 4
   size: 16, 28
   orig: 16, 28
   offset: 0, 0
   index: 1
 player/run
   rotate: false
-  xy: 56, 4
+  xy: 77, 4
   size: 16, 28
   orig: 16, 28
   offset: 0, 0
   index: 2
 player/run
   rotate: false
-  xy: 74, 4
+  xy: 102, 4
   size: 16, 28
   orig: 16, 28
   offset: 0, 0
   index: 3
+trap/run
+  rotate: false
+  xy: 127, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 0
+trap/run
+  rotate: false
+  xy: 152, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 1
+trap/run
+  rotate: false
+  xy: 177, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 2
+trap/run
+  rotate: false
+  xy: 202, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 3
+trap/run
+  rotate: false
+  xy: 227, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 4
+trap/run
+  rotate: false
+  xy: 252, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 5
+trap/run
+  rotate: false
+  xy: 277, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 6
+trap/run
+  rotate: false
+  xy: 302, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 7
+trap/run
+  rotate: false
+  xy: 327, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 8
+trap/run
+  rotate: false
+  xy: 352, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 9
+trap/run
+  rotate: false
+  xy: 377, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 10
+trap/run
+  rotate: false
+  xy: 402, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 11
+trap/run
+  rotate: false
+  xy: 427, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 12
+trap/run
+  rotate: false
+  xy: 452, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 13
+trap/run
+  rotate: false
+  xy: 477, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 14
+trap/run
+  rotate: false
+  xy: 502, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 15
