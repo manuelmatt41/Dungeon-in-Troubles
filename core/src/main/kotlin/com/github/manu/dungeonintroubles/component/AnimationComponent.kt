@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Animation.PlayMode
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 
 enum class AnimationModel {
-    PLAYER, TRAP,UNDEFINED;
+    PLAYER, TRAP, COIN,UNDEFINED;
 
     var atlasKey: String = this.toString().lowercase()
 }

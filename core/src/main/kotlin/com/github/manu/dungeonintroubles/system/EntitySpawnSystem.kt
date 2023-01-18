@@ -1,6 +1,7 @@
 package com.github.manu.dungeonintroubles.system
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
+import com.badlogic.gdx.maps.MapLayer
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType.StaticBody
 import com.badlogic.gdx.physics.box2d.World
@@ -114,7 +115,12 @@ class EntitySpawnSystem(
             "Trap" -> SpawnConfiguration(
                 AnimationModel.TRAP,
                 physicScaling = vec2(0.4f, 0.4f),
-                physicOffset = vec2(0f, -5f * UNIT_SCALE),
+                speedScaling = 0f,
+                bodyType = StaticBody
+            )
+            "Coin" -> SpawnConfiguration(
+                AnimationModel.COIN,
+                physicScaling = vec2(0.4f, 0.4f),
                 speedScaling = 0f,
                 bodyType = StaticBody
             )
@@ -133,33 +139,36 @@ class EntitySpawnSystem(
         vec2(firstFrame.originalWidth * UNIT_SCALE, firstFrame.originalHeight * UNIT_SCALE)
     }
 
+    private fun createEntitiesForLayers(layer: MapLayer) {
+        layer.objects.forEach { mapObject ->
+            val name = mapObject.name ?: gdxError("MapObject $mapObject does not have a name!")
+
+            world.entity {
+                add<SpawnComponent> {
+                    this.name = name
+                    this.location.set(mapObject.x * UNIT_SCALE, mapObject.y * UNIT_SCALE)
+                }
+            }
+        }
+    }
+
     override fun handle(event: Event?): Boolean {
         return when (event) {
             is MapChangeEvent -> {
                 val entityLayer = event.map.layer("entities")
-                val trapLayer = event.trapMap.layer("traps")
+                val trapLayer1 = event.trapMap.layer("traps_zone1_1")
+                val trapLayer2 = event.trapMap.layer("traps_zone2_1")
+                val trapLayer3 = event.trapMap.layer("traps_zone3_1")
+                val coinLayer1 = event.trapMap.layer("coins_zone1_1")
+                val coinLayer2 = event.trapMap.layer("coins_zone2_1")
 
-                entityLayer.objects.forEach { mapObject ->
-                    val name = mapObject.name ?: gdxError("MapObject $mapObject does not have a name!")
+                createEntitiesForLayers(entityLayer)
+                createEntitiesForLayers(trapLayer1)
+                createEntitiesForLayers(trapLayer2)
+                createEntitiesForLayers(trapLayer3)
+                createEntitiesForLayers(coinLayer1)
+                createEntitiesForLayers(coinLayer2)
 
-                    world.entity {
-                        add<SpawnComponent> {
-                            this.name = name
-                            this.location.set(mapObject.x * UNIT_SCALE, mapObject.y * UNIT_SCALE)
-                        }
-                    }
-                }
-
-                trapLayer.objects.forEach { mapObject ->
-                    val name = mapObject.name ?: gdxError("MapObject $mapObject does not have a name!")
-
-                    world.entity {
-                        add<SpawnComponent> {
-                            this.name = name
-                            this.location.set(mapObject.x * UNIT_SCALE, mapObject.y * UNIT_SCALE)
-                        }
-                    }
-                }
                 true
             }
 

@@ -4,67 +4,67 @@ size: 1024, 64
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-player/hit
+coin/run
   rotate: false
   xy: 2, 4
-  size: 16, 28
-  orig: 16, 28
+  size: 8, 8
+  orig: 8, 8
   offset: 0, 0
   index: 0
-player/run
+coin/run
   rotate: false
   xy: 27, 4
-  size: 16, 28
-  orig: 16, 28
-  offset: 0, 0
-  index: 0
-player/run
-  rotate: false
-  xy: 52, 4
-  size: 16, 28
-  orig: 16, 28
+  size: 8, 8
+  orig: 8, 8
   offset: 0, 0
   index: 1
-player/run
+coin/run
   rotate: false
-  xy: 77, 4
-  size: 16, 28
-  orig: 16, 28
+  xy: 52, 4
+  size: 8, 8
+  orig: 8, 8
   offset: 0, 0
   index: 2
-player/run
+coin/run
+  rotate: false
+  xy: 77, 4
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: 3
+player/hit
   rotate: false
   xy: 102, 4
   size: 16, 28
   orig: 16, 28
   offset: 0, 0
-  index: 3
-trap/run
+  index: 0
+player/run
   rotate: false
   xy: 127, 4
-  size: 23, 23
-  orig: 23, 23
+  size: 16, 28
+  orig: 16, 28
   offset: 0, 0
   index: 0
-trap/run
+player/run
   rotate: false
   xy: 152, 4
-  size: 23, 23
-  orig: 23, 23
+  size: 16, 28
+  orig: 16, 28
   offset: 0, 0
   index: 1
-trap/run
+player/run
   rotate: false
   xy: 177, 4
-  size: 23, 23
-  orig: 23, 23
+  size: 16, 28
+  orig: 16, 28
   offset: 0, 0
   index: 2
-trap/run
+player/run
   rotate: false
   xy: 202, 4
-  size: 23, 23
-  orig: 23, 23
+  size: 16, 28
+  orig: 16, 28
   offset: 0, 0
   index: 3
 trap/run
@@ -73,80 +73,108 @@ trap/run
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
-  index: 4
+  index: 0
 trap/run
   rotate: false
   xy: 252, 4
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
-  index: 5
+  index: 1
 trap/run
   rotate: false
   xy: 277, 4
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
-  index: 6
+  index: 2
 trap/run
   rotate: false
   xy: 302, 4
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
-  index: 7
+  index: 3
 trap/run
   rotate: false
   xy: 327, 4
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
-  index: 8
+  index: 4
 trap/run
   rotate: false
   xy: 352, 4
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
-  index: 9
+  index: 5
 trap/run
   rotate: false
   xy: 377, 4
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
-  index: 10
+  index: 6
 trap/run
   rotate: false
   xy: 402, 4
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
-  index: 11
+  index: 7
 trap/run
   rotate: false
   xy: 427, 4
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
-  index: 12
+  index: 8
 trap/run
   rotate: false
   xy: 452, 4
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
-  index: 13
+  index: 9
 trap/run
   rotate: false
   xy: 477, 4
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
-  index: 14
+  index: 10
 trap/run
   rotate: false
   xy: 502, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 11
+trap/run
+  rotate: false
+  xy: 527, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 12
+trap/run
+  rotate: false
+  xy: 552, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 13
+trap/run
+  rotate: false
+  xy: 577, 4
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: 14
+trap/run
+  rotate: false
+  xy: 602, 4
   size: 23, 23
   orig: 23, 23
   offset: 0, 0

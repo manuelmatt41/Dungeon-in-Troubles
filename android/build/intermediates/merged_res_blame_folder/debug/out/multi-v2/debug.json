@@ -4,7 +4,7 @@
             "outputFile": "com.github.manu.dungeonintroubles.android-merged_res-5:/values_values.arsc.flat",
             "map": [
                 {
-                    "source": "/home/manuel/Documentos/Dungeon-in-Troubles/android/res/values/styles.xml",
+                    "source": "C:\\Users\\manue\\Documents\\repositories\\Dungeon-in-Troubles\\android\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",
@@ -23,8 +23,15 @@
                     }
                 },
                 {
-                    "source": "/home/manuel/Documentos/Dungeon-in-Troubles/android/res/values/strings.xml",
+                    "source": "C:\\Users\\manue\\Documents\\repositories\\Dungeon-in-Troubles\\android\\res\\values\\strings.xml",
                     "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "54",
+                        "endOffsets": "107"
+                    },
+                    "to": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",

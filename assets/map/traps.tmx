@@ -1,15 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="256" height="9" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="20">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="256" height="9" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="176">
  <tileset firstgid="1" source="entities.tsx"/>
- <objectgroup id="2" name="traps">
-  <object id="11" name="Trap" gid="21" x="192" y="128" width="23" height="23"/>
-  <object id="12" name="Trap" gid="21" x="215.75" y="127.875" width="23" height="23"/>
-  <object id="13" name="Trap" gid="21" x="240" y="128.25" width="23" height="23"/>
-  <object id="14" name="Trap" gid="21" x="359" y="33.75" width="23" height="23"/>
-  <object id="15" name="Trap" gid="21" x="384" y="34.25" width="23" height="23"/>
-  <object id="16" name="Trap" gid="21" x="410" y="34" width="23" height="23"/>
-  <object id="17" name="Trap" gid="21" x="473.712" y="50.1575" width="23" height="23" rotation="336.574"/>
-  <object id="18" name="Trap" gid="21" x="483.552" y="72.8674" width="23" height="23" rotation="336.574"/>
-  <object id="19" name="Trap" gid="21" x="493.827" y="97.8407" width="23" height="23" rotation="336.574"/>
+ <objectgroup id="2" name="traps_zone1_1">
+  <object id="11" name="Trap" gid="21" x="501.333" y="129.458" width="23" height="23"/>
+  <object id="12" name="Trap" gid="21" x="525.083" y="129.333" width="23" height="23"/>
+  <object id="13" name="Trap" gid="21" x="549.333" y="129.708" width="23" height="23"/>
+  <object id="14" name="Trap" gid="21" x="710.333" y="38.4167" width="23" height="23"/>
+  <object id="15" name="Trap" gid="21" x="735.333" y="38.9167" width="23" height="23"/>
+  <object id="16" name="Trap" gid="21" x="761.333" y="38.6667" width="23" height="23"/>
+  <object id="20" name="Trap" gid="21" x="931.938" y="140.481" width="23" height="23" rotation="270"/>
+  <object id="21" name="Trap" gid="21" x="932.412" y="114.484" width="23" height="23" rotation="270"/>
  </objectgroup>
+ <objectgroup id="4" name="coins_zone1_1">
+  <object id="66" name="Coin" gid="22" x="1264" y="48" width="8" height="8"/>
+  <object id="67" name="Coin" gid="22" x="1264" y="80" width="8" height="8"/>
+  <object id="68" name="Coin" gid="22" x="1264" y="64" width="8" height="8"/>
+  <object id="69" name="Coin" gid="22" x="1264" y="96" width="8" height="8"/>
+  <object id="70" name="Coin" gid="22" x="1280" y="64" width="8" height="8"/>
+  <object id="71" name="Coin" gid="22" x="1296" y="48" width="8" height="8"/>
+  <object id="72" name="Coin" gid="22" x="1296" y="64" width="8" height="8"/>
+  <object id="73" name="Coin" gid="22" x="1296" y="80" width="8" height="8"/>
+  <object id="74" name="Coin" gid="22" x="1296" y="96" width="8" height="8"/>
+  <object id="75" name="Coin" gid="22" x="1312" y="96" width="8" height="8"/>
+  <object id="76" name="Coin" gid="22" x="1312" y="80" width="8" height="8"/>
+  <object id="77" name="Coin" gid="22" x="1312" y="64" width="8" height="8"/>
+  <object id="78" name="Coin" gid="22" x="1312" y="48" width="8" height="8"/>
+  <object id="79" name="Coin" gid="22" x="1328" y="48" width="8" height="8"/>
+  <object id="80" name="Coin" gid="22" x="1344" y="48" width="8" height="8"/>
+  <object id="81" name="Coin" gid="22" x="1344" y="64" width="8" height="8"/>
+  <object id="82" name="Coin" gid="22" x="1344" y="80" width="8" height="8"/>
+  <object id="83" name="Coin" gid="22" x="1344" y="96" width="8" height="8"/>
+  <object id="84" name="Coin" gid="22" x="1328" y="80" width="8" height="8"/>
+  <object id="85" name="Coin" gid="22" x="1360" y="96" width="8" height="8"/>
+  <object id="86" name="Coin" gid="22" x="1360" y="80" width="8" height="8"/>
+  <object id="87" name="Coin" gid="22" x="1360" y="64" width="8" height="8"/>
+  <object id="88" name="Coin" gid="22" x="1360" y="48" width="8" height="8"/>
+  <object id="89" name="Coin" gid="22" x="1376" y="64" width="8" height="8"/>
+  <object id="90" name="Coin" gid="22" x="1392" y="80" width="8" height="8"/>
+  <object id="91" name="Coin" gid="22" x="1408" y="96" width="8" height="8"/>
+  <object id="92" name="Coin" gid="22" x="1408" y="80" width="8" height="8"/>
+  <object id="93" name="Coin" gid="22" x="1408" y="64" width="8" height="8"/>
+  <object id="94" name="Coin" gid="22" x="1408" y="48" width="8" height="8"/>
+  <object id="95" name="Coin" gid="22" x="1424" y="48" width="8" height="8"/>
+  <object id="96" name="Coin" gid="22" x="1424" y="64" width="8" height="8"/>
+  <object id="97" name="Coin" gid="22" x="1424" y="80" width="8" height="8"/>
+  <object id="98" name="Coin" gid="22" x="1424" y="96" width="8" height="8"/>
+  <object id="99" name="Coin" gid="22" x="1440" y="96" width="8" height="8"/>
+  <object id="100" name="Coin" gid="22" x="1456" y="96" width="8" height="8"/>
+  <object id="101" name="Coin" gid="22" x="1456" y="80" width="8" height="8"/>
+  <object id="102" name="Coin" gid="22" x="1456" y="64" width="8" height="8"/>
+  <object id="103" name="Coin" gid="22" x="1456" y="48" width="8" height="8"/>
+  <object id="115" name="Trap" gid="21" x="1829.67" y="70.8333" width="23" height="23"/>
+  <object id="116" name="Trap" gid="21" x="1830.25" y="95.5" width="23" height="23"/>
+  <object id="117" name="Trap" gid="21" x="2000" y="29.25" width="23" height="23"/>
+  <object id="118" name="Trap" gid="21" x="2000" y="141" width="23" height="23"/>
+ </objectgroup>
+ <objectgroup id="6" name="coins_zone2_1">
+  <object id="119" name="Coin" gid="22" x="2560" y="32" width="8" height="8"/>
+  <object id="120" name="Coin" gid="22" x="2576" y="32" width="8" height="8"/>
+  <object id="122" name="Coin" gid="22" x="2592" y="32" width="8" height="8"/>
+  <object id="123" name="Coin" gid="22" x="2608" y="32" width="8" height="8"/>
+  <object id="124" name="Coin" gid="22" x="2624" y="32" width="8" height="8"/>
+  <object id="125" name="Coin" gid="22" x="2640" y="32" width="8" height="8"/>
+  <object id="126" name="Coin" gid="22" x="2656" y="32" width="8" height="8"/>
+  <object id="127" name="Coin" gid="22" x="2672" y="32" width="8" height="8"/>
+  <object id="128" name="Coin" gid="22" x="2688" y="32" width="8" height="8"/>
+  <object id="129" name="Coin" gid="22" x="2704" y="32" width="8" height="8"/>
+  <object id="130" name="Coin" gid="22" x="2544" y="32" width="8" height="8"/>
+  <object id="131" name="Coin" gid="22" x="2720" y="32" width="8" height="8"/>
+  <object id="132" name="Coin" gid="22" x="2544" y="48" width="8" height="8"/>
+  <object id="133" name="Coin" gid="22" x="2544" y="64" width="8" height="8"/>
+  <object id="134" name="Coin" gid="22" x="2544" y="80" width="8" height="8"/>
+  <object id="135" name="Coin" gid="22" x="2544" y="96" width="8" height="8"/>
+  <object id="136" name="Coin" gid="22" x="2544" y="112" width="8" height="8"/>
+  <object id="137" name="Coin" gid="22" x="2560" y="112" width="8" height="8"/>
+  <object id="138" name="Coin" gid="22" x="2576" y="112" width="8" height="8"/>
+  <object id="139" name="Coin" gid="22" x="2592" y="112" width="8" height="8"/>
+  <object id="140" name="Coin" gid="22" x="2608" y="112" width="8" height="8"/>
+  <object id="141" name="Coin" gid="22" x="2640" y="112" width="8" height="8"/>
+  <object id="142" name="Coin" gid="22" x="2624" y="112" width="8" height="8"/>
+  <object id="143" name="Coin" gid="22" x="2656" y="112" width="8" height="8"/>
+  <object id="144" name="Coin" gid="22" x="2672" y="112" width="8" height="8"/>
+  <object id="145" name="Coin" gid="22" x="2688" y="112" width="8" height="8"/>
+  <object id="146" name="Coin" gid="22" x="2704" y="112" width="8" height="8"/>
+  <object id="147" name="Coin" gid="22" x="2720" y="112" width="8" height="8"/>
+  <object id="150" name="Coin" gid="22" x="2720" y="96" width="8" height="8"/>
+  <object id="151" name="Coin" gid="22" x="2720" y="80" width="8" height="8"/>
+  <object id="152" name="Coin" gid="22" x="2720" y="64" width="8" height="8"/>
+  <object id="153" name="Coin" gid="22" x="2720" y="48" width="8" height="8"/>
+  <object id="154" name="Coin" gid="22" x="2704" y="48" width="8" height="8"/>
+  <object id="155" name="Coin" gid="22" x="2688" y="64" width="8" height="8"/>
+  <object id="156" name="Coin" gid="22" x="2672" y="80" width="8" height="8"/>
+  <object id="157" name="Coin" gid="22" x="2656" y="96" width="8" height="8"/>
+  <object id="158" name="Coin" gid="22" x="2640" y="80" width="8" height="8"/>
+  <object id="159" name="Coin" gid="22" x="2624" y="64" width="8" height="8"/>
+  <object id="161" name="Coin" gid="22" x="2608" y="48" width="8" height="8"/>
+  <object id="162" name="Coin" gid="22" x="2592" y="64" width="8" height="8"/>
+  <object id="163" name="Coin" gid="22" x="2576" y="80" width="8" height="8"/>
+  <object id="164" name="Coin" gid="22" x="2560" y="96" width="8" height="8"/>
+ </objectgroup>
+ <objectgroup id="7" name="traps_zone3_1">
+  <object id="166" name="Trap" gid="21" x="3088" y="80" width="23" height="23"/>
+  <object id="167" name="Trap" gid="21" x="3112.45" y="80.1818" width="23" height="23"/>
+  <object id="168" name="Trap" gid="21" x="3137" y="80.5455" width="23" height="23"/>
+  <object id="169" name="Trap" gid="21" x="3163.91" y="80.5455" width="23" height="23"/>
+  <object id="170" name="Trap" gid="21" x="3344" y="32" width="23" height="23"/>
+  <object id="171" name="Trap" gid="21" x="3363" y="56.6667" width="23" height="23"/>
+  <object id="172" name="Trap" gid="21" x="3504" y="112" width="23" height="23"/>
+  <object id="173" name="Trap" gid="21" x="3504.33" y="138" width="23" height="23"/>
+ </objectgroup>
+ <objectgroup id="5" name="traps_zone2_1"/>
 </map>

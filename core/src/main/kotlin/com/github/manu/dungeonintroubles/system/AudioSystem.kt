@@ -25,6 +25,10 @@ class AudioSystem : EventListener, IntervalSystem() {
 
         soundRequest.values.forEach { it.play(1f) }
         soundRequest.clear()
+
+        if (musicCache.all { !it.value.isPlaying }) {
+
+        }
     }
 
     override fun handle(event: Event): Boolean {
@@ -35,6 +39,7 @@ class AudioSystem : EventListener, IntervalSystem() {
                     val music = musicCache.getOrPut(path) {
                         Gdx.audio.newMusic(Gdx.files.internal(path)).apply {
                             isLooping = true
+                            volume = 0.1f
                         }
                     }
                     musicCache.forEach {
