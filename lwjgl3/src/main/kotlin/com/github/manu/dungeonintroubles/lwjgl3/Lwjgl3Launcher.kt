@@ -10,6 +10,7 @@ import com.github.manu.dungeonintroubles.DungeonInTroubles
 fun main() {
     Lwjgl3Application(DungeonInTroubles(), Lwjgl3ApplicationConfiguration().apply {
         setTitle("dungeonintroubles")
+        useVsync(false)
         setWindowedMode(640, 480)
         setWindowIcon(*(arrayOf(128, 64, 32, 16).map { "libgdx$it.png" }.toTypedArray()))
     })

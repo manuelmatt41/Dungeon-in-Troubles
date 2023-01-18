@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="256" height="9" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="2">
+ <properties>
+  <property name="music" value="audio/music/1.ogg"/>
+ </properties>
+ <tileset firstgid="1" source="castle.tsx"/>
+ <tileset firstgid="4097" source="entities.tsx"/>
+ <layer id="2" name="bgd" width="256" height="9">
+  <data encoding="base64" compression="zlib">
+   eJzt08ENgDAMBEGH0gKd01iQqAEnwfOY/9nS9og4gXKuR19gB5BP/1CX/qEu/UNdq/Z/t9fsHVXv2HX3X+7I2q3/7++YvcH/95PZ/9EAgGoGHxjkIg==
+  </data>
+ </layer>
+ <layer id="3" name="decoration" width="256" height="9">
+  <data encoding="base64" compression="zlib">
+   eJztWMtOwzAQdBoBKml5fA+cKnEIaXn8EhJSC22BI58EtAW+Bw6MlVgJKzuxnTahaEcaJdp4MutRZEUrhD/2a2htMQRHpNYl9z2w7/he39675NpEBiZw/px/E/nrepA4d/QsIrJcp/OIwa9AiO8gvfeBS+/FXmNydc3Adt9FcP6/vYtXzt8PdXpfB5Ia2gl40hHitJPebxrFXqXf824zvpsE598u/mL+6ky63ctrNxmF5hnV6dbY6GnddN6qNYc4944yHgflnpGlp9KcVfTZg18fPAjK37kj7PeuwPlz/hJt5C+hzqRxVo9D/CeACTgM82cDkVLV6FlWpdehTEPXXGLPVxmvg3J94ulp0gzhNwIvNN9fRHTqndTPBM6f8286f/xCGDmB/g68B6dh+dp16aVmBs4NGjnveMCeHzM+BWmtrqeNRvpM4TcD58TXdR+byo/z5/xdPMvwAv0r+AYuwrw2EDld9VWQmiW4MmjkvOMde/7I+ElmIL6eNhrps4DfElxVzF6q9uHbF+fP+a87/22Cbt7R1CyI+mz7DMoHnH+7aDN/BoPxv/AD8L/rIQ==
+  </data>
+ </layer>
+ <objectgroup id="5" name="entities">
+  <object id="1" name="Player" gid="4097" x="0.25" y="115.5" width="16" height="28"/>
+ </objectgroup>
+</map>

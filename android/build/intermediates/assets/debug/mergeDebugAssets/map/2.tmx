@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="256" height="9" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="2">
+ <properties>
+  <property name="music" value="audio/music/3.ogg"/>
+ </properties>
+ <tileset firstgid="1" source="entities.tsx"/>
+ <tileset firstgid="2" source="dessert_dungeon.tsx"/>
+ <tileset firstgid="132" source="DarkDungeon.tsx"/>
+ <layer id="2" name="bgd" width="256" height="9">
+  <data encoding="base64" compression="zlib">
+   eJzt1MsNgCAQBUD6v9CI9qAtWQE2YBD5qGQOc4Lsvl0SYgghAgAAAAAAAFNYCmyn/ca9tbBurSf9rmZpWetLajOOfNMe++yZv3XenllztVv1Hv0HvN131pxm/nf+I3OeAFGgQpU=
+  </data>
+ </layer>
+ <layer id="4" name="decoration" width="256" height="9">
+  <data encoding="base64" compression="zlib">
+   eJztV0FOwzAQzOc5oB44gY/0BZyoql4KtMoRPsEP+gKI1JWWYXY9TtIKpIxkJbIzO7PrTRuvunEo5+uKrPUJ7+E8DIyfxSuwtiLPoF6GGj8Cy1+JgX6Mj3khLHaUv6rvUbrf9a/VC6Hsn4H5WwXzHpmnFn30wPLvBT/GHaPvuWP46I3xa73kcf89biaMhb/wF/7/5t8Jow/mVX40Fv7Cn5M//Pc9/GP/bJQL6yNavgEZH5F9jyj8qfoqX83b5xPpq7GulX/kZw79IXbLN+dU/X4iv0W/lpvx58y/J3Mt/AjMo/FbNP3zqB/1WRQ/e3+Ud8j6T9HysVG/1Tfyx2Lu34+oD9X3n/V7VoO5+tf+txXUfn8zfcztnsy1INq/4uKq9VN8MP8RV9kHdn64JXNjzh9KHOX8ksW51Pnpdkb/WU5z+2/Zu0vWb07+tfa/tXZ/zb/XU3Nh54cNmYvOIcjfufvnIE7G7wU/JeGjB/SM8aPz0wb8R2ewLH/UKy7OJuDj81ntdsAvlZqz2o49f+4EPtaiVj/mr9ZHrP6KLuOjDsu7h/i1+pWOv0+9wK/tv+d7TxuiyWo7cB6733g5Xw9kzfB5vq5h/uju9+7+5O637p7pR34YGP9I5iKsE03vf/D8Ieir2pbTuvtZjwi2F/7ZI9E3z6dOw6CPeT0JPMsz2z9WC+//0MX199gna6z+yh5Yjp7vdd4Jx7z7+GtBC/t3yNtq7vWzur9+jzcyb/re04vTzHrr6DTVfjGwd6EG9KL02RZGhM9kDeF/15gHVgvFwxSgj0hnW1mPsA3uB0R7WfPgEfVP5jNaOyWeFD7rBbVe2X9ehqyXx/SMwnmCwXCCZz2GXL8A4U3LFw==
+  </data>
+ </layer>
+ <objectgroup id="5" name="entities">
+  <object id="1" name="Player" gid="1" x="0" y="115" width="16" height="28"/>
+ </objectgroup>
+</map>

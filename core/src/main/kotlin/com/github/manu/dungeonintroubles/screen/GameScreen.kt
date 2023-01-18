@@ -28,7 +28,7 @@ class GameScreen : KtxScreen {
     private val textureAtlas: TextureAtlas = TextureAtlas(Gdx.files.internal("graphics/gameObjects.atlas"))
     private var currentMap: TiledMap? = null
     private var trapMap: TiledMap? = null
-    private val physichWorld = createWorld(vec2(0f, -10f)).apply {
+    private val physichWorld = createWorld(vec2(0f, -15f)).apply {
         autoClearForces = false
     }
 

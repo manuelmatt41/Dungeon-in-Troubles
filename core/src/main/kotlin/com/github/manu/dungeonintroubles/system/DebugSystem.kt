@@ -1,5 +1,6 @@
 package com.github.manu.dungeonintroubles.system
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer
 import com.badlogic.gdx.physics.box2d.World
 import com.badlogic.gdx.scenes.scene2d.Stage
@@ -28,6 +29,11 @@ class DebugSystem(
 //            it.setColor(1f, 0f, 0f, 0f)
 //            it.rect(AABB_RECT.x, AABB_RECT.y, AABB_RECT.width - AABB_RECT.x, AABB_RECT.height - AABB_RECT.y)
 //        }
+        Gdx.graphics.setTitle(
+            buildString {
+                append(Gdx.app.graphics.framesPerSecond)
+            }
+        )
     }
 
     override fun onDispose() {
