@@ -6,6 +6,7 @@ import com.badlogic.gdx.audio.Sound
 import com.badlogic.gdx.scenes.scene2d.Event
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.github.manu.dungeonintroubles.event.*
+import com.github.quillraven.fleks.Fixed
 import com.github.quillraven.fleks.IntervalSystem
 import ktx.assets.disposeSafely
 import ktx.log.logger
@@ -52,15 +53,18 @@ class AudioSystem : EventListener, IntervalSystem() {
                 queueSound("audio/sounds/${event.model.atlasKey}.wav")
                 true
             }
+
             is TrapCollisionEvent -> {
                 queueSound("audio/sounds/${event.model.atlasKey}.wav")
                 true
             }
+
             is CrossPortalEvent -> {
 
                 queueSound("audio/sounds/portal.ogg")
                 true
             }
+
             is DeathEvent -> {
                 queueSound("audio/sounds/death.wav")
                 true

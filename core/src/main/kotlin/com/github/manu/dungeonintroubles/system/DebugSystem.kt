@@ -34,6 +34,8 @@ class DebugSystem(
                 append(Gdx.app.graphics.framesPerSecond)
                 append("--")
                 append(world.numEntities)
+                append("--")
+                append(physicWorld.contactCount)
             }
         )
     }

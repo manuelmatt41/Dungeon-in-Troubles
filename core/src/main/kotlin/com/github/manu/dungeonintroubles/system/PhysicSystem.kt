@@ -99,7 +99,6 @@ class PhysicSystem(
             }
 
             collisionAWithCoin -> {
-                gameStage.fire(GetCointEvent(AnimationModel.COIN))
                 with(playerCmps[entityA]) {
                     coins++;
                     log.debug { "Coins: $coins" }
@@ -108,10 +107,10 @@ class PhysicSystem(
                 configureEntity(entityB) {
                     despawnCmps.add(it)
                 }
+//                gameStage.fire(GetCointEvent(AnimationModel.COIN))
             }
 
             collisionBWithCoin -> {
-                gameStage.fire(GetCointEvent(AnimationModel.COIN))
                 with(playerCmps[entityB]) {
                     coins++;
                     log.debug { "Coins: $coins" }
@@ -120,6 +119,7 @@ class PhysicSystem(
                 configureEntity(entityA) {
                     despawnCmps.add(it)
                 }
+                gameStage.fire(GetCointEvent(AnimationModel.COIN))
             }
         }
     }
@@ -128,6 +128,18 @@ class PhysicSystem(
         val entityA = contact.fixtureA.entity
         val entityB = contact.fixtureB.entity
 
+        val collisionAWithCoin = entityA in playerCmps && entityB in coinCmps
+        val collisionBWithCoin = entityB in playerCmps && entityA in coinCmps
+
+        when {
+            collisionAWithCoin -> {
+                gameStage.fire(GetCointEvent(AnimationModel.COIN))
+            }
+
+            collisionBWithCoin -> {
+                gameStage.fire(GetCointEvent(AnimationModel.COIN))
+            }
+        }
     }
 
     override fun preSolve(contact: Contact, oldManifold: Manifold) {

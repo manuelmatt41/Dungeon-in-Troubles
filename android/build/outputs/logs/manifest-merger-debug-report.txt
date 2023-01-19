@@ -4,7 +4,6 @@ ADDED from C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\And
 INJECTED from C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:2:1-28:12
 INJECTED from C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:2:1-28:12
 INJECTED from C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:2:1-28:12
-MERGED from [com.android.support:multidex:1.0.2] C:\Users\manue\.gradle\caches\transforms-3\46ebcb82c8e5138df9f6a5107d9704dd\transformed\multidex-1.0.2\AndroidManifest.xml:17:1-22:12
 INJECTED from C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:2:1-28:12
 INJECTED from C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:2:1-28:12
 INJECTED from C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:2:1-28:12
@@ -74,8 +73,6 @@ uses-sdk
 INJECTED from C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml
 INJECTED from C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml
-MERGED from [com.android.support:multidex:1.0.2] C:\Users\manue\.gradle\caches\transforms-3\46ebcb82c8e5138df9f6a5107d9704dd\transformed\multidex-1.0.2\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:multidex:1.0.2] C:\Users\manue\.gradle\caches\transforms-3\46ebcb82c8e5138df9f6a5107d9704dd\transformed\multidex-1.0.2\AndroidManifest.xml:20:5-43
 INJECTED from C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml
 INJECTED from C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml
 	android:targetSdkVersion

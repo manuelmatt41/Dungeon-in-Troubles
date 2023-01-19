@@ -1,8 +1,7 @@
-#Wed Jan 18 18:01:11 CET 2023
+#Thu Jan 19 19:39:51 CET 2023
 path.4=7/classes.dex
-path.3=5/classes.dex
+path.3=classes1000.dex
 path.2=4/classes.dex
-renamed.9=classes10.dex
 path.1=15/classes.dex
 renamed.8=classes9.dex
 path.8=4/classes.dex
@@ -11,7 +10,7 @@ path.6=0/classes.dex
 path.5=8/classes.dex
 path.0=classes.dex
 base.4=C\:\\Users\\manue\\Documents\\repositories\\Dungeon-in-Troubles\\android\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\7\\classes.dex
-base.3=C\:\\Users\\manue\\Documents\\repositories\\Dungeon-in-Troubles\\android\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\5\\classes.dex
+base.3=C\:\\Users\\manue\\Documents\\repositories\\Dungeon-in-Troubles\\android\\build\\intermediates\\desugar_lib_dex\\debug\\classes1000.dex
 base.2=C\:\\Users\\manue\\Documents\\repositories\\Dungeon-in-Troubles\\android\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\4\\classes.dex
 base.1=C\:\\Users\\manue\\Documents\\repositories\\Dungeon-in-Troubles\\android\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\15\\classes.dex
 base.0=C\:\\Users\\manue\\Documents\\repositories\\Dungeon-in-Troubles\\android\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
@@ -19,8 +18,6 @@ renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.9=C\:\\Users\\manue\\Documents\\repositories\\Dungeon-in-Troubles\\android\\build\\intermediates\\desugar_lib_dex\\debug\\classes1000.dex
-path.9=classes1000.dex
 renamed.7=classes8.dex
 base.8=C\:\\Users\\manue\\Documents\\repositories\\Dungeon-in-Troubles\\android\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
 renamed.6=classes7.dex
