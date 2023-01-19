@@ -1,11 +1,11 @@
-package com.github.manu.rpg.system
+package com.github.manu.dungeonintroubles.system
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.audio.Music
 import com.badlogic.gdx.audio.Sound
 import com.badlogic.gdx.scenes.scene2d.Event
 import com.badlogic.gdx.scenes.scene2d.EventListener
-import com.github.manu.dungeonintroubles.event.MapChangeEvent
+import com.github.manu.dungeonintroubles.event.*
 import com.github.quillraven.fleks.IntervalSystem
 import ktx.assets.disposeSafely
 import ktx.log.logger
@@ -25,14 +25,10 @@ class AudioSystem : EventListener, IntervalSystem() {
 
         soundRequest.values.forEach { it.play(1f) }
         soundRequest.clear()
-
-        if (musicCache.all { !it.value.isPlaying }) {
-
-        }
     }
 
     override fun handle(event: Event): Boolean {
-        when (event) {
+        return when (event) {
             is MapChangeEvent -> {
                 event.map.propertyOrNull<String>("music")?.let { path ->
                     log.debug { "Changing music to $path" }
@@ -43,16 +39,37 @@ class AudioSystem : EventListener, IntervalSystem() {
                         }
                     }
                     musicCache.forEach {
-                        it.value.stop()
+                        if (it.value.isPlaying) {
+                            return@let
+                        }
                     }
                     music.play()
                 }
-                return true
+                true
             }
-        }
 
-        return false
+            is GetCointEvent -> {
+                queueSound("audio/sounds/${event.model.atlasKey}.wav")
+                true
+            }
+            is TrapCollisionEvent -> {
+                queueSound("audio/sounds/${event.model.atlasKey}.wav")
+                true
+            }
+            is CrossPortalEvent -> {
+
+                queueSound("audio/sounds/portal.ogg")
+                true
+            }
+            is DeathEvent -> {
+                queueSound("audio/sounds/death.wav")
+                true
+            }
+
+            else -> false
+        }
     }
+
 
     private fun queueSound(soundPath: String) {
         log.debug { "Queue sound $soundPath" }

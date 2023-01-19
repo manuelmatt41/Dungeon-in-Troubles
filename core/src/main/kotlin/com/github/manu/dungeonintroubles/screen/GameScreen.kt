@@ -15,7 +15,7 @@ import com.github.manu.dungeonintroubles.extension.fire
 import com.github.manu.dungeonintroubles.input.PlayerKeyBoardInput
 import com.github.manu.dungeonintroubles.system.*
 import com.github.manu.dungeonintroubles.system.GenerateMapSystem.Companion.NUMBER_OF_MAPS
-import com.github.manu.rpg.system.AudioSystem
+import com.github.manu.dungeonintroubles.system.AudioSystem
 import com.github.quillraven.fleks.world
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
@@ -46,6 +46,7 @@ class GameScreen : KtxScreen {
 
         systems {
             add<EntitySpawnSystem>()
+            add<DespawnSystem>()
             add<CollisionSpawnSystem>()
             add<PhysicSystem>()
             add<JumpMoveSystem>()

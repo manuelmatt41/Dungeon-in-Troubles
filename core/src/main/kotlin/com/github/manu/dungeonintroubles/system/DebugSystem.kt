@@ -11,7 +11,7 @@ import ktx.assets.disposeSafely
 class DebugSystem(
     private val physicWorld: World,
     @Qualifier("gameStage") private val gameStage: Stage
-) : IntervalSystem(enabled = true) {
+) : IntervalSystem(enabled = false) {
 
     private lateinit var physicsRenderer: Box2DDebugRenderer
 //    private lateinit var shapeRenderer: ShapeRenderer
@@ -32,6 +32,8 @@ class DebugSystem(
         Gdx.graphics.setTitle(
             buildString {
                 append(Gdx.app.graphics.framesPerSecond)
+                append("--")
+                append(world.numEntities)
             }
         )
     }

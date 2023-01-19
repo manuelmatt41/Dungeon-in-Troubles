@@ -2,6 +2,7 @@ package com.github.manu.dungeonintroubles.system
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.maps.MapLayer
+import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType.StaticBody
 import com.badlogic.gdx.physics.box2d.World
@@ -13,6 +14,7 @@ import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.component.*
 import com.github.manu.dungeonintroubles.event.MapChangeEvent
 import com.github.manu.dungeonintroubles.extension.physicCmpFromImage
+import com.github.manu.dungeonintroubles.system.GenerateMapSystem.Companion.LAYER_POSIBILITIES
 import com.github.quillraven.fleks.AllOf
 import com.github.quillraven.fleks.ComponentMapper
 import com.github.quillraven.fleks.Entity
@@ -31,7 +33,7 @@ class EntitySpawnSystem(
     private val spawnCmps: ComponentMapper<SpawnComponent>,
 ) : EventListener, IteratingSystem() {
 
-    private val cachedConfigs = mutableMapOf<String, SpawnConfiguration>()
+    private val cachedConfigs = mutableMapOf<EntityType, SpawnConfiguration>()
     private val cachedSizes = mutableMapOf<AnimationModel, Vector2>()
 
     override fun onTickEntity(entity: Entity) {
@@ -91,8 +93,20 @@ class EntitySpawnSystem(
                     }
                 }
 
-                if (name == "Player") {
-                    add<PlayerComponent>()
+                when (name) {
+                    EntityType.PLAYER -> {
+                        add<PlayerComponent>()
+                    }
+
+                    EntityType.TRAP -> {
+                        add<TrapComponent>()
+                    }
+
+                    EntityType.COIN -> {
+                        add<CoinComponent>()
+                    }
+
+                    else -> gdxError("Non defined entity type $name")
                 }
 
                 if (config.bodyType != StaticBody) {
@@ -105,25 +119,28 @@ class EntitySpawnSystem(
         world.remove(entity)
     }
 
-    private fun spawnCfg(type: String): SpawnConfiguration = cachedConfigs.getOrPut(type) {
+    private fun spawnCfg(type: EntityType): SpawnConfiguration = cachedConfigs.getOrPut(type) {
         when (type) {
-            "Player" -> SpawnConfiguration(
+            EntityType.PLAYER -> SpawnConfiguration(
                 AnimationModel.PLAYER,
-                physicScaling = vec2(0.4f, 0.4f),        //TODO Ajustar valores
+                physicScaling = vec2(0.4f, 0.4f),
                 physicOffset = vec2(0f, -5f * UNIT_SCALE)
             )
-            "Trap" -> SpawnConfiguration(
+
+            EntityType.TRAP -> SpawnConfiguration(
                 AnimationModel.TRAP,
                 physicScaling = vec2(0.4f, 0.4f),
                 speedScaling = 0f,
                 bodyType = StaticBody
             )
-            "Coin" -> SpawnConfiguration(
+
+            EntityType.COIN -> SpawnConfiguration(
                 AnimationModel.COIN,
                 physicScaling = vec2(0.4f, 0.4f),
                 speedScaling = 0f,
                 bodyType = StaticBody
             )
+
             else -> gdxError("Type $type has no SpawnCfg setup.")
         }
     }
@@ -145,7 +162,7 @@ class EntitySpawnSystem(
 
             world.entity {
                 add<SpawnComponent> {
-                    this.name = name
+                    this.name = EntityType.valueOf(name.uppercase())
                     this.location.set(mapObject.x * UNIT_SCALE, mapObject.y * UNIT_SCALE)
                 }
             }
@@ -156,11 +173,11 @@ class EntitySpawnSystem(
         return when (event) {
             is MapChangeEvent -> {
                 val entityLayer = event.map.layer("entities")
-                val trapLayer1 = event.trapMap.layer("traps_zone1_1")
-                val trapLayer2 = event.trapMap.layer("traps_zone2_1")
-                val trapLayer3 = event.trapMap.layer("traps_zone3_1")
-                val coinLayer1 = event.trapMap.layer("coins_zone1_1")
-                val coinLayer2 = event.trapMap.layer("coins_zone2_1")
+                val trapLayer1 = event.trapMap.layer("traps_zone1_${MathUtils.random(1, LAYER_POSIBILITIES)}")
+                val trapLayer2 = event.trapMap.layer("traps_zone2_${MathUtils.random(1, LAYER_POSIBILITIES)}")
+                val trapLayer3 = event.trapMap.layer("traps_zone3_${MathUtils.random(1, LAYER_POSIBILITIES)}")
+                val coinLayer1 = event.trapMap.layer("coins_zone1_${MathUtils.random(1, LAYER_POSIBILITIES)}")
+                val coinLayer2 = event.trapMap.layer("coins_zone2_${MathUtils.random(1, LAYER_POSIBILITIES)}")
 
                 createEntitiesForLayers(entityLayer)
                 createEntitiesForLayers(trapLayer1)

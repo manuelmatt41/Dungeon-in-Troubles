@@ -1,27 +1,29 @@
 package com.github.manu.dungeonintroubles.system
 
-import com.badlogic.gdx.math.Interpolation
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.physics.box2d.*
 import com.badlogic.gdx.physics.box2d.World
+import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.component.*
+import com.github.manu.dungeonintroubles.event.GetCointEvent
 import com.github.manu.dungeonintroubles.extension.entity
-import com.github.manu.dungeonintroubles.extension.isDinamicBody
-import com.github.manu.dungeonintroubles.extension.isStaticBody
+import com.github.manu.dungeonintroubles.extension.fire
 import com.github.quillraven.fleks.*
 import ktx.log.logger
 import ktx.math.component1
 import ktx.math.component2
-import ktx.math.vec2
 
 @AllOf([PhysicComponent::class, ImageComponent::class])
+@NoneOf([DespawnComponent::class])
 class PhysicSystem(
     private val physicWorld: World,
+    @Qualifier("gameStage") private val gameStage: Stage,
     private val imgCmps: ComponentMapper<ImageComponent>,
     private val physicsCmps: ComponentMapper<PhysicComponent>,
-    private val tilesCmps: ComponentMapper<TiledComponent>,
-    private val collisionCmps: ComponentMapper<CollisionComponent>,
-    private val moveCmps: ComponentMapper<MoveComponent>,
+    private val playerCmps: ComponentMapper<PlayerComponent>,
+    private val trapCmps: ComponentMapper<TrapComponent>,
+    private val coinCmps: ComponentMapper<CoinComponent>,
+    private val despawnCmps: ComponentMapper<DespawnComponent>,
 ) : ContactListener, IteratingSystem(interval = Fixed(1 / 60f)) {
 
     init {
@@ -47,11 +49,8 @@ class PhysicSystem(
         val physicCmp = physicsCmps[entity]
 
         physicCmp.prevPosition.set(physicCmp.body.position)
-
-//            log.debug { "Impulse: ${ physicCmp.impulse}" }
         physicCmp.body.applyLinearImpulse(physicCmp.impulse, physicCmp.body.worldCenter, true)
         physicCmp.impulse.setZero()
-//            log.debug { "Impulse: ${ physicCmp.impulse}" }
     }
 
     override fun onAlphaEntity(entity: Entity, alpha: Float) {
@@ -74,19 +73,53 @@ class PhysicSystem(
         val entityA = contact.fixtureA.entity
         val entityB = contact.fixtureB.entity
 
-        val isEntityATiledCollisionSensor = entityA in tilesCmps && contact.fixtureA.isSensor
-        val isEntityBCollisionFixture = entityB in collisionCmps && !contact.fixtureB.isSensor
-
-        val isEntityACollisionFixture = entityA in collisionCmps && !contact.fixtureA.isSensor
-        val isEntityBTiledCollisionSensor = entityB in tilesCmps && contact.fixtureB.isSensor
+        val collisionAWithTrap = entityA in playerCmps && entityB in trapCmps
+        val collisionBWithTrap = entityB in playerCmps && entityA in trapCmps
+        val collisionAWithCoin = entityA in playerCmps && entityB in coinCmps
+        val collisionBWithCoin = entityB in playerCmps && entityA in coinCmps
 
         when {
-            isEntityATiledCollisionSensor && isEntityBCollisionFixture -> {
-                tilesCmps[entityA].nearbyEntities += entityB
+            collisionAWithTrap -> {
+                gameStage.fire(GetCointEvent(AnimationModel.TRAP))
+
+                configureEntity(entityA) {
+                    despawnCmps.add(it)
+                }
+                log.debug { "Hit" }
             }
 
-            isEntityBTiledCollisionSensor && isEntityACollisionFixture -> {
-                tilesCmps[entityB].nearbyEntities += entityA
+            collisionBWithTrap -> {
+                gameStage.fire(GetCointEvent(AnimationModel.TRAP))
+
+                configureEntity(entityB) {
+                    despawnCmps.add(it)
+                }
+
+                log.debug { "Hit" }
+            }
+
+            collisionAWithCoin -> {
+                gameStage.fire(GetCointEvent(AnimationModel.COIN))
+                with(playerCmps[entityA]) {
+                    coins++;
+                    log.debug { "Coins: $coins" }
+                }
+
+                configureEntity(entityB) {
+                    despawnCmps.add(it)
+                }
+            }
+
+            collisionBWithCoin -> {
+                gameStage.fire(GetCointEvent(AnimationModel.COIN))
+                with(playerCmps[entityB]) {
+                    coins++;
+                    log.debug { "Coins: $coins" }
+                }
+
+                configureEntity(entityA) {
+                    despawnCmps.add(it)
+                }
             }
         }
     }
@@ -94,24 +127,20 @@ class PhysicSystem(
     override fun endContact(contact: Contact) {
         val entityA = contact.fixtureA.entity
         val entityB = contact.fixtureB.entity
-        val isEntityATiledCollisionSensor = entityA in tilesCmps && contact.fixtureA.isSensor
-        val isEntityBTiledCollisionSensor = entityB in tilesCmps && contact.fixtureB.isSensor
 
-        when {
-            isEntityATiledCollisionSensor && !contact.fixtureB.isSensor -> {
-                tilesCmps[entityA].nearbyEntities -= entityB
-            }
-
-            isEntityBTiledCollisionSensor && !contact.fixtureA.isSensor -> {
-                tilesCmps[entityB].nearbyEntities -= entityA
-            }
-        }
     }
 
     override fun preSolve(contact: Contact, oldManifold: Manifold) {
-        contact.isEnabled =
-            (contact.fixtureA.isStaticBody() && contact.fixtureB.isDinamicBody()) ||
-                    (contact.fixtureB.isStaticBody() && contact.fixtureA.isDinamicBody())
+        val entityA = contact.fixtureA.entity
+        val entityB = contact.fixtureB.entity
+
+        val collisionWithTrap =
+            (entityA in playerCmps && entityB in trapCmps) || (entityB in playerCmps && entityA in trapCmps)
+        val collisionWithCoin =
+            (entityA in playerCmps && entityB in coinCmps) || (entityB in playerCmps && entityA in coinCmps)
+
+//        log.debug { "Contact a trap ${!((entityA in playerCmps && entityB in trapCmps) || (entityB in playerCmps && entityA in trapCmps))}" }
+        contact.isEnabled = !collisionWithTrap && !collisionWithCoin
     }
 
     override fun postSolve(contact: Contact, impulse: ContactImpulse) {
