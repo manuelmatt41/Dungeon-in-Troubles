@@ -32,7 +32,7 @@
   <object id="206" name="trap" gid="21" x="882.333" y="72.8333" width="23" height="23"/>
   <object id="207" name="trap" gid="21" x="932" y="74.1667" width="23" height="23"/>
  </objectgroup>
- <objectgroup id="4" name="coins_zone1_1" visible="0">
+ <objectgroup id="4" name="coins_zone1_1">
   <object id="66" name="coin" gid="22" x="1264" y="48" width="8" height="8"/>
   <object id="67" name="coin" gid="22" x="1264" y="80" width="8" height="8"/>
   <object id="68" name="coin" gid="22" x="1264" y="64" width="8" height="8"/>

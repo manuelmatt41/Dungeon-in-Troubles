@@ -76,7 +76,7 @@ class AudioSystem : EventListener, IntervalSystem() {
 
 
     private fun queueSound(soundPath: String) {
-        log.debug { "Queue sound $soundPath" }
+//        log.debug { "Queue sound $soundPath" }
 
         if (soundPath in soundRequest) {
             // already queued -> do nothing
@@ -84,6 +84,7 @@ class AudioSystem : EventListener, IntervalSystem() {
         }
 
         val sound = soundCache.getOrPut(soundPath) {
+            log.debug { "Sound $soundPath created" }
             Gdx.audio.newSound(Gdx.files.internal(soundPath))
         }
 

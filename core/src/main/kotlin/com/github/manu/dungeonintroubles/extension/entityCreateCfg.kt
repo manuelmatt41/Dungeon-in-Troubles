@@ -61,12 +61,8 @@ fun EntityCreateCfg.physicCmpFromShape2D(
                         vec2(bodyW, bodyH),
                         vec2(0f, bodyH)
                     ) {
-                        friction = 0f
-                    }
-
-                    TMP_VEC.set(bodyW * 0.5f, bodyH * 0.5f)
-                    box(SPAWN_AREA_SIZE + 3f, SPAWN_AREA_SIZE + 3f, TMP_VEC) {
                         isSensor = true
+                        friction = 0f
                     }
                 }
             }

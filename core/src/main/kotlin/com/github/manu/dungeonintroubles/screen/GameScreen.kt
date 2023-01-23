@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TmxMapLoader
-import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.ExtendViewport
@@ -14,7 +13,6 @@ import com.github.manu.dungeonintroubles.event.MapChangeEvent
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.manu.dungeonintroubles.input.PlayerKeyBoardInput
 import com.github.manu.dungeonintroubles.system.*
-import com.github.manu.dungeonintroubles.system.GenerateMapSystem.Companion.NUMBER_OF_MAPS
 import com.github.manu.dungeonintroubles.system.AudioSystem
 import com.github.quillraven.fleks.world
 import ktx.app.KtxScreen
@@ -70,7 +68,7 @@ class GameScreen : KtxScreen {
             }
         }
 
-        currentMap = TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx").path())
+        currentMap = TmxMapLoader().load(Gdx.files.internal("map/3.tmx").path()) //"map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx"
         trapMap = TmxMapLoader().load(Gdx.files.internal("map/traps.tmx").path())
         gameStage.fire(MapChangeEvent(currentMap!!, trapMap!!))
 

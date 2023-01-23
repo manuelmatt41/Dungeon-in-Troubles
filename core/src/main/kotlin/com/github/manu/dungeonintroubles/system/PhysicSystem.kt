@@ -1,11 +1,13 @@
 package com.github.manu.dungeonintroubles.system
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.physics.box2d.*
 import com.badlogic.gdx.physics.box2d.World
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.component.*
 import com.github.manu.dungeonintroubles.event.GetCointEvent
+import com.github.manu.dungeonintroubles.event.TrapCollisionEvent
 import com.github.manu.dungeonintroubles.extension.entity
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.quillraven.fleks.*
@@ -24,6 +26,7 @@ class PhysicSystem(
     private val trapCmps: ComponentMapper<TrapComponent>,
     private val coinCmps: ComponentMapper<CoinComponent>,
     private val despawnCmps: ComponentMapper<DespawnComponent>,
+    private val spawnPointCmps: ComponentMapper<SpawnPointComponent>,
 ) : ContactListener, IteratingSystem(interval = Fixed(1 / 60f)) {
 
     init {
@@ -75,26 +78,31 @@ class PhysicSystem(
 
         val collisionAWithTrap = entityA in playerCmps && entityB in trapCmps
         val collisionBWithTrap = entityB in playerCmps && entityA in trapCmps
+
         val collisionAWithCoin = entityA in playerCmps && entityB in coinCmps
         val collisionBWithCoin = entityB in playerCmps && entityA in coinCmps
 
+        val collisionAWithSpawnPoint= entityA in playerCmps && entityB in spawnPointCmps
+        val collisionBWithSpawnPoint = entityB in playerCmps && entityA in spawnPointCmps
+
         when {
             collisionAWithTrap -> {
-                gameStage.fire(GetCointEvent(AnimationModel.TRAP))
+                gameStage.fire(TrapCollisionEvent(AnimationModel.TRAP))
 
                 configureEntity(entityA) {
                     despawnCmps.add(it)
                 }
+                Gdx.input.vibrate(100)
                 log.debug { "Hit" }
             }
 
             collisionBWithTrap -> {
-                gameStage.fire(GetCointEvent(AnimationModel.TRAP))
+                gameStage.fire(TrapCollisionEvent(AnimationModel.TRAP))
 
                 configureEntity(entityB) {
                     despawnCmps.add(it)
                 }
-
+                Gdx.input.vibrate(100)
                 log.debug { "Hit" }
             }
 
@@ -107,7 +115,8 @@ class PhysicSystem(
                 configureEntity(entityB) {
                     despawnCmps.add(it)
                 }
-//                gameStage.fire(GetCointEvent(AnimationModel.COIN))
+
+                gameStage.fire(GetCointEvent(AnimationModel.COIN))
             }
 
             collisionBWithCoin -> {
@@ -119,6 +128,7 @@ class PhysicSystem(
                 configureEntity(entityA) {
                     despawnCmps.add(it)
                 }
+
                 gameStage.fire(GetCointEvent(AnimationModel.COIN))
             }
         }
@@ -143,16 +153,16 @@ class PhysicSystem(
     }
 
     override fun preSolve(contact: Contact, oldManifold: Manifold) {
-        val entityA = contact.fixtureA.entity
-        val entityB = contact.fixtureB.entity
-
-        val collisionWithTrap =
-            (entityA in playerCmps && entityB in trapCmps) || (entityB in playerCmps && entityA in trapCmps)
-        val collisionWithCoin =
-            (entityA in playerCmps && entityB in coinCmps) || (entityB in playerCmps && entityA in coinCmps)
-
-//        log.debug { "Contact a trap ${!((entityA in playerCmps && entityB in trapCmps) || (entityB in playerCmps && entityA in trapCmps))}" }
-        contact.isEnabled = !collisionWithTrap && !collisionWithCoin
+//        val entityA = contact.fixtureA.entity
+//        val entityB = contact.fixtureB.entity
+//
+//        val collisionWithTrap =
+//            (entityA in playerCmps && entityB in trapCmps) || (entityB in playerCmps && entityA in trapCmps)
+//        val collisionWithCoin =
+//            (entityA in playerCmps && entityB in coinCmps) || (entityB in playerCmps && entityA in coinCmps)
+//
+////        log.debug { "Contact a trap ${!((entityA in playerCmps && entityB in trapCmps) || (entityB in playerCmps && entityA in trapCmps))}" }
+//        contact.isEnabled = !collisionWithTrap && !collisionWithCoin
     }
 
     override fun postSolve(contact: Contact, impulse: ContactImpulse) {

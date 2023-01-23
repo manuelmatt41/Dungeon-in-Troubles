@@ -2,7 +2,6 @@ package com.github.manu.dungeonintroubles.system
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.maps.MapLayer
-import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType.StaticBody
 import com.badlogic.gdx.physics.box2d.World
@@ -14,7 +13,7 @@ import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.component.*
 import com.github.manu.dungeonintroubles.event.MapChangeEvent
 import com.github.manu.dungeonintroubles.extension.physicCmpFromImage
-import com.github.manu.dungeonintroubles.system.GenerateMapSystem.Companion.LAYER_POSIBILITIES
+import com.github.manu.dungeonintroubles.extension.physicCmpFromShape2D
 import com.github.quillraven.fleks.AllOf
 import com.github.quillraven.fleks.ComponentMapper
 import com.github.quillraven.fleks.Entity
@@ -22,9 +21,7 @@ import com.github.quillraven.fleks.IteratingSystem
 import ktx.app.gdxError
 import ktx.box2d.box
 import ktx.math.vec2
-import ktx.tiled.layer
-import ktx.tiled.x
-import ktx.tiled.y
+import ktx.tiled.*
 
 @AllOf([SpawnComponent::class])
 class EntitySpawnSystem(
@@ -39,7 +36,7 @@ class EntitySpawnSystem(
     override fun onTickEntity(entity: Entity) {
         with(spawnCmps[entity]) {
             val config = spawnCfg(name)
-            val relativeSize = size(config.model)
+            val relativeSize = if (config.model != AnimationModel.NONE) size(config.model) else this.size
 
             world.entity {
                 val imageCmp = add<ImageComponent> {
@@ -50,38 +47,50 @@ class EntitySpawnSystem(
                     }
                 }
 
-                add<AnimationComponent> {
-                    nextAnimation(config.model, AnimationType.RUN)
+                if (config.model != AnimationModel.NONE) {
+                    add<AnimationComponent> {
+                        nextAnimation(config.model, AnimationType.RUN)
+                    }
                 }
 
-                val physicCmp = physicCmpFromImage(
-                    physicWorld,
-                    imageCmp.image,
-                    config.bodyType,
-                ) { physicComponent, width, height ->
-                    val scalingWidth = width * config.physicScaling.x
-                    val scalingHeight = height * config.physicScaling.y
+                val physicCmp = if (config.model != AnimationModel.NONE) {
+                    physicCmpFromImage(
+                        physicWorld,
+                        imageCmp.image,
+                        config.bodyType,
+                    ) { physicComponent, width, height ->
+                        val scalingWidth = width * config.physicScaling.x
+                        val scalingHeight = height * config.physicScaling.y
 
-                    physicComponent.offset.set(config.physicOffset)
-                    physicComponent.size.set(scalingWidth, scalingHeight)
+                        physicComponent.offset.set(config.physicOffset)
+                        physicComponent.size.set(scalingWidth, scalingHeight)
 
-                    // hitbox
-                    box(scalingWidth, scalingHeight, config.physicOffset) {
-                        isSensor = config.bodyType != StaticBody
-                        userData = HIT_BOX_SENSOR
-                        friction = 0f
-                    }
-
-                    if (config.bodyType != StaticBody) {
-                        val collH = scalingHeight
-                        val collOffset = vec2().apply { set(config.physicOffset) }
-                        collOffset.y += scalingHeight * 0.5f
-
-                        box(scalingWidth, scalingHeight, collOffset) {
+                        // hitbox
+                        box(scalingWidth, scalingHeight, config.physicOffset) {
+                            isSensor = true
+                            userData = HIT_BOX_SENSOR
                             friction = 0f
                         }
+
+                        if (config.bodyType != StaticBody) {
+                            val collH = scalingHeight
+                            val collOffset = vec2().apply { set(config.physicOffset) }
+                            collOffset.y += scalingHeight * 0.5f
+
+                            box(scalingWidth, scalingHeight, collOffset) {
+                                friction = 0f
+                            }
+                        }
                     }
+                } else {
+                    physicCmpFromShape2D(
+                        physicWorld,
+                        location.x.toInt(),
+                        location.y.toInt(),
+                        shape
+                    )
                 }
+
 
                 if (config.speedScaling > 0f) {
                     add<MoveComponent> {
@@ -106,6 +115,9 @@ class EntitySpawnSystem(
                         add<CoinComponent>()
                     }
 
+                    EntityType.SPAWNPOINT -> {
+                        add<SpawnPointComponent>()
+                    }
                     else -> gdxError("Non defined entity type $name")
                 }
 
@@ -141,6 +153,10 @@ class EntitySpawnSystem(
                 bodyType = StaticBody
             )
 
+            EntityType.SPAWNPOINT -> SpawnConfiguration(
+                AnimationModel.NONE,
+            )
+
             else -> gdxError("Type $type has no SpawnCfg setup.")
         }
     }
@@ -164,6 +180,11 @@ class EntitySpawnSystem(
                 add<SpawnComponent> {
                     this.name = EntityType.valueOf(name.uppercase())
                     this.location.set(mapObject.x * UNIT_SCALE, mapObject.y * UNIT_SCALE)
+
+                    if (this.name == EntityType.SPAWNPOINT) {
+                        this.size.set(mapObject.width * UNIT_SCALE, mapObject.height * UNIT_SCALE)
+                        this.shape = mapObject.shape
+                    }
                 }
             }
         }
@@ -173,18 +194,18 @@ class EntitySpawnSystem(
         return when (event) {
             is MapChangeEvent -> {
                 val entityLayer = event.map.layer("entities")
-                val trapLayer1 = event.trapMap.layer("traps_zone1_${MathUtils.random(1, LAYER_POSIBILITIES)}")
-                val trapLayer2 = event.trapMap.layer("traps_zone2_${MathUtils.random(1, LAYER_POSIBILITIES)}")
-                val trapLayer3 = event.trapMap.layer("traps_zone3_${MathUtils.random(1, LAYER_POSIBILITIES)}")
-                val coinLayer1 = event.trapMap.layer("coins_zone1_${MathUtils.random(1, LAYER_POSIBILITIES)}")
-                val coinLayer2 = event.trapMap.layer("coins_zone2_${MathUtils.random(1, LAYER_POSIBILITIES)}")
+//                val trapLayer1 = event.trapMap.layer("traps_zone1_${MathUtils.random(1, LAYER_POSIBILITIES)}")
+//                val trapLayer2 = event.trapMap.layer("traps_zone2_${MathUtils.random(1, LAYER_POSIBILITIES)}")
+//                val trapLayer3 = event.trapMap.layer("traps_zone3_${MathUtils.random(1, LAYER_POSIBILITIES)}")
+//                val coinLayer1 = event.trapMap.layer("coins_zone1_${MathUtils.random(1, LAYER_POSIBILITIES)}")
+//                val coinLayer2 = event.trapMap.layer("coins_zone2_${MathUtils.random(1, LAYER_POSIBILITIES)}")
 
                 createEntitiesForLayers(entityLayer)
-                createEntitiesForLayers(trapLayer1)
-                createEntitiesForLayers(trapLayer2)
-                createEntitiesForLayers(trapLayer3)
-                createEntitiesForLayers(coinLayer1)
-                createEntitiesForLayers(coinLayer2)
+//                createEntitiesForLayers(trapLayer1)
+//                createEntitiesForLayers(trapLayer2)
+//                createEntitiesForLayers(trapLayer3)
+//                createEntitiesForLayers(coinLayer1)
+//                createEntitiesForLayers(coinLayer2)
 
                 true
             }
@@ -195,6 +216,5 @@ class EntitySpawnSystem(
 
     companion object {
         const val HIT_BOX_SENSOR = "Hitbox"
-        const val AI_SENSOR = "AiSensor"
     }
 }
