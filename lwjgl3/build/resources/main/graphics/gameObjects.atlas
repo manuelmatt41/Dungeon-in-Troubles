@@ -1,6 +1,6 @@
 
 gameObjects.png
-size: 1024, 64
+size: 4096, 256
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
@@ -13,168 +13,322 @@ coin/run
   index: 0
 coin/run
   rotate: false
-  xy: 27, 4
+  xy: 68, 4
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: 1
 coin/run
   rotate: false
-  xy: 52, 4
+  xy: 134, 4
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: 2
 coin/run
   rotate: false
-  xy: 77, 4
+  xy: 200, 4
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: 3
 player/hit
   rotate: false
-  xy: 102, 4
+  xy: 266, 4
   size: 16, 28
   orig: 16, 28
   offset: 0, 0
   index: 0
 player/run
   rotate: false
-  xy: 127, 4
+  xy: 332, 4
   size: 16, 28
   orig: 16, 28
   offset: 0, 0
   index: 0
 player/run
   rotate: false
-  xy: 152, 4
+  xy: 398, 4
   size: 16, 28
   orig: 16, 28
   offset: 0, 0
   index: 1
 player/run
   rotate: false
-  xy: 177, 4
+  xy: 464, 4
   size: 16, 28
   orig: 16, 28
   offset: 0, 0
   index: 2
 player/run
   rotate: false
-  xy: 202, 4
+  xy: 530, 4
   size: 16, 28
   orig: 16, 28
   offset: 0, 0
   index: 3
+portal/frame
+  rotate: false
+  xy: 596, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 8
+portal/frame
+  rotate: false
+  xy: 662, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 9
+portal/frame
+  rotate: false
+  xy: 662, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 19
+portal/frame
+  rotate: false
+  xy: 728, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 11
+portal/frame
+  rotate: false
+  xy: 794, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 12
+portal/frame
+  rotate: false
+  xy: 860, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 13
+portal/frame
+  rotate: false
+  xy: 926, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 14
+portal/frame
+  rotate: false
+  xy: 992, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 15
+portal/frame
+  rotate: false
+  xy: 1058, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 16
+portal/frame
+  rotate: false
+  xy: 1124, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 17
+portal/frame
+  rotate: false
+  xy: 1190, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 18
+portal/frame
+  rotate: false
+  xy: 1190, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 10
+portal/frame
+  rotate: false
+  xy: 1256, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 20
+portal/frame
+  rotate: false
+  xy: 1322, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 21
+portal/run
+  rotate: false
+  xy: 1388, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+portal/run
+  rotate: false
+  xy: 1454, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+portal/run
+  rotate: false
+  xy: 1520, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
+portal/run
+  rotate: false
+  xy: 1586, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 3
+portal/run
+  rotate: false
+  xy: 1652, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 4
+portal/run
+  rotate: false
+  xy: 1718, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 5
+portal/run
+  rotate: false
+  xy: 1784, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 6
+portal/run
+  rotate: false
+  xy: 1850, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 7
 trap/run
   rotate: false
-  xy: 227, 4
+  xy: 1916, 4
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
   index: 0
 trap/run
   rotate: false
-  xy: 252, 4
+  xy: 1982, 4
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
   index: 1
 trap/run
   rotate: false
-  xy: 277, 4
+  xy: 2, 70
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
   index: 2
 trap/run
   rotate: false
-  xy: 302, 4
+  xy: 68, 70
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
   index: 3
 trap/run
   rotate: false
-  xy: 327, 4
+  xy: 134, 70
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
   index: 4
 trap/run
   rotate: false
-  xy: 352, 4
+  xy: 200, 70
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
   index: 5
 trap/run
   rotate: false
-  xy: 377, 4
+  xy: 266, 70
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
   index: 6
 trap/run
   rotate: false
-  xy: 402, 4
+  xy: 332, 70
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
   index: 7
 trap/run
   rotate: false
-  xy: 427, 4
+  xy: 398, 70
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
   index: 8
 trap/run
   rotate: false
-  xy: 452, 4
+  xy: 464, 70
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
   index: 9
 trap/run
   rotate: false
-  xy: 477, 4
+  xy: 530, 70
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
   index: 10
 trap/run
   rotate: false
-  xy: 502, 4
+  xy: 596, 70
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
   index: 11
 trap/run
   rotate: false
-  xy: 527, 4
+  xy: 662, 70
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
   index: 12
 trap/run
   rotate: false
-  xy: 552, 4
+  xy: 728, 70
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
   index: 13
 trap/run
   rotate: false
-  xy: 577, 4
+  xy: 794, 70
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
   index: 14
 trap/run
   rotate: false
-  xy: 602, 4
+  xy: 860, 70
   size: 23, 23
   orig: 23, 23
   offset: 0, 0
