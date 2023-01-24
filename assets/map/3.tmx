@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="256" height="9" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="14">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="256" height="9" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="15">
  <properties>
   <property name="music" value="audio/music/1.ogg"/>
  </properties>
@@ -17,13 +17,12 @@
  </layer>
  <objectgroup id="5" name="entities">
   <object id="1" name="Player" gid="4097" x="0.25" y="115.5" width="16" height="28"/>
-  <object id="4" name="spawnpoint" x="480.25" y="4" width="20.3333" height="136.667"/>
-  <object id="6" name="spawnpoint" x="1442.17" y="3.6665" width="20.3333" height="136.667"/>
-  <object id="8" name="spawnpoint" x="2881.83" y="3.6665" width="20.3333" height="136.667"/>
-  <object id="9" name="spawnpoint" x="0" y="1.33333" width="20.3333" height="136.667"/>
-  <object id="10" name="spawnpoint" x="963.33" y="4.6665" width="20.3333" height="136.667"/>
-  <object id="11" name="spawnpoint" x="1922.83" y="0.6665" width="20.3333" height="136.667"/>
-  <object id="12" name="spawnpoint" x="2401.83" y="5.6665" width="20.3333" height="136.667"/>
-  <object id="13" name="spawnpoint" x="3362.83" y="5.6665" width="20.3333" height="136.667"/>
+  <object id="4" name="spawnpoint" x="643.886" y="7.0303" width="20.3333" height="136.667"/>
+  <object id="6" name="spawnpoint" x="1605.81" y="6.6968" width="20.3333" height="136.667"/>
+  <object id="9" name="spawnpoint" x="163.636" y="4.36363" width="20.3333" height="136.667"/>
+  <object id="10" name="spawnpoint" x="1126.97" y="7.6968" width="20.3333" height="136.667"/>
+  <object id="11" name="spawnpoint" x="2086.47" y="3.6968" width="20.3333" height="136.667"/>
+  <object id="12" name="spawnpoint" x="2565.47" y="8.6968" width="20.3333" height="136.667"/>
+  <object id="14" name="portal" gid="4119" x="4029.33" y="128" width="64" height="64"/>
  </objectgroup>
 </map>

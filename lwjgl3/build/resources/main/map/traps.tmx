@@ -11,7 +11,7 @@
   <object id="21" name="trap" gid="21" x="435.745" y="116.484" width="23" height="23" rotation="270"/>
   <object id="208" name="trap" gid="21" x="4.0003" y="131.333" width="23" height="23"/>
  </objectgroup>
- <objectgroup id="9" name="trap_zone_2">
+ <objectgroup id="9" name="trap_zone_2" visible="0">
   <object id="176" name="trap" gid="21" x="37.333" y="46.6667" width="23" height="23"/>
   <object id="178" name="trap" gid="21" x="60.583" y="47.1667" width="23" height="23"/>
   <object id="179" name="trap" gid="21" x="82.333" y="46.9167" width="23" height="23"/>
@@ -21,7 +21,7 @@
   <object id="184" name="trap" gid="21" x="442.666" y="38.3334" width="23" height="23"/>
   <object id="185" name="trap" gid="21" x="443" y="62" width="23" height="23"/>
  </objectgroup>
- <objectgroup id="10" name="trap_zone_3">
+ <objectgroup id="10" name="trap_zone_3" visible="0">
   <object id="199" name="trap" gid="21" x="41.333" y="130.563" width="23" height="23"/>
   <object id="200" name="trap" gid="21" x="64.636" y="107.15" width="23" height="23"/>
   <object id="202" name="trap" gid="21" x="219.5" y="36.3334" width="23" height="23"/>
@@ -31,7 +31,7 @@
   <object id="206" name="trap" gid="21" x="396.333" y="85.5" width="23" height="23"/>
   <object id="207" name="trap" gid="21" x="444.875" y="85.5834" width="23" height="23"/>
  </objectgroup>
- <objectgroup id="5" name="trap_zone_4">
+ <objectgroup id="5" name="trap_zone_4" visible="0">
   <object id="261" name="trap" gid="21" x="77.67" y="73.7083" width="23" height="23"/>
   <object id="262" name="trap" gid="21" x="78.25" y="98.375" width="23" height="23"/>
   <object id="263" name="trap" gid="21" x="248" y="32.125" width="23" height="23"/>
@@ -43,7 +43,7 @@
   <object id="402" name="trap" gid="21" x="429.165" y="70" width="23" height="23"/>
   <object id="403" name="trap" gid="21" x="429.165" y="98" width="23" height="23"/>
  </objectgroup>
- <objectgroup id="15" name="trap_zone_5">
+ <objectgroup id="15" name="trap_zone_5" visible="0">
   <object id="404" name="trap" gid="21" x="98.835" y="95.75" width="23" height="23"/>
   <object id="405" name="trap" gid="21" x="99.085" y="73.25" width="23" height="23"/>
   <object id="406" name="trap" gid="21" x="99.085" y="49.25" width="23" height="23"/>
@@ -54,7 +54,7 @@
   <object id="411" name="trap" gid="21" x="343.165" y="58.3333" width="23" height="23"/>
   <object id="412" name="trap" gid="21" x="368.165" y="58.3333" width="23" height="23"/>
  </objectgroup>
- <objectgroup id="7" name="trap_zone_6">
+ <objectgroup id="7" name="trap_zone_6" visible="0">
   <object id="425" name="trap" gid="2147483669" x="369.265" y="103.851" width="23" height="23" rotation="1.00158"/>
   <object id="426" name="trap" gid="2147483669" x="345.515" y="103.686" width="23" height="23" rotation="1.00158"/>
   <object id="427" name="trap" gid="2147483669" x="321.265" y="103.762" width="23" height="23" rotation="1.00158"/>
@@ -68,7 +68,7 @@
   <object id="435" name="trap" gid="2147483669" x="105.915" y="41.3215" width="23" height="23" rotation="1.00158"/>
   <object id="436" name="trap" gid="2147483669" x="81.735" y="41.1488" width="23" height="23" rotation="1.00158"/>
  </objectgroup>
- <objectgroup id="21" name="trap_zone_7">
+ <objectgroup id="21" name="trap_zone_7" visible="0">
   <object id="437" name="trap" gid="21" x="14.335" y="82.8333" width="23" height="23"/>
   <object id="438" name="trap" gid="21" x="38.785" y="83.0151" width="23" height="23"/>
   <object id="439" name="trap" gid="21" x="63.335" y="83.3788" width="23" height="23"/>
@@ -78,7 +78,7 @@
   <object id="443" name="trap" gid="21" x="430.335" y="114.833" width="23" height="23"/>
   <object id="444" name="trap" gid="21" x="430.665" y="140.833" width="23" height="23"/>
  </objectgroup>
- <objectgroup id="19" name="trap_zone_8">
+ <objectgroup id="19" name="trap_zone_8" visible="0">
   <object id="445" name="trap" gid="21" x="80.872" y="91.9394" width="23" height="23"/>
   <object id="446" name="trap" gid="21" x="105.167" y="92.0076" width="22.6364" height="23"/>
   <object id="447" name="trap" gid="21" x="128.69" y="92.144" width="23" height="23"/>

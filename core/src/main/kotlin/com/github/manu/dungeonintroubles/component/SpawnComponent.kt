@@ -8,7 +8,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType.DynamicBody
 import ktx.math.vec2
 
 enum class EntityType {
-    PLAYER, TRAP, COIN, SPAWNPOINT, UNDEFINED;
+    PLAYER, TRAP, COIN, PORTAL, SPAWNPOINT, UNDEFINED;
 
     var type: String = this.toString().lowercase()
 }

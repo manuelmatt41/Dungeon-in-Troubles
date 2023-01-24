@@ -27,7 +27,6 @@ class GameScreen : KtxScreen {
     private val gameStage: Stage = Stage(ExtendViewport(16f, 9f))
     private val textureAtlas: TextureAtlas = TextureAtlas(Gdx.files.internal("graphics/gameObjects.atlas"))
     private var currentMap: TiledMap? = null
-    private var trapMap: TiledMap? = null
     private val physichWorld = createWorld(vec2(0f, -15f)).apply {
         autoClearForces = false
     }
@@ -46,7 +45,6 @@ class GameScreen : KtxScreen {
 
         systems {
             add<EntitySpawnSystem>()
-            add<DespawnSystem>()
             add<PhysicSystem>()
             add<JumpMoveSystem>()
             add<MoveSystem>()
@@ -55,6 +53,7 @@ class GameScreen : KtxScreen {
             add<RenderSystem>()
             add<GenerateMapSystem>()
             add<AudioSystem>()
+            add<DespawnSystem>()
             add<DebugSystem>()
         }
     }

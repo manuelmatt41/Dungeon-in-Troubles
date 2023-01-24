@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.Scaling
 import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.component.*
 import com.github.manu.dungeonintroubles.event.MapChangeEvent
-import com.github.manu.dungeonintroubles.event.SpawnTrapEvent
+import com.github.manu.dungeonintroubles.event.SpawnObjectsEvent
 import com.github.manu.dungeonintroubles.extension.physicCmpFromImage
 import com.github.manu.dungeonintroubles.extension.physicCmpFromShape2D
 import com.github.quillraven.fleks.AllOf
@@ -21,7 +21,6 @@ import com.github.quillraven.fleks.Entity
 import com.github.quillraven.fleks.IteratingSystem
 import ktx.app.gdxError
 import ktx.box2d.box
-import ktx.log.debug
 import ktx.log.logger
 import ktx.math.vec2
 import ktx.tiled.*
@@ -35,8 +34,6 @@ class EntitySpawnSystem(
 
     private val cachedConfigs = mutableMapOf<EntityType, SpawnConfiguration>()
     private val cachedSizes = mutableMapOf<AnimationModel, Vector2>()
-    private val cachedTrapZones = mutableMapOf<String, MapLayer>()
-    private var currentTrapZone: MapLayer? = null;
 
     override fun onTickEntity(entity: Entity) {
         with(spawnCmps[entity]) {
@@ -125,6 +122,9 @@ class EntitySpawnSystem(
                         add<SpawnPointComponent>()
                     }
 
+                    EntityType.PORTAL -> {
+
+                    }
                     else -> gdxError("Non defined entity type $name")
                 }
             }
@@ -144,14 +144,18 @@ class EntitySpawnSystem(
             EntityType.TRAP -> SpawnConfiguration(
                 AnimationModel.TRAP,
                 physicScaling = vec2(0.4f, 0.4f),
-                speedScaling = 0f,
                 bodyType = StaticBody
             )
 
             EntityType.COIN -> SpawnConfiguration(
                 AnimationModel.COIN,
                 physicScaling = vec2(0.4f, 0.4f),
-                speedScaling = 0f,
+                bodyType = StaticBody
+            )
+
+            EntityType.PORTAL -> SpawnConfiguration(
+                AnimationModel.PORTAL,
+                physicScaling = vec2(0.4f, 0.4f),
                 bodyType = StaticBody
             )
 
@@ -181,8 +185,11 @@ class EntitySpawnSystem(
             world.entity {
                 add<SpawnComponent> {
                     this.name = EntityType.valueOf(name.uppercase())
-                    this.location.set((mapObject.x + customLocation.x) * UNIT_SCALE, (mapObject.y + customLocation.y) * UNIT_SCALE)
-                    log.debug { "Spawn in $location" }
+                    this.location.set(
+                        (mapObject.x + customLocation.x) * UNIT_SCALE,
+                        (mapObject.y + customLocation.y) * UNIT_SCALE
+                    )
+                    log.debug { "Layer name: ${layer.name}" }
                     if (this.name == EntityType.SPAWNPOINT) {
                         this.size.set(mapObject.width * UNIT_SCALE, mapObject.height * UNIT_SCALE)
                         this.shape = mapObject.shape
@@ -199,9 +206,9 @@ class EntitySpawnSystem(
                 createEntitiesForLayers(entityLayer)
                 true
             }
+            is SpawnObjectsEvent -> {
 
-            is SpawnTrapEvent -> {
-                createEntitiesForLayers(cachedTrapZones.getOrPut(event.layerName) { event.trapMap.layer(event.layerName) }, event.location)
+                createEntitiesForLayers(event.map.layer(event.layerName), event.location)
                 true
             }
 

@@ -10,4 +10,4 @@ class GetCointEvent(val model: AnimationModel) : Event()
 class TrapCollisionEvent(val model: AnimationModel) : Event()
 class CrossPortalEvent() : Event() //TODO Search a portal model and animation
 class DeadEvent() : Event() //TODO Update de class
-class SpawnTrapEvent(val layerName: String, val trapMap: TiledMap, val location: Vector2) : Event()
+class SpawnObjectsEvent(val layerName: String, val map: TiledMap, val location: Vector2) : Event()

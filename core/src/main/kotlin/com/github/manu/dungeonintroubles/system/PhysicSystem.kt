@@ -1,6 +1,7 @@
 package com.github.manu.dungeonintroubles.system
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TmxMapLoader
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.physics.box2d.*
@@ -9,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.component.*
 import com.github.manu.dungeonintroubles.event.GetCointEvent
-import com.github.manu.dungeonintroubles.event.SpawnTrapEvent
+import com.github.manu.dungeonintroubles.event.SpawnObjectsEvent
 import com.github.manu.dungeonintroubles.event.TrapCollisionEvent
 import com.github.manu.dungeonintroubles.extension.entity
 import com.github.manu.dungeonintroubles.extension.fire
@@ -35,6 +36,7 @@ class PhysicSystem(
 ) : ContactListener, IteratingSystem(interval = Fixed(1 / 60f)) {
 
     private var trapOrCoin: Boolean = true
+    private var map: TiledMap? = null;
 
     init {
         physicWorld.setContactListener(this)
@@ -100,7 +102,6 @@ class PhysicSystem(
                     despawnCmps.add(it)
                 }
                 Gdx.input.vibrate(100)
-                log.debug { "Hit" }
             }
 
             collisionBWithTrap -> {
@@ -110,13 +111,11 @@ class PhysicSystem(
                     despawnCmps.add(it)
                 }
                 Gdx.input.vibrate(100)
-                log.debug { "Hit" }
             }
 
             collisionAWithCoin -> {
                 with(playerCmps[entityA]) {
                     coins++;
-                    log.debug { "Coins: $coins" }
                 }
 
                 configureEntity(entityB) {
@@ -129,7 +128,6 @@ class PhysicSystem(
             collisionBWithCoin -> {
                 with(playerCmps[entityB]) {
                     coins++;
-                    log.debug { "Coins: $coins" }
                 }
 
                 configureEntity(entityA) {
@@ -140,19 +138,20 @@ class PhysicSystem(
             }
 
             collisionAWithSpawnPoint -> {
-                val map = TmxMapLoader().load(
+                map = TmxMapLoader().load(
                     Gdx.files.internal(if (trapOrCoin) "map/traps.tmx" else "map/coin_map.tmx").path()
                 )
+
                 gameStage.fire(
-                    SpawnTrapEvent(
+                    SpawnObjectsEvent(
                         if (trapOrCoin) "trap_zone_${
                             MathUtils.random(
                                 1,
-                                map.layers.count
+                                map!!.layers.count
                             )
-                        }" else "coin_zone_${MathUtils.random(1, map.layers.count)}",
-                        map,
-                        vec2((imgCmps[entityB].image.x + map.width * 0.5f) / UNIT_SCALE, 0f)
+                        }" else "coin_zone_${MathUtils.random(1, map!!.layers.count)}",
+                        map!!,
+                        vec2((imgCmps[entityB].image.x + map!!.width * 0.5f) / UNIT_SCALE)
                     )
                 )
 
@@ -164,17 +163,20 @@ class PhysicSystem(
             }
 
             collisionBWithSpawnPoint -> {
-                val map = TmxMapLoader().load(Gdx.files.internal(if (trapOrCoin) "map/traps.tmx" else "map/coin_map.tmx").path())
+                map = TmxMapLoader().load(
+                    Gdx.files.internal(if (trapOrCoin) "map/traps.tmx" else "map/coin_map.tmx").path()
+                )
+
                 gameStage.fire(
-                    SpawnTrapEvent(
+                    SpawnObjectsEvent(
                         if (trapOrCoin) "trap_zone_${
                             MathUtils.random(
                                 1,
-                                map.layers.count
+                                map!!.layers.count
                             )
-                        }" else "coin_zone_${MathUtils.random(1, map.layers.count)}",
-                        map,
-                        vec2((imgCmps[entityB].image.x + map.width * 0.5f) / UNIT_SCALE, 0f)
+                        }" else "coin_zone_${MathUtils.random(1, map!!.layers.count)}",
+                        map!!,
+                        vec2((imgCmps[entityB].image.x + map!!.width * 0.5f) / UNIT_SCALE)
                     )
                 )
 
@@ -194,6 +196,7 @@ class PhysicSystem(
         val collisionAWithCoin = entityA in playerCmps && entityB in coinCmps
         val collisionBWithCoin = entityB in playerCmps && entityA in coinCmps
 
+        log.debug { "End contact" }
         when {
             collisionAWithCoin -> {
                 gameStage.fire(GetCointEvent(AnimationModel.COIN))
@@ -206,16 +209,7 @@ class PhysicSystem(
     }
 
     override fun preSolve(contact: Contact, oldManifold: Manifold) {
-//        val entityA = contact.fixtureA.entity
-//        val entityB = contact.fixtureB.entity
-//
-//        val collisionWithTrap =
-//            (entityA in playerCmps && entityB in trapCmps) || (entityB in playerCmps && entityA in trapCmps)
-//        val collisionWithCoin =
-//            (entityA in playerCmps && entityB in coinCmps) || (entityB in playerCmps && entityA in coinCmps)
-//
-////        log.debug { "Contact a trap ${!((entityA in playerCmps && entityB in trapCmps) || (entityB in playerCmps && entityA in trapCmps))}" }
-//        contact.isEnabled = !collisionWithTrap && !collisionWithCoin
+
     }
 
     override fun postSolve(contact: Contact, impulse: ContactImpulse) {
