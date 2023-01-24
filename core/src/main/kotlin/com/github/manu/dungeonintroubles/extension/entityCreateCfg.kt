@@ -7,10 +7,6 @@ import com.badlogic.gdx.physics.box2d.World
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.component.PhysicComponent
-import com.github.manu.dungeonintroubles.component.PhysicComponent.Companion.TMP_VEC
-import com.github.manu.dungeonintroubles.system.CollisionSpawnSystem.Companion.SPAWN_AREA_SIZE
-import com.github.quillraven.fleks.ComponentListener
-import com.github.quillraven.fleks.Entity
 import com.github.quillraven.fleks.EntityCreateCfg
 import ktx.app.gdxError
 import ktx.box2d.*

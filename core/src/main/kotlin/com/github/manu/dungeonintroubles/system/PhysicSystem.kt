@@ -1,12 +1,15 @@
 package com.github.manu.dungeonintroubles.system
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.maps.tiled.TmxMapLoader
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.physics.box2d.*
 import com.badlogic.gdx.physics.box2d.World
 import com.badlogic.gdx.scenes.scene2d.Stage
+import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.component.*
 import com.github.manu.dungeonintroubles.event.GetCointEvent
+import com.github.manu.dungeonintroubles.event.SpawnTrapEvent
 import com.github.manu.dungeonintroubles.event.TrapCollisionEvent
 import com.github.manu.dungeonintroubles.extension.entity
 import com.github.manu.dungeonintroubles.extension.fire
@@ -14,6 +17,8 @@ import com.github.quillraven.fleks.*
 import ktx.log.logger
 import ktx.math.component1
 import ktx.math.component2
+import ktx.math.vec2
+import ktx.tiled.width
 
 @AllOf([PhysicComponent::class, ImageComponent::class])
 @NoneOf([DespawnComponent::class])
@@ -28,6 +33,8 @@ class PhysicSystem(
     private val despawnCmps: ComponentMapper<DespawnComponent>,
     private val spawnPointCmps: ComponentMapper<SpawnPointComponent>,
 ) : ContactListener, IteratingSystem(interval = Fixed(1 / 60f)) {
+
+    private var trapOrCoin: Boolean = true
 
     init {
         physicWorld.setContactListener(this)
@@ -82,7 +89,7 @@ class PhysicSystem(
         val collisionAWithCoin = entityA in playerCmps && entityB in coinCmps
         val collisionBWithCoin = entityB in playerCmps && entityA in coinCmps
 
-        val collisionAWithSpawnPoint= entityA in playerCmps && entityB in spawnPointCmps
+        val collisionAWithSpawnPoint = entityA in playerCmps && entityB in spawnPointCmps
         val collisionBWithSpawnPoint = entityB in playerCmps && entityA in spawnPointCmps
 
         when {
@@ -130,6 +137,52 @@ class PhysicSystem(
                 }
 
                 gameStage.fire(GetCointEvent(AnimationModel.COIN))
+            }
+
+            collisionAWithSpawnPoint -> {
+                val map = TmxMapLoader().load(
+                    Gdx.files.internal(if (trapOrCoin) "map/traps.tmx" else "map/coin_map.tmx").path()
+                )
+                gameStage.fire(
+                    SpawnTrapEvent(
+                        if (trapOrCoin) "trap_zone_${
+                            MathUtils.random(
+                                1,
+                                map.layers.count
+                            )
+                        }" else "coin_zone_${MathUtils.random(1, map.layers.count)}",
+                        map,
+                        vec2((imgCmps[entityB].image.x + map.width * 0.5f) / UNIT_SCALE, 0f)
+                    )
+                )
+
+                trapOrCoin = !trapOrCoin
+
+                configureEntity(entityB) {
+                    spawnPointCmps.remove(it)
+                }
+            }
+
+            collisionBWithSpawnPoint -> {
+                val map = TmxMapLoader().load(Gdx.files.internal(if (trapOrCoin) "map/traps.tmx" else "map/coin_map.tmx").path())
+                gameStage.fire(
+                    SpawnTrapEvent(
+                        if (trapOrCoin) "trap_zone_${
+                            MathUtils.random(
+                                1,
+                                map.layers.count
+                            )
+                        }" else "coin_zone_${MathUtils.random(1, map.layers.count)}",
+                        map,
+                        vec2((imgCmps[entityB].image.x + map.width * 0.5f) / UNIT_SCALE, 0f)
+                    )
+                )
+
+                trapOrCoin = !trapOrCoin
+
+                configureEntity(entityA) {
+                    spawnPointCmps.remove(it)
+                }
             }
         }
     }

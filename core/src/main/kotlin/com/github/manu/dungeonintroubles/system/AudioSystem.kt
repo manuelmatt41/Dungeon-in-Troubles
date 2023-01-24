@@ -6,7 +6,6 @@ import com.badlogic.gdx.audio.Sound
 import com.badlogic.gdx.scenes.scene2d.Event
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.github.manu.dungeonintroubles.event.*
-import com.github.quillraven.fleks.Fixed
 import com.github.quillraven.fleks.IntervalSystem
 import ktx.assets.disposeSafely
 import ktx.log.logger
@@ -65,7 +64,7 @@ class AudioSystem : EventListener, IntervalSystem() {
                 true
             }
 
-            is DeathEvent -> {
+            is DeadEvent -> {
                 queueSound("audio/sounds/death.wav")
                 true
             }
