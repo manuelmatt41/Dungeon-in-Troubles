@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="256" height="9" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="2">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="256" height="9" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="13">
  <properties>
   <property name="music" value="audio/music/3.ogg"/>
  </properties>
  <tileset firstgid="1" source="entities.tsx"/>
- <tileset firstgid="2" source="dessert_dungeon.tsx"/>
- <tileset firstgid="132" source="DarkDungeon.tsx"/>
- <layer id="2" name="bgd" width="256" height="9">
+ <tileset firstgid="24" source="dessert_dungeon.tsx"/>
+ <tileset firstgid="154" source="DarkDungeon.tsx"/>
+ <layer id="2" name="bgd" width="256" height="9" visible="0">
   <data encoding="base64" compression="zlib">
-   eJzt1MsNgCAQBUD6v9CI9qAtWQE2YBD5qGQOc4Lsvl0SYgghAgAAAAAAAFNYCmyn/ca9tbBurSf9rmZpWetLajOOfNMe++yZv3XenllztVv1Hv0HvN131pxm/nf+I3OeAFGgQpU=
+   eJzt1MsRgCAMBUC82X8PNKI9aDvagB/kozJ72BNM8hJmiCGECAAAAAAAAHRhSrDs1hv35sS6uZ70O5qlZK0vyc3Y8k1r7LNm/tJ5a2a9ql2qd+s/4O2+veY087/zj8P5+QaOsQel
   </data>
  </layer>
  <layer id="4" name="decoration" width="256" height="9">
   <data encoding="base64" compression="zlib">
-   eJztV0FOwzAQzOc5oB44gY/0BZyoql4KtMoRPsEP+gKI1JWWYXY9TtIKpIxkJbIzO7PrTRuvunEo5+uKrPUJ7+E8DIyfxSuwtiLPoF6GGj8Cy1+JgX6Mj3khLHaUv6rvUbrf9a/VC6Hsn4H5WwXzHpmnFn30wPLvBT/GHaPvuWP46I3xa73kcf89biaMhb/wF/7/5t8Jow/mVX40Fv7Cn5M//Pc9/GP/bJQL6yNavgEZH5F9jyj8qfoqX83b5xPpq7GulX/kZw79IXbLN+dU/X4iv0W/lpvx58y/J3Mt/AjMo/FbNP3zqB/1WRQ/e3+Ud8j6T9HysVG/1Tfyx2Lu34+oD9X3n/V7VoO5+tf+txXUfn8zfcztnsy1INq/4uKq9VN8MP8RV9kHdn64JXNjzh9KHOX8ksW51Pnpdkb/WU5z+2/Zu0vWb07+tfa/tXZ/zb/XU3Nh54cNmYvOIcjfufvnIE7G7wU/JeGjB/SM8aPz0wb8R2ewLH/UKy7OJuDj81ntdsAvlZqz2o49f+4EPtaiVj/mr9ZHrP6KLuOjDsu7h/i1+pWOv0+9wK/tv+d7TxuiyWo7cB6733g5Xw9kzfB5vq5h/uju9+7+5O637p7pR34YGP9I5iKsE03vf/D8Ieir2pbTuvtZjwi2F/7ZI9E3z6dOw6CPeT0JPMsz2z9WC+//0MX199gna6z+yh5Yjp7vdd4Jx7z7+GtBC/t3yNtq7vWzur9+jzcyb/re04vTzHrr6DTVfjGwd6EG9KL02RZGhM9kDeF/15gHVgvFwxSgj0hnW1mPsA3uB0R7WfPgEfVP5jNaOyWeFD7rBbVe2X9ehqyXx/SMwnmCwXCCZz2GXL8A4U3LFw==
+   eJztVz1P60AQNN37/y0FSvGqcCX8AiqiKA1fkUv4E3RwUlZv3zC7N2c7CCSPdLJ159mZ3Vsnvs0wDeV03ZC1MeFdn4aB8bN4BdY25BnUy9DiR2D5KzHQj/ExL4TFjvJX9T3K8LX+rXohlP0zMH+bYN4j89Sjjx5Y/qPgx7hT9D13Ch+9MX6rlzy2n+Nyxlj5K3/l/27+X2GMwbzKj8bKX/lL8ut/3/Uv9s9GObM+oucbkPER2feIwp+rr/LVvH0+kb4a67vyj/wsoV9j93xzztUfZ/J79Fu5GX/J/Ecy18OPwDwav0fTP4/6UZ9F8bP3R3mHrP8ULR8b9Xt9I38qlv79iPpQff9Zv2c1WKp/7X9bQev3N9PH3LZkrgfR/hUXV62f4oP5j7jKPrDzwxWZm3L+UOIo55cszrnOT1cL+s9yWtp/z96ds35L8r9r/3tr99P8ez01F3Z+2JG56ByC/IO7vw/iZPxR8FMSPnpAzxg/Oj/twH90BsvyR73i4uwCPj6f1e4A/NKoOavt1PPnQeBjLVr1Y/5afcTqr+gyPuqwvEeI36pfGfj7NAr81v57vve0I5qstpVzM3zF4+n6QtYM76frLcwf3f2Du/9z8e9+7+aZfuSHgfGPZC4C+vea3n/1/Cboq9qW0+3wfz0i2F74Z49E3zz7emeo+pjXncCzPLP9Y7Xw/l+GuP4eD8kaq7+yB5aj53udV8Ix7z6+4h/7t+ZtNff6Wd2fPsczmTd97+nRaWa9dXSaar8Y2LvQAnpR+mwPI8J7sobwv2vMA6uF4mEO0Eeks2+sR9gH9xXRXrY8eET9k/mM1mospb8iPusFtV7Zf16GrJen9IzCuYPBYPvCnqm5fgDUmC/b
   </data>
  </layer>
  <objectgroup id="5" name="entities">
-  <object id="1" name="Player" gid="1" x="0" y="115" width="16" height="28"/>
+  <object id="3" name="Player" gid="1" x="3.33502" y="118.083" width="16" height="28"/>
+  <object id="4" name="spawnpoint" x="645.335" y="4.58342" width="20.3333" height="136.667"/>
+  <object id="5" name="spawnpoint" x="1607.26" y="4.24992" width="20.3333" height="136.667"/>
+  <object id="7" name="spawnpoint" x="165.085" y="1.91675" width="20.3333" height="136.667"/>
+  <object id="8" name="spawnpoint" x="1128.41" y="5.24992" width="20.3333" height="136.667"/>
+  <object id="9" name="spawnpoint" x="2087.92" y="1.24992" width="20.3333" height="136.667"/>
+  <object id="10" name="spawnpoint" x="2566.92" y="6.24992" width="20.3333" height="136.667"/>
+  <object id="12" name="portal" gid="23" x="4042.5" y="125" width="64" height="64"/>
  </objectgroup>
 </map>

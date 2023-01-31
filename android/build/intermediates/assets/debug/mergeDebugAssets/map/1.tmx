@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="256" height="9" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="4">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="256" height="9" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="18">
  <properties>
   <property name="music" value="audio/music/2.ogg"/>
  </properties>
@@ -16,6 +16,13 @@
   </data>
  </layer>
  <objectgroup id="5" name="entities">
-  <object id="1" name="Player" gid="131" x="0" y="115" width="16" height="28"/>
+  <object id="5" name="Player" gid="131" x="2.66835" y="120.167" width="16" height="28"/>
+  <object id="6" name="spawnpoint" x="642.668" y="8.66675" width="20.3333" height="136.667"/>
+  <object id="7" name="spawnpoint" x="1604.59" y="8.33325" width="20.3333" height="136.667"/>
+  <object id="9" name="spawnpoint" x="162.418" y="6.00008" width="20.3333" height="136.667"/>
+  <object id="10" name="spawnpoint" x="1125.75" y="9.33325" width="20.3333" height="136.667"/>
+  <object id="11" name="spawnpoint" x="2085.25" y="5.33325" width="20.3333" height="136.667"/>
+  <object id="12" name="spawnpoint" x="2564.25" y="10.3333" width="20.3333" height="136.667"/>
+  <object id="16" name="portal" gid="153" x="4037.5" y="127.25" width="64" height="64"/>
  </objectgroup>
 </map>
