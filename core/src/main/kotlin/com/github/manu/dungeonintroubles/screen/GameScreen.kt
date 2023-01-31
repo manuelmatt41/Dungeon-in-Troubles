@@ -45,6 +45,7 @@ class GameScreen : KtxScreen {
 
         systems {
             add<EntitySpawnSystem>()
+            add<SpawnProjectilesSystem>()
             add<PhysicSystem>()
             add<JumpMoveSystem>()
             add<MoveSystem>()

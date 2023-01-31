@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.github.manu.dungeonintroubles.component.AnimationComponent
 import com.github.manu.dungeonintroubles.component.AnimationComponent.Companion.NO_ANIMATION
+import com.github.manu.dungeonintroubles.component.AnimationModel
 import com.github.manu.dungeonintroubles.component.ImageComponent
 import com.github.quillraven.fleks.AllOf
 import com.github.quillraven.fleks.ComponentMapper
@@ -29,7 +30,7 @@ class AnimationSystem(
         if (animCmp.nextAnimation == NO_ANIMATION) {
             animCmp.stateTime += deltaTime
         } else {
-            animCmp.animation = animation(animCmp.nextAnimation)
+            animCmp.animation = animation(animCmp.nextAnimation, animCmp.model)
             animCmp.stateTime = 0f
             animCmp.nextAnimation = NO_ANIMATION
         }
@@ -38,7 +39,7 @@ class AnimationSystem(
         imgCmps[entity].image.drawable = animCmp.animation.getKeyFrame(animCmp.stateTime)
     }
 
-    private fun animation(animationKeyPath: String): Animation<TextureRegionDrawable> {
+    private fun animation(animationKeyPath: String, model: AnimationModel): Animation<TextureRegionDrawable> {
         return cachedAnimations.getOrPut(animationKeyPath) {
             log.debug { "New animation is created for $animationKeyPath" }
             val regions = textureAtlas.findRegions(animationKeyPath)
@@ -47,7 +48,7 @@ class AnimationSystem(
                 gdxError("There are no texture regions for $animationKeyPath")
             }
 
-            Animation(DEFAULT_FRAME_DURATION, regions.map { TextureRegionDrawable(it) })
+            Animation(if (model != AnimationModel.FIREBALL) DEFAULT_FRAME_DURATION else 1/ 20f, regions.map { TextureRegionDrawable(it) })
         }
     }
 

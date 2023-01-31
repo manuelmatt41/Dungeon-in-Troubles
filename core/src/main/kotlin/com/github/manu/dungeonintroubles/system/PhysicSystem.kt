@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.component.*
 import com.github.manu.dungeonintroubles.event.GetCoinSoundEvent
-import com.github.manu.dungeonintroubles.event.SpawnObjectsEvent
+import com.github.manu.dungeonintroubles.event.SpawnLayerObjectsEvent
 import com.github.manu.dungeonintroubles.event.TrapSoundCollisionEvent
 import com.github.manu.dungeonintroubles.extension.entity
 import com.github.manu.dungeonintroubles.extension.fire
@@ -88,6 +88,8 @@ class PhysicSystem(
 
         val collisionAWithTrap = entityA in playerCmps && entityB in trapCmps
         val collisionBWithTrap = entityB in playerCmps && entityA in trapCmps
+        val collisionAWithFireball = entityA in playerCmps && physicsCmps[entityB].body.gravityScale == 0f
+        val collisionBWithFireball = entityB in playerCmps && physicsCmps[entityA].body.gravityScale == 0f
 
         val collisionAWithCoin = entityA in playerCmps && entityB in coinCmps
         val collisionBWithCoin = entityB in playerCmps && entityA in coinCmps
@@ -96,7 +98,7 @@ class PhysicSystem(
         val collisionBWithSpawnPoint = entityB in playerCmps && entityA in spawnPointCmps
 
         when {
-            collisionAWithTrap -> {
+            collisionAWithTrap || collisionAWithFireball -> {
                 gameStage.fire(TrapSoundCollisionEvent(AnimationModel.TRAP))
 
                 configureEntity(entityA) {
@@ -105,7 +107,7 @@ class PhysicSystem(
                 Gdx.input.vibrate(100)
             }
 
-            collisionBWithTrap -> {
+            collisionBWithTrap || collisionBWithFireball -> {
                 gameStage.fire(TrapSoundCollisionEvent(AnimationModel.TRAP))
 
                 configureEntity(entityB) {
@@ -145,7 +147,7 @@ class PhysicSystem(
                 )
 
                 gameStage.fire(
-                    SpawnObjectsEvent(
+                    SpawnLayerObjectsEvent(
                         if (trapOrCoin) "trap_zone_${
                             MathUtils.random(
                                 1,
@@ -170,7 +172,7 @@ class PhysicSystem(
                 )
 
                 gameStage.fire(
-                    SpawnObjectsEvent(
+                    SpawnLayerObjectsEvent(
                         if (trapOrCoin) "trap_zone_${
                             MathUtils.random(
                                 1,
@@ -211,7 +213,13 @@ class PhysicSystem(
     }
 
     override fun preSolve(contact: Contact, oldManifold: Manifold) {
+        val entityA = contact.fixtureA.entity
+        val entityB = contact.fixtureB.entity
 
+        val collisionAWithFireball = entityA in playerCmps && physicsCmps[entityB].body.gravityScale == 0f
+        val collisionBWithFireball = entityB in playerCmps && physicsCmps[entityA].body.gravityScale == 0f
+
+        contact.isEnabled = !collisionAWithFireball && !collisionBWithFireball
     }
 
     override fun postSolve(contact: Contact, impulse: ContactImpulse) {

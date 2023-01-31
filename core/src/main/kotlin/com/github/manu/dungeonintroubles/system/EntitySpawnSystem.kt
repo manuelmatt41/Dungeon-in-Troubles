@@ -2,17 +2,22 @@ package com.github.manu.dungeonintroubles.system
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.maps.MapLayer
+import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType.KinematicBody
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType.StaticBody
 import com.badlogic.gdx.physics.box2d.World
 import com.badlogic.gdx.scenes.scene2d.Event
 import com.badlogic.gdx.scenes.scene2d.EventListener
+import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.utils.Scaling
 import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
+import com.github.manu.dungeonintroubles.actor.FlipImage
 import com.github.manu.dungeonintroubles.component.*
 import com.github.manu.dungeonintroubles.event.MapChangeEvent
-import com.github.manu.dungeonintroubles.event.SpawnObjectsEvent
+import com.github.manu.dungeonintroubles.event.SpawnLayerObjectsEvent
+import com.github.manu.dungeonintroubles.event.SpawnProjectilesEvent
 import com.github.manu.dungeonintroubles.extension.physicCmpFromImage
 import com.github.manu.dungeonintroubles.extension.physicCmpFromShape2D
 import com.github.quillraven.fleks.*
@@ -24,6 +29,7 @@ import ktx.tiled.*
 
 @AllOf([SpawnComponent::class])
 class EntitySpawnSystem(
+    @Qualifier("gameStage") private val gameStage: Stage,
     private val physicWorld: World,
     private val textureAtlas: TextureAtlas,
     private val spawnCmps: ComponentMapper<SpawnComponent>,
@@ -40,10 +46,11 @@ class EntitySpawnSystem(
 
             world.entity {
                 val imageCmp = add<ImageComponent> {
-                    image = Image().apply {
+                    image = FlipImage().apply {
                         setPosition(location.x, location.y)
                         setSize(relativeSize.x, relativeSize.y)
                         setScaling(Scaling.fill)
+                        flipX = config.model == AnimationModel.FIREBALL
                     }
                 }
 
@@ -67,12 +74,12 @@ class EntitySpawnSystem(
 
                         // hitbox
                         box(scalingWidth, scalingHeight, config.physicOffset) {
-                            isSensor = true
+                            isSensor = config.model != AnimationModel.FIREBALL
                             userData = HIT_BOX_SENSOR
                             friction = 0f
                         }
 
-                        if (config.bodyType != StaticBody) {
+                        if (config.model == AnimationModel.PLAYER) {
                             val collH = scalingHeight
                             val collOffset = vec2().apply { set(config.physicOffset) }
                             collOffset.y += scalingHeight * 0.5f
@@ -91,17 +98,6 @@ class EntitySpawnSystem(
                     )
                 }
 
-
-                if (config.speedScaling > 0f) {
-                    add<MoveComponent> {
-                        speed = DEFAULT_SPEED_X
-                        cos = 1f
-                    }
-                    add<JumpComponent> {
-                        speed = DEFAULT_SPEED_Y
-                    }
-                }
-
                 when (name) {
                     EntityType.PLAYER -> {
                         add<PlayerComponent>() {
@@ -109,6 +105,15 @@ class EntitySpawnSystem(
                                 this@add.coins = this.coins
                                 this@add.meter = this.meter
                             }
+                        }
+
+                        add<MoveComponent> {
+                            speed = DEFAULT_SPEED_X
+                            cos = 1f
+                        }
+
+                        add<JumpComponent> {
+                            speed = DEFAULT_SPEED_Y
                         }
                     }
 
@@ -125,8 +130,14 @@ class EntitySpawnSystem(
                         add<SpawnPointComponent>()
                     }
 
-                    EntityType.PORTAL -> {
+                    EntityType.PORTAL -> {}
 
+                    EntityType.FIREBALL -> {
+                        add<MoveComponent> {
+                            speed = DEFAULT_SPEED_X
+                            cos = -1f
+                        }
+                        physicCmp.body.gravityScale = 0f
                     }
 
                     else -> gdxError("Non defined entity type $name")
@@ -166,6 +177,12 @@ class EntitySpawnSystem(
             EntityType.SPAWNPOINT -> SpawnConfiguration(
                 AnimationModel.NONE,
             )
+
+            EntityType.FIREBALL -> SpawnConfiguration(
+                AnimationModel.FIREBALL,
+                physicScaling = vec2(0.4f, 0.4f),
+
+                )
 
             else -> gdxError("Type $type has no SpawnCfg setup.")
         }
@@ -226,8 +243,24 @@ class EntitySpawnSystem(
                 true
             }
 
-            is SpawnObjectsEvent -> {
+            is SpawnLayerObjectsEvent -> {
                 createEntitiesForLayers(event.map.layer(event.layerName), event.location)
+                true
+            }
+
+            is SpawnProjectilesEvent -> {
+                for (i in 1..event.numberOfProjectiles) {
+                    world.entity {
+                        add<SpawnComponent> {
+                            this.name = EntityType.FIREBALL
+                            this.location.set(
+                                gameStage.camera.position.x + gameStage.camera.viewportWidth,
+                                MathUtils.random(1f, 144f) * UNIT_SCALE
+                            )
+                            log.debug { "Spawn projectile, Location: $location" }
+                        }
+                    }
+                }
                 true
             }
 

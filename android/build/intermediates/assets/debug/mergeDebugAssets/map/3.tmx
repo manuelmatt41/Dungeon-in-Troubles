@@ -16,7 +16,6 @@
   </data>
  </layer>
  <objectgroup id="5" name="entities">
-  <object id="1" name="Player" gid="4097" x="0.25" y="115.5" width="16" height="28"/>
   <object id="4" name="spawnpoint" x="643.886" y="7.0303" width="20.3333" height="136.667"/>
   <object id="6" name="spawnpoint" x="1605.81" y="6.6968" width="20.3333" height="136.667"/>
   <object id="9" name="spawnpoint" x="163.636" y="4.36363" width="20.3333" height="136.667"/>

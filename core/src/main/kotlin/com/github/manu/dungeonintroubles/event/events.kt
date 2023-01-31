@@ -11,4 +11,5 @@ class GetCoinSoundEvent(val model: AnimationModel) : Event()
 class TrapSoundCollisionEvent(val model: AnimationModel) : Event()
 class CrossPortalSoundEvent() : Event() //TODO Search a portal model and animation
 class DeadSoundEvent() : Event() //TODO Update de class
-class SpawnObjectsEvent(val layerName: String, val map: TiledMap, val location: Vector2) : Event()
+class SpawnLayerObjectsEvent(val layerName: String, val map: TiledMap, val location: Vector2) : Event()
+class SpawnProjectilesEvent(val numberOfProjectiles: Int = 0) : Event()

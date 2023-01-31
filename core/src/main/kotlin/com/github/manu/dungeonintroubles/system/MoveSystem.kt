@@ -22,13 +22,13 @@ class MoveSystem(
         val physcmp = physicsCmps[entity]
         val moveCmp = moveCmps[entity]
         val mass = physcmp.body.mass
-        val velX = physcmp.body.linearVelocity.x
+        val (velX, velY) = physcmp.body.linearVelocity
 
         physcmp.impulse.x = mass * (moveCmp.speed * moveCmp.cos - velX);
 
         if (entity in playerCmps) {
             playerCmps[entity].meter += (moveCmp.speed * deltaTime) * 4f
-            log.debug { String.format("Meters: %.3f", playerCmps[entity].meter) }
+//            log.debug { String.format("Meters: %.3f", playerCmps[entity].meter) }
         }
     }
 

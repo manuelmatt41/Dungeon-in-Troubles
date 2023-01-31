@@ -69,6 +69,11 @@ class AudioSystem : EventListener, IntervalSystem() {
                 true
             }
 
+            is SpawnProjectilesEvent -> {
+                queueSound("audio/sounds/fireball.wav")
+                true
+            }
+
             else -> false
         }
     }
