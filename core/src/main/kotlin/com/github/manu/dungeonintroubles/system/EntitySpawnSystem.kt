@@ -15,10 +15,7 @@ import com.github.manu.dungeonintroubles.event.MapChangeEvent
 import com.github.manu.dungeonintroubles.event.SpawnObjectsEvent
 import com.github.manu.dungeonintroubles.extension.physicCmpFromImage
 import com.github.manu.dungeonintroubles.extension.physicCmpFromShape2D
-import com.github.quillraven.fleks.AllOf
-import com.github.quillraven.fleks.ComponentMapper
-import com.github.quillraven.fleks.Entity
-import com.github.quillraven.fleks.IteratingSystem
+import com.github.quillraven.fleks.*
 import ktx.app.gdxError
 import ktx.box2d.box
 import ktx.log.logger
@@ -30,6 +27,7 @@ class EntitySpawnSystem(
     private val physicWorld: World,
     private val textureAtlas: TextureAtlas,
     private val spawnCmps: ComponentMapper<SpawnComponent>,
+    private val playerCmps: ComponentMapper<PlayerComponent>
 ) : EventListener, IteratingSystem() {
 
     private val cachedConfigs = mutableMapOf<EntityType, SpawnConfiguration>()
@@ -106,7 +104,12 @@ class EntitySpawnSystem(
 
                 when (name) {
                     EntityType.PLAYER -> {
-                        add<PlayerComponent>()
+                        add<PlayerComponent>() {
+                            with(playerCmps[entity]) {
+                                this@add.coins = this.coins
+                                this@add.meter = this.meter
+                            }
+                        }
                     }
 
                     EntityType.TRAP -> {
@@ -125,6 +128,7 @@ class EntitySpawnSystem(
                     EntityType.PORTAL -> {
 
                     }
+
                     else -> gdxError("Non defined entity type $name")
                 }
             }
@@ -199,15 +203,30 @@ class EntitySpawnSystem(
         }
     }
 
-    override fun handle(event: Event?): Boolean {
+    override fun handle(event: Event): Boolean {
         return when (event) {
             is MapChangeEvent -> {
                 val entityLayer = event.map.layer("entities")
                 createEntitiesForLayers(entityLayer)
+
+                world.entity {
+                    add<SpawnComponent> {
+                        this.name = EntityType.PLAYER
+                        this.location.set(
+                            0f,
+                            32f * UNIT_SCALE
+                        )
+                    }
+
+                    add<PlayerComponent> {
+                        this.coins = event.playerCmp.coins
+                        this.meter = event.playerCmp.meter
+                    }
+                }
                 true
             }
-            is SpawnObjectsEvent -> {
 
+            is SpawnObjectsEvent -> {
                 createEntitiesForLayers(event.map.layer(event.layerName), event.location)
                 true
             }

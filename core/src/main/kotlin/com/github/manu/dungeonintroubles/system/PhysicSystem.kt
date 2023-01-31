@@ -9,12 +9,13 @@ import com.badlogic.gdx.physics.box2d.World
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.component.*
-import com.github.manu.dungeonintroubles.event.GetCointEvent
+import com.github.manu.dungeonintroubles.event.GetCoinSoundEvent
 import com.github.manu.dungeonintroubles.event.SpawnObjectsEvent
-import com.github.manu.dungeonintroubles.event.TrapCollisionEvent
+import com.github.manu.dungeonintroubles.event.TrapSoundCollisionEvent
 import com.github.manu.dungeonintroubles.extension.entity
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.quillraven.fleks.*
+import ktx.log.debug
 import ktx.log.logger
 import ktx.math.component1
 import ktx.math.component2
@@ -96,7 +97,7 @@ class PhysicSystem(
 
         when {
             collisionAWithTrap -> {
-                gameStage.fire(TrapCollisionEvent(AnimationModel.TRAP))
+                gameStage.fire(TrapSoundCollisionEvent(AnimationModel.TRAP))
 
                 configureEntity(entityA) {
                     despawnCmps.add(it)
@@ -105,7 +106,7 @@ class PhysicSystem(
             }
 
             collisionBWithTrap -> {
-                gameStage.fire(TrapCollisionEvent(AnimationModel.TRAP))
+                gameStage.fire(TrapSoundCollisionEvent(AnimationModel.TRAP))
 
                 configureEntity(entityB) {
                     despawnCmps.add(it)
@@ -116,13 +117,14 @@ class PhysicSystem(
             collisionAWithCoin -> {
                 with(playerCmps[entityA]) {
                     coins++;
+                    debug { "Coins: $coins" }
                 }
 
                 configureEntity(entityB) {
                     despawnCmps.add(it)
                 }
 
-                gameStage.fire(GetCointEvent(AnimationModel.COIN))
+                gameStage.fire(GetCoinSoundEvent(AnimationModel.COIN))
             }
 
             collisionBWithCoin -> {
@@ -134,7 +136,7 @@ class PhysicSystem(
                     despawnCmps.add(it)
                 }
 
-                gameStage.fire(GetCointEvent(AnimationModel.COIN))
+                gameStage.fire(GetCoinSoundEvent(AnimationModel.COIN))
             }
 
             collisionAWithSpawnPoint -> {
@@ -199,11 +201,11 @@ class PhysicSystem(
         log.debug { "End contact" }
         when {
             collisionAWithCoin -> {
-                gameStage.fire(GetCointEvent(AnimationModel.COIN))
+                gameStage.fire(GetCoinSoundEvent(AnimationModel.COIN))
             }
 
             collisionBWithCoin -> {
-                gameStage.fire(GetCointEvent(AnimationModel.COIN))
+                gameStage.fire(GetCoinSoundEvent(AnimationModel.COIN))
             }
         }
     }

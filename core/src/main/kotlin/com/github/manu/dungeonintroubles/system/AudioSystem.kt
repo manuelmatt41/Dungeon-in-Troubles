@@ -48,23 +48,23 @@ class AudioSystem : EventListener, IntervalSystem() {
                 true
             }
 
-            is GetCointEvent -> {
+            is GetCoinSoundEvent -> {
                 queueSound("audio/sounds/${event.model.atlasKey}.wav")
                 true
             }
 
-            is TrapCollisionEvent -> {
+            is TrapSoundCollisionEvent -> {
                 queueSound("audio/sounds/${event.model.atlasKey}.wav")
                 true
             }
 
-            is CrossPortalEvent -> {
+            is CrossPortalSoundEvent -> {
 
                 queueSound("audio/sounds/portal.ogg")
                 true
             }
 
-            is DeadEvent -> {
+            is DeadSoundEvent -> {
                 queueSound("audio/sounds/death.wav")
                 true
             }

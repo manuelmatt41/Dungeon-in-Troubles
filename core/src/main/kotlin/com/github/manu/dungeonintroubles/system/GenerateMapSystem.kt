@@ -9,8 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.Event
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.component.*
-import com.github.manu.dungeonintroubles.event.CrossPortalEvent
-import com.github.manu.dungeonintroubles.event.DeadEvent
+import com.github.manu.dungeonintroubles.event.CrossPortalSoundEvent
+import com.github.manu.dungeonintroubles.event.DeadSoundEvent
 import com.github.manu.dungeonintroubles.event.MapChangeEvent
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.quillraven.fleks.*
@@ -33,29 +33,30 @@ class GenerateMapSystem(
     override fun onTickEntity(entity: Entity) {
         with(imgCmps[entity]) {
             if (entity in playerCmps) {
-                if (image.x > 250f) { //TODO Reaction with a collision not with coordinate in physic system
-                    gameStage.fire(CrossPortalEvent())
 
-                    changeMap()
+                if (image.x > 250f) { //TODO Reaction with a collision not with coordinate in physic system
+                    gameStage.fire(CrossPortalSoundEvent())
+
+                    changeMap(entity)
                 }
 
                 if (entity in despaswnCmps) {
-                    gameStage.fire(DeadEvent())
+                    gameStage.fire(DeadSoundEvent())
 
-                    changeMap()
+                    changeMap(entity)
                 }
             }
         }
     }
 
-    private fun changeMap() {
+    private fun changeMap(playerEntity: Entity) {
         world.removeAll()
 
         val nextMap =
             TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx").path())
         val trapMap = TmxMapLoader().load(Gdx.files.internal("map/traps.tmx").path())
-        gameStage.fire(MapChangeEvent(nextMap))
-        log.debug { "Map change" }
+
+        gameStage.fire(MapChangeEvent(nextMap, playerCmps[playerEntity]))
     }
 
     override fun handle(event: Event?): Boolean {
@@ -92,6 +93,7 @@ class GenerateMapSystem(
                 }
                 true
             }
+
             else -> false
         }
     }

@@ -28,7 +28,7 @@ class MoveSystem(
 
         if (entity in playerCmps) {
             playerCmps[entity].meter += (moveCmp.speed * deltaTime) * 4f
-//            log.debug { String.format("Meters: %.3f", playerCmps[entity].meter) }
+            log.debug { String.format("Meters: %.3f", playerCmps[entity].meter) }
         }
     }
 
