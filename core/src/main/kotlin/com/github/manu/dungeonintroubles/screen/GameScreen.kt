@@ -10,6 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.ExtendViewport
 import com.github.manu.dungeonintroubles.component.ImageComponent.Companion.ImageComponentListener
 import com.github.manu.dungeonintroubles.component.PhysicComponent.Companion.PhysicComponentListener
+import com.github.manu.dungeonintroubles.component.StateComponent
+import com.github.manu.dungeonintroubles.component.StateComponent.Companion.StateComponentListener
 import com.github.manu.dungeonintroubles.event.MapChangeEvent
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.manu.dungeonintroubles.input.PlayerKeyBoardInput
@@ -41,6 +43,7 @@ class GameScreen : KtxScreen {
         components {
             add<ImageComponentListener>()
             add<PhysicComponentListener>()
+            add<StateComponentListener>()
         }
 
         systems {
@@ -50,6 +53,7 @@ class GameScreen : KtxScreen {
             add<JumpMoveSystem>()
             add<MoveSystem>()
             add<AnimationSystem>()
+            add<StateSystem>()
             add<CameraSystem>()
             add<RenderSystem>()
             add<GenerateMapSystem>()

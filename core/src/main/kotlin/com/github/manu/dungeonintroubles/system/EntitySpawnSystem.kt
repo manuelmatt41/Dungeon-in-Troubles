@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.Scaling
 import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.actor.FlipImage
 import com.github.manu.dungeonintroubles.component.*
+import com.github.manu.dungeonintroubles.component.AnimationModel.*
 import com.github.manu.dungeonintroubles.event.MapChangeEvent
 import com.github.manu.dungeonintroubles.event.SpawnLayerObjectsEvent
 import com.github.manu.dungeonintroubles.event.SpawnProjectilesEvent
@@ -42,7 +43,7 @@ class EntitySpawnSystem(
     override fun onTickEntity(entity: Entity) {
         with(spawnCmps[entity]) {
             val config = spawnCfg(name)
-            val relativeSize = if (config.model != AnimationModel.NONE) size(config.model) else this.size
+            val relativeSize = if (config.model != NONE) size(config.model) else this.size
 
             world.entity {
                 val imageCmp = add<ImageComponent> {
@@ -50,17 +51,17 @@ class EntitySpawnSystem(
                         setPosition(location.x, location.y)
                         setSize(relativeSize.x, relativeSize.y)
                         setScaling(Scaling.fill)
-                        flipX = config.model == AnimationModel.FIREBALL
+                        flipX = config.model == FIREBALL
                     }
                 }
 
-                if (config.model != AnimationModel.NONE) {
+                if (config.model != NONE) {
                     add<AnimationComponent> {
                         nextAnimation(config.model, AnimationType.RUN)
                     }
                 }
 
-                val physicCmp = if (config.model != AnimationModel.NONE) {
+                val physicCmp = if (config.model != NONE) {
                     physicCmpFromImage(
                         physicWorld,
                         imageCmp.image,
@@ -74,12 +75,13 @@ class EntitySpawnSystem(
 
                         // hitbox
                         box(scalingWidth, scalingHeight, config.physicOffset) {
-                            isSensor = config.model != AnimationModel.FIREBALL
+                            isSensor =
+                                config.model != FIREBALL && config.model != SLIME && config.model != SKELETON && config.model != DEMON
                             userData = HIT_BOX_SENSOR
                             friction = 0f
-                        }
+                        } //TODO Refactor this shit
 
-                        if (config.model == AnimationModel.PLAYER) {
+                        if (config.model == PLAYER) {
                             val collH = scalingHeight
                             val collOffset = vec2().apply { set(config.physicOffset) }
                             collOffset.y += scalingHeight * 0.5f
@@ -115,6 +117,20 @@ class EntitySpawnSystem(
                         add<JumpComponent> {
                             speed = DEFAULT_SPEED_Y
                         }
+
+                        add<StateComponent>()
+                    }
+
+                    EntityType.DEMON -> {
+                        add<NpcComponent>()
+                    }
+
+                    EntityType.SLIME -> {
+                        add<NpcComponent>()
+                    }
+
+                    EntityType.SKELETON -> {
+                        add<NpcComponent>()
                     }
 
                     EntityType.TRAP -> {
@@ -151,38 +167,55 @@ class EntitySpawnSystem(
     private fun spawnCfg(type: EntityType): SpawnConfiguration = cachedConfigs.getOrPut(type) {
         when (type) {
             EntityType.PLAYER -> SpawnConfiguration(
-                AnimationModel.PLAYER,
+                PLAYER,
+                physicScaling = vec2(0.4f, 0.4f),
+                physicOffset = vec2(0f, -5f * UNIT_SCALE)
+            )
+
+            EntityType.DEMON -> SpawnConfiguration(
+                DEMON,
+                physicScaling = vec2(0.4f, 0.4f),
+                physicOffset = vec2(0f, -5f * UNIT_SCALE)
+            )
+
+            EntityType.SLIME -> SpawnConfiguration(
+                SLIME,
+                physicScaling = vec2(0.4f, 0.4f),
+                physicOffset = vec2(0f, -5f * UNIT_SCALE)
+            )
+
+            EntityType.SKELETON -> SpawnConfiguration(
+                SKELETON,
                 physicScaling = vec2(0.4f, 0.4f),
                 physicOffset = vec2(0f, -5f * UNIT_SCALE)
             )
 
             EntityType.TRAP -> SpawnConfiguration(
-                AnimationModel.TRAP,
+                TRAP,
                 physicScaling = vec2(0.4f, 0.4f),
                 bodyType = StaticBody
             )
 
             EntityType.COIN -> SpawnConfiguration(
-                AnimationModel.COIN,
+                COIN,
                 physicScaling = vec2(0.4f, 0.4f),
                 bodyType = StaticBody
             )
 
             EntityType.PORTAL -> SpawnConfiguration(
-                AnimationModel.PORTAL,
+                PORTAL,
                 physicScaling = vec2(0.4f, 0.4f),
                 bodyType = StaticBody
             )
 
             EntityType.SPAWNPOINT -> SpawnConfiguration(
-                AnimationModel.NONE,
+                NONE,
             )
 
             EntityType.FIREBALL -> SpawnConfiguration(
-                AnimationModel.FIREBALL,
+                FIREBALL,
                 physicScaling = vec2(0.4f, 0.4f),
-
-                )
+            )
 
             else -> gdxError("Type $type has no SpawnCfg setup.")
         }

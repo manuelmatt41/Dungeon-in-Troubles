@@ -34,6 +34,7 @@ class PhysicSystem(
     private val coinCmps: ComponentMapper<CoinComponent>,
     private val despawnCmps: ComponentMapper<DespawnComponent>,
     private val spawnPointCmps: ComponentMapper<SpawnPointComponent>,
+    private val npcCmps: ComponentMapper<NpcComponent>,
 ) : ContactListener, IteratingSystem(interval = Fixed(1 / 60f)) {
 
     private var trapOrCoin: Boolean = true
@@ -219,7 +220,10 @@ class PhysicSystem(
         val collisionAWithFireball = entityA in playerCmps && physicsCmps[entityB].body.gravityScale == 0f
         val collisionBWithFireball = entityB in playerCmps && physicsCmps[entityA].body.gravityScale == 0f
 
-        contact.isEnabled = !collisionAWithFireball && !collisionBWithFireball
+        val collisionAWithNpcs = entityA in playerCmps && entityB in npcCmps
+        val collisionBWithNpcs = entityB in playerCmps && entityA in npcCmps
+
+        contact.isEnabled = (!collisionAWithFireball && !collisionBWithFireball) && (!collisionAWithNpcs && !collisionBWithNpcs)
     }
 
     override fun postSolve(contact: Contact, impulse: ContactImpulse) {

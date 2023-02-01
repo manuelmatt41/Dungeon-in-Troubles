@@ -4,7 +4,9 @@ import com.badlogic.gdx.Gdx
 import com.github.manu.dungeonintroubles.component.JumpComponent
 import com.github.manu.dungeonintroubles.component.MoveComponent
 import com.github.manu.dungeonintroubles.component.PlayerComponent
+import com.github.manu.dungeonintroubles.component.SpawnComponent
 import com.github.quillraven.fleks.ComponentMapper
+import com.github.quillraven.fleks.NoneOf
 import com.github.quillraven.fleks.World
 import ktx.app.KtxInputAdapter
 import ktx.log.logger
@@ -15,8 +17,7 @@ class PlayerKeyBoardInput(
 ) : KtxInputAdapter {
 
     private var playerSin = 0f
-    private var playerCos = 0f
-    private val playerEntities = world.family(allOf = arrayOf(PlayerComponent::class))
+    private val playerEntities = world.family(allOf = arrayOf(PlayerComponent::class), noneOf = arrayOf(SpawnComponent::class))
 
     init {
         Gdx.input.inputProcessor = this

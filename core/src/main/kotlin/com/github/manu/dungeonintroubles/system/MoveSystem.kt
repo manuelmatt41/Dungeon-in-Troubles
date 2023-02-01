@@ -24,6 +24,10 @@ class MoveSystem(
         val mass = physcmp.body.mass
         val (velX, velY) = physcmp.body.linearVelocity
 
+        if (moveCmp.root) {
+            return
+        }
+
         physcmp.impulse.x = mass * (moveCmp.speed * moveCmp.cos - velX);
 
         if (entity in playerCmps) {

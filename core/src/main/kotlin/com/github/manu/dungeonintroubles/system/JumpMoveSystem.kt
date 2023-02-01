@@ -21,6 +21,9 @@ class JumpMoveSystem(
         val physcmp = physicsCmps[entity]
         val jumpCmp = jumpCmps[entity]
 
+        if (jumpCmp.root) {
+            return
+        }
         physcmp.impulse.y = if (jumpCmp.sin != 0f) jumpCmp.speed else 0f
     }
 
