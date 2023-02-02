@@ -10,23 +10,25 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.ExtendViewport
 import com.github.manu.dungeonintroubles.component.ImageComponent.Companion.ImageComponentListener
 import com.github.manu.dungeonintroubles.component.PhysicComponent.Companion.PhysicComponentListener
-import com.github.manu.dungeonintroubles.component.StateComponent
 import com.github.manu.dungeonintroubles.component.StateComponent.Companion.StateComponentListener
 import com.github.manu.dungeonintroubles.event.MapChangeEvent
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.manu.dungeonintroubles.input.PlayerKeyBoardInput
 import com.github.manu.dungeonintroubles.system.*
-import com.github.manu.dungeonintroubles.system.AudioSystem
 import com.github.manu.dungeonintroubles.system.GenerateMapSystem.Companion.NUMBER_OF_MAPS
+import com.github.manu.dungeonintroubles.ui.loadSkin
+import com.github.manu.dungeonintroubles.ui.view.gameView
 import com.github.quillraven.fleks.world
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
 import ktx.box2d.createWorld
 import ktx.log.logger
 import ktx.math.vec2
+import ktx.scene2d.actors
 
 class GameScreen : KtxScreen {
     private val gameStage: Stage = Stage(ExtendViewport(16f, 9f))
+    private val uiStage: Stage = Stage(ExtendViewport(320f, 180f))
     private val textureAtlas: TextureAtlas = TextureAtlas(Gdx.files.internal("graphics/gameObjects.atlas"))
     private var currentMap: TiledMap? = null
     private val physichWorld = createWorld(vec2(0f, -15f)).apply {
@@ -36,6 +38,7 @@ class GameScreen : KtxScreen {
     private val eWorld = world {
         injectables {
             add("gameStage", gameStage)
+            add("uiStage", uiStage)
             add(textureAtlas)
             add(physichWorld)
         }
@@ -63,6 +66,9 @@ class GameScreen : KtxScreen {
         }
     }
 
+    init {
+        loadSkin()
+    }
     override fun show() {
         super.show()
         log.debug { "The game screen is shown" }
@@ -77,6 +83,10 @@ class GameScreen : KtxScreen {
         gameStage.fire(MapChangeEvent(currentMap!!))
 
         PlayerKeyBoardInput(eWorld)
+
+        uiStage.actors {
+            gameView()
+        }
     }
 
     override fun render(delta: Float) {
@@ -86,11 +96,16 @@ class GameScreen : KtxScreen {
 
     override fun resize(width: Int, height: Int) {
         gameStage.viewport.update(width, height, true)
+        uiStage.viewport.update(width, height, true)
     }
 
     override fun dispose() {
         gameStage.disposeSafely()
+        uiStage.disposeSafely()
+        textureAtlas.disposeSafely()
         eWorld.dispose()
+        currentMap.disposeSafely()
+        physichWorld.disposeSafely()
     }
 
     companion object {

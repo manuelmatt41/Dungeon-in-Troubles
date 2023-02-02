@@ -18,6 +18,7 @@ import ktx.tiled.forEachLayer
 @AllOf([ImageComponent::class])
 class RenderSystem(
     @Qualifier("gameStage") private val gameStage: Stage,
+    @Qualifier("uiStage") private val uiStage: Stage,
     private val imgCmps: ComponentMapper<ImageComponent>,
 ) : EventListener, IteratingSystem() {
 
@@ -60,6 +61,12 @@ class RenderSystem(
                 act(deltaTime)
                 draw()
             }
+        }
+
+        with(uiStage) {
+            viewport.apply()
+            act(deltaTime)
+            draw()
         }
     }
 
