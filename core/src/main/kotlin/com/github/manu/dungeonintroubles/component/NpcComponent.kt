@@ -1,3 +1,5 @@
 package com.github.manu.dungeonintroubles.component
 
-class NpcComponent
+data class NpcComponent(
+     var timeChangeDirection: Float = 2f
+)

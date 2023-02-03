@@ -2,12 +2,13 @@ package com.github.manu.dungeonintroubles.component
 
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Image
+import com.github.manu.dungeonintroubles.actor.FlipImage
 import com.github.quillraven.fleks.ComponentListener
 import com.github.quillraven.fleks.Entity
 import com.github.quillraven.fleks.Qualifier
 
 class ImageComponent {
-    lateinit var image: Image
+    lateinit var image: FlipImage
 
     companion object {
         class ImageComponentListener(

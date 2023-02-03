@@ -34,14 +34,14 @@ class SpawnProjectilesSystem(
             return;
         }
         spawnTime = 7f
-        numberOfProjectiles = MathUtils.random(1, 2)
+        numberOfProjectiles = MathUtils.random(1, 3)
         gameStage.fire(SpawnProjectilesEvent(numberOfProjectiles))
     }
 
     override fun handle(event: Event): Boolean {
         return when (event) {
             is MapChangeEvent -> {
-                canSpawn = true//MathUtils.random(0, 1) == 1
+                canSpawn = MathUtils.random(0, 1) == 1
                 true
             }
 

@@ -51,7 +51,6 @@ class EntitySpawnSystem(
                         setPosition(location.x, location.y)
                         setSize(relativeSize.x, relativeSize.y)
                         setScaling(Scaling.fill)
-                        flipX = config.model == FIREBALL
                     }
                 }
 
@@ -123,14 +122,26 @@ class EntitySpawnSystem(
 
                     EntityType.DEMON -> {
                         add<NpcComponent>()
+                        add<MoveComponent> {
+                            speed = DEFAULT_SPEED_X * 0.5f
+                            cos = 1f
+                        }
                     }
 
                     EntityType.SLIME -> {
                         add<NpcComponent>()
+                        add<MoveComponent> {
+                            speed = DEFAULT_SPEED_X * 0.5f
+                            cos = 1f
+                        }
                     }
 
                     EntityType.SKELETON -> {
                         add<NpcComponent>()
+                        add<MoveComponent> {
+                            speed = DEFAULT_SPEED_X * 0.5f
+                            cos = 1f
+                        }
                     }
 
                     EntityType.TRAP -> {
@@ -288,7 +299,7 @@ class EntitySpawnSystem(
                             this.name = EntityType.FIREBALL
                             this.location.set(
                                 gameStage.camera.position.x + gameStage.camera.viewportWidth,
-                                MathUtils.random(1f, 144f) * UNIT_SCALE
+                                MathUtils.random(16, 128) * UNIT_SCALE
                             )
                             log.debug { "Spawn projectile, Location: $location" }
                         }

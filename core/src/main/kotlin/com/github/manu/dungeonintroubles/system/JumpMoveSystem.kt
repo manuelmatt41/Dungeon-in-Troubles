@@ -24,6 +24,7 @@ class JumpMoveSystem(
         if (jumpCmp.root) {
             return
         }
+
         physcmp.impulse.y = if (jumpCmp.sin != 0f) jumpCmp.speed else 0f
     }
 

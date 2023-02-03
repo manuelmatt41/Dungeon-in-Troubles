@@ -1,8 +1,7 @@
 package com.github.manu.dungeonintroubles.system
 
-import com.github.manu.dungeonintroubles.component.MoveComponent
-import com.github.manu.dungeonintroubles.component.PhysicComponent
-import com.github.manu.dungeonintroubles.component.PlayerComponent
+import com.badlogic.gdx.math.MathUtils
+import com.github.manu.dungeonintroubles.component.*
 import com.github.quillraven.fleks.AllOf
 import com.github.quillraven.fleks.ComponentMapper
 import com.github.quillraven.fleks.Entity
@@ -16,6 +15,8 @@ class MoveSystem(
     private val moveCmps: ComponentMapper<MoveComponent>,
     private val physicsCmps: ComponentMapper<PhysicComponent>,
     private val playerCmps: ComponentMapper<PlayerComponent>,
+    private val npcsCmps: ComponentMapper<NpcComponent>,
+    private val imgCmps: ComponentMapper<ImageComponent>,
 ) : IteratingSystem() {
 
     override fun onTickEntity(entity: Entity) {
@@ -30,9 +31,29 @@ class MoveSystem(
 
         physcmp.impulse.x = mass * (moveCmp.speed * moveCmp.cos - velX);
 
-        if (entity in playerCmps) {
+        when (entity) {
+            in playerCmps -> {
+
             playerCmps[entity].meter += (moveCmp.speed * deltaTime) * 4f
-//            log.debug { String.format("Meters: %.3f", playerCmps[entity].meter) }
+            }
+
+            in npcsCmps -> {
+                with(npcsCmps[entity]) {
+                    if (timeChangeDirection > 0f) {
+                        timeChangeDirection -= deltaTime
+                        return@with
+                    }
+
+                    moveCmp.cos = if (MathUtils.random(0, 1) == 0) -1f else 1f
+                    timeChangeDirection = 2f
+                }
+            }
+         }
+
+        imgCmps.getOrNull(entity)?.let { imageCmp ->
+            if (moveCmp.cos != 0f) {
+                imageCmp.image.flipX = moveCmp.cos < 0
+            }
         }
     }
 

@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.scenes.scene2d.utils.TransformDrawable
 
-class FlipImage : Image() {
+class FlipImage() : Image() {
     var flipX = false
 
     override fun draw(batch: Batch, parentAlpha: Float) {

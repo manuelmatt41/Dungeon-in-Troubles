@@ -13,7 +13,7 @@ enum class EntityType {
     var type: String = this.toString().lowercase()
 }
 
-const val DEFAULT_SPEED_X = 10f
+const val DEFAULT_SPEED_X = 15f
 const val DEFAULT_SPEED_Y = 0.7f
 
 data class SpawnConfiguration(
