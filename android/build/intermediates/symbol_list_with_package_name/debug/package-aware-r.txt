@@ -1,0 +1,4 @@
+com.github.manu.dungeonintroubles
+drawable ic_launcher
+string app_name
+style GdxTheme

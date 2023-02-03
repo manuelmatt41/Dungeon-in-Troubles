@@ -1,1 +1,1 @@
-/home/manuel/Documentos/Dungeon-in-Troubles/lwjgl3/build/classes/kotlin/main/com/github/manu/dungeonintroubles/lwjgl3/Lwjgl3Launcher.class
+C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\lwjgl3\build\classes\kotlin\main\com\github\manu\dungeonintroubles\lwjgl3\Lwjgl3Launcher.class
