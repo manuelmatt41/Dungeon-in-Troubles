@@ -31,7 +31,7 @@ enum class Fonts(
     val atlasRegionKey: String,
     val scaling: Float,
 ) {
-    DEFAULT("minimalpixel", 0.50f);
+    DEFAULT("minimalpixel", 0.75f);
 
     val skinKey = "Font_${this.name.lowercase()}"
     val fontPath = "ui/${this.atlasRegionKey}.fnt"

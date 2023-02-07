@@ -14,7 +14,7 @@ class StateSystem(
     override fun onTickEntity(entity: Entity) {
         with(stateCmps[entity]) {
             if (nextState != stateMachine.currentState) {
-                log.debug { "$nextState" }
+//                log.debug { "$nextState" }
                 stateMachine.changeState(nextState)
             }
 

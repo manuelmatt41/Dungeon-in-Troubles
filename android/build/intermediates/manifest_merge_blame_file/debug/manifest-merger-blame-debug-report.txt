@@ -6,60 +6,60 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="19"
-8-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml
+8-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml
 9        android:targetSdkVersion="30" />
-9-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml
+9-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml
 10
 11    <uses-feature
-11-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:5:2-74
+11-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:5:2-74
 12        android:glEsVersion="0x00020000"
-12-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:5:16-48
+12-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:5:16-48
 13        android:required="true" />
-13-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:5:49-72
+13-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:5:49-72
 14
 15    <uses-permission android:name="android.permission.VIBRATE" />
-15-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:6:2-62
-15-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:6:19-60
+15-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:6:2-62
+15-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:6:19-60
 16
 17    <application
-17-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:7:2-27:16
-18        android:name="android.support.multidex.MultiDexApplication"
-19        android:allowBackup="true"
-19-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:8:4-30
-20        android:appCategory="game"
-20-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:12:4-30
-21        android:debuggable="true"
-22        android:fullBackupContent="true"
-22-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:9:10-42
-23        android:icon="@drawable/ic_launcher"
-23-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:10:4-40
-24        android:isGame="true"
-24-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:11:4-25
-25        android:label="@string/app_name"
-25-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:13:10-42
+17-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:7:2-27:16
+18        android:allowBackup="true"
+18-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:8:4-30
+19        android:appCategory="game"
+19-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:12:4-30
+20        android:debuggable="true"
+21        android:fullBackupContent="true"
+21-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:9:10-42
+22        android:icon="@drawable/ic_launcher"
+22-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:10:4-40
+23        android:isGame="true"
+23-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:11:4-25
+24        android:label="@string/app_name"
+24-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:13:10-42
+25        android:testOnly="true"
 26        android:theme="@style/GdxTheme" >
-26-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:15:4-35
+26-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:15:4-35
 27        <activity
-27-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:16:3-26:14
+27-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:16:3-26:14
 28            android:name="com.github.manu.dungeonintroubles.android.AndroidLauncher"
-28-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:17:5-77
+28-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:17:5-77
 29            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout"
-29-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:20:5-99
+29-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:20:5-99
 30            android:exported="true"
-30-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:21:13-36
+30-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:21:13-36
 31            android:label="@string/app_name"
-31-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:18:5-37
+31-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:18:5-37
 32            android:screenOrientation="landscape" >
-32-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:19:5-42
+32-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:19:5-42
 33            <intent-filter>
-33-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:22:5-25:20
+33-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:22:5-25:20
 34                <action android:name="android.intent.action.MAIN" />
-34-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:23:5-56
-34-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:23:13-54
+34-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:23:5-56
+34-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:23:13-54
 35
 36                <category android:name="android.intent.category.LAUNCHER" />
-36-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:24:5-64
-36-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:24:15-62
+36-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:24:5-64
+36-->C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:24:15-62
 37            </intent-filter>
 38        </activity>
 39    </application>

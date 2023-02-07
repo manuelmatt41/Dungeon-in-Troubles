@@ -9,7 +9,8 @@ import com.badlogic.gdx.physics.box2d.World
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.component.*
-import com.github.manu.dungeonintroubles.event.GetCoinSoundEvent
+import com.github.manu.dungeonintroubles.event.DeadSoundEvent
+import com.github.manu.dungeonintroubles.event.GetCoinEvent
 import com.github.manu.dungeonintroubles.event.SpawnLayerObjectsEvent
 import com.github.manu.dungeonintroubles.event.TrapSoundCollisionEvent
 import com.github.manu.dungeonintroubles.extension.entity
@@ -100,7 +101,7 @@ class PhysicSystem(
 
         when {
             collisionAWithTrap || collisionAWithFireball -> {
-                gameStage.fire(TrapSoundCollisionEvent(AnimationModel.TRAP))
+                gameStage.fire(DeadSoundEvent())
 
                 configureEntity(entityA) {
                     despawnCmps.add(it)
@@ -109,7 +110,7 @@ class PhysicSystem(
             }
 
             collisionBWithTrap || collisionBWithFireball -> {
-                gameStage.fire(TrapSoundCollisionEvent(AnimationModel.TRAP))
+                gameStage.fire(DeadSoundEvent())
 
                 configureEntity(entityB) {
                     despawnCmps.add(it)
@@ -120,14 +121,14 @@ class PhysicSystem(
             collisionAWithCoin -> {
                 with(playerCmps[entityA]) {
                     coins++;
-                    debug { "Coins: $coins" }
+//                    debug { "Coins: $coins" }
                 }
 
                 configureEntity(entityB) {
                     despawnCmps.add(it)
                 }
 
-                gameStage.fire(GetCoinSoundEvent(AnimationModel.COIN))
+                gameStage.fire(GetCoinEvent(AnimationModel.COIN, entityA))
             }
 
             collisionBWithCoin -> {
@@ -139,7 +140,7 @@ class PhysicSystem(
                     despawnCmps.add(it)
                 }
 
-                gameStage.fire(GetCoinSoundEvent(AnimationModel.COIN))
+                gameStage.fire(GetCoinEvent(AnimationModel.COIN, entityB))
             }
 
             collisionAWithSpawnPoint -> {
@@ -198,19 +199,6 @@ class PhysicSystem(
         val entityA = contact.fixtureA.entity
         val entityB = contact.fixtureB.entity
 
-        val collisionAWithCoin = entityA in playerCmps && entityB in coinCmps
-        val collisionBWithCoin = entityB in playerCmps && entityA in coinCmps
-
-        log.debug { "End contact" }
-        when {
-            collisionAWithCoin -> {
-                gameStage.fire(GetCoinSoundEvent(AnimationModel.COIN))
-            }
-
-            collisionBWithCoin -> {
-                gameStage.fire(GetCoinSoundEvent(AnimationModel.COIN))
-            }
-        }
     }
 
     override fun preSolve(contact: Contact, oldManifold: Manifold) {

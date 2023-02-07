@@ -9,6 +9,7 @@ import com.github.manu.dungeonintroubles.ui.Drawables
 import com.github.manu.dungeonintroubles.ui.Labels
 import com.github.manu.dungeonintroubles.ui.get
 import ktx.actors.plusAssign
+import ktx.log.logger
 import ktx.scene2d.*
 
 @Scene2dDsl
@@ -18,6 +19,8 @@ class PlayerInfo(
 ) : WidgetGroup(), KGroup {
     private val background: Image = Image(skin[Drawables.PLAYER_INFO])
     private val playerBgd: Image = Image(if (charDrawables == null) null else skin[Drawables.PLAYER])
+    private val labelDistance: Label
+    private val labelCoins: Label
 
     init {
         this += background
@@ -27,13 +30,16 @@ class PlayerInfo(
             setScaling(Scaling.contain)
         }
 
-        this += label("Prueba metros", Labels.DISTANCE.skinKey).apply {
-            setPosition(28f, 13f)
+        labelDistance = label("", Labels.DISTANCE.skinKey).apply {
+            setPosition(28f, 16f)
         }
 
-        this += label("Prueba coin", Labels.COIN.skinKey).apply {
-            setPosition(35f, 2f)
+        labelCoins = label("", Labels.COIN.skinKey).apply {
+            setPosition(35f, 5f)
         }
+
+        this += labelDistance
+        this += labelCoins
     }
 
     override fun getPrefWidth() = background.drawable.minWidth
@@ -46,6 +52,14 @@ class PlayerInfo(
         } else {
             playerBgd.drawable = skin[charDrawable]
         }
+    }
+
+    fun getCoin(coins: Int) = labelCoins.setText(coins.toString())
+
+
+    fun move(distance: Float) = labelDistance.setText(String.format("%.3f m", distance))
+    companion object {
+        private val log = logger<PlayerInfo>()
     }
 }
 

@@ -118,6 +118,10 @@ class EntitySpawnSystem(
                         }
 
                         add<StateComponent>()
+
+                        add<ParticleComponent> {
+                            this.particle = ParticleType.FLY
+                        }
                     }
 
                     EntityType.DEMON -> {
@@ -254,7 +258,7 @@ class EntitySpawnSystem(
                         (mapObject.x + customLocation.x) * UNIT_SCALE,
                         (mapObject.y + customLocation.y) * UNIT_SCALE
                     )
-                    log.debug { "Layer name: ${layer.name}" }
+//                    log.debug { "Layer name: ${layer.name}" }
                     if (this.name == EntityType.SPAWNPOINT) {
                         this.size.set(mapObject.width * UNIT_SCALE, mapObject.height * UNIT_SCALE)
                         this.shape = mapObject.shape
@@ -301,7 +305,7 @@ class EntitySpawnSystem(
                                 gameStage.camera.position.x + gameStage.camera.viewportWidth,
                                 MathUtils.random(16, 128) * UNIT_SCALE
                             )
-                            log.debug { "Spawn projectile, Location: $location" }
+//                            log.debug { "Spawn projectile, Location: $location" }
                         }
                     }
                 }

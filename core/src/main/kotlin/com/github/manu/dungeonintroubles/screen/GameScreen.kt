@@ -1,6 +1,8 @@
 package com.github.manu.dungeonintroubles.screen
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.g2d.ParticleEffect
+import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TmxMapLoader
@@ -17,6 +19,7 @@ import com.github.manu.dungeonintroubles.input.PlayerKeyBoardInput
 import com.github.manu.dungeonintroubles.system.*
 import com.github.manu.dungeonintroubles.system.GenerateMapSystem.Companion.NUMBER_OF_MAPS
 import com.github.manu.dungeonintroubles.ui.loadSkin
+import com.github.manu.dungeonintroubles.ui.model.GameModel
 import com.github.manu.dungeonintroubles.ui.view.gameView
 import com.github.quillraven.fleks.world
 import ktx.app.KtxScreen
@@ -59,6 +62,7 @@ class GameScreen : KtxScreen {
             add<StateSystem>()
             add<CameraSystem>()
             add<RenderSystem>()
+            add<ParticleSystem>()
             add<GenerateMapSystem>()
             add<AudioSystem>()
             add<DespawnSystem>()
@@ -69,6 +73,7 @@ class GameScreen : KtxScreen {
     init {
         loadSkin()
     }
+
     override fun show() {
         super.show()
         log.debug { "The game screen is shown" }
@@ -79,13 +84,15 @@ class GameScreen : KtxScreen {
             }
         }
 
-        currentMap = TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx").path()) //"map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx"
+        currentMap = TmxMapLoader().load(
+            Gdx.files.internal("map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx").path()
+        ) //"map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx"
         gameStage.fire(MapChangeEvent(currentMap!!))
 
         PlayerKeyBoardInput(eWorld)
 
         uiStage.actors {
-            gameView()
+            gameView(GameModel(eWorld, gameStage))
         }
     }
 

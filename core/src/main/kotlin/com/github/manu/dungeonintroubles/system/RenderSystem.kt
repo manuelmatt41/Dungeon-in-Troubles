@@ -1,6 +1,10 @@
 package com.github.manu.dungeonintroubles.system
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.OrthographicCamera
+import com.badlogic.gdx.graphics.g2d.ParticleEffect
+import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer
 import com.badlogic.gdx.maps.tiled.tiles.AnimatedTiledMapTile
@@ -19,6 +23,7 @@ import ktx.tiled.forEachLayer
 class RenderSystem(
     @Qualifier("gameStage") private val gameStage: Stage,
     @Qualifier("uiStage") private val uiStage: Stage,
+    private val textureAtlas: TextureAtlas,
     private val imgCmps: ComponentMapper<ImageComponent>,
 ) : EventListener, IteratingSystem() {
 
@@ -26,8 +31,10 @@ class RenderSystem(
     private val floorLayers = mutableListOf<TiledMapTileLayer>()
     private val decorationLayers = mutableListOf<TiledMapTileLayer>()
 
+
     private val mapRenderer = OrthogonalTiledMapRenderer(null, UNIT_SCALE, gameStage.batch)
     private val orthoCam = gameStage.camera as OrthographicCamera
+
 
     override fun onTick() {
         super.onTick()
@@ -38,24 +45,24 @@ class RenderSystem(
             AnimatedTiledMapTile.updateAnimationBaseTime()
             mapRenderer.setView(orthoCam)
 
-
             if (bgdLayers.isNotEmpty()) {
-               gameStage.batch.use(orthoCam.combined) {
-                   bgdLayers.forEach { mapRenderer.renderTileLayer(it) }
-               }
+                gameStage.batch.use(orthoCam.combined) {
+                    bgdLayers.forEach { mapRenderer.renderTileLayer(it) }
+                }
             }
 
             if (floorLayers.isNotEmpty()) {
-               gameStage.batch.use(orthoCam.combined) {
-                   floorLayers.forEach { mapRenderer.renderTileLayer(it) }
-               }
+                gameStage.batch.use(orthoCam.combined) {
+                    floorLayers.forEach { mapRenderer.renderTileLayer(it) }
+                }
             }
 
             if (decorationLayers.isNotEmpty()) {
-               gameStage.batch.use(orthoCam.combined) {
-                   decorationLayers.forEach { mapRenderer.renderTileLayer(it) }
-               }
+                gameStage.batch.use(orthoCam.combined) {
+                    decorationLayers.forEach { mapRenderer.renderTileLayer(it) }
+                }
             }
+
 
             gameStage.run {
                 act(deltaTime)
@@ -68,6 +75,7 @@ class RenderSystem(
             act(deltaTime)
             draw()
         }
+
     }
 
     override fun onTickEntity(entity: Entity) {
@@ -103,6 +111,6 @@ class RenderSystem(
         private val log = logger<RenderSystem>()
         const val BGD_LAYER = "bgd"
         const val FLOOR_LAYER = "floor"
-        const val  DECORATION_LAYER =  "decoration"
+        const val DECORATION_LAYER = "decoration"
     }
 }

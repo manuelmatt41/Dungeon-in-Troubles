@@ -48,7 +48,7 @@ class AudioSystem : EventListener, IntervalSystem() {
                 true
             }
 
-            is GetCoinSoundEvent -> {
+            is GetCoinEvent -> {
                 queueSound("audio/sounds/${event.model.atlasKey}.wav")
                 true
             }

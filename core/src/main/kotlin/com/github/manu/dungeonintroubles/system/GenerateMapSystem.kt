@@ -41,22 +41,21 @@ class GenerateMapSystem(
                 }
 
                 if (entity in despaswnCmps) {
-                    gameStage.fire(DeadSoundEvent())
-
-                    changeMap(entity)
+                    changeMap()
                 }
             }
         }
     }
 
-    private fun changeMap(playerEntity: Entity) {
+    private fun changeMap(playerEntity: Entity? = null) {
         world.removeAll()
 
         val nextMap =
             TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx").path())
         val trapMap = TmxMapLoader().load(Gdx.files.internal("map/traps.tmx").path())
 
-        gameStage.fire(MapChangeEvent(nextMap, playerCmps[playerEntity]))
+        var playerCmp = if (playerEntity == null) PlayerComponent() else  playerCmps[playerEntity]
+        gameStage.fire(MapChangeEvent(nextMap,playerCmp))
     }
 
     override fun handle(event: Event?): Boolean {

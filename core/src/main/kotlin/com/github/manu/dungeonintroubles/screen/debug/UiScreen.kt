@@ -27,7 +27,7 @@ class UiScreen : KtxScreen {
     override fun show() {
         uiStage.clear()
         uiStage.actors {
-            gameView = gameView()
+//            gameView()
         }
         uiStage.isDebugAll = true
     }

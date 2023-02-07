@@ -1,17 +1,16 @@
 package com.github.manu.dungeonintroubles.system
 
 import com.badlogic.gdx.math.MathUtils
+import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.component.*
-import com.github.quillraven.fleks.AllOf
-import com.github.quillraven.fleks.ComponentMapper
-import com.github.quillraven.fleks.Entity
-import com.github.quillraven.fleks.IteratingSystem
+import com.github.manu.dungeonintroubles.event.MoveEvent
+import com.github.manu.dungeonintroubles.extension.fire
+import com.github.quillraven.fleks.*
 import ktx.log.logger
-import ktx.math.component1
-import ktx.math.component2
 
 @AllOf([MoveComponent::class, PhysicComponent::class])
 class MoveSystem(
+    @Qualifier("gameStage") private val gameStage: Stage,
     private val moveCmps: ComponentMapper<MoveComponent>,
     private val physicsCmps: ComponentMapper<PhysicComponent>,
     private val playerCmps: ComponentMapper<PlayerComponent>,
@@ -23,7 +22,7 @@ class MoveSystem(
         val physcmp = physicsCmps[entity]
         val moveCmp = moveCmps[entity]
         val mass = physcmp.body.mass
-        val (velX, velY) = physcmp.body.linearVelocity
+        val velX = physcmp.body.linearVelocity.x
 
         if (moveCmp.root) {
             return
@@ -33,8 +32,8 @@ class MoveSystem(
 
         when (entity) {
             in playerCmps -> {
-
-            playerCmps[entity].meter += (moveCmp.speed * deltaTime) * 4f
+                playerCmps[entity].meter += (moveCmp.speed * deltaTime) * 4f
+                gameStage.fire(MoveEvent(AnimationModel.PLAYER, entity))
             }
 
             in npcsCmps -> {
@@ -48,7 +47,7 @@ class MoveSystem(
                     timeChangeDirection = 2f
                 }
             }
-         }
+        }
 
         imgCmps.getOrNull(entity)?.let { imageCmp ->
             if (moveCmp.cos != 0f) {
