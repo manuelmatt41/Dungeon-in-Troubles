@@ -18,23 +18,44 @@ bgdDistance
   orig: 36, 8
   offset: 0, 0
   index: -1
-minimalpixel
+button_dissapear
   rotate: false
   xy: 256, 0
+  size: 46, 14
+  orig: 46, 14
+  offset: 0, 0
+  index: -1
+button_pressed
+  rotate: false
+  xy: 384, 0
+  size: 46, 14
+  orig: 46, 14
+  offset: 0, 0
+  index: -1
+button_unpressed
+  rotate: false
+  xy: 512, 0
+  size: 46, 14
+  orig: 46, 14
+  offset: 0, 0
+  index: -1
+minimalpixel
+  rotate: false
+  xy: 640, 0
   size: 128, 64
   orig: 128, 64
   offset: 0, 0
   index: -1
 player
   rotate: false
-  xy: 384, 0
+  xy: 768, 0
   size: 16, 28
   orig: 16, 28
   offset: 0, 0
   index: -1
 playerinfo
   rotate: false
-  xy: 512, 0
+  xy: 896, 0
   size: 65, 24
   orig: 65, 24
   offset: 0, 0

@@ -7,7 +7,6 @@ import com.github.manu.dungeonintroubles.component.PlayerComponent
 import com.github.manu.dungeonintroubles.event.GetCoinEvent
 import com.github.manu.dungeonintroubles.event.MoveEvent
 import com.github.quillraven.fleks.ComponentMapper
-import com.github.quillraven.fleks.Qualifier
 import com.github.quillraven.fleks.World
 import ktx.log.logger
 

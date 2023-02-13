@@ -900,3 +900,10 @@ trap/run
   orig: 23, 23
   offset: 0, 0
   index: 15
+ui_heart_full
+  rotate: false
+  xy: 1916, 202
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1

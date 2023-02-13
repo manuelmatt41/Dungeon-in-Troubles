@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.ExtendViewport
+import com.github.manu.dungeonintroubles.DungeonInTroubles
 import com.github.manu.dungeonintroubles.component.ImageComponent.Companion.ImageComponentListener
 import com.github.manu.dungeonintroubles.component.PhysicComponent.Companion.PhysicComponentListener
 import com.github.manu.dungeonintroubles.component.StateComponent.Companion.StateComponentListener
@@ -18,6 +19,7 @@ import com.github.manu.dungeonintroubles.extension.fire
 import com.github.manu.dungeonintroubles.input.PlayerKeyBoardInput
 import com.github.manu.dungeonintroubles.system.*
 import com.github.manu.dungeonintroubles.system.GenerateMapSystem.Companion.NUMBER_OF_MAPS
+import com.github.manu.dungeonintroubles.ui.disposeSkin
 import com.github.manu.dungeonintroubles.ui.loadSkin
 import com.github.manu.dungeonintroubles.ui.model.GameModel
 import com.github.manu.dungeonintroubles.ui.view.gameView
@@ -29,10 +31,10 @@ import ktx.log.logger
 import ktx.math.vec2
 import ktx.scene2d.actors
 
-class GameScreen : KtxScreen {
-    private val gameStage: Stage = Stage(ExtendViewport(16f, 9f))
-    private val uiStage: Stage = Stage(ExtendViewport(320f, 180f))
-    private val textureAtlas: TextureAtlas = TextureAtlas(Gdx.files.internal("graphics/gameObjects.atlas"))
+class GameScreen(game: DungeonInTroubles) : KtxScreen {
+    private val gameStage: Stage = game.gameStage
+    private val uiStage: Stage = game.uiStage
+    private val textureAtlas = TextureAtlas(Gdx.files.internal("graphics/gameObjects.atlas"))
     private var currentMap: TiledMap? = null
     private val physichWorld = createWorld(vec2(0f, -15f)).apply {
         autoClearForces = false
@@ -72,11 +74,6 @@ class GameScreen : KtxScreen {
 
     init {
         loadSkin()
-    }
-
-    override fun show() {
-        super.show()
-        log.debug { "The game screen is shown" }
 
         eWorld.systems.forEach { system ->
             if (system is EventListener) {
@@ -84,16 +81,39 @@ class GameScreen : KtxScreen {
             }
         }
 
-        currentMap = TmxMapLoader().load(
-            Gdx.files.internal("map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx").path()
-        ) //"map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx"
-        gameStage.fire(MapChangeEvent(currentMap!!))
-
-        PlayerKeyBoardInput(eWorld)
+        PlayerKeyBoardInput(eWorld, gameStage)
 
         uiStage.actors {
             gameView(GameModel(eWorld, gameStage))
         }
+    }
+
+    override fun show() {
+        setMap("map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx")
+    }
+
+    private fun pauseWorld(pause: Boolean) {
+        val mandatorySystems = setOf(
+            AnimationSystem::class,
+            CameraSystem::class,
+            RenderSystem::class,
+            DebugSystem::class
+        )
+        eWorld.systems
+            .filter { it::class !in mandatorySystems }
+            .forEach { it.enabled = !pause }
+
+    }
+
+    override fun pause() = pauseWorld(true)
+
+    override fun resume() = pauseWorld(false)
+
+    private fun setMap(path: String) {
+        currentMap?.disposeSafely()
+        val newMap = TmxMapLoader().load(Gdx.files.internal(path).path())
+        currentMap = newMap
+        gameStage.fire(MapChangeEvent(newMap))
     }
 
     override fun render(delta: Float) {
@@ -113,6 +133,7 @@ class GameScreen : KtxScreen {
         eWorld.dispose()
         currentMap.disposeSafely()
         physichWorld.disposeSafely()
+        disposeSkin()
     }
 
     companion object {

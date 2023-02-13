@@ -4,24 +4,7 @@
             "outputFile": "com.github.manu.dungeonintroubles.android-mergeReleaseResources-3:/values/values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Manu\\Documents\\repositories\\Dungeon-in-Troubles\\android\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "57",
-                        "endColumns": "54",
-                        "endOffsets": "107"
-                    },
-                    "to": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "54",
-                        "endOffsets": "105"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Manu\\Documents\\repositories\\Dungeon-in-Troubles\\android\\res\\values\\styles.xml",
+                    "source": "C:\\Users\\manue\\Documents\\repositories\\Dungeon-in-Troubles\\android\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",
@@ -37,6 +20,23 @@
                         "endLines": "10",
                         "endColumns": "12",
                         "endOffsets": "568"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\manue\\Documents\\repositories\\Dungeon-in-Troubles\\android\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "54",
+                        "endOffsets": "107"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "54",
+                        "endOffsets": "105"
                     }
                 }
             ]

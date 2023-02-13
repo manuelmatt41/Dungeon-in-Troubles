@@ -17,7 +17,10 @@ enum class Drawables(
     PLAYER("player"),
     PLAYER_INFO("playerinfo"),
     BACKGROUND_COIN("bgdCoin"),
-    BACKGROUND_DISTANCE("bgdDistance")
+    BACKGROUND_DISTANCE("bgdDistance"),
+    BUTTON_UNPRESSED("button_unpressed"),
+    BUTTON_PRESSED("button_pressed"),
+    BUTTON_DISSAPEAR("button_dissapear")
 }
 operator fun Skin.get(drawable: Drawables): Drawable = this.getDrawable(drawable.atlasKey)
 
@@ -51,7 +54,7 @@ fun loadSkin() {
 
         label(Labels.DISTANCE.skinKey) {
             font = skin[Fonts.DEFAULT]
-            background = skin[Drawables.BACKGROUND_COIN].apply {
+            background = skin[Drawables.BACKGROUND_DISTANCE].apply {
                 leftWidth = 2f
                 rightWidth = 2f
                 topHeight = 4f

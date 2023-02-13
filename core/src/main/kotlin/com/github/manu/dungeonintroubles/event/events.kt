@@ -15,3 +15,5 @@ class DeadSoundEvent() : Event() //TODO Update de class
 class SpawnLayerObjectsEvent(val layerName: String, val map: TiledMap, val location: Vector2) : Event()
 class SpawnProjectilesEvent(val numberOfProjectiles: Int = 0) : Event()
 class MoveEvent(val model: AnimationModel, val entity: Entity? = null) : Event()
+class GamePauseEvent() : Event()
+class GameResumeEvent() : Event()

@@ -1,10 +1,15 @@
 package com.github.manu.dungeonintroubles.input
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Input.Keys.P
+import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.component.JumpComponent
 import com.github.manu.dungeonintroubles.component.MoveComponent
 import com.github.manu.dungeonintroubles.component.PlayerComponent
 import com.github.manu.dungeonintroubles.component.SpawnComponent
+import com.github.manu.dungeonintroubles.event.GamePauseEvent
+import com.github.manu.dungeonintroubles.event.GameResumeEvent
+import com.github.manu.dungeonintroubles.extension.fire
 import com.github.quillraven.fleks.ComponentMapper
 import com.github.quillraven.fleks.NoneOf
 import com.github.quillraven.fleks.World
@@ -13,11 +18,13 @@ import ktx.log.logger
 
 class PlayerKeyBoardInput(
     world: World,
+    private val gameStage: Stage,
     private val jumpCmps: ComponentMapper<JumpComponent> = world.mapper(),
 ) : KtxInputAdapter {
 
     private var playerSin = 0f
     private val playerEntities = world.family(allOf = arrayOf(PlayerComponent::class), noneOf = arrayOf(SpawnComponent::class))
+    private var paused = false
 
     init {
         Gdx.input.inputProcessor = this
@@ -43,6 +50,14 @@ class PlayerKeyBoardInput(
         playerSin = 0f
         updatePlayerMovement()
         return true
+    }
+
+    override fun keyDown(keycode: Int): Boolean {
+        if (keycode == P) {
+            paused = !paused
+            gameStage.fire(if (paused) GamePauseEvent() else GameResumeEvent())
+        }
+        return true;
     }
 
     companion object {
