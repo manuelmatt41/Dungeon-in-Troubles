@@ -211,7 +211,11 @@ class PhysicSystem(
         val collisionAWithNpcs = entityA in playerCmps && entityB in npcCmps
         val collisionBWithNpcs = entityB in playerCmps && entityA in npcCmps
 
-        contact.isEnabled = (!collisionAWithFireball && !collisionBWithFireball) && (!collisionAWithNpcs && !collisionBWithNpcs)
+        val collisionNpcAWithNpcs = entityA in npcCmps && entityB in npcCmps
+        val collisionNpcBWithNpcs = entityB in npcCmps && entityA in npcCmps
+
+        contact.isEnabled =
+            (!collisionAWithFireball && !collisionBWithFireball) && (!collisionAWithNpcs && !collisionBWithNpcs) && (!collisionNpcAWithNpcs && !collisionNpcBWithNpcs)
     }
 
     override fun postSolve(contact: Contact, impulse: ContactImpulse) {

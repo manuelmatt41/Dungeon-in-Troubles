@@ -20,7 +20,7 @@ import ktx.assets.disposeSafely
 
 class DungeonInTroubles : KtxGame<KtxScreen>(), EventListener {
     private val batch: Batch by lazy { SpriteBatch() }
-    val gameStage by lazy { Stage(ExtendViewport(16f, 9f), batch) }
+    val gameStage by lazy { Stage(ExtendViewport(16f, 9f)) }
     val uiStage by lazy { Stage(ExtendViewport(320f, 180f), batch) }
     private var paused = false
 
@@ -31,8 +31,8 @@ class DungeonInTroubles : KtxGame<KtxScreen>(), EventListener {
 
         addScreen(GameScreen(this))
         addScreen(UiScreen())
-//        setScreen<GameScreen>()
-        setScreen<UiScreen>()
+        setScreen<GameScreen>()
+//        setScreen<UiScreen>()
     }
 
     override fun resize(width: Int, height: Int) {
