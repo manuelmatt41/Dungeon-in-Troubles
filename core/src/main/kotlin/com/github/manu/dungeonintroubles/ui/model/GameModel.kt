@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.component.PlayerComponent
 import com.github.manu.dungeonintroubles.event.GetCoinEvent
 import com.github.manu.dungeonintroubles.event.MoveEvent
+import com.github.manu.dungeonintroubles.system.PhysicSystem
 import com.github.quillraven.fleks.ComponentMapper
 import com.github.quillraven.fleks.World
 import ktx.log.logger
@@ -21,7 +22,10 @@ class GameModel(
     var playerDistance by propertyNotify(0f)
 
     init {
+//        gameStage.root.listeners.forEach { log.debug { "${it::class}" }}
         gameStage.addListener(this)
+//        log.debug { "" }
+//        gameStage.root.listeners.forEach { log.debug { "${it::class}" }}
     }
 
     override fun handle(event: Event): Boolean {
@@ -36,7 +40,7 @@ class GameModel(
                     false
                 }
 
-                log.debug { "Get Coin" }
+//                log.debug { "Get Coin" }
                 playerCoins = playerCmps[event.entity].coins
                 true
             }
@@ -51,7 +55,7 @@ class GameModel(
                     false
                 }
 
-                log.debug { "Move" }
+//                log.debug { "Move" }
                 playerDistance = playerCmps[event.entity].meter
                 true
             }

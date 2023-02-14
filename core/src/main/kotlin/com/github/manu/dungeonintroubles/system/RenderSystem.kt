@@ -11,9 +11,12 @@ import com.badlogic.gdx.maps.tiled.tiles.AnimatedTiledMapTile
 import com.badlogic.gdx.scenes.scene2d.Event
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
+import com.github.manu.dungeonintroubles.DungeonInTroubles
 import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.component.ImageComponent
+import com.github.manu.dungeonintroubles.event.GamePauseEvent
 import com.github.manu.dungeonintroubles.event.MapChangeEvent
+import com.github.manu.dungeonintroubles.screen.GameScreen
 import com.github.quillraven.fleks.*
 import ktx.graphics.use
 import ktx.log.logger
@@ -75,6 +78,7 @@ class RenderSystem(
             act(deltaTime)
             draw()
         }
+
 
     }
 

@@ -10,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.component.*
 import com.github.manu.dungeonintroubles.event.CrossPortalSoundEvent
-import com.github.manu.dungeonintroubles.event.DeadSoundEvent
 import com.github.manu.dungeonintroubles.event.MapChangeEvent
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.quillraven.fleks.*
@@ -39,10 +38,6 @@ class GenerateMapSystem(
 
                     changeMap(entity)
                 }
-
-                if (entity in despaswnCmps) {
-                    changeMap()
-                }
             }
         }
     }
@@ -52,7 +47,6 @@ class GenerateMapSystem(
 
         val nextMap =
             TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx").path())
-        val trapMap = TmxMapLoader().load(Gdx.files.internal("map/traps.tmx").path())
 
         var playerCmp = if (playerEntity == null) PlayerComponent() else  playerCmps[playerEntity]
         gameStage.fire(MapChangeEvent(nextMap,playerCmp))

@@ -7,9 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable
 import ktx.assets.disposeSafely
 import ktx.scene2d.Scene2DSkin
-import ktx.style.label
-import ktx.style.set
-import ktx.style.skin
+import ktx.style.*
 
 enum class Drawables(
     val atlasKey: String
@@ -25,7 +23,13 @@ enum class Drawables(
 operator fun Skin.get(drawable: Drawables): Drawable = this.getDrawable(drawable.atlasKey)
 
 enum class Labels {
-    COIN, DISTANCE;
+    DEFAULT;
+
+    val skinKey = this.name.lowercase()
+}
+
+enum class Buttons {
+    DEFAULT;
 
     val skinKey = this.name.lowercase()
 }
@@ -52,22 +56,19 @@ fun loadSkin() {
             }
         }
 
-        label(Labels.DISTANCE.skinKey) {
-            font = skin[Fonts.DEFAULT]
-            background = skin[Drawables.BACKGROUND_DISTANCE].apply {
-                leftWidth = 2f
-                rightWidth = 2f
-                topHeight = 4f
-            }
-        }
-
-        label(Labels.COIN.skinKey) {
+        label(Labels.DEFAULT.skinKey) {
             font = skin[Fonts.DEFAULT]
             background = skin[Drawables.BACKGROUND_COIN].apply {
                 leftWidth = 2f
                 rightWidth = 2f
                 topHeight = 4f
             }
+        }
+
+        textButton(Buttons.DEFAULT.skinKey) {
+            font = skin[Fonts.DEFAULT]
+            up = skin[Drawables.BUTTON_UNPRESSED]
+            down = skin[Drawables.BUTTON_PRESSED]
         }
     }
 

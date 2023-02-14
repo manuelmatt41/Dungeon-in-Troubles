@@ -1,38 +1,38 @@
 package com.github.manu.dungeonintroubles
 
 import com.badlogic.gdx.Application
-import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.scenes.scene2d.Event
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
+import com.badlogic.gdx.utils.I18NBundle
 import com.badlogic.gdx.utils.viewport.ExtendViewport
-import com.github.manu.dungeonintroubles.event.GamePauseEvent
-import com.github.manu.dungeonintroubles.event.GameResumeEvent
+import com.github.manu.dungeonintroubles.event.*
 import com.github.manu.dungeonintroubles.screen.GameScreen
-import com.github.manu.dungeonintroubles.screen.debug.UiScreen
+import com.github.manu.dungeonintroubles.screen.MenuScreen
 import ktx.app.KtxGame
 import ktx.app.KtxScreen
 import ktx.app.clearScreen
 import ktx.assets.disposeSafely
 
-class DungeonInTroubles : KtxGame<KtxScreen>(), EventListener {
+class DungeonInTroubles : KtxGame<KtxScreen>() {
     private val batch: Batch by lazy { SpriteBatch() }
     val gameStage by lazy { Stage(ExtendViewport(16f, 9f)) }
     val uiStage by lazy { Stage(ExtendViewport(320f, 180f), batch) }
-    private var paused = false
+    lateinit var bundle: I18NBundle
+    var paused = false
+    lateinit var menuScreen : MenuScreen
 
     override fun create() {
         Gdx.app.logLevel = Application.LOG_DEBUG
 
-        gameStage.addListener(this)
+        menuScreen = MenuScreen(this)
 
-        addScreen(GameScreen(this))
-        addScreen(UiScreen())
-        setScreen<GameScreen>()
-//        setScreen<UiScreen>()
+        bundle = I18NBundle.createBundle(Gdx.files.internal("languages/MyBundle"))
+        addScreen(menuScreen)
+        setScreen<MenuScreen>()
     }
 
     override fun resize(width: Int, height: Int) {
@@ -56,23 +56,7 @@ class DungeonInTroubles : KtxGame<KtxScreen>(), EventListener {
         batch.disposeSafely()
     }
 
-    override fun handle(event: Event): Boolean {
-        when (event) {
-            is GamePauseEvent -> {
-                paused = true
-                currentScreen.pause()
-            }
 
-            is GameResumeEvent -> {
-                paused = false
-                currentScreen.resume()
-            }
-
-            else -> return false
-        }
-
-        return true
-    }
 
     companion object {
         // 16px = 1m in our physic world

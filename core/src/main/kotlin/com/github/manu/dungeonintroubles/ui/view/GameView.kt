@@ -27,12 +27,12 @@ class GameView(
         }
 
         model.onPropertyChange(GameModel::playerCoins) { coins ->
-            log.debug { "Property coin changed" }
+//            log.debug { "Property coin changed" }
             playerInfo.getCoin(coins)
         }
 
         model.onPropertyChange(GameModel::playerDistance) { distance ->
-            log.debug { "Property coin changed" }
+//            log.debug { "Property coin changed" }
             playerInfo.move(distance)
         }
     }

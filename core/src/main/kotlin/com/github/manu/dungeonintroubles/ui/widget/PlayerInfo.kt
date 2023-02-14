@@ -30,11 +30,11 @@ class PlayerInfo(
             setScaling(Scaling.contain)
         }
 
-        labelDistance = label("", Labels.DISTANCE.skinKey).apply {
+        labelDistance = label("", Labels.DEFAULT.skinKey).apply {
             setPosition(28f, 16f)
         }
 
-        labelCoins = label("", Labels.COIN.skinKey).apply {
+        labelCoins = label("", Labels.DEFAULT.skinKey).apply {
             setPosition(35f, 5f)
         }
 

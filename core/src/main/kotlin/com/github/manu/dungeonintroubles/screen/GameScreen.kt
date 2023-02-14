@@ -1,20 +1,21 @@
 package com.github.manu.dungeonintroubles.screen
 
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.g2d.ParticleEffect
-import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TmxMapLoader
 import com.badlogic.gdx.math.MathUtils
+import com.badlogic.gdx.scenes.scene2d.Event
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
-import com.badlogic.gdx.utils.viewport.ExtendViewport
 import com.github.manu.dungeonintroubles.DungeonInTroubles
 import com.github.manu.dungeonintroubles.component.ImageComponent.Companion.ImageComponentListener
 import com.github.manu.dungeonintroubles.component.PhysicComponent.Companion.PhysicComponentListener
 import com.github.manu.dungeonintroubles.component.StateComponent.Companion.StateComponentListener
+import com.github.manu.dungeonintroubles.event.GamePauseEvent
+import com.github.manu.dungeonintroubles.event.GameResumeEvent
 import com.github.manu.dungeonintroubles.event.MapChangeEvent
+import com.github.manu.dungeonintroubles.event.SetMenuScreenEvent
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.manu.dungeonintroubles.input.PlayerKeyBoardInput
 import com.github.manu.dungeonintroubles.system.*
@@ -27,11 +28,12 @@ import com.github.quillraven.fleks.world
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
 import ktx.box2d.createWorld
+import ktx.collections.contains
 import ktx.log.logger
 import ktx.math.vec2
 import ktx.scene2d.actors
 
-class GameScreen(game: DungeonInTroubles) : KtxScreen {
+class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
     private val gameStage: Stage = game.gameStage
     private val uiStage: Stage = game.uiStage
     private val textureAtlas = TextureAtlas(Gdx.files.internal("graphics/gameObjects.atlas"))
@@ -80,12 +82,14 @@ class GameScreen(game: DungeonInTroubles) : KtxScreen {
                 gameStage.addListener(system)
             }
         }
-
+//        gameStage.root.listeners.forEach {log.debug { "${it::class}" }}
         PlayerKeyBoardInput(eWorld, gameStage)
 
         uiStage.actors {
             gameView(GameModel(eWorld, gameStage))
         }
+
+        gameStage.addListener(this)
     }
 
     override fun show() {
@@ -118,7 +122,12 @@ class GameScreen(game: DungeonInTroubles) : KtxScreen {
 
     override fun render(delta: Float) {
         val dt = delta.coerceAtMost(0.25f)
+//        log.debug { "a" }
+//        gameStage.root.listeners.forEach { log.debug { "${it::class}" } }
         eWorld.update(dt)
+//        log.debug { "b" }
+//        gameStage.root.listeners.forEach { log.debug { "${it::class}" } }
+
     }
 
     override fun resize(width: Int, height: Int) {
@@ -127,8 +136,6 @@ class GameScreen(game: DungeonInTroubles) : KtxScreen {
     }
 
     override fun dispose() {
-        gameStage.disposeSafely()
-        uiStage.disposeSafely()
         textureAtlas.disposeSafely()
         eWorld.dispose()
         currentMap.disposeSafely()
@@ -139,4 +146,36 @@ class GameScreen(game: DungeonInTroubles) : KtxScreen {
     companion object {
         private val log = logger<GameScreen>()
     }
+
+    override fun handle(event: Event): Boolean {
+        when (event) {
+            is GamePauseEvent -> {
+                game.paused = true
+                pause()
+            }
+
+            is GameResumeEvent -> {
+                game.paused = false
+                resume()
+            }
+
+
+
+            is SetMenuScreenEvent -> {
+                gameStage.clear()
+                uiStage.clear()
+
+                game.addScreen(MenuScreen(game))
+                game.setScreen<MenuScreen>()
+
+                game.removeScreen<GameScreen>()
+                super.hide()
+                this.dispose()
+            }
+            else -> return false
+        }
+
+        return true
+    }
+
 }

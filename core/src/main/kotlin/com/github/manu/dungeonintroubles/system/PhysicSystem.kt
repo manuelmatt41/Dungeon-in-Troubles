@@ -7,16 +7,14 @@ import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.physics.box2d.*
 import com.badlogic.gdx.physics.box2d.World
 import com.badlogic.gdx.scenes.scene2d.Stage
+import com.github.manu.dungeonintroubles.DungeonInTroubles
 import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.component.*
-import com.github.manu.dungeonintroubles.event.DeadSoundEvent
-import com.github.manu.dungeonintroubles.event.GetCoinEvent
-import com.github.manu.dungeonintroubles.event.SpawnLayerObjectsEvent
-import com.github.manu.dungeonintroubles.event.TrapSoundCollisionEvent
+import com.github.manu.dungeonintroubles.event.*
 import com.github.manu.dungeonintroubles.extension.entity
 import com.github.manu.dungeonintroubles.extension.fire
+import com.github.manu.dungeonintroubles.screen.GameScreen
 import com.github.quillraven.fleks.*
-import ktx.log.debug
 import ktx.log.logger
 import ktx.math.component1
 import ktx.math.component2
@@ -115,6 +113,7 @@ class PhysicSystem(
                 configureEntity(entityB) {
                     despawnCmps.add(it)
                 }
+
                 Gdx.input.vibrate(100)
             }
 
