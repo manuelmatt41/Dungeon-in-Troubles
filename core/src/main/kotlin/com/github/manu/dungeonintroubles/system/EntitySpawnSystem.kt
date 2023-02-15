@@ -16,9 +16,11 @@ import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.actor.FlipImage
 import com.github.manu.dungeonintroubles.component.*
 import com.github.manu.dungeonintroubles.component.AnimationModel.*
+import com.github.manu.dungeonintroubles.event.GetCoinEvent
 import com.github.manu.dungeonintroubles.event.MapChangeEvent
 import com.github.manu.dungeonintroubles.event.SpawnLayerObjectsEvent
 import com.github.manu.dungeonintroubles.event.SpawnProjectilesEvent
+import com.github.manu.dungeonintroubles.extension.fire
 import com.github.manu.dungeonintroubles.extension.physicCmpFromImage
 import com.github.manu.dungeonintroubles.extension.physicCmpFromShape2D
 import com.github.quillraven.fleks.*

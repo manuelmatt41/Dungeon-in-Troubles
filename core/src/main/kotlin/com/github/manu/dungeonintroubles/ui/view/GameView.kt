@@ -4,6 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.utils.I18NBundle
+import com.github.manu.dungeonintroubles.component.PlayerComponent
 import com.github.manu.dungeonintroubles.event.GameResumeEvent
 import com.github.manu.dungeonintroubles.event.SetMenuScreenEvent
 import com.github.manu.dungeonintroubles.extension.fire
@@ -30,7 +31,6 @@ class GameView(
     init {
         // UI
         setFillParent(true)
-
         playerInfo = playerInfo(Drawables.PLAYER, skin) {
             this.alpha = 1f
             it.expand().top().left().row()
@@ -53,7 +53,7 @@ class GameView(
 
             textButton(text = bundle[MenuViewBundle.BTEXIT.bundle], style = Buttons.DEFAULT.skinKey) {
                 onClick {
-                    stage.fire(SetMenuScreenEvent())
+                    stage.fire(SetMenuScreenEvent(PlayerComponent(model.playerCoins, model.playerDistance)))
                 }
                 it.padBottom(10f)
                 it.center().row()
@@ -63,7 +63,7 @@ class GameView(
         }
 
         model.onPropertyChange(GameModel::playerCoins) { coins ->
-//            log.debug { "Property coin changed" }
+            log.debug { "Property coin changed" }
             playerInfo.getCoin(coins)
         }
 

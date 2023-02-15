@@ -27,5 +27,5 @@ class PropertyNotifier<T : Any>(initialValue: T) {
         thisRef.notify(property, value)
     }
 }
-
 inline fun <reified T : Any> propertyNotify(initialValue: T): PropertyNotifier<T> = PropertyNotifier(initialValue)
+

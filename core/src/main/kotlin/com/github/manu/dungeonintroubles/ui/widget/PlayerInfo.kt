@@ -57,7 +57,7 @@ class PlayerInfo(
     fun getCoin(coins: Int) = labelCoins.setText(coins.toString())
 
 
-    fun move(distance: Float) = labelDistance.setText(String.format("%.3f m", distance))
+    fun move(distance: Float) = labelDistance.setText(String.format("%.2f m", distance))
     companion object {
         private val log = logger<PlayerInfo>()
     }

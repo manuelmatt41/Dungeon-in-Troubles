@@ -3,6 +3,7 @@ package com.github.manu.dungeonintroubles.system
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.component.*
+import com.github.manu.dungeonintroubles.event.PausePopUpEvent
 import com.github.manu.dungeonintroubles.event.SetMenuScreenEvent
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.quillraven.fleks.*
@@ -21,14 +22,12 @@ class DespawnSystem(
     private var locationX: Float = 0f;
     override fun onTickEntity(entity: Entity) {
         if (entity in despawnCmps) {
-            var enti = entity
+            if (entity in playerCmps) {
+                gameStage.fire(PausePopUpEvent(playerCmps[entity]))
+            }
+
+
             world.remove(entity)
-
-//            if (enti in playerCmps) {
-//                log.debug { "$enti" }
-//                gameStage.fire(SetMenuScreenEvent())
-//            }
-
             return
         }
 

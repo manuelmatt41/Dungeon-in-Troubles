@@ -10,7 +10,7 @@ import ktx.log.logger
 
 @AllOf([MoveComponent::class, PhysicComponent::class])
 class MoveSystem(
-    @Qualifier("gameStage") private val gameStage: Stage,
+    @Qualifier("uiStage") private val uiStage: Stage,
     private val moveCmps: ComponentMapper<MoveComponent>,
     private val physicsCmps: ComponentMapper<PhysicComponent>,
     private val playerCmps: ComponentMapper<PlayerComponent>,
@@ -32,8 +32,10 @@ class MoveSystem(
 
         when (entity) {
             in playerCmps -> {
-                playerCmps[entity].meter += (moveCmp.speed * deltaTime) * 4f
-                gameStage.fire(MoveEvent(AnimationModel.PLAYER, entity))
+                with((playerCmps[entity])) {
+                    meter += (moveCmp.speed * deltaTime) * 4f
+                    uiStage.fire(MoveEvent(AnimationModel.PLAYER, meter))
+                }
             }
 
             in npcsCmps -> {

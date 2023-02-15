@@ -26,6 +26,7 @@ import ktx.tiled.width
 class PhysicSystem(
     private val physicWorld: World,
     @Qualifier("gameStage") private val gameStage: Stage,
+    @Qualifier("uiStage") private val uiStage: Stage,
     private val imgCmps: ComponentMapper<ImageComponent>,
     private val physicsCmps: ComponentMapper<PhysicComponent>,
     private val playerCmps: ComponentMapper<PlayerComponent>,
@@ -105,7 +106,6 @@ class PhysicSystem(
                     despawnCmps.add(it)
                 }
                 Gdx.input.vibrate(100)
-                gameStage.fire(PausePopUpEvent())
             }
 
             collisionBWithTrap || collisionBWithFireball -> {
@@ -116,32 +116,29 @@ class PhysicSystem(
                 }
 
                 Gdx.input.vibrate(100)
-                gameStage.fire(PausePopUpEvent())
             }
 
             collisionAWithCoin -> {
                 with(playerCmps[entityA]) {
                     coins++;
 //                    debug { "Coins: $coins" }
+                    uiStage.fire(GetCoinEvent(AnimationModel.COIN, coins))
                 }
 
                 configureEntity(entityB) {
                     despawnCmps.add(it)
                 }
-
-                gameStage.fire(GetCoinEvent(AnimationModel.COIN, entityA))
             }
 
             collisionBWithCoin -> {
                 with(playerCmps[entityB]) {
                     coins++;
+                    uiStage.fire(GetCoinEvent(AnimationModel.COIN, coins))
                 }
 
                 configureEntity(entityA) {
                     despawnCmps.add(it)
                 }
-
-                gameStage.fire(GetCoinEvent(AnimationModel.COIN, entityB))
             }
 
             collisionAWithSpawnPoint -> {

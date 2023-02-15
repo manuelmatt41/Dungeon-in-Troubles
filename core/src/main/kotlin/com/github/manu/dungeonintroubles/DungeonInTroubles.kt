@@ -2,31 +2,29 @@ package com.github.manu.dungeonintroubles
 
 import com.badlogic.gdx.Application
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Preferences
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import com.badlogic.gdx.scenes.scene2d.Event
-import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.I18NBundle
 import com.badlogic.gdx.utils.viewport.ExtendViewport
-import com.github.manu.dungeonintroubles.event.*
-import com.github.manu.dungeonintroubles.screen.GameScreen
 import com.github.manu.dungeonintroubles.screen.MenuScreen
 import com.github.manu.dungeonintroubles.ui.disposeSkin
 import ktx.app.KtxGame
 import ktx.app.KtxScreen
-import ktx.app.clearScreen
 import ktx.assets.disposeSafely
 
 class DungeonInTroubles : KtxGame<KtxScreen>() {
     private val batch: Batch by lazy { SpriteBatch() }
     val gameStage by lazy { Stage(ExtendViewport(16f, 9f)) }
     val uiStage by lazy { Stage(ExtendViewport(320f, 180f), batch) }
+    lateinit var prefs: Preferences
     lateinit var bundle: I18NBundle
     var paused = false
 
     override fun create() {
         Gdx.app.logLevel = Application.LOG_DEBUG
+        prefs = Gdx.app.getPreferences("preferences")
         bundle = I18NBundle.createBundle(Gdx.files.internal("languages/MyBundle"))
         addScreen(MenuScreen(this))
         setScreen<MenuScreen>()
@@ -44,6 +42,7 @@ class DungeonInTroubles : KtxGame<KtxScreen>() {
         uiStage.disposeSafely()
         batch.disposeSafely()
         disposeSkin()
+        prefs.flush()
     }
 
 
