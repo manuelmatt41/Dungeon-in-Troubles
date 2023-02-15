@@ -2,7 +2,10 @@ package com.github.manu.dungeonintroubles.component
 
 import com.badlogic.gdx.physics.box2d.Body
 import com.github.quillraven.fleks.ComponentListener
+import com.github.quillraven.fleks.ComponentMapper
 import com.github.quillraven.fleks.Entity
+import com.github.quillraven.fleks.World
+import ktx.log.logger
 import ktx.math.vec2
 
 class PhysicComponent {
@@ -14,8 +17,12 @@ class PhysicComponent {
     lateinit var body: Body
 
     companion object {
+        private val log = logger<PhysicComponent>()
         val TMP_VEC = vec2()
-        class PhysicComponentListener : ComponentListener<PhysicComponent> {
+
+        class PhysicComponentListener(
+        ) : ComponentListener<PhysicComponent> {
+
             override fun onComponentAdded(entity: Entity, component: PhysicComponent) {
                 component.body.userData = entity
             }
@@ -24,6 +31,7 @@ class PhysicComponent {
                 val body = component.body
 
                 body.world.destroyBody(body)
+
                 body.userData = null
             }
 

@@ -105,6 +105,7 @@ class PhysicSystem(
                     despawnCmps.add(it)
                 }
                 Gdx.input.vibrate(100)
+                gameStage.fire(PausePopUpEvent())
             }
 
             collisionBWithTrap || collisionBWithFireball -> {
@@ -115,6 +116,7 @@ class PhysicSystem(
                 }
 
                 Gdx.input.vibrate(100)
+                gameStage.fire(PausePopUpEvent())
             }
 
             collisionAWithCoin -> {

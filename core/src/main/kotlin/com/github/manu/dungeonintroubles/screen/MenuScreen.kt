@@ -23,7 +23,11 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
     init {
         loadSkin()
         Gdx.input.inputProcessor = uiStage
-        gameStage.addListener(this)
+        uiStage.addListener(this)
+        uiStage.actors {
+            menuView(bundle = game.bundle, stage = uiStage)
+        }
+        uiStage.isDebugAll = true
     }
 
     override fun resize(width: Int, height: Int) {
@@ -31,11 +35,6 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
     }
 
     override fun show() {
-        uiStage.clear()
-        uiStage.actors {
-            menuView(bundle = game.bundle, stage = gameStage)
-        }
-        uiStage.isDebugAll = true
     }
 
     override fun render(delta: Float) {
@@ -48,9 +47,10 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
         uiStage.draw()
     }
 
+
+
     override fun dispose() {
-        uiStage.disposeSafely()
-        disposeSkin()
+        super.dispose()
     }
 
     override fun handle(event: Event?): Boolean {
@@ -63,6 +63,8 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
                 game.setScreen<GameScreen>()
 
                 game.removeScreen<MenuScreen>()
+                super.hide()
+                this.dispose()
             }
 
             is ExitGameEvent -> {

@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport
 import com.github.manu.dungeonintroubles.event.*
 import com.github.manu.dungeonintroubles.screen.GameScreen
 import com.github.manu.dungeonintroubles.screen.MenuScreen
+import com.github.manu.dungeonintroubles.ui.disposeSkin
 import ktx.app.KtxGame
 import ktx.app.KtxScreen
 import ktx.app.clearScreen
@@ -23,15 +24,11 @@ class DungeonInTroubles : KtxGame<KtxScreen>() {
     val uiStage by lazy { Stage(ExtendViewport(320f, 180f), batch) }
     lateinit var bundle: I18NBundle
     var paused = false
-    lateinit var menuScreen : MenuScreen
 
     override fun create() {
         Gdx.app.logLevel = Application.LOG_DEBUG
-
-        menuScreen = MenuScreen(this)
-
         bundle = I18NBundle.createBundle(Gdx.files.internal("languages/MyBundle"))
-        addScreen(menuScreen)
+        addScreen(MenuScreen(this))
         setScreen<MenuScreen>()
     }
 
@@ -41,19 +38,12 @@ class DungeonInTroubles : KtxGame<KtxScreen>() {
         uiStage.viewport.update(width, height, true)
     }
 
-    override fun render() {
-        clearScreen(0f, 0f, 0f, 1f)
-        // dt is set to zero during pause to
-        // stop animations
-        val dt = if (paused) 0f else Gdx.graphics.deltaTime
-        currentScreen.render(dt)
-    }
-
     override fun dispose() {
         super.dispose()
         gameStage.disposeSafely()
         uiStage.disposeSafely()
         batch.disposeSafely()
+        disposeSkin()
     }
 
 

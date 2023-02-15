@@ -6,6 +6,7 @@ import com.github.manu.dungeonintroubles.ui.get
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.badlogic.gdx.utils.I18NBundle
+import com.github.manu.dungeonintroubles.event.ExitGameEvent
 import com.github.manu.dungeonintroubles.event.SetGameEvent
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.manu.dungeonintroubles.ui.Buttons
@@ -65,6 +66,10 @@ class MenuView(
 
         btNewGame.onClick {
             stage.fire(SetGameEvent())
+        }
+
+        btExit.onClick {
+            stage.fire(ExitGameEvent())
         }
     }
 

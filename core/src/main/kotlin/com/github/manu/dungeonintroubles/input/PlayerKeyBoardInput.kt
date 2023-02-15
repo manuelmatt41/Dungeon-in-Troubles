@@ -4,14 +4,12 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input.Keys.P
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.component.JumpComponent
-import com.github.manu.dungeonintroubles.component.MoveComponent
 import com.github.manu.dungeonintroubles.component.PlayerComponent
 import com.github.manu.dungeonintroubles.component.SpawnComponent
-import com.github.manu.dungeonintroubles.event.GamePauseEvent
 import com.github.manu.dungeonintroubles.event.GameResumeEvent
+import com.github.manu.dungeonintroubles.event.PausePopUpEvent
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.quillraven.fleks.ComponentMapper
-import com.github.quillraven.fleks.NoneOf
 import com.github.quillraven.fleks.World
 import ktx.app.KtxInputAdapter
 import ktx.log.logger
@@ -54,8 +52,7 @@ class PlayerKeyBoardInput(
 
     override fun keyDown(keycode: Int): Boolean {
         if (keycode == P) {
-            paused = !paused
-            gameStage.fire(if (paused) GamePauseEvent() else GameResumeEvent())
+            gameStage.fire(PausePopUpEvent())
         }
         return true;
     }

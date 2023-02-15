@@ -21,17 +21,18 @@ class DespawnSystem(
     private var locationX: Float = 0f;
     override fun onTickEntity(entity: Entity) {
         if (entity in despawnCmps) {
+            var enti = entity
             world.remove(entity)
 
-            if (entity in playerCmps) {
-                world.removeAll()
-                gameStage.fire(SetMenuScreenEvent())
-            }
+//            if (enti in playerCmps) {
+//                log.debug { "$enti" }
+//                gameStage.fire(SetMenuScreenEvent())
+//            }
 
             return
         }
 
-        if (entity in playerCmps ) {
+        if (entity in playerCmps) {
             locationX = imgCmps[entity].image.x - gameStage.camera.viewportWidth
             return
         }
@@ -45,7 +46,7 @@ class DespawnSystem(
         }
     }
 
-    companion object  {
+    companion object {
         private val log = logger<DespawnSystem>()
     }
 }
