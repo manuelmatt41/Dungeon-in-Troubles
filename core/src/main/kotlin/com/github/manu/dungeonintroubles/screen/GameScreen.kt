@@ -10,9 +10,12 @@ import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.Touchable
 import com.github.manu.dungeonintroubles.DungeonInTroubles
+import com.github.manu.dungeonintroubles.component.AlertProjectileComponent
+import com.github.manu.dungeonintroubles.component.AlertProjectileComponent.Companion.AlertProjectileComponentListener
 import com.github.manu.dungeonintroubles.component.AnimationModel
 import com.github.manu.dungeonintroubles.component.ImageComponent.Companion.ImageComponentListener
 import com.github.manu.dungeonintroubles.component.PhysicComponent.Companion.PhysicComponentListener
+import com.github.manu.dungeonintroubles.component.PlayerComponent
 import com.github.manu.dungeonintroubles.component.StateComponent.Companion.StateComponentListener
 import com.github.manu.dungeonintroubles.event.*
 import com.github.manu.dungeonintroubles.extension.fire
@@ -55,11 +58,13 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
             add<ImageComponentListener>()
             add<PhysicComponentListener>()
             add<StateComponentListener>()
+            add<AlertProjectileComponentListener>()
         }
 
         systems {
             add<EntitySpawnSystem>()
             add<SpawnProjectilesSystem>()
+            add<AlertProjectileSystem>()
             add<PhysicSystem>()
             add<JumpMoveSystem>()
             add<MoveSystem>()
@@ -95,7 +100,7 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
     }
 
     override fun show() {
-        uiStage.fire(GetCoinEvent(AnimationModel.COIN, prefs.getInteger("coins")))
+        uiStage.fire(GetCoinEvent(prefs.getInteger("coins")))
         setMap("map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx")
     }
 
@@ -120,7 +125,7 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
         currentMap?.disposeSafely()
         val newMap = TmxMapLoader().load(Gdx.files.internal(path).path())
         currentMap = newMap
-        gameStage.fire(MapChangeEvent(newMap))
+        gameStage.fire(MapChangeEvent(newMap, PlayerComponent(prefs.getInteger("coins"))))
     }
 
     override fun render(delta: Float) {

@@ -122,23 +122,26 @@ class PhysicSystem(
                 with(playerCmps[entityA]) {
                     coins++;
 //                    debug { "Coins: $coins" }
-                    uiStage.fire(GetCoinEvent(AnimationModel.COIN, coins))
                 }
 
                 configureEntity(entityB) {
                     despawnCmps.add(it)
                 }
+                uiStage.fire(GetCoinEvent(playerCmps[entityA].coins))
+                gameStage.fire(GetCoinSoundEvent(AnimationModel.COIN))
             }
 
             collisionBWithCoin -> {
                 with(playerCmps[entityB]) {
                     coins++;
-                    uiStage.fire(GetCoinEvent(AnimationModel.COIN, coins))
                 }
 
                 configureEntity(entityA) {
                     despawnCmps.add(it)
                 }
+
+                uiStage.fire(GetCoinEvent(playerCmps[entityB].coins))
+                gameStage.fire(GetCoinSoundEvent(AnimationModel.COIN))
             }
 
             collisionAWithSpawnPoint -> {

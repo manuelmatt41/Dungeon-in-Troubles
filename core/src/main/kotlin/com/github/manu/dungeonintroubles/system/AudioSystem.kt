@@ -48,13 +48,8 @@ class AudioSystem : EventListener, IntervalSystem() {
                 true
             }
 
-            is GetCoinEvent -> {
-                queueSound("audio/sounds/${event.model.atlasKey}.wav")
-                true
-            }
-
-            is TrapSoundCollisionEvent -> {
-                queueSound("audio/sounds/${event.model.atlasKey}.wav")
+            is GetCoinSoundEvent -> {
+                queueSound("audio/sounds/${event.model.atlasKey}.ogg")
                 true
             }
 
@@ -65,12 +60,12 @@ class AudioSystem : EventListener, IntervalSystem() {
             }
 
             is DeadSoundEvent -> {
-                queueSound("audio/sounds/death.wav")
+                queueSound("audio/sounds/death.ogg")
                 true
             }
 
             is SpawnProjectilesEvent -> {
-                queueSound("audio/sounds/fireball.wav")
+                queueSound("audio/sounds/fireball.ogg")
                 true
             }
 

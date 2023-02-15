@@ -27,7 +27,6 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
         uiStage.actors {
             menuView(bundle = game.bundle, stage = uiStage)
         }
-        uiStage.isDebugAll = true
     }
 
     override fun resize(width: Int, height: Int) {
@@ -38,11 +37,6 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
     }
 
     override fun render(delta: Float) {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
-            hide()
-            show()
-        }
-
         uiStage.act()
         uiStage.draw()
     }

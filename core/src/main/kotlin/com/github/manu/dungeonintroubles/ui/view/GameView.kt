@@ -1,6 +1,8 @@
 package com.github.manu.dungeonintroubles.ui.view
 
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.scenes.scene2d.Touchable
+import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.utils.I18NBundle
@@ -10,6 +12,7 @@ import com.github.manu.dungeonintroubles.event.SetMenuScreenEvent
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.manu.dungeonintroubles.ui.Buttons
 import com.github.manu.dungeonintroubles.ui.Drawables
+import com.github.manu.dungeonintroubles.ui.Labels
 import com.github.manu.dungeonintroubles.ui.get
 import com.github.manu.dungeonintroubles.ui.model.GameModel
 import com.github.manu.dungeonintroubles.ui.widget.PlayerInfo
@@ -35,6 +38,7 @@ class GameView(
             this.alpha = 1f
             it.expand().top().left().row()
         }
+
 
         table = table {
             background = skin[Drawables.BACKGROUND_DISTANCE]

@@ -29,6 +29,7 @@ import ktx.box2d.box
 import ktx.log.logger
 import ktx.math.vec2
 import ktx.tiled.*
+import java.util.prefs.Preferences
 
 @AllOf([SpawnComponent::class])
 class EntitySpawnSystem(
@@ -42,7 +43,7 @@ class EntitySpawnSystem(
     private val cachedConfigs = mutableMapOf<EntityType, SpawnConfiguration>()
     private val cachedSizes = mutableMapOf<AnimationModel, Vector2>()
 
-    override fun onTickEntity(entity: Entity) {
+    override fun onTickEntity(entity: Entity) { //TODO Refactor this system to specify all entities to much generic
         with(spawnCmps[entity]) {
             val config = spawnCfg(name)
             val relativeSize = if (config.model != NONE) size(config.model) else this.size
@@ -170,7 +171,10 @@ class EntitySpawnSystem(
                             speed = DEFAULT_SPEED_X
                             cos = -1f
                         }
-                        physicCmp.body.gravityScale = 0f
+
+                        with(physicCmp.body) {
+                            gravityScale = 0f
+                        }
                     }
 
                     else -> gdxError("Non defined entity type $name")
@@ -231,7 +235,7 @@ class EntitySpawnSystem(
 
             EntityType.FIREBALL -> SpawnConfiguration(
                 FIREBALL,
-                physicScaling = vec2(0.4f, 0.4f),
+                physicScaling = vec2(0.1f, 0.1f),
             )
 
             else -> gdxError("Type $type has no SpawnCfg setup.")
