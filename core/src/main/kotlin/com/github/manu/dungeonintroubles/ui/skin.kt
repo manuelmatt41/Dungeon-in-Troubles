@@ -23,7 +23,7 @@ enum class Drawables(
 operator fun Skin.get(drawable: Drawables): Drawable = this.getDrawable(drawable.atlasKey)
 
 enum class Labels {
-    DEFAULT;
+    DEFAULT, TITLE;
 
     val skinKey = this.name.lowercase()
 }
@@ -38,7 +38,8 @@ enum class Fonts(
     val atlasRegionKey: String,
     val scaling: Float,
 ) {
-    DEFAULT("minimalpixel", 0.75f);
+    DEFAULT("minimalpixel", 0.75f),
+    TITLE("minimalpixel", 2f);
 
     val skinKey = "Font_${this.name.lowercase()}"
     val fontPath = "ui/${this.atlasRegionKey}.fnt"
@@ -58,11 +59,21 @@ fun loadSkin() {
 
         label(Labels.DEFAULT.skinKey) {
             font = skin[Fonts.DEFAULT]
-            background = skin[Drawables.BACKGROUND_COIN].apply {
-                leftWidth = 2f
-                rightWidth = 2f
-                topHeight = 4f
-            }
+//            background = skin[Drawables.BACKGROUND_DISTANCE].apply {
+//                leftWidth = 2f
+//                rightWidth = 2f
+//                topHeight = 4f
+//            }
+        }
+
+        label(Labels.TITLE.skinKey) {
+            font = skin[Fonts.TITLE]
+
+//            background = skin[Drawables.BACKGROUND_DISTANCE].apply {
+//                leftWidth = 2f
+//                rightWidth = 2f
+//                topHeight = 4f
+//            }
         }
 
         textButton(Buttons.DEFAULT.skinKey) {

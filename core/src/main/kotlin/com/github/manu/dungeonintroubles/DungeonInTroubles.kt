@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Preferences
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.I18NBundle
 import com.badlogic.gdx.utils.viewport.ExtendViewport
@@ -20,12 +21,14 @@ class DungeonInTroubles : KtxGame<KtxScreen>() {
     val uiStage by lazy { Stage(ExtendViewport(320f, 180f), batch) }
     lateinit var prefs: Preferences
     lateinit var bundle: I18NBundle
+    lateinit var textureAtlas: TextureAtlas
     var paused = false
 
     override fun create() {
         Gdx.app.logLevel = Application.LOG_DEBUG
         prefs = Gdx.app.getPreferences("preferences")
         bundle = I18NBundle.createBundle(Gdx.files.internal("languages/MyBundle"))
+        textureAtlas = TextureAtlas(Gdx.files.internal("graphics/gameObjects.atlas"))
         addScreen(MenuScreen(this))
         setScreen<MenuScreen>()
     }
@@ -41,6 +44,7 @@ class DungeonInTroubles : KtxGame<KtxScreen>() {
         gameStage.disposeSafely()
         uiStage.disposeSafely()
         batch.disposeSafely()
+        textureAtlas.dispose()
         disposeSkin()
         prefs.flush()
     }

@@ -33,7 +33,7 @@ class UiScreen(val game: DungeonInTroubles) : KtxScreen {
     override fun show() {
         uiStage.clear()
         uiStage.actors {
-            menuView = this.menuView(bundle = game.bundle, stage = gameStage)
+            menuView = this.menuView(bundle = game.bundle, stage = gameStage, prefs = game.prefs)
         }
         uiStage.isDebugAll = true
     }

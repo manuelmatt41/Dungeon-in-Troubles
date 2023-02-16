@@ -38,7 +38,7 @@ import ktx.scene2d.actors
 class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
     private val gameStage: Stage = game.gameStage
     private val uiStage: Stage = game.uiStage
-    private val textureAtlas = TextureAtlas(Gdx.files.internal("graphics/gameObjects.atlas"))
+    private val textureAtlas = game.textureAtlas
     private var currentMap: TiledMap? = null
     private val physichWorld = createWorld(vec2(0f, -15f)).apply {
         autoClearForces = false
@@ -101,7 +101,7 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
 
     override fun show() {
         uiStage.fire(GetCoinEvent(prefs.getInteger("coins")))
-        setMap("map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx")
+        setMap("map/3.tmx")
     }
 
     private fun pauseWorld(pause: Boolean) {
@@ -139,7 +139,6 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
     }
 
     override fun dispose() {
-        textureAtlas.disposeSafely()
         eWorld.dispose()
         currentMap.disposeSafely()
         physichWorld.disposeSafely()

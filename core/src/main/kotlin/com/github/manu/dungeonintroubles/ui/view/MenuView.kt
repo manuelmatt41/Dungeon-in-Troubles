@@ -1,5 +1,7 @@
 package com.github.manu.dungeonintroubles.ui.view
 
+import com.badlogic.gdx.Preferences
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.github.manu.dungeonintroubles.ui.get
@@ -11,9 +13,11 @@ import com.github.manu.dungeonintroubles.event.SetGameEvent
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.manu.dungeonintroubles.ui.Buttons
 import com.github.manu.dungeonintroubles.ui.Drawables
+import com.github.manu.dungeonintroubles.ui.Labels
 import ktx.actors.*
 import ktx.log.logger
 import ktx.scene2d.*
+import javax.swing.text.Style
 
 enum class MenuViewBundle {
     BTNEWGAME, BTSETTING, BTEXIT;
@@ -26,6 +30,7 @@ class MenuView(
     skin: Skin,
     bundle: I18NBundle,
     stage: Stage,
+    prefs: Preferences
 ) : Table(), KTable {
 
     private val btNewGame: TextButton
@@ -36,32 +41,64 @@ class MenuView(
         setFillParent(true)
 
         table {
-            background = skin[Drawables.BACKGROUND_DISTANCE]
 
-            this@MenuView.btNewGame =
-                textButton(text = bundle[MenuViewBundle.BTNEWGAME.bundle], style = Buttons.DEFAULT.skinKey) {
-                    this@MenuView.attachTextMovement(this)
+            table {
 
-                    it.padBottom(10f)
+                label(text = "Dungeon\n  in\nTroubles", style = Labels.TITLE.skinKey) {
+                    setSize(100f, 100f)
                     it.center().row()
                 }
 
-            this@MenuView.btSetting =
-                textButton(text = bundle[MenuViewBundle.BTSETTING.bundle], style = Buttons.DEFAULT.skinKey) {
-                    this@MenuView.attachTextMovement(this)
+                this@MenuView.btNewGame =
+                    textButton(text = bundle[MenuViewBundle.BTNEWGAME.bundle], style = Buttons.DEFAULT.skinKey) {
+                        this@MenuView.attachTextMovement(this)
 
-                    it.padBottom(10f)
-                    it.center().row()
+                        it.padBottom(9f)
+                        it.center().row()
+                    }
+
+                this@MenuView.btSetting =
+                    textButton(text = bundle[MenuViewBundle.BTSETTING.bundle], style = Buttons.DEFAULT.skinKey) {
+                        this@MenuView.attachTextMovement(this)
+
+                        it.padBottom(10f)
+                        it.center().row()
+                    }
+
+                this@MenuView.btExit =
+                    textButton(text = bundle[MenuViewBundle.BTEXIT.bundle], style = Buttons.DEFAULT.skinKey) {
+                        this@MenuView.attachTextMovement(this)
+
+                        it.padBottom(10f)
+                        it.center()
+                    }
+
+                it.bottom().padLeft(5f)
+            }
+
+            table {
+                label(text = "Version 1.0", style = Labels.DEFAULT.skinKey) {
+                    it.padBottom(20f).bottom().right().row()
                 }
 
-            this@MenuView.btExit =
-                textButton(text = bundle[MenuViewBundle.BTEXIT.bundle], style = Buttons.DEFAULT.skinKey) {
-                    this@MenuView.attachTextMovement(this)
-
-                    it.padBottom(10f)
-                    it.center().row()
+                label(
+                    text = "Coins: ${prefs.getInteger("coins")}",
+                    style = Labels.DEFAULT.skinKey,
+                ) {
+                    it.left().row()
                 }
+
+                label(
+                    text = String.format("Distance: %.2f m", prefs.getFloat( "distance")),
+                    style = Labels.DEFAULT.skinKey
+                ) {
+                    it.left()
+                }
+
+                it.expand().top().right().padTop(3f).padRight(2f)
+            }
             it.expand().fill()
+
         }
 
         btNewGame.onClick {
@@ -106,5 +143,6 @@ fun <S> KWidget<S>.menuView(
     skin: Skin = Scene2DSkin.defaultSkin,
     bundle: I18NBundle,
     stage: Stage,
+    prefs: Preferences,
     init: MenuView.(S) -> Unit = {}
-): MenuView = actor(MenuView(skin, bundle, stage), init)
+): MenuView = actor(MenuView(skin, bundle, stage, prefs), init)
