@@ -2,25 +2,19 @@ package com.github.manu.dungeonintroubles.system
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.maps.MapLayer
-import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
-import com.badlogic.gdx.physics.box2d.BodyDef.BodyType.KinematicBody
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType.StaticBody
 import com.badlogic.gdx.physics.box2d.World
 import com.badlogic.gdx.scenes.scene2d.Event
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
-import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.utils.Scaling
 import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.actor.FlipImage
 import com.github.manu.dungeonintroubles.component.*
 import com.github.manu.dungeonintroubles.component.AnimationModel.*
-import com.github.manu.dungeonintroubles.event.GetCoinEvent
 import com.github.manu.dungeonintroubles.event.MapChangeEvent
 import com.github.manu.dungeonintroubles.event.SpawnLayerObjectsEvent
-import com.github.manu.dungeonintroubles.event.SpawnProjectilesEvent
-import com.github.manu.dungeonintroubles.extension.fire
 import com.github.manu.dungeonintroubles.extension.physicCmpFromImage
 import com.github.manu.dungeonintroubles.extension.physicCmpFromShape2D
 import com.github.quillraven.fleks.*
@@ -29,7 +23,6 @@ import ktx.box2d.box
 import ktx.log.logger
 import ktx.math.vec2
 import ktx.tiled.*
-import java.util.prefs.Preferences
 
 @AllOf([SpawnComponent::class])
 class EntitySpawnSystem(
@@ -104,15 +97,17 @@ class EntitySpawnSystem(
 
                 when (name) {
                     EntityType.PLAYER -> {
+                        var actualSpeed: Float = 0f
                         add<PlayerComponent>() {
                             with(playerCmps[entity]) {
                                 this@add.coins = this.coins
                                 this@add.meter = this.meter
+                                actualSpeed = this.actualSpeed
                             }
                         }
 
                         add<MoveComponent> {
-                            speed = DEFAULT_SPEED_X
+                            speed = actualSpeed
                             cos = 1f
                         }
 
@@ -292,6 +287,8 @@ class EntitySpawnSystem(
                     add<PlayerComponent> {
                         this.coins = event.playerCmp.coins
                         this.meter = event.playerCmp.meter
+                        this.actualSpeed = event.playerCmp.actualSpeed
+                        log.debug { "${event.playerCmp.actualSpeed}" }
                     }
                 }
                 true
@@ -299,22 +296,6 @@ class EntitySpawnSystem(
 
             is SpawnLayerObjectsEvent -> {
                 createEntitiesForLayers(event.map.layer(event.layerName), event.location)
-                true
-            }
-
-            is SpawnProjectilesEvent -> {
-                for (i in 1..event.numberOfProjectiles) {
-                    world.entity {
-                        add<SpawnComponent> {
-                            this.name = EntityType.FIREBALL
-                            this.location.set(
-                                gameStage.camera.position.x + gameStage.camera.viewportWidth,
-                                MathUtils.random(16, 128) * UNIT_SCALE
-                            )
-//                            log.debug { "Spawn projectile, Location: $location" }
-                        }
-                    }
-                }
                 true
             }
 

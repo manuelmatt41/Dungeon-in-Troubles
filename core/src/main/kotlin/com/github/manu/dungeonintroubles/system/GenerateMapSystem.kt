@@ -48,8 +48,9 @@ class GenerateMapSystem(
         val nextMap =
             TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx").path())
 
-        var playerCmp = if (playerEntity == null) PlayerComponent() else  playerCmps[playerEntity]
-        gameStage.fire(MapChangeEvent(nextMap,playerCmp))
+        var playerCmp = if (playerEntity == null) PlayerComponent() else playerCmps[playerEntity]
+        log.debug { "Generate map: ${playerCmp.actualSpeed} : Coins ${playerCmp.coins}" }
+        gameStage.fire(MapChangeEvent(nextMap, playerCmp))
     }
 
     override fun handle(event: Event?): Boolean {

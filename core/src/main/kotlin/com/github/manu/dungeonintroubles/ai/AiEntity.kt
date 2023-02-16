@@ -41,9 +41,4 @@ data class AiEntity(
             }
         }
     }
-
-    fun root(isRoot: Boolean) {
-        moveCmps[entity].root = isRoot
-        jumpCmps[entity].root = isRoot
-    }
 }

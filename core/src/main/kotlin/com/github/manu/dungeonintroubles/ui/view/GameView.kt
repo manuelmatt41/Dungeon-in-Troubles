@@ -57,7 +57,14 @@ class GameView(
 
             textButton(text = bundle[MenuViewBundle.BTEXIT.bundle], style = Buttons.DEFAULT.skinKey) {
                 onClick {
-                    stage.fire(SetMenuScreenEvent(PlayerComponent(model.playerCoins, model.playerDistance)))
+                    stage.fire(
+                        SetMenuScreenEvent(
+                            PlayerComponent(
+                                coins = model.playerCoins,
+                                meter = model.playerDistance
+                            )
+                        )
+                    )
                 }
                 it.padBottom(10f)
                 it.center().row()

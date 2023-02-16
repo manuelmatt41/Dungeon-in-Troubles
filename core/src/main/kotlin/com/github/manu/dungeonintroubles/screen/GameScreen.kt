@@ -125,7 +125,7 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
         currentMap?.disposeSafely()
         val newMap = TmxMapLoader().load(Gdx.files.internal(path).path())
         currentMap = newMap
-        gameStage.fire(MapChangeEvent(newMap, PlayerComponent(prefs.getInteger("coins"))))
+        gameStage.fire(MapChangeEvent(newMap, PlayerComponent(coins = prefs.getInteger("coins"))))
     }
 
     override fun render(delta: Float) {

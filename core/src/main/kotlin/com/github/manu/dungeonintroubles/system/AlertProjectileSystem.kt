@@ -4,6 +4,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.component.AlertProjectileComponent
 import com.github.quillraven.fleks.*
+import ktx.actors.alpha
+import ktx.log.logger
+import kotlin.math.log
 
 @AllOf([AlertProjectileComponent::class])
 class AlertProjectileSystem(
@@ -19,6 +22,11 @@ class AlertProjectileSystem(
             time += deltaTime
 
             label.setPosition(position.x, position.y)
+
         }
+    }
+
+    companion object {
+        private val log = logger<AlertProjectileSystem>()
     }
 }

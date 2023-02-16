@@ -3,20 +3,22 @@ package com.github.manu.dungeonintroubles.system
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.BitmapFont
+import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.scenes.scene2d.Event
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
+import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle
-import com.github.manu.dungeonintroubles.DungeonInTroubles
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.github.manu.dungeonintroubles.DungeonInTroubles.Companion.UNIT_SCALE
 import com.github.manu.dungeonintroubles.component.AlertProjectileComponent
 import com.github.manu.dungeonintroubles.component.EntityType
 import com.github.manu.dungeonintroubles.component.PlayerComponent
 import com.github.manu.dungeonintroubles.component.SpawnComponent
 import com.github.manu.dungeonintroubles.event.MapChangeEvent
-import com.github.manu.dungeonintroubles.event.SpawnProjectilesEvent
+import com.github.manu.dungeonintroubles.event.SpawnProjectilesSoundEvent
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.quillraven.fleks.AllOf
 import com.github.quillraven.fleks.Entity
@@ -28,13 +30,19 @@ import ktx.log.logger
 class SpawnProjectilesSystem(
     @Qualifier("gameStage") private val gameStage: Stage,
     @Qualifier("uiStage") private val uiStage: Stage,
+    private val textureAtlas: TextureAtlas,
 ) : EventListener, IteratingSystem() {
 
     private var spawnTime: Float = 7f
     private var numberOfProjectiles: Int = 0
     private var canSpawn: Boolean = false;
-    private val damageFont = BitmapFont(Gdx.files.internal("ui/minimalpixel.fnt")).apply { data.setScale(2f) }
-    private val floatingTextStyle = LabelStyle(damageFont, Color.RED)
+    private val damageFont = BitmapFont(Gdx.files.internal("ui/minimalpixel.fnt")).apply { data.setScale(1.5f) }
+    private val floatingTextStyle = LabelStyle(damageFont, Color.RED).apply {
+        background = TextureRegionDrawable(textureAtlas.findRegion("alert")).apply {// TODO Refactor to the ui view/model
+            leftWidth = 6f
+            topHeight = 8f
+        }
+    }
 
     override fun onTickEntity(entity: Entity) {
         if (!canSpawn) {
@@ -49,7 +57,7 @@ class SpawnProjectilesSystem(
         spawnTime = 7f
         numberOfProjectiles = MathUtils.random(1, 3)
 
-        var x = gameStage.camera.position.x + 20f;
+        var x = gameStage.camera.position.x + 60f;
 
         for (i in 1..numberOfProjectiles) {
             world.entity {
@@ -62,13 +70,12 @@ class SpawnProjectilesSystem(
                     alertProjectilesLabel((this.location.y / UNIT_SCALE) + 40f)
                 }
             }
-
+            gameStage.fire(SpawnProjectilesSoundEvent())
             x += 5f
         }
     }
 
     private fun alertProjectilesLabel(y: Float) {
-        log.debug { "Alert put" }
         world.entity {
             add<AlertProjectileComponent> {
                 label = Label("!", floatingTextStyle)

@@ -24,15 +24,5 @@ enum class PlayerState : EntityState {
                 !entity.wantsToFly -> entity.state(RUN)
             }
         }
-    },
-    DEAD {
-        override fun enter(entity: AiEntity) {
-            entity.animation(AnimationType.HIT)
-            entity.root(true)
-        }
-
-        override fun update(entity: AiEntity) {
-            super.update(entity)
-        }
     }
 }

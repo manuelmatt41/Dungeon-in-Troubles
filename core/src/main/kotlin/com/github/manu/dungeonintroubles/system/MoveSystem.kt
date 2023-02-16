@@ -18,15 +18,13 @@ class MoveSystem(
     private val imgCmps: ComponentMapper<ImageComponent>,
 ) : IteratingSystem() {
 
+    private var flagToIncreaseSpeed: Float = 750f
+
     override fun onTickEntity(entity: Entity) {
         val physcmp = physicsCmps[entity]
         val moveCmp = moveCmps[entity]
         val mass = physcmp.body.mass
         val velX = physcmp.body.linearVelocity.x
-
-        if (moveCmp.root) {
-            return
-        }
 
         physcmp.impulse.x = mass * (moveCmp.speed * moveCmp.cos - velX);
 
@@ -35,6 +33,13 @@ class MoveSystem(
                 with((playerCmps[entity])) {
                     meter += (moveCmp.speed * deltaTime) * 4f
                     uiStage.fire(MoveEvent(AnimationModel.PLAYER, meter))
+
+                    if (meter < LIMIT_SPEED && meter >= flagToIncreaseSpeed) {
+                        moveCmp.speed += 1f
+                        actualSpeed = moveCmp.speed
+                        flagToIncreaseSpeed += 750f
+                        log.debug { "${moveCmp.speed}" }
+                    }
                 }
             }
 
@@ -60,5 +65,6 @@ class MoveSystem(
 
     companion object {
         private val log = logger<MoveSystem>()
+        private const val LIMIT_SPEED = 5250f
     }
 }

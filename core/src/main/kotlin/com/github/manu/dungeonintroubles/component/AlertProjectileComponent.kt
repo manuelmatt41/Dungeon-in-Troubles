@@ -3,6 +3,7 @@ package com.github.manu.dungeonintroubles.component
 import com.badlogic.gdx.math.Interpolation
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.scenes.scene2d.Stage
+import com.badlogic.gdx.scenes.scene2d.actions.Actions
 import com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeOut
 import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.github.quillraven.fleks.ComponentListener
@@ -24,7 +25,8 @@ class AlertProjectileComponent {
             override fun onComponentAdded(entity: Entity, component: AlertProjectileComponent) {
                 uiStage.addActor(component.label)
                 // how the floating text is dissapear of the screen
-                component.label += fadeOut(2f, Interpolation.fade)
+//                component.label += Actions.fadeIn(1f, Interpolation.fade)
+                component.label += fadeOut(3f, Interpolation.fade)
             }
 
             override fun onComponentRemoved(entity: Entity, component: AlertProjectileComponent) {
