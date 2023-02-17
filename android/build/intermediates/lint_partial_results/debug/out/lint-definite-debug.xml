@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 7.2.2" type="incidents">
+
+    <incident
+        id="RedundantLabel"
+        severity="warning"
+        message="Redundant label can be removed">
+        <fix-attribute
+            description="Delete label"
+            namespace="http://schemas.android.com/apk/res/android"
+            attribute="label"/>
+        <location
+            file="${:android*debug*sourceProvider*0*manifest*0}"
+            line="18"
+            column="5"
+            startOffset="733"
+            endLine="18"
+            endColumn="37"
+            endOffset="765"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-xxxhdpi/ic_launcher_adaptive_back.png"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-xxhdpi/ic_launcher_adaptive_back.png"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-hdpi/ic_launcher_adaptive_back.png"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-mdpi/ic_launcher_adaptive_back.png"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-xhdpi/ic_launcher_adaptive_back.png"/>
+    </incident>
+
+</incidents>

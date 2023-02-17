@@ -1,8 +1,8 @@
-com.github.manu.dungeonintroubles.android-pngs-0 C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\build\generated\res\pngs\release
-com.github.manu.dungeonintroubles.android-resValues-1 C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\build\generated\res\resValues\release
-com.github.manu.dungeonintroubles.android-rs-2 C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\build\generated\res\rs\release
-com.github.manu.dungeonintroubles.android-mergeReleaseResources-3 C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\build\intermediates\incremental\release\mergeReleaseResources\merged.dir
-com.github.manu.dungeonintroubles.android-mergeReleaseResources-4 C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\build\intermediates\incremental\release\mergeReleaseResources\stripped.dir
-com.github.manu.dungeonintroubles.android-merged_res-5 C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\build\intermediates\merged_res\release
-com.github.manu.dungeonintroubles.android-android-6 C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res
-com.github.manu.dungeonintroubles.android-release-7 C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\src\release\res
+com.github.manu.dungeonintroubles.android-pngs-0 /home/manuel/Documentos/Dungeon-in-Troubles/android/build/generated/res/pngs/release
+com.github.manu.dungeonintroubles.android-resValues-1 /home/manuel/Documentos/Dungeon-in-Troubles/android/build/generated/res/resValues/release
+com.github.manu.dungeonintroubles.android-rs-2 /home/manuel/Documentos/Dungeon-in-Troubles/android/build/generated/res/rs/release
+com.github.manu.dungeonintroubles.android-mergeReleaseResources-3 /home/manuel/Documentos/Dungeon-in-Troubles/android/build/intermediates/incremental/release/mergeReleaseResources/merged.dir
+com.github.manu.dungeonintroubles.android-mergeReleaseResources-4 /home/manuel/Documentos/Dungeon-in-Troubles/android/build/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+com.github.manu.dungeonintroubles.android-merged_res-5 /home/manuel/Documentos/Dungeon-in-Troubles/android/build/intermediates/merged_res/release
+com.github.manu.dungeonintroubles.android-android-6 /home/manuel/Documentos/Dungeon-in-Troubles/android/res
+com.github.manu.dungeonintroubles.android-release-7 /home/manuel/Documentos/Dungeon-in-Troubles/android/src/release/res
