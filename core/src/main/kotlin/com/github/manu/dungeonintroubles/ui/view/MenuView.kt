@@ -76,8 +76,8 @@ class MenuView(
             }
 
             table {
-                label(text = "Version 1.0", style = Labels.DEFAULT.skinKey) {
-                    it.padBottom(20f).padRight(8f).bottom().right().row()
+                label(text = "Version  0.9", style = Labels.DEFAULT.skinKey) {
+                    it.padBottom(20f).padRight(12f).bottom().right().row()
                 }
 
                 label(
