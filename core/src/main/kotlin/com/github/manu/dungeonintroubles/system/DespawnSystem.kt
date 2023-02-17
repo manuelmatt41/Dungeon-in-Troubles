@@ -3,6 +3,7 @@ package com.github.manu.dungeonintroubles.system
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.component.*
+import com.github.manu.dungeonintroubles.event.DeathHPopUpEvent
 import com.github.manu.dungeonintroubles.event.PausePopUpEvent
 import com.github.manu.dungeonintroubles.event.SetMenuScreenEvent
 import com.github.manu.dungeonintroubles.extension.fire
@@ -23,7 +24,7 @@ class DespawnSystem(
     override fun onTickEntity(entity: Entity) {
         if (entity in despawnCmps) {
             if (entity in playerCmps) {
-                gameStage.fire(PausePopUpEvent(playerCmps[entity]))
+                gameStage.fire(DeathHPopUpEvent(playerCmps[entity]))
             }
 
 

@@ -17,7 +17,6 @@ import ktx.log.logger
 class GameModel(
     world: World,
     gameStage: Stage,
-    prefsPlayer: Preferences
 ) : PropertyChangeSource(), EventListener {
 
     private val playerCmps: ComponentMapper<PlayerComponent> = world.mapper()

@@ -18,8 +18,16 @@ enum class Drawables(
     BACKGROUND_DISTANCE("bgdDistance"),
     BUTTON_UNPRESSED("button_unpressed"),
     BUTTON_PRESSED("button_pressed"),
-    BUTTON_DISSAPEAR("button_dissapear")
+    BUTTON_DISSAPEAR("button_dissapear"),
+    PAUSE_POPUP_BACKGROUND("pausepopupbgd"),
+    DEATH_POPUP_BACKGROUND("deathpopupbgd"),
+    KNOB_UNPRESSED("knob_unpressed"),
+    KNOB_PRESSED("knob_pressed"),
+    CH_CHECKED("ch_checked"),
+    CH_UNCHECKED("ch_unchecked"),
+    BTPAUSE("btpause");
 }
+
 operator fun Skin.get(drawable: Drawables): Drawable = this.getDrawable(drawable.atlasKey)
 
 enum class Labels {
@@ -29,6 +37,24 @@ enum class Labels {
 }
 
 enum class Buttons {
+    DEFAULT;
+
+    val skinKey = this.name.lowercase()
+}
+
+enum class ScrollPanes {
+    DEFAULT;
+
+    val skinKey = this.name.lowercase()
+}
+
+enum class Sliders {
+    DEFAULT;
+
+    val skinKey = this.name.lowercase()
+}
+
+enum class CheckBoxes {
     DEFAULT;
 
     val skinKey = this.name.lowercase()
@@ -59,27 +85,33 @@ fun loadSkin() {
 
         label(Labels.DEFAULT.skinKey) {
             font = skin[Fonts.DEFAULT]
-//            background = skin[Drawables.BACKGROUND_DISTANCE].apply {
-//                leftWidth = 2f
-//                rightWidth = 2f
-//                topHeight = 4f
-//            }
         }
 
         label(Labels.TITLE.skinKey) {
             font = skin[Fonts.TITLE]
-
-//            background = skin[Drawables.BACKGROUND_DISTANCE].apply {
-//                leftWidth = 2f
-//                rightWidth = 2f
-//                topHeight = 4f
-//            }
         }
 
         textButton(Buttons.DEFAULT.skinKey) {
             font = skin[Fonts.DEFAULT]
             up = skin[Drawables.BUTTON_UNPRESSED]
             down = skin[Drawables.BUTTON_PRESSED]
+        }
+
+        scrollPane(ScrollPanes.DEFAULT.skinKey) {
+            background = skin[Drawables.BACKGROUND_DISTANCE]
+        }
+
+        slider(Sliders.DEFAULT.skinKey) {
+            background = skin[Drawables.BACKGROUND_DISTANCE]
+            knob = skin[Drawables.KNOB_UNPRESSED]
+            knobDown = skin[Drawables.KNOB_PRESSED]
+
+        }
+
+        checkBox(CheckBoxes.DEFAULT.skinKey) {
+            font = skin[Fonts.DEFAULT]
+            checkboxOn = skin[Drawables.CH_CHECKED]
+            checkboxOff = skin[Drawables.CH_UNCHECKED]
         }
     }
 

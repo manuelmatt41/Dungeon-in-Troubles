@@ -19,14 +19,15 @@ class DungeonInTroubles : KtxGame<KtxScreen>() {
     private val batch: Batch by lazy { SpriteBatch() }
     val gameStage by lazy { Stage(ExtendViewport(16f, 9f)) }
     val uiStage by lazy { Stage(ExtendViewport(320f, 180f), batch) }
-    lateinit var prefs: Preferences
+    lateinit var playerPrefs: Preferences
+    lateinit var settingsPrefs: Preferences
     lateinit var bundle: I18NBundle
     lateinit var textureAtlas: TextureAtlas
-    var paused = false
 
     override fun create() {
         Gdx.app.logLevel = Application.LOG_DEBUG
-        prefs = Gdx.app.getPreferences("preferences")
+        playerPrefs = Gdx.app.getPreferences("player")
+        settingsPrefs = Gdx.app.getPreferences("settings")
         bundle = I18NBundle.createBundle(Gdx.files.internal("languages/MyBundle"))
         textureAtlas = TextureAtlas(Gdx.files.internal("graphics/gameObjects.atlas"))
         addScreen(MenuScreen(this))
@@ -46,7 +47,6 @@ class DungeonInTroubles : KtxGame<KtxScreen>() {
         batch.disposeSafely()
         textureAtlas.dispose()
         disposeSkin()
-        prefs.flush()
     }
 
 

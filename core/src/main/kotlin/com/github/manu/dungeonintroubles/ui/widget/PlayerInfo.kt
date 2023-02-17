@@ -1,5 +1,6 @@
 package com.github.manu.dungeonintroubles.ui.widget
 
+import com.badlogic.gdx.scenes.scene2d.Touchable
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
@@ -19,8 +20,8 @@ class PlayerInfo(
 ) : WidgetGroup(), KGroup {
     private val background: Image = Image(skin[Drawables.PLAYER_INFO])
     private val playerBgd: Image = Image(if (charDrawables == null) null else skin[Drawables.PLAYER])
-    private val labelDistance: Label
-    private val labelCoins: Label
+    val labelDistance: Label
+    val labelCoins: Label
 
     init {
         this += background
@@ -40,19 +41,13 @@ class PlayerInfo(
 
         this += labelDistance
         this += labelCoins
+
+        touchable = Touchable.disabled
     }
 
     override fun getPrefWidth() = background.drawable.minWidth
 
     override fun getPrefHeight() = background.drawable.minHeight
-
-    fun character(charDrawable: Drawables?) {
-        if (charDrawable == null) {
-            playerBgd.drawable = null
-        } else {
-            playerBgd.drawable = skin[charDrawable]
-        }
-    }
 
     fun getCoin(coins: Int) = labelCoins.setText(coins.toString())
 

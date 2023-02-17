@@ -1,6 +1,7 @@
 package com.github.manu.dungeonintroubles.system
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Preferences
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TmxMapLoader
 import com.badlogic.gdx.math.MathUtils
@@ -27,6 +28,7 @@ class PhysicSystem(
     private val physicWorld: World,
     @Qualifier("gameStage") private val gameStage: Stage,
     @Qualifier("uiStage") private val uiStage: Stage,
+    private val prefs: Preferences,
     private val imgCmps: ComponentMapper<ImageComponent>,
     private val physicsCmps: ComponentMapper<PhysicComponent>,
     private val playerCmps: ComponentMapper<PlayerComponent>,
@@ -105,7 +107,10 @@ class PhysicSystem(
                 configureEntity(entityA) {
                     despawnCmps.add(it)
                 }
-                Gdx.input.vibrate(100)
+
+                if (prefs.getBoolean("vibrate")) {
+                    Gdx.input.vibrate(100)
+                }
             }
 
             collisionBWithTrap || collisionBWithFireball -> {
@@ -115,7 +120,9 @@ class PhysicSystem(
                     despawnCmps.add(it)
                 }
 
-                Gdx.input.vibrate(100)
+                if (prefs.getBoolean("vibrate")) {
+                    Gdx.input.vibrate(100)
+                }
             }
 
             collisionAWithCoin -> {

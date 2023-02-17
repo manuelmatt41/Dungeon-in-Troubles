@@ -9,14 +9,17 @@ import com.github.manu.dungeonintroubles.component.PlayerComponent
 class MapChangeEvent(val map: TiledMap, val playerCmp: PlayerComponent = PlayerComponent()) : Event()
 class GetCoinEvent(val coins: Int = 0) : Event()
 class GetCoinSoundEvent(val model: AnimationModel) : Event()
-class CrossPortalSoundEvent() : Event() //TODO Search a portal model and animation
-class DeadSoundEvent() : Event() //TODO Update de class
+class CrossPortalSoundEvent : Event() //TODO Search a portal model and animation
+class DeadSoundEvent : Event() //TODO Update de class
 class SpawnLayerObjectsEvent(val layerName: String, val map: TiledMap, val location: Vector2) : Event()
 class SpawnProjectilesSoundEvent(val numberOfProjectiles: Int = 0) : Event()
 class MoveEvent(val model: AnimationModel, val distance: Float = 0f) : Event()
-class GamePauseEvent() : Event()
-class GameResumeEvent() : Event()
-class SetGameEvent() : Event()
+class GameResumeEvent : Event()
+class SetGameEvent : Event()
 class SetMenuScreenEvent(val playerCmp: PlayerComponent? = null) : Event()
-class ExitGameEvent() : Event()
-class PausePopUpEvent(val playerCmp: PlayerComponent? = null) : Event()
+class ExitGameEvent : Event()
+class PausePopUpEvent : Event()
+class DeathHPopUpEvent(val playerCmp: PlayerComponent) : Event()
+class ShowSettingsEvent : Event()
+class HideSettingsEvent : Event()
+class ChangeSettingsEvent : Event()

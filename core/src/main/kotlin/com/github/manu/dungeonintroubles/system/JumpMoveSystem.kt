@@ -1,5 +1,7 @@
 package com.github.manu.dungeonintroubles.system
 
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Preferences
 import com.github.manu.dungeonintroubles.component.JumpComponent
 import com.github.manu.dungeonintroubles.component.MoveComponent
 import com.github.manu.dungeonintroubles.component.PhysicComponent
@@ -13,6 +15,7 @@ import ktx.math.component2
 
 @AllOf([JumpComponent::class, PhysicComponent::class])
 class JumpMoveSystem(
+    private val prefs: Preferences,
     private val physicsCmps: ComponentMapper<PhysicComponent>,
     private val jumpCmps: ComponentMapper<JumpComponent>,
 ) : IteratingSystem() {
@@ -25,7 +28,15 @@ class JumpMoveSystem(
             return
         }
 
-        physcmp.impulse.y = if (jumpCmp.sin != 0f) jumpCmp.speed else 0f
+//        log.debug { "X:${Gdx.input.gyroscopeX}" }
+//        log.debug { "${Gdx.input.gyroscopeX}" }
+        if (prefs.getBoolean("gyroscope")) {
+            log.debug { "Z: ${Gdx.input.accelerometerZ}" }
+            jumpCmp.sin = if (Gdx.input.accelerometerZ >= 8f) 1f else 0f
+            physcmp.impulse.y = if (Gdx.input.accelerometerZ >= 8f) jumpCmp.speed else 0f
+        } else {
+            physcmp.impulse.y = if (jumpCmp.sin != 0f) jumpCmp.speed else 0f
+        }
     }
 
     companion object {

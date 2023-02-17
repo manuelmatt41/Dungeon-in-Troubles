@@ -78,10 +78,13 @@ class GenerateMapSystem(
                             // collision with de ground without friction
                             chain(
                                 vec2(0f, 1.5f),
-                                vec2(width, 1.5f)
+                                vec2(width, 1.5f),
+                                vec2(width, height),
+                                vec2(0f, height)
                             ) {
                                 friction = 0f
                             }
+
                         }
                     }
                 }

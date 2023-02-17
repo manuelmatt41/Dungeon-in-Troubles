@@ -1,6 +1,7 @@
 package com.github.manu.dungeonintroubles.system
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Preferences
 import com.badlogic.gdx.audio.Music
 import com.badlogic.gdx.audio.Sound
 import com.badlogic.gdx.scenes.scene2d.Event
@@ -9,45 +10,31 @@ import com.github.manu.dungeonintroubles.event.*
 import com.github.quillraven.fleks.IntervalSystem
 import ktx.assets.disposeSafely
 import ktx.log.logger
-import ktx.tiled.propertyOrNull
 
-class AudioSystem : EventListener, IntervalSystem() {
+class AudioSystem(
+    private val prefs: Preferences
+) : EventListener, IntervalSystem() {
 
     private val musicCache = mutableMapOf<String, Music>()
     private val soundCache = mutableMapOf<String, Sound>()
     private val soundRequest = mutableMapOf<String, Sound>()
 
     override fun onTick() {
+        if (musicCache.isEmpty()) {
+            playnNewMusic(if (!prefs.contains("song")) "1.ogg" else prefs.getString("song"))
+        }
+
         if (soundRequest.isEmpty()) {
             // no sound to play -> do nothing
             return
         }
 
-        soundRequest.values.forEach { it.play(1f) }
+        soundRequest.values.forEach { it.play(prefs.getInteger("sound") / 100f) }
         soundRequest.clear()
     }
 
     override fun handle(event: Event): Boolean {
         return when (event) {
-            is MapChangeEvent -> {
-                event.map.propertyOrNull<String>("music")?.let { path ->
-                    log.debug { "Changing music to $path" }
-                    val music = musicCache.getOrPut(path) {
-                        Gdx.audio.newMusic(Gdx.files.internal(path)).apply {
-                            isLooping = true
-                            volume = 0.1f
-                        }
-                    }
-                    musicCache.forEach {
-                        if (it.value.isPlaying) {
-                            return@let
-                        }
-                    }
-                    music.play()
-                }
-                true
-            }
-
             is GetCoinSoundEvent -> {
                 queueSound("audio/sounds/${event.model.atlasKey}.ogg")
                 true
@@ -69,14 +56,40 @@ class AudioSystem : EventListener, IntervalSystem() {
                 true
             }
 
+            is ChangeSettingsEvent -> {
+                log.debug { "Cambio config" }
+                musicCache.forEach { it.value.volume = prefs.getInteger("music") / 100f }
+                playnNewMusic(prefs.getString("song"))
+                true
+            }
+
             else -> false
         }
     }
 
+    private fun playnNewMusic(songName: String) {
+        val music = musicCache.getOrPut(songName) {
+            Gdx.audio.newMusic(
+                Gdx.files.internal(
+                    "audio/music/$songName"
+                )
+            ).apply {
+                isLooping = true
+                volume = prefs.getInteger("music") / 100f
+            }
+        }
+
+
+        musicCache.forEach {
+            if (it.value.isPlaying) {
+                it.value.stop()
+            }
+        }
+
+        music.play()
+    }
 
     private fun queueSound(soundPath: String) {
-//        log.debug { "Queue sound $soundPath" }
-
         if (soundPath in soundRequest) {
             // already queued -> do nothing
             return

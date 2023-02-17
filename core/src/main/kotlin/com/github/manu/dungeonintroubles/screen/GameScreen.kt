@@ -1,18 +1,15 @@
 package com.github.manu.dungeonintroubles.screen
 
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.g2d.TextureAtlas
+import com.badlogic.gdx.InputMultiplexer
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TmxMapLoader
-import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.scenes.scene2d.Event
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.Touchable
 import com.github.manu.dungeonintroubles.DungeonInTroubles
-import com.github.manu.dungeonintroubles.component.AlertProjectileComponent
 import com.github.manu.dungeonintroubles.component.AlertProjectileComponent.Companion.AlertProjectileComponentListener
-import com.github.manu.dungeonintroubles.component.AnimationModel
 import com.github.manu.dungeonintroubles.component.ImageComponent.Companion.ImageComponentListener
 import com.github.manu.dungeonintroubles.component.PhysicComponent.Companion.PhysicComponentListener
 import com.github.manu.dungeonintroubles.component.PlayerComponent
@@ -21,11 +18,12 @@ import com.github.manu.dungeonintroubles.event.*
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.manu.dungeonintroubles.input.PlayerKeyBoardInput
 import com.github.manu.dungeonintroubles.system.*
-import com.github.manu.dungeonintroubles.system.GenerateMapSystem.Companion.NUMBER_OF_MAPS
 import com.github.manu.dungeonintroubles.ui.loadSkin
 import com.github.manu.dungeonintroubles.ui.model.GameModel
 import com.github.manu.dungeonintroubles.ui.view.GameView
+import com.github.manu.dungeonintroubles.ui.view.SettingsView
 import com.github.manu.dungeonintroubles.ui.view.gameView
+import com.github.manu.dungeonintroubles.ui.view.settingsView
 import com.github.quillraven.fleks.world
 import ktx.actors.alpha
 import ktx.app.KtxScreen
@@ -43,8 +41,10 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
     private val physichWorld = createWorld(vec2(0f, -15f)).apply {
         autoClearForces = false
     }
-    private val prefs = game.prefs
+    private val playerPrefs = game.playerPrefs
+    private val settingsPrefs = game.settingsPrefs
     private var gameView: GameView
+    private var settingsView: SettingsView
 
     private val eWorld = world {
         injectables {
@@ -52,6 +52,7 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
             add("uiStage", uiStage)
             add(textureAtlas)
             add(physichWorld)
+            add(settingsPrefs)
         }
 
         components {
@@ -86,21 +87,24 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
         eWorld.systems.forEach { system ->
             if (system is EventListener) {
                 gameStage.addListener(system)
+                uiStage.addListener(system)
             }
         }
-//        gameStage.root.listeners.forEach {log.debug { "${it::class}" }}
-        PlayerKeyBoardInput(eWorld, gameStage)
 
-        uiStage.actors {
-            gameView = gameView(GameModel(eWorld, uiStage, prefs), game.bundle)
+        if (!settingsPrefs.getBoolean("gyroscope")) {
+            PlayerKeyBoardInput(eWorld, gameStage, uiStage)
         }
 
+        uiStage.actors {
+            gameView = gameView(GameModel(eWorld, uiStage), game.bundle, playerPrefs)
+            settingsView = settingsView(bundle = game.bundle, prefs = settingsPrefs)
+        }
         gameStage.addListener(this)
         uiStage.addListener(this)
     }
 
     override fun show() {
-        uiStage.fire(GetCoinEvent(prefs.getInteger("coins")))
+        uiStage.fire(GetCoinEvent(playerPrefs.getInteger("coins")))
         setMap("map/3.tmx")
     }
 
@@ -114,7 +118,6 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
         eWorld.systems
             .filter { it::class !in mandatorySystems }
             .forEach { it.enabled = !pause }
-
     }
 
     override fun pause() = pauseWorld(true) // TODO Do popup on exit the app
@@ -125,7 +128,7 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
         currentMap?.disposeSafely()
         val newMap = TmxMapLoader().load(Gdx.files.internal(path).path())
         currentMap = newMap
-        gameStage.fire(MapChangeEvent(newMap, PlayerComponent(coins = prefs.getInteger("coins"))))
+        gameStage.fire(MapChangeEvent(newMap, PlayerComponent(coins = settingsPrefs.getInteger("coins"))))
     }
 
     override fun render(delta: Float) {
@@ -150,34 +153,42 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
 
     override fun handle(event: Event): Boolean {
         when (event) {
-            is GamePauseEvent -> {
-                game.paused = true
-                pause()
-            }
-
             is GameResumeEvent -> {
-                PlayerKeyBoardInput(eWorld, gameStage)
-                gameView.table.alpha = 0f
-                gameView.touchable = Touchable.disabled
+                PlayerKeyBoardInput(eWorld, gameStage, uiStage)
+                gameView.resume()
+//                gameView.pausePopup.alpha = 0f
+//                gameView.touchable = Touchable.disabled
+//                gameView.pausePopup.touchable = Touchable.disabled
                 resume()
             }
 
             is PausePopUpEvent -> {
-                game.paused = true
                 pause()
                 Gdx.input.inputProcessor = uiStage
-                gameView.table.alpha = 1f
-                gameView.touchable = Touchable.enabled
+                gameView.pause()
+//                gameView.pausePopup.alpha = 1f
+//                gameView.touchable = Touchable.enabled
+//                gameView.pausePopup.touchable = Touchable.enabled
+            }
+
+            is DeathHPopUpEvent -> {
+                pause()
+                Gdx.input.inputProcessor = uiStage
+                gameView.death()
+//                gameView.deathPopup.alpha = 1f
+//                gameView.touchable = Touchable.enabled
+//                gameView.deathPopup.touchable = Touchable.enabled
+
+                log.debug { "Guardado" }
+                playerPrefs.putInteger("coins", event.playerCmp.coins)
+                playerPrefs.putFloat("distance", event.playerCmp.meter)
+                playerPrefs.flush()
             }
 
             is SetMenuScreenEvent -> {
                 log.debug { "Set menu screen" }
 
-                if (event.playerCmp != null) {
-                    log.debug { "Guardado" }
-                    prefs.putInteger("coins", event.playerCmp.coins)
-                    prefs.putFloat("distance", event.playerCmp.meter)
-                }
+
 
                 gameStage.clear()
                 uiStage.clear()
@@ -188,6 +199,23 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
                 game.removeScreen<GameScreen>()
                 super.hide()
                 this.dispose()
+            }
+
+            is ShowSettingsEvent -> {
+                pause()
+                gameView.touchable = Touchable.disabled
+                gameView.alpha = 0f
+
+                settingsView.alpha = 1f
+                settingsView.touchable = Touchable.enabled
+            }
+
+            is HideSettingsEvent -> {
+                gameView.touchable = Touchable.enabled
+                gameView.alpha = 1f
+
+                settingsView.alpha = 0f
+                settingsView.touchable = Touchable.disabled
             }
 
             else -> return false

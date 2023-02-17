@@ -1,6 +1,6 @@
 
 ui.png
-size: 1024, 64
+size: 2048, 256
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
@@ -13,49 +13,98 @@ bgdCoin
   index: -1
 bgdDistance
   rotate: false
-  xy: 128, 0
+  xy: 160, 0
   size: 36, 8
   orig: 36, 8
   offset: 0, 0
   index: -1
+btpause
+  rotate: false
+  xy: 320, 0
+  size: 12, 14
+  orig: 12, 14
+  offset: 0, 0
+  index: -1
 button_dissapear
   rotate: false
-  xy: 256, 0
+  xy: 480, 0
   size: 46, 14
   orig: 46, 14
   offset: 0, 0
   index: -1
 button_pressed
   rotate: false
-  xy: 384, 0
+  xy: 640, 0
   size: 46, 14
   orig: 46, 14
   offset: 0, 0
   index: -1
 button_unpressed
   rotate: false
-  xy: 512, 0
+  xy: 800, 0
   size: 46, 14
   orig: 46, 14
   offset: 0, 0
   index: -1
+ch_checked
+  rotate: false
+  xy: 960, 0
+  size: 10, 10
+  orig: 10, 10
+  offset: 0, 0
+  index: -1
+ch_unchecked
+  rotate: false
+  xy: 1120, 0
+  size: 10, 10
+  orig: 10, 10
+  offset: 0, 0
+  index: -1
+deathpopupbgd
+  rotate: false
+  xy: 1280, 0
+  size: 65, 90
+  orig: 65, 90
+  offset: 0, 0
+  index: -1
+knob_pressed
+  rotate: false
+  xy: 1440, 0
+  size: 16, 14
+  orig: 16, 14
+  offset: 0, 0
+  index: -1
+knob_unpressed
+  rotate: false
+  xy: 1600, 0
+  size: 16, 14
+  orig: 16, 14
+  offset: 0, 0
+  index: -1
 minimalpixel
   rotate: false
-  xy: 640, 0
+  xy: 1760, 0
   size: 128, 64
   orig: 128, 64
   offset: 0, 0
   index: -1
+pausepopupbgd
+  rotate: false
+  xy: 0, 90
+  size: 160, 90
+  orig: 160, 90
+  offset: 0, 0
+  index: -1
 player
   rotate: false
-  xy: 768, 0
+  xy: 160, 90
   size: 16, 28
   orig: 16, 28
   offset: 0, 0
   index: -1
 playerinfo
   rotate: false
-  xy: 896, 0
+  xy: 320, 90
   size: 65, 24
   orig: 65, 24
   offset: 0, 0
