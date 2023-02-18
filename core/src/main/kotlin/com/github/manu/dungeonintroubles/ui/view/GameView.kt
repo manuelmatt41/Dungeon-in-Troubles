@@ -71,10 +71,11 @@ class GameView(
 
     fun pause() {
         this.clear()
-        this += pausePopUp(skin, bundle) {
+         pausePopup = pausePopUp(skin, bundle) {
             it.expand().center()
 
         }
+        this += pausePopup
     }
 
     fun resume() {
@@ -90,7 +91,8 @@ class GameView(
             skin,
             bundle,
             prefs,
-            distance.substring(0, distance.length - 1).replace(',', '.').toFloat()
+            distance.substring(0, distance.length - 1).replace(',', '.').toFloat(),
+            playerInfo.labelCoins.text.toString().toInt()
         ) {
             it.expand().center()
         }

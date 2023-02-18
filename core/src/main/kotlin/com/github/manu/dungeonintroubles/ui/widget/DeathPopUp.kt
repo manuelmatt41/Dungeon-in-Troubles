@@ -32,7 +32,8 @@ class DeathPopUp(
     private val skin: Skin,
     bundle: I18NBundle,
     prefs: Preferences,
-    distance: Float
+    distance: Float,
+    coins: Int
 ) : WidgetGroup(), KGroup {
 
     private val background: Image = Image(skin[Drawables.PAUSE_POPUP_BACKGROUND])
@@ -98,5 +99,6 @@ fun <S> KWidget<S>.deathPopUp(
     bundle: I18NBundle,
     prefs: Preferences,
     distance: Float,
+    coins: Int,
     init: DeathPopUp.(S) -> Unit = {}
-): DeathPopUp = actor(DeathPopUp(skin, bundle, prefs, distance), init)
+): DeathPopUp = actor(DeathPopUp(skin, bundle, prefs, distance, coins), init)

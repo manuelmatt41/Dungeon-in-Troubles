@@ -230,7 +230,7 @@ class EntitySpawnSystem(
 
             EntityType.FIREBALL -> SpawnConfiguration(
                 FIREBALL,
-                physicScaling = vec2(0.1f, 0.1f),
+                physicScaling = vec2(0.2f, 0.2f),
             )
 
             else -> gdxError("Type $type has no SpawnCfg setup.")

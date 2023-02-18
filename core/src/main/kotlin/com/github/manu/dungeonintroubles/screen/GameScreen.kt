@@ -110,25 +110,24 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
 
     private fun pauseWorld(pause: Boolean) {
         val mandatorySystems = setOf(
-            AnimationSystem::class,
-            CameraSystem::class,
-            RenderSystem::class,
-            DebugSystem::class
+            AnimationSystem::class, CameraSystem::class, RenderSystem::class, DebugSystem::class
         )
-        eWorld.systems
-            .filter { it::class !in mandatorySystems }
-            .forEach { it.enabled = !pause }
+        eWorld.systems.filter { it::class !in mandatorySystems }.forEach { it.enabled = !pause }
     }
 
     override fun pause() = pauseWorld(true) // TODO Do popup on exit the app
 
-    override fun resume() = pauseWorld(false)
+    override fun resume() {
+        if (gameView.pausePopup.alpha != 1f || settingsView.alpha != 1f) {
+            pauseWorld(false)
+        }
+    }
 
     private fun setMap(path: String) {
         currentMap?.disposeSafely()
         val newMap = TmxMapLoader().load(Gdx.files.internal(path).path())
         currentMap = newMap
-        gameStage.fire(MapChangeEvent(newMap, PlayerComponent(coins = settingsPrefs.getInteger("coins"))))
+        gameStage.fire(MapChangeEvent(newMap, PlayerComponent(coins = playerPrefs.getInteger("coins"))))
     }
 
     override fun render(delta: Float) {
@@ -178,10 +177,11 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
 //                gameView.deathPopup.alpha = 1f
 //                gameView.touchable = Touchable.enabled
 //                gameView.deathPopup.touchable = Touchable.enabled
-
-                log.debug { "Guardado" }
+                if (event.playerCmp.meter > playerPrefs.getFloat("distance")) {
+                    playerPrefs.putFloat("distance", event.playerCmp.meter)
+                }
                 playerPrefs.putInteger("coins", event.playerCmp.coins)
-                playerPrefs.putFloat("distance", event.playerCmp.meter)
+                log.debug { "Coins save: ${playerPrefs.getInteger("coins")}" }
                 playerPrefs.flush()
             }
 

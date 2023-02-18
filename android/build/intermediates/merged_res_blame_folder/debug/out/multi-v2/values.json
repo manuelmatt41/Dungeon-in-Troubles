@@ -4,7 +4,24 @@
             "outputFile": "com.github.manu.dungeonintroubles.android-mergeDebugResources-3:/values/values.xml",
             "map": [
                 {
-                    "source": "/home/manuel/Documentos/Dungeon-in-Troubles/android/res/values/styles.xml",
+                    "source": "C:\\Users\\Manu\\Documents\\repositories\\Dungeon-in-Troubles\\android\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "56",
+                        "endOffsets": "109"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "56",
+                        "endOffsets": "107"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Manu\\Documents\\repositories\\Dungeon-in-Troubles\\android\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",
@@ -20,16 +37,6 @@
                         "endLines": "10",
                         "endColumns": "12",
                         "endOffsets": "570"
-                    }
-                },
-                {
-                    "source": "/home/manuel/Documentos/Dungeon-in-Troubles/android/res/values/strings.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "56",
-                        "endOffsets": "107"
                     }
                 }
             ]
