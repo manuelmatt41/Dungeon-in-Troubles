@@ -44,7 +44,7 @@ ADDED from C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\Andr
 	tools:ignore
 		ADDED from C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:14:10-40
 	android:icon
-		ADDED from C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:10:4-38
+		ADDED from C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:10:4-36
 	android:allowBackup
 		ADDED from C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:8:4-30
 	android:theme

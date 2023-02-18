@@ -30,8 +30,8 @@
 20        android:debuggable="true"
 21        android:fullBackupContent="true"
 21-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:9:10-42
-22        android:icon="@mipmap/ic_launcher"
-22-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:10:4-38
+22        android:icon="@mipmap/game_icon"
+22-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:10:4-36
 23        android:isGame="true"
 23-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:11:4-25
 24        android:label="@string/app_name"

@@ -14,6 +14,7 @@ class AndroidLauncher : AndroidApplication() {
             // Configure your application here.
             useGyroscope = true
             useAccelerometer = true
+            useImmersiveMode = true
         })
     }
 }
