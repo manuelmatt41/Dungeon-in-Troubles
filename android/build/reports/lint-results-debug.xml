@@ -12,7 +12,7 @@
         errorLine1="    android:label=&quot;@string/app_name&quot;"
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/manuel/Documentos/Dungeon-in-Troubles/android/AndroidManifest.xml"
+            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml"
             line="18"
             column="5"/>
     </issue>
@@ -30,69 +30,95 @@
         errorLine1="         android:fullBackupContent=&quot;true&quot;"
         errorLine2="                                    ~~~~">
         <location
-            file="/home/manuel/Documentos/Dungeon-in-Troubles/android/AndroidManifest.xml"
+            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml"
             line="9"
             column="37"/>
     </issue>
 
     <issue
-        id="IconLauncherShape"
+        id="UnusedResources"
         severity="Warning"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details"
-        category="Usability:Icons"
-        priority="6"
-        summary="The launcher icon shape should use a distinct silhouette"
-        explanation="According to the Android Design Guide (https://material.io/design/iconography/) your launcher icons should &quot;use a distinct silhouette&quot;, a &quot;three-dimensional, front view, with a slight perspective as if viewed from above, so that users perceive some depth.&quot;&#xA;&#xA;The unique silhouette implies that your launcher icon should not be a filled square.">
+        message="The resource `R.mipmap.game_icon_round` appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Unused resources"
+        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property lint.unused-resources.include-tests=true, and to exclude them (usually for performance reasons), use lint.unused-resources.exclude-tests=true."
+        errorLine1="&lt;adaptive-icon xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;>"
+        errorLine2="^">
         <location
-            file="/home/manuel/Documentos/Dungeon-in-Troubles/android/res/mipmap-hdpi/ic_launcher_adaptive_back.png"/>
+            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-anydpi-v26\game_icon_round.xml"
+            line="2"
+            column="1"/>
     </issue>
 
     <issue
-        id="IconLauncherShape"
+        id="IconDuplicates"
         severity="Warning"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details"
+        message="The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png"
         category="Usability:Icons"
-        priority="6"
-        summary="The launcher icon shape should use a distinct silhouette"
-        explanation="According to the Android Design Guide (https://material.io/design/iconography/) your launcher icons should &quot;use a distinct silhouette&quot;, a &quot;three-dimensional, front view, with a slight perspective as if viewed from above, so that users perceive some depth.&quot;&#xA;&#xA;The unique silhouette implies that your launcher icon should not be a filled square.">
+        priority="3"
+        summary="Duplicated icons under different names"
+        explanation="If an icon is repeated under different names, you can consolidate and just use one of the icons and delete the others to make your application smaller. However, duplicated icons usually are not intentional and can sometimes point to icons that were accidentally overwritten or accidentally not updated.">
         <location
-            file="/home/manuel/Documentos/Dungeon-in-Troubles/android/res/mipmap-mdpi/ic_launcher_adaptive_back.png"/>
+            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-hdpi\game_icon_round.png"/>
+        <location
+            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-hdpi\game_icon.png"/>
     </issue>
 
     <issue
-        id="IconLauncherShape"
+        id="IconDuplicates"
         severity="Warning"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details"
+        message="The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png"
         category="Usability:Icons"
-        priority="6"
-        summary="The launcher icon shape should use a distinct silhouette"
-        explanation="According to the Android Design Guide (https://material.io/design/iconography/) your launcher icons should &quot;use a distinct silhouette&quot;, a &quot;three-dimensional, front view, with a slight perspective as if viewed from above, so that users perceive some depth.&quot;&#xA;&#xA;The unique silhouette implies that your launcher icon should not be a filled square.">
+        priority="3"
+        summary="Duplicated icons under different names"
+        explanation="If an icon is repeated under different names, you can consolidate and just use one of the icons and delete the others to make your application smaller. However, duplicated icons usually are not intentional and can sometimes point to icons that were accidentally overwritten or accidentally not updated.">
         <location
-            file="/home/manuel/Documentos/Dungeon-in-Troubles/android/res/mipmap-xhdpi/ic_launcher_adaptive_back.png"/>
+            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-mdpi\game_icon_round.png"/>
+        <location
+            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-mdpi\game_icon.png"/>
     </issue>
 
     <issue
-        id="IconLauncherShape"
+        id="IconDuplicates"
         severity="Warning"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details"
+        message="The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png"
         category="Usability:Icons"
-        priority="6"
-        summary="The launcher icon shape should use a distinct silhouette"
-        explanation="According to the Android Design Guide (https://material.io/design/iconography/) your launcher icons should &quot;use a distinct silhouette&quot;, a &quot;three-dimensional, front view, with a slight perspective as if viewed from above, so that users perceive some depth.&quot;&#xA;&#xA;The unique silhouette implies that your launcher icon should not be a filled square.">
+        priority="3"
+        summary="Duplicated icons under different names"
+        explanation="If an icon is repeated under different names, you can consolidate and just use one of the icons and delete the others to make your application smaller. However, duplicated icons usually are not intentional and can sometimes point to icons that were accidentally overwritten or accidentally not updated.">
         <location
-            file="/home/manuel/Documentos/Dungeon-in-Troubles/android/res/mipmap-xxhdpi/ic_launcher_adaptive_back.png"/>
+            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xhdpi\game_icon_round.png"/>
+        <location
+            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xhdpi\game_icon.png"/>
     </issue>
 
     <issue
-        id="IconLauncherShape"
+        id="IconDuplicates"
         severity="Warning"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details"
+        message="The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png"
         category="Usability:Icons"
-        priority="6"
-        summary="The launcher icon shape should use a distinct silhouette"
-        explanation="According to the Android Design Guide (https://material.io/design/iconography/) your launcher icons should &quot;use a distinct silhouette&quot;, a &quot;three-dimensional, front view, with a slight perspective as if viewed from above, so that users perceive some depth.&quot;&#xA;&#xA;The unique silhouette implies that your launcher icon should not be a filled square.">
+        priority="3"
+        summary="Duplicated icons under different names"
+        explanation="If an icon is repeated under different names, you can consolidate and just use one of the icons and delete the others to make your application smaller. However, duplicated icons usually are not intentional and can sometimes point to icons that were accidentally overwritten or accidentally not updated.">
         <location
-            file="/home/manuel/Documentos/Dungeon-in-Troubles/android/res/mipmap-xxxhdpi/ic_launcher_adaptive_back.png"/>
+            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxhdpi\game_icon_round.png"/>
+        <location
+            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxhdpi\game_icon.png"/>
+    </issue>
+
+    <issue
+        id="IconDuplicates"
+        severity="Warning"
+        message="The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png"
+        category="Usability:Icons"
+        priority="3"
+        summary="Duplicated icons under different names"
+        explanation="If an icon is repeated under different names, you can consolidate and just use one of the icons and delete the others to make your application smaller. However, duplicated icons usually are not intentional and can sometimes point to icons that were accidentally overwritten or accidentally not updated.">
+        <location
+            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxxhdpi\game_icon_round.png"/>
+        <location
+            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxxhdpi\game_icon.png"/>
     </issue>
 
 </issues>

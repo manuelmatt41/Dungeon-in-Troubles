@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <incidents format="6" by="lint 7.2.2" type="partial_results">
     <map id="UnusedResources">
+        <location id="R.mipmap.game_icon_round"
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-anydpi-v26/game_icon_round.xml"
+            line="2"
+            column="1"
+            startOffset="40"
+            endLine="5"
+            endColumn="17"
+            endOffset="265"/>
         <entry
             name="model"
-            string="mipmap[ic_launcher_adaptive_fore(U),ic_launcher_adaptive_back(U),ic_launcher(U)],string[app_name(U)],style[GdxTheme(U)];2^1^0;;;"/>
+            string="color[game_icon_background(U)],mipmap[game_icon(U),game_icon_foreground(U),game_icon_round(D)],string[app_name(U)],style[GdxTheme(U)];1^0^2,3^0^2;;;"/>
     </map>
 
 </incidents>

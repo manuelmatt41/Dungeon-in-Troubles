@@ -13,50 +13,60 @@
             file="${:android*debug*sourceProvider*0*manifest*0}"
             line="18"
             column="5"
-            startOffset="733"
+            startOffset="748"
             endLine="18"
             endColumn="37"
-            endOffset="765"/>
+            endOffset="780"/>
     </incident>
 
     <incident
-        id="IconLauncherShape"
+        id="IconDuplicates"
         severity="warning"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        message="The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png">
         <location
-            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-xxxhdpi/ic_launcher_adaptive_back.png"/>
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-xhdpi/game_icon_round.png"/>
+        <location
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-xhdpi/game_icon.png"/>
     </incident>
 
     <incident
-        id="IconLauncherShape"
+        id="IconDuplicates"
         severity="warning"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        message="The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png">
         <location
-            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-xxhdpi/ic_launcher_adaptive_back.png"/>
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-hdpi/game_icon_round.png"/>
+        <location
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-hdpi/game_icon.png"/>
     </incident>
 
     <incident
-        id="IconLauncherShape"
+        id="IconDuplicates"
         severity="warning"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        message="The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png">
         <location
-            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-hdpi/ic_launcher_adaptive_back.png"/>
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-mdpi/game_icon_round.png"/>
+        <location
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-mdpi/game_icon.png"/>
     </incident>
 
     <incident
-        id="IconLauncherShape"
+        id="IconDuplicates"
         severity="warning"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        message="The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png">
         <location
-            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-mdpi/ic_launcher_adaptive_back.png"/>
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-xxxhdpi/game_icon_round.png"/>
+        <location
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-xxxhdpi/game_icon.png"/>
     </incident>
 
     <incident
-        id="IconLauncherShape"
+        id="IconDuplicates"
         severity="warning"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        message="The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png">
         <location
-            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-xhdpi/ic_launcher_adaptive_back.png"/>
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-xxhdpi/game_icon_round.png"/>
+        <location
+            file="${:android*debug*sourceProvider*0*resDir*0}/mipmap-xxhdpi/game_icon.png"/>
     </incident>
 
 </incidents>

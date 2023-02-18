@@ -177,10 +177,10 @@ document.getElementById(id).style.display = 'none';
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">Lint Report: 7 warnings</span>
+      <span class="mdl-layout-title">Lint Report: 8 warnings</span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-Check performed at Fri Feb 17 12:33:39 CET 2023      </nav>
+Check performed at Sat Feb 18 11:46:36 CET 2023      </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
@@ -189,7 +189,8 @@ Check performed at Fri Feb 17 12:33:39 CET 2023      </nav>
       <a class="mdl-navigation__link" href="#overview"><i class="material-icons">dashboard</i>Overview</a>
       <a class="mdl-navigation__link" href="#RedundantLabel"><i class="material-icons warning-icon">warning</i>Redundant label on activity (1)</a>
       <a class="mdl-navigation__link" href="#DataExtractionRules"><i class="material-icons warning-icon">warning</i>Missing data extraction rules (1)</a>
-      <a class="mdl-navigation__link" href="#IconLauncherShape"><i class="material-icons warning-icon">warning</i>The launcher icon shape should use a distinct silhouette (5)</a>
+      <a class="mdl-navigation__link" href="#UnusedResources"><i class="material-icons warning-icon">warning</i>Unused resources (1)</a>
+      <a class="mdl-navigation__link" href="#IconDuplicates"><i class="material-icons warning-icon">warning</i>Duplicated icons under different names (5)</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
@@ -212,11 +213,16 @@ Check performed at Fri Feb 17 12:33:39 CET 2023      </nav>
 <tr>
 <td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#DataExtractionRules">DataExtractionRules</a>: Missing data extraction rules</td></tr>
+<tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Performance">Performance</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<a href="#UnusedResources">UnusedResources</a>: Unused resources</td></tr>
 <tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Usability:Icons">Usability:Icons</a>
 </td></tr>
 <tr>
 <td class="countColumn">5</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
-<a href="#IconLauncherShape">IconLauncherShape</a>: The launcher icon shape should use a distinct silhouette</td></tr>
+<a href="#IconDuplicates">IconDuplicates</a>: Duplicated icons under different names</td></tr>
 <tr><td></td><td class="categoryColumn"><a href="#MissingIssues">Disabled Checks (35)</a>
 </td></tr></table>
 <br/>              </div>
@@ -239,7 +245,7 @@ Dismiss</button>            </div>
 <span class="lineno"> 15 </span>            <span class="prefix">android:</span><span class="attribute">theme</span>=<span class="value">"@style/GdxTheme"</span>>
 <span class="lineno"> 16 </span>        <span class="tag">&lt;activity</span><span class="attribute">
 </span><span class="lineno"> 17 </span><span class="attribute">                </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"com.github.manu.dungeonintroubles.android.AndroidLauncher"</span>
-<span class="caretline"><span class="lineno"> 18 </span>                <span class="warning"><span class="prefix">android:</span><span class="attribute">label</span>=<span class="value">"@string/app_name"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 18 </span>                <span class="warning"><span class="prefix">android:</span><span class="attribute">label</span>=<span class="value">"@string/app_name"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 19 </span>                <span class="prefix">android:</span><span class="attribute">screenOrientation</span>=<span class="value">"landscape"</span>
 <span class="lineno"> 20 </span>                <span class="prefix">android:</span><span class="attribute">configChanges</span>=<span class="value">"keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout"</span>
 <span class="lineno"> 21 </span>            <span class="prefix">android:</span><span class="attribute">exported</span>=<span class="value">"true"</span>>
@@ -286,10 +292,11 @@ Dismiss</button>            </div>
 <span class="lineno">  6 </span>    <span class="tag">&lt;uses-permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"android.permission.VIBRATE"</span>/>
 <span class="lineno">  7 </span>    <span class="tag">&lt;application</span><span class="attribute">
 </span><span class="lineno">  8 </span><span class="attribute">            </span><span class="prefix">android:</span><span class="attribute">allowBackup</span>=<span class="value">"true"</span>
-<span class="caretline"><span class="lineno">  9 </span>            <span class="prefix">android:</span><span class="attribute">fullBackupContent</span>=<span class="value">"</span><span class="warning"><span class="value">true</span></span><span class="value">"</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 10 </span>            <span class="prefix">android:</span><span class="attribute">icon</span>=<span class="value">"@mipmap/ic_launcher"</span>
+<span class="caretline"><span class="lineno">  9 </span>            <span class="prefix">android:</span><span class="attribute">fullBackupContent</span>=<span class="value">"</span><span class="warning"><span class="value">true</span></span><span class="value">"</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 10 </span>            <span class="prefix">android:</span><span class="attribute">icon</span>=<span class="value">"@mipmap/game_icon"</span>
 <span class="lineno"> 11 </span>            <span class="prefix">android:</span><span class="attribute">isGame</span>=<span class="value">"true"</span>
-<span class="lineno"> 12 </span>            <span class="prefix">android:</span><span class="attribute">appCategory</span>=<span class="value">"game"</span></pre>
+<span class="lineno"> 12 </span>            <span class="prefix">android:</span><span class="attribute">appCategory</span>=<span class="value">"game"</span>
+</pre>
 
 </div>
 <div class="metadata"><div class="explanation" id="explanationDataExtractionRules" style="display: none;">
@@ -322,32 +329,134 @@ Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id
 Dismiss</button>            </div>
             </div>
           </section>
-<a name="Usability:Icons"></a>
-<a name="IconLauncherShape"></a>
-<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="IconLauncherShapeCard" style="display: block;">
+<a name="Performance"></a>
+<a name="UnusedResources"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="UnusedResourcesCard" style="display: block;">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
   <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">The launcher icon shape should use a distinct silhouette</h2>
+    <h2 class="mdl-card__title-text">Unused resources</h2>
   </div>
               <div class="mdl-card__supporting-text">
 <div class="issue">
 <div class="warningslist">
-<span class="location"><a href="../../res/mipmap-hdpi/ic_launcher_adaptive_back.png">../../res/mipmap-hdpi/ic_launcher_adaptive_back.png</a></span>: <img class="embedimage" align="right" src="../../res/mipmap-hdpi/ic_launcher_adaptive_back.png" /><span class="message">Launcher icons should not fill every pixel of their square region; see the design guide for details</span><br clear="right"/>
-<span class="location"><a href="../../res/mipmap-mdpi/ic_launcher_adaptive_back.png">../../res/mipmap-mdpi/ic_launcher_adaptive_back.png</a></span>: <img class="embedimage" align="right" src="../../res/mipmap-mdpi/ic_launcher_adaptive_back.png" /><span class="message">Launcher icons should not fill every pixel of their square region; see the design guide for details</span><br clear="right"/>
-<span class="location"><a href="../../res/mipmap-xhdpi/ic_launcher_adaptive_back.png">../../res/mipmap-xhdpi/ic_launcher_adaptive_back.png</a></span>: <img class="embedimage" align="right" src="../../res/mipmap-xhdpi/ic_launcher_adaptive_back.png" /><span class="message">Launcher icons should not fill every pixel of their square region; see the design guide for details</span><br clear="right"/>
-<span class="location"><a href="../../res/mipmap-xxhdpi/ic_launcher_adaptive_back.png">../../res/mipmap-xxhdpi/ic_launcher_adaptive_back.png</a></span>: <img class="embedimage" align="right" src="../../res/mipmap-xxhdpi/ic_launcher_adaptive_back.png" /><span class="message">Launcher icons should not fill every pixel of their square region; see the design guide for details</span><br clear="right"/>
-<span class="location"><a href="../../res/mipmap-xxxhdpi/ic_launcher_adaptive_back.png">../../res/mipmap-xxxhdpi/ic_launcher_adaptive_back.png</a></span>: <img class="embedimage" align="right" src="../../res/mipmap-xxxhdpi/ic_launcher_adaptive_back.png" /><span class="message">Launcher icons should not fill every pixel of their square region; see the design guide for details</span><br clear="right"/>
+<span class="location"><a href="../../res/mipmap-anydpi-v26/game_icon_round.xml">../../res/mipmap-anydpi-v26/game_icon_round.xml</a>:2</span>: <span class="message">The resource <code>R.mipmap.game_icon_round</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno"> 1 </span><span class="prologue">&lt;?xml version="1.0" encoding="utf-8"?></span>
+<span class="caretline"><span class="lineno"> 2 </span><span class="warning"><span class="tag">&lt;adaptive-icon</span><span class="attribute"> </span><span class="prefix">xmlns:</span><span class="attribute">android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 3 </span>    <span class="tag">&lt;background</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">drawable</span>=<span class="value">"@color/game_icon_background"</span>/>
+<span class="lineno"> 4 </span>    <span class="tag">&lt;foreground</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">drawable</span>=<span class="value">"@mipmap/game_icon_foreground"</span>/>
+<span class="lineno"> 5 </span><span class="tag">&lt;/adaptive-icon></span></pre>
+
 </div>
-<div class="metadata"><div class="explanation" id="explanationIconLauncherShape" style="display: none;">
-According to the Android Design Guide (<a href="https://material.io/design/iconography/">https://material.io/design/iconography/</a>) your launcher icons should "use a distinct silhouette", a "three-dimensional, front view, with a slight perspective as if viewed from above, so that users perceive some depth."<br/>
+<div class="metadata"><div class="explanation" id="explanationUnusedResources" style="display: none;">
+Unused resources make applications larger and slow down builds.<br/>
 <br/>
-The unique silhouette implies that your launcher icon should not be a filled square.<br/>To suppress this error, use the issue id "IconLauncherShape" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.<br/>
+<br/>
+You can include test sources in the unused resource check by setting the system property lint.unused-resources.include-tests=true, and to exclude them (usually for performance reasons), use lint.unused-resources.exclude-tests=true.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+To suppress this error, use the issue id "UnusedResources" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
 <br/></div>
 </div>
 </div>
 <div class="chips">
 <span class="mdl-chip">
-    <span class="mdl-chip__text">IconLauncherShape</span>
+    <span class="mdl-chip__text">UnusedResources</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Performance</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Warning</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Priority 3/10</span>
+</span>
+</div>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationUnusedResourcesLink" onclick="reveal('explanationUnusedResources');">
+Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="UnusedResourcesCardLink" onclick="hideid('UnusedResourcesCard');">
+Dismiss</button>            </div>
+            </div>
+          </section>
+<a name="Usability:Icons"></a>
+<a name="IconDuplicates"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="IconDuplicatesCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Duplicated icons under different names</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+<div class="issue">
+<div class="warningslist">
+<span class="location"><a href="../../res/mipmap-hdpi/game_icon_round.png">../../res/mipmap-hdpi/game_icon_round.png</a></span>: <span class="message">The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png</span><br />
+<ul></ul><button id="Location1DivLink" onclick="reveal('Location1Div');" />+ 1 Additional Locations...</button>
+<div id="Location1Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../res/mipmap-hdpi/game_icon.png">../../res/mipmap-hdpi/game_icon.png</a></span>
+</ul>
+</div><br/><br/>
+<table>
+<tr><td><a href="../../res/mipmap-hdpi/game_icon.png"><img border="0" align="top" src="../../res/mipmap-hdpi/game_icon.png" /></a>
+</td><td><a href="../../res/mipmap-hdpi/game_icon_round.png"><img border="0" align="top" src="../../res/mipmap-hdpi/game_icon_round.png" /></a>
+</td></tr><tr><th></th><th></th></tr>
+</table>
+<span class="location"><a href="../../res/mipmap-mdpi/game_icon_round.png">../../res/mipmap-mdpi/game_icon_round.png</a></span>: <span class="message">The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png</span><br />
+<ul></ul><button id="Location2DivLink" onclick="reveal('Location2Div');" />+ 1 Additional Locations...</button>
+<div id="Location2Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../res/mipmap-mdpi/game_icon.png">../../res/mipmap-mdpi/game_icon.png</a></span>
+</ul>
+</div><br/><br/>
+<table>
+<tr><td><a href="../../res/mipmap-mdpi/game_icon.png"><img border="0" align="top" src="../../res/mipmap-mdpi/game_icon.png" /></a>
+</td><td><a href="../../res/mipmap-mdpi/game_icon_round.png"><img border="0" align="top" src="../../res/mipmap-mdpi/game_icon_round.png" /></a>
+</td></tr><tr><th></th><th></th></tr>
+</table>
+<span class="location"><a href="../../res/mipmap-xhdpi/game_icon_round.png">../../res/mipmap-xhdpi/game_icon_round.png</a></span>: <span class="message">The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png</span><br />
+<ul></ul><button id="Location3DivLink" onclick="reveal('Location3Div');" />+ 1 Additional Locations...</button>
+<div id="Location3Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../res/mipmap-xhdpi/game_icon.png">../../res/mipmap-xhdpi/game_icon.png</a></span>
+</ul>
+</div><br/><br/>
+<table>
+<tr><td><a href="../../res/mipmap-xhdpi/game_icon.png"><img border="0" align="top" src="../../res/mipmap-xhdpi/game_icon.png" /></a>
+</td><td><a href="../../res/mipmap-xhdpi/game_icon_round.png"><img border="0" align="top" src="../../res/mipmap-xhdpi/game_icon_round.png" /></a>
+</td></tr><tr><th></th><th></th></tr>
+</table>
+<span class="location"><a href="../../res/mipmap-xxhdpi/game_icon_round.png">../../res/mipmap-xxhdpi/game_icon_round.png</a></span>: <span class="message">The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png</span><br />
+<ul></ul><button id="Location4DivLink" onclick="reveal('Location4Div');" />+ 1 Additional Locations...</button>
+<div id="Location4Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../res/mipmap-xxhdpi/game_icon.png">../../res/mipmap-xxhdpi/game_icon.png</a></span>
+</ul>
+</div><br/><br/>
+<table>
+<tr><td><a href="../../res/mipmap-xxhdpi/game_icon.png"><img border="0" align="top" src="../../res/mipmap-xxhdpi/game_icon.png" /></a>
+</td><td><a href="../../res/mipmap-xxhdpi/game_icon_round.png"><img border="0" align="top" src="../../res/mipmap-xxhdpi/game_icon_round.png" /></a>
+</td></tr><tr><th></th><th></th></tr>
+</table>
+<span class="location"><a href="../../res/mipmap-xxxhdpi/game_icon_round.png">../../res/mipmap-xxxhdpi/game_icon_round.png</a></span>: <span class="message">The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png</span><br />
+<ul></ul><button id="Location5DivLink" onclick="reveal('Location5Div');" />+ 1 Additional Locations...</button>
+<div id="Location5Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../res/mipmap-xxxhdpi/game_icon.png">../../res/mipmap-xxxhdpi/game_icon.png</a></span>
+</ul>
+</div><br/><br/>
+<table>
+<tr><td><a href="../../res/mipmap-xxxhdpi/game_icon.png"><img border="0" align="top" src="../../res/mipmap-xxxhdpi/game_icon.png" /></a>
+</td><td><a href="../../res/mipmap-xxxhdpi/game_icon_round.png"><img border="0" align="top" src="../../res/mipmap-xxxhdpi/game_icon_round.png" /></a>
+</td></tr><tr><th></th><th></th></tr>
+</table>
+</div>
+<div class="metadata"><div class="explanation" id="explanationIconDuplicates" style="display: none;">
+If an icon is repeated under different names, you can consolidate and just use one of the icons and delete the others to make your application smaller. However, duplicated icons usually are not intentional and can sometimes point to icons that were accidentally overwritten or accidentally not updated.<br/>To suppress this error, use the issue id "IconDuplicates" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+<br/></div>
+</div>
+</div>
+<div class="chips">
+<span class="mdl-chip">
+    <span class="mdl-chip__text">IconDuplicates</span>
 </span>
 <span class="mdl-chip">
     <span class="mdl-chip__text">Icons</span>
@@ -359,13 +468,13 @@ The unique silhouette implies that your launcher icon should not be a filled squ
     <span class="mdl-chip__text">Warning</span>
 </span>
 <span class="mdl-chip">
-    <span class="mdl-chip__text">Priority 6/10</span>
+    <span class="mdl-chip__text">Priority 3/10</span>
 </span>
 </div>
               </div>
               <div class="mdl-card__actions mdl-card--border">
-<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationIconLauncherShapeLink" onclick="reveal('explanationIconLauncherShape');">
-Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="IconLauncherShapeCardLink" onclick="hideid('IconLauncherShapeCard');">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationIconDuplicatesLink" onclick="reveal('explanationIconDuplicates');">
+Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="IconDuplicatesCardLink" onclick="hideid('IconDuplicatesCard');">
 Dismiss</button>            </div>
             </div>
           </section>

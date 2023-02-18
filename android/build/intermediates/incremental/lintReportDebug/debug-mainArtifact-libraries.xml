@@ -1,13 +1,13 @@
 <libraries>
   <library
       name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.7.10/d70d7d2c56371f7aa18f32e984e3e2e998fe9081/kotlin-stdlib-jdk8-1.7.10.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib-jdk8\1.7.10\d70d7d2c56371f7aa18f32e984e3e2e998fe9081\kotlin-stdlib-jdk8-1.7.10.jar"
       resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10"/>
   <library
       name="com.android.support:multidex:1.0.2@aar"
-      jars="/home/manuel/.gradle/caches/transforms-3/46ebcb82c8e5138df9f6a5107d9704dd/transformed/multidex-1.0.2/jars/classes.jar"
+      jars="C:\Users\Manu\.gradle\caches\transforms-3\46ebcb82c8e5138df9f6a5107d9704dd\transformed\multidex-1.0.2\jars\classes.jar"
       resolved="com.android.support:multidex:1.0.2"
-      folder="/home/manuel/.gradle/caches/transforms-3/46ebcb82c8e5138df9f6a5107d9704dd/transformed/multidex-1.0.2"
+      folder="C:\Users\Manu\.gradle\caches\transforms-3\46ebcb82c8e5138df9f6a5107d9704dd\transformed\multidex-1.0.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -17,95 +17,95 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/home/manuel/Documentos/Dungeon-in-Troubles@@:core"
-      jars="/home/manuel/Documentos/Dungeon-in-Troubles/core/build/libs/core-1.0.0.jar"
+      name="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles@@:core"
+      jars="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\core\build\libs\core-0.9.2.jar"
       resolved="::"/>
   <library
       name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.7.10/1ef73fee66f45d52c67e2aca12fd945dbe0659bf/kotlin-stdlib-jdk7-1.7.10.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib-jdk7\1.7.10\1ef73fee66f45d52c67e2aca12fd945dbe0659bf\kotlin-stdlib-jdk7-1.7.10.jar"
       resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10"/>
   <library
       name="org.jetbrains.kotlin:kotlin-stdlib:1.7.22@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.7.22/9fb43bccb6cf8cfaaf3776c75f5df4f052f09b72/kotlin-stdlib-1.7.22.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib\1.7.22\9fb43bccb6cf8cfaaf3776c75f5df4f052f09b72\kotlin-stdlib-1.7.22.jar"
       resolved="org.jetbrains.kotlin:kotlin-stdlib:1.7.22"/>
   <library
       name="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.22@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.7.22/5dd2c9dcf64c94b46cf4bdb6fa4035b9bb726e2e/kotlin-stdlib-common-1.7.22.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib-common\1.7.22\5dd2c9dcf64c94b46cf4bdb6fa4035b9bb726e2e\kotlin-stdlib-common-1.7.22.jar"
       resolved="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.22"/>
   <library
       name="org.jetbrains:annotations:13.0@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\13.0\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\annotations-13.0.jar"
       resolved="org.jetbrains:annotations:13.0"/>
   <library
       name="com.badlogicgames.gdx:gdx-backend-android:1.11.0@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-android/1.11.0/f6e321f1aced1706402c4ebd7ddd55526dabc572/gdx-backend-android-1.11.0.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.11.0\f6e321f1aced1706402c4ebd7ddd55526dabc572\gdx-backend-android-1.11.0.jar"
       resolved="com.badlogicgames.gdx:gdx-backend-android:1.11.0"/>
   <library
       name="com.badlogicgames.gdx:gdx-ai:1.8.2@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-ai/1.8.2/ab75d2ce80ab1b1ce6828a15dc0f417abac4c674/gdx-ai-1.8.2.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-ai\1.8.2\ab75d2ce80ab1b1ce6828a15dc0f417abac4c674\gdx-ai-1.8.2.jar"
       resolved="com.badlogicgames.gdx:gdx-ai:1.8.2"/>
   <library
       name="com.badlogicgames.box2dlights:box2dlights:1.5@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/com.badlogicgames.box2dlights/box2dlights/1.5/6902dbcd250c95a27973aa24a147a95b3828d348/box2dlights-1.5.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\com.badlogicgames.box2dlights\box2dlights\1.5\6902dbcd250c95a27973aa24a147a95b3828d348\box2dlights-1.5.jar"
       resolved="com.badlogicgames.box2dlights:box2dlights:1.5"/>
   <library
       name="io.github.libktx:ktx-box2d:1.11.0-rc3@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/io.github.libktx/ktx-box2d/1.11.0-rc3/d550e7d4f2b4826affd684609c63d6ac6c89aae6/ktx-box2d-1.11.0-rc3.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\io.github.libktx\ktx-box2d\1.11.0-rc3\d550e7d4f2b4826affd684609c63d6ac6c89aae6\ktx-box2d-1.11.0-rc3.jar"
       resolved="io.github.libktx:ktx-box2d:1.11.0-rc3"/>
   <library
       name="com.badlogicgames.gdx:gdx-box2d:1.11.0@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.11.0/ad4facee800dd945d6d6e93dea2936bc135b5f/gdx-box2d-1.11.0.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-box2d\1.11.0\ad4facee800dd945d6d6e93dea2936bc135b5f\gdx-box2d-1.11.0.jar"
       resolved="com.badlogicgames.gdx:gdx-box2d:1.11.0"/>
   <library
       name="com.badlogicgames.gdx:gdx:1.11.0@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.11.0/ffe1206d1004cd9e40027e28964be0fea0399af7/gdx-1.11.0.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx\1.11.0\ffe1206d1004cd9e40027e28964be0fea0399af7\gdx-1.11.0.jar"
       resolved="com.badlogicgames.gdx:gdx:1.11.0"/>
   <library
       name="com.badlogicgames.gdx:gdx-jnigen-loader:2.3.1@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-jnigen-loader/2.3.1/2d472f69243631fbcb3d4c3f93dd2e137a6cb084/gdx-jnigen-loader-2.3.1.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-jnigen-loader\2.3.1\2d472f69243631fbcb3d4c3f93dd2e137a6cb084\gdx-jnigen-loader-2.3.1.jar"
       resolved="com.badlogicgames.gdx:gdx-jnigen-loader:2.3.1"/>
   <library
       name="io.github.libktx:ktx-actors:1.11.0-rc3@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/io.github.libktx/ktx-actors/1.11.0-rc3/ad9789427fd8ef8468c6b14369b787c2dc64f09/ktx-actors-1.11.0-rc3.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\io.github.libktx\ktx-actors\1.11.0-rc3\ad9789427fd8ef8468c6b14369b787c2dc64f09\ktx-actors-1.11.0-rc3.jar"
       resolved="io.github.libktx:ktx-actors:1.11.0-rc3"/>
   <library
       name="io.github.libktx:ktx-app:1.11.0-rc3@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/io.github.libktx/ktx-app/1.11.0-rc3/903b08e1c2c9ac76a0441f93bc90d56e157bf5c9/ktx-app-1.11.0-rc3.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\io.github.libktx\ktx-app\1.11.0-rc3\903b08e1c2c9ac76a0441f93bc90d56e157bf5c9\ktx-app-1.11.0-rc3.jar"
       resolved="io.github.libktx:ktx-app:1.11.0-rc3"/>
   <library
       name="io.github.libktx:ktx-assets:1.11.0-rc3@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/io.github.libktx/ktx-assets/1.11.0-rc3/118e1d35713378ce65c36a602c38b4958cb883a2/ktx-assets-1.11.0-rc3.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\io.github.libktx\ktx-assets\1.11.0-rc3\118e1d35713378ce65c36a602c38b4958cb883a2\ktx-assets-1.11.0-rc3.jar"
       resolved="io.github.libktx:ktx-assets:1.11.0-rc3"/>
   <library
       name="io.github.libktx:ktx-collections:1.11.0-rc3@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/io.github.libktx/ktx-collections/1.11.0-rc3/48f58f4cf7f2310ad275ec21cc1b134fb2f689bf/ktx-collections-1.11.0-rc3.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\io.github.libktx\ktx-collections\1.11.0-rc3\48f58f4cf7f2310ad275ec21cc1b134fb2f689bf\ktx-collections-1.11.0-rc3.jar"
       resolved="io.github.libktx:ktx-collections:1.11.0-rc3"/>
   <library
       name="io.github.libktx:ktx-graphics:1.11.0-rc3@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/io.github.libktx/ktx-graphics/1.11.0-rc3/656487384cb8948009fd30f3c58c114a9d64bd4f/ktx-graphics-1.11.0-rc3.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\io.github.libktx\ktx-graphics\1.11.0-rc3\656487384cb8948009fd30f3c58c114a9d64bd4f\ktx-graphics-1.11.0-rc3.jar"
       resolved="io.github.libktx:ktx-graphics:1.11.0-rc3"/>
   <library
       name="io.github.libktx:ktx-log:1.11.0-rc3@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/io.github.libktx/ktx-log/1.11.0-rc3/70455c6b6b7b1ff183586394ac1fa9bdd34414c/ktx-log-1.11.0-rc3.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\io.github.libktx\ktx-log\1.11.0-rc3\70455c6b6b7b1ff183586394ac1fa9bdd34414c\ktx-log-1.11.0-rc3.jar"
       resolved="io.github.libktx:ktx-log:1.11.0-rc3"/>
   <library
       name="io.github.libktx:ktx-math:1.11.0-rc3@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/io.github.libktx/ktx-math/1.11.0-rc3/f4fc1167dddaddf29a105d4d06e573a97d962378/ktx-math-1.11.0-rc3.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\io.github.libktx\ktx-math\1.11.0-rc3\f4fc1167dddaddf29a105d4d06e573a97d962378\ktx-math-1.11.0-rc3.jar"
       resolved="io.github.libktx:ktx-math:1.11.0-rc3"/>
   <library
       name="io.github.libktx:ktx-scene2d:1.11.0-rc3@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/io.github.libktx/ktx-scene2d/1.11.0-rc3/a0dd2b88f689c0c4914f34ed332cca35d3909892/ktx-scene2d-1.11.0-rc3.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\io.github.libktx\ktx-scene2d\1.11.0-rc3\a0dd2b88f689c0c4914f34ed332cca35d3909892\ktx-scene2d-1.11.0-rc3.jar"
       resolved="io.github.libktx:ktx-scene2d:1.11.0-rc3"/>
   <library
       name="io.github.libktx:ktx-style:1.11.0-rc3@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/io.github.libktx/ktx-style/1.11.0-rc3/bac029f06121ba379edcf033536f7e0337d64ab/ktx-style-1.11.0-rc3.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\io.github.libktx\ktx-style\1.11.0-rc3\bac029f06121ba379edcf033536f7e0337d64ab\ktx-style-1.11.0-rc3.jar"
       resolved="io.github.libktx:ktx-style:1.11.0-rc3"/>
   <library
       name="io.github.libktx:ktx-tiled:1.11.0-rc3@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/io.github.libktx/ktx-tiled/1.11.0-rc3/5b5f83e3b4ffa0d4ec0935baca9174a7710290b1/ktx-tiled-1.11.0-rc3.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\io.github.libktx\ktx-tiled\1.11.0-rc3\5b5f83e3b4ffa0d4ec0935baca9174a7710290b1\ktx-tiled-1.11.0-rc3.jar"
       resolved="io.github.libktx:ktx-tiled:1.11.0-rc3"/>
   <library
       name="io.github.quillraven.fleks:Fleks:1.6-JVM@jar"
-      jars="/home/manuel/.gradle/caches/modules-2/files-2.1/io.github.quillraven.fleks/Fleks/1.6-JVM/86c57de390297c32293b0214f627c2dba9d77d5e/Fleks-1.6-JVM.jar"
+      jars="C:\Users\Manu\.gradle\caches\modules-2\files-2.1\io.github.quillraven.fleks\Fleks\1.6-JVM\86c57de390297c32293b0214f627c2dba9d77d5e\Fleks-1.6-JVM.jar"
       resolved="io.github.quillraven.fleks:Fleks:1.6-JVM"/>
 </libraries>

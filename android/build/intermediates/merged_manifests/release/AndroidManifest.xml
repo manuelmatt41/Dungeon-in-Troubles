@@ -19,7 +19,7 @@
         android:allowBackup="true"
         android:appCategory="game"
         android:fullBackupContent="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/game_icon"
         android:isGame="true"
         android:label="@string/app_name"
         android:theme="@style/GdxTheme" >
