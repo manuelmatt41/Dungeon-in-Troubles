@@ -101,7 +101,7 @@ class EntitySpawnSystem(
                         add<PlayerComponent>() {
                             with(playerCmps[entity]) {
                                 this@add.coins = this.coins
-                                this@add.meter = this.meter
+                                this@add.distance = this.distance
                                 actualSpeed = this.actualSpeed
                             }
                         }
@@ -286,7 +286,7 @@ class EntitySpawnSystem(
 
                     add<PlayerComponent> {
                         this.coins = event.playerCmp.coins
-                        this.meter = event.playerCmp.meter
+                        this.distance = event.playerCmp.distance
                         this.actualSpeed = event.playerCmp.actualSpeed
                         log.debug { "${event.playerCmp.actualSpeed}" }
                     }

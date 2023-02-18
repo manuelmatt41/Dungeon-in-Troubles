@@ -1,7 +1,6 @@
 package com.github.manu.dungeonintroubles.screen
 
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.InputMultiplexer
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TmxMapLoader
 import com.badlogic.gdx.scenes.scene2d.Event
@@ -177,8 +176,8 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
 //                gameView.deathPopup.alpha = 1f
 //                gameView.touchable = Touchable.enabled
 //                gameView.deathPopup.touchable = Touchable.enabled
-                if (event.playerCmp.meter > playerPrefs.getFloat("distance")) {
-                    playerPrefs.putFloat("distance", event.playerCmp.meter)
+                if (event.playerCmp.distance > playerPrefs.getFloat("distance")) {
+                    playerPrefs.putFloat("distance", event.playerCmp.distance)
                 }
                 playerPrefs.putInteger("coins", event.playerCmp.coins)
                 log.debug { "Coins save: ${playerPrefs.getInteger("coins")}" }

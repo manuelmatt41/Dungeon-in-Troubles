@@ -24,10 +24,6 @@ class JumpMoveSystem(
         val physcmp = physicsCmps[entity]
         val jumpCmp = jumpCmps[entity]
 
-        if (jumpCmp.root) {
-            return
-        }
-
 //        log.debug { "X:${Gdx.input.gyroscopeX}" }
 //        log.debug { "${Gdx.input.gyroscopeX}" }
         if (prefs.getBoolean("gyroscope")) {
