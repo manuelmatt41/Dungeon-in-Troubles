@@ -155,11 +155,11 @@ $dokka.location:com.github.manu.dungeonintroubles.event/ChangeSettingsEvent///Po
 $dokka.location:com.github.manu.dungeonintroubles.event/ChangeSettingsEvent/ChangeSettingsEvent/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-change-settings-event/-change-settings-event.html
 $dokka.location:com.github.manu.dungeonintroubles.event/CrossPortalSoundEvent///PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-cross-portal-sound-event/index.html
 $dokka.location:com.github.manu.dungeonintroubles.event/CrossPortalSoundEvent/CrossPortalSoundEvent/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-cross-portal-sound-event/-cross-portal-sound-event.html
+$dokka.location:com.github.manu.dungeonintroubles.event/DeadPopUpEvent///PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-dead-pop-up-event/index.html
+$dokka.location:com.github.manu.dungeonintroubles.event/DeadPopUpEvent/DeadPopUpEvent/#com.github.manu.dungeonintroubles.component.PlayerComponent/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-dead-pop-up-event/-dead-pop-up-event.html
+$dokka.location:com.github.manu.dungeonintroubles.event/DeadPopUpEvent/playerCmp/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-dead-pop-up-event/player-cmp.html
 $dokka.location:com.github.manu.dungeonintroubles.event/DeadSoundEvent///PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-dead-sound-event/index.html
 $dokka.location:com.github.manu.dungeonintroubles.event/DeadSoundEvent/DeadSoundEvent/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-dead-sound-event/-dead-sound-event.html
-$dokka.location:com.github.manu.dungeonintroubles.event/DeathHPopUpEvent///PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-death-h-pop-up-event/index.html
-$dokka.location:com.github.manu.dungeonintroubles.event/DeathHPopUpEvent/DeathHPopUpEvent/#com.github.manu.dungeonintroubles.component.PlayerComponent/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-death-h-pop-up-event/-death-h-pop-up-event.html
-$dokka.location:com.github.manu.dungeonintroubles.event/DeathHPopUpEvent/playerCmp/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-death-h-pop-up-event/player-cmp.html
 $dokka.location:com.github.manu.dungeonintroubles.event/ExitGameEvent///PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-exit-game-event/index.html
 $dokka.location:com.github.manu.dungeonintroubles.event/ExitGameEvent/ExitGameEvent/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-exit-game-event/-exit-game-event.html
 $dokka.location:com.github.manu.dungeonintroubles.event/GameResumeEvent///PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-game-resume-event/index.html
@@ -177,16 +177,14 @@ $dokka.location:com.github.manu.dungeonintroubles.event/MapChangeEvent/MapChange
 $dokka.location:com.github.manu.dungeonintroubles.event/MapChangeEvent/map/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-map-change-event/map.html
 $dokka.location:com.github.manu.dungeonintroubles.event/MapChangeEvent/playerCmp/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-map-change-event/player-cmp.html
 $dokka.location:com.github.manu.dungeonintroubles.event/MoveEvent///PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-move-event/index.html
-$dokka.location:com.github.manu.dungeonintroubles.event/MoveEvent/MoveEvent/#com.github.manu.dungeonintroubles.component.AnimationModel#kotlin.Float/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-move-event/-move-event.html
+$dokka.location:com.github.manu.dungeonintroubles.event/MoveEvent/MoveEvent/#kotlin.Float/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-move-event/-move-event.html
 $dokka.location:com.github.manu.dungeonintroubles.event/MoveEvent/distance/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-move-event/distance.html
-$dokka.location:com.github.manu.dungeonintroubles.event/MoveEvent/model/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-move-event/model.html
 $dokka.location:com.github.manu.dungeonintroubles.event/PausePopUpEvent///PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-pause-pop-up-event/index.html
 $dokka.location:com.github.manu.dungeonintroubles.event/PausePopUpEvent/PausePopUpEvent/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-pause-pop-up-event/-pause-pop-up-event.html
 $dokka.location:com.github.manu.dungeonintroubles.event/SetGameEvent///PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-set-game-event/index.html
 $dokka.location:com.github.manu.dungeonintroubles.event/SetGameEvent/SetGameEvent/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-set-game-event/-set-game-event.html
 $dokka.location:com.github.manu.dungeonintroubles.event/SetMenuScreenEvent///PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-set-menu-screen-event/index.html
-$dokka.location:com.github.manu.dungeonintroubles.event/SetMenuScreenEvent/SetMenuScreenEvent/#com.github.manu.dungeonintroubles.component.PlayerComponent?/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-set-menu-screen-event/-set-menu-screen-event.html
-$dokka.location:com.github.manu.dungeonintroubles.event/SetMenuScreenEvent/playerCmp/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-set-menu-screen-event/player-cmp.html
+$dokka.location:com.github.manu.dungeonintroubles.event/SetMenuScreenEvent/SetMenuScreenEvent/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-set-menu-screen-event/-set-menu-screen-event.html
 $dokka.location:com.github.manu.dungeonintroubles.event/ShowSettingsEvent///PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-show-settings-event/index.html
 $dokka.location:com.github.manu.dungeonintroubles.event/ShowSettingsEvent/ShowSettingsEvent/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-show-settings-event/-show-settings-event.html
 $dokka.location:com.github.manu.dungeonintroubles.event/SpawnLayerObjectsEvent///PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-spawn-layer-objects-event/index.html
@@ -195,31 +193,18 @@ $dokka.location:com.github.manu.dungeonintroubles.event/SpawnLayerObjectsEvent/l
 $dokka.location:com.github.manu.dungeonintroubles.event/SpawnLayerObjectsEvent/location/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-spawn-layer-objects-event/location.html
 $dokka.location:com.github.manu.dungeonintroubles.event/SpawnLayerObjectsEvent/map/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-spawn-layer-objects-event/map.html
 $dokka.location:com.github.manu.dungeonintroubles.event/SpawnProjectilesSoundEvent///PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-spawn-projectiles-sound-event/index.html
-$dokka.location:com.github.manu.dungeonintroubles.event/SpawnProjectilesSoundEvent/SpawnProjectilesSoundEvent/#kotlin.Int/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-spawn-projectiles-sound-event/-spawn-projectiles-sound-event.html
-$dokka.location:com.github.manu.dungeonintroubles.event/SpawnProjectilesSoundEvent/numberOfProjectiles/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-spawn-projectiles-sound-event/number-of-projectiles.html
+$dokka.location:com.github.manu.dungeonintroubles.event/SpawnProjectilesSoundEvent/SpawnProjectilesSoundEvent/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.event/-spawn-projectiles-sound-event/-spawn-projectiles-sound-event.html
 $dokka.location:com.github.manu.dungeonintroubles.extension////PointingToDeclaration/core/com.github.manu.dungeonintroubles.extension/index.html
 $dokka.location:com.github.manu.dungeonintroubles.extension//entity/com.badlogic.gdx.physics.box2d.Fixture#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.extension/entity.html
 $dokka.location:com.github.manu.dungeonintroubles.extension//fire/com.badlogic.gdx.scenes.scene2d.Stage#com.badlogic.gdx.scenes.scene2d.Event/PointingToDeclaration/core/com.github.manu.dungeonintroubles.extension/fire.html
-$dokka.location:com.github.manu.dungeonintroubles.extension//forEachCell/com.badlogic.gdx.maps.tiled.TiledMapTileLayer#kotlin.Int#kotlin.Int#kotlin.Int#kotlin.Function3[com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell,kotlin.Int,kotlin.Int,kotlin.Unit]/PointingToDeclaration/core/com.github.manu.dungeonintroubles.extension/for-each-cell.html
-$dokka.location:com.github.manu.dungeonintroubles.extension//isDinamicBody/com.badlogic.gdx.physics.box2d.Fixture#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.extension/is-dinamic-body.html
-$dokka.location:com.github.manu.dungeonintroubles.extension//isStaticBody/com.badlogic.gdx.physics.box2d.Fixture#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.extension/is-static-body.html
 $dokka.location:com.github.manu.dungeonintroubles.extension//physicCmpFromImage/com.github.quillraven.fleks.EntityCreateCfg#com.badlogic.gdx.physics.box2d.World#com.badlogic.gdx.scenes.scene2d.ui.Image#com.badlogic.gdx.physics.box2d.BodyDef.BodyType#kotlin.Function4[ktx.box2d.BodyDefinition,com.github.manu.dungeonintroubles.component.PhysicComponent,kotlin.Float,kotlin.Float,kotlin.Unit]/PointingToDeclaration/core/com.github.manu.dungeonintroubles.extension/physic-cmp-from-image.html
 $dokka.location:com.github.manu.dungeonintroubles.extension//physicCmpFromShape2D/com.github.quillraven.fleks.EntityCreateCfg#com.badlogic.gdx.physics.box2d.World#kotlin.Int#kotlin.Int#com.badlogic.gdx.math.Shape2D/PointingToDeclaration/core/com.github.manu.dungeonintroubles.extension/physic-cmp-from-shape2-d.html
 $dokka.location:com.github.manu.dungeonintroubles.input////PointingToDeclaration/core/com.github.manu.dungeonintroubles.input/index.html
-$dokka.location:com.github.manu.dungeonintroubles.input/PlayerKeyBoardInput.Companion///PointingToDeclaration/core/com.github.manu.dungeonintroubles.input/-player-key-board-input/-companion/index.html
 $dokka.location:com.github.manu.dungeonintroubles.input/PlayerKeyBoardInput///PointingToDeclaration/core/com.github.manu.dungeonintroubles.input/-player-key-board-input/index.html
 $dokka.location:com.github.manu.dungeonintroubles.input/PlayerKeyBoardInput/PlayerKeyBoardInput/#com.github.quillraven.fleks.World#com.badlogic.gdx.scenes.scene2d.Stage#com.badlogic.gdx.scenes.scene2d.Stage#com.github.quillraven.fleks.ComponentMapper[com.github.manu.dungeonintroubles.component.JumpComponent]/PointingToDeclaration/core/com.github.manu.dungeonintroubles.input/-player-key-board-input/-player-key-board-input.html
 $dokka.location:com.github.manu.dungeonintroubles.input/PlayerKeyBoardInput/keyDown/#kotlin.Int/PointingToDeclaration/core/com.github.manu.dungeonintroubles.input/-player-key-board-input/key-down.html
 $dokka.location:com.github.manu.dungeonintroubles.input/PlayerKeyBoardInput/touchDown/#kotlin.Int#kotlin.Int#kotlin.Int#kotlin.Int/PointingToDeclaration/core/com.github.manu.dungeonintroubles.input/-player-key-board-input/touch-down.html
 $dokka.location:com.github.manu.dungeonintroubles.input/PlayerKeyBoardInput/touchUp/#kotlin.Int#kotlin.Int#kotlin.Int#kotlin.Int/PointingToDeclaration/core/com.github.manu.dungeonintroubles.input/-player-key-board-input/touch-up.html
-$dokka.location:com.github.manu.dungeonintroubles.screen.debug////PointingToDeclaration/core/com.github.manu.dungeonintroubles.screen.debug/index.html
-$dokka.location:com.github.manu.dungeonintroubles.screen.debug/UiScreen///PointingToDeclaration/core/com.github.manu.dungeonintroubles.screen.debug/-ui-screen/index.html
-$dokka.location:com.github.manu.dungeonintroubles.screen.debug/UiScreen/UiScreen/#com.github.manu.dungeonintroubles.DungeonInTroubles/PointingToDeclaration/core/com.github.manu.dungeonintroubles.screen.debug/-ui-screen/-ui-screen.html
-$dokka.location:com.github.manu.dungeonintroubles.screen.debug/UiScreen/dispose/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.screen.debug/-ui-screen/dispose.html
-$dokka.location:com.github.manu.dungeonintroubles.screen.debug/UiScreen/game/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.screen.debug/-ui-screen/game.html
-$dokka.location:com.github.manu.dungeonintroubles.screen.debug/UiScreen/render/#kotlin.Float/PointingToDeclaration/core/com.github.manu.dungeonintroubles.screen.debug/-ui-screen/render.html
-$dokka.location:com.github.manu.dungeonintroubles.screen.debug/UiScreen/resize/#kotlin.Int#kotlin.Int/PointingToDeclaration/core/com.github.manu.dungeonintroubles.screen.debug/-ui-screen/resize.html
-$dokka.location:com.github.manu.dungeonintroubles.screen.debug/UiScreen/show/#/PointingToDeclaration/core/com.github.manu.dungeonintroubles.screen.debug/-ui-screen/show.html
 $dokka.location:com.github.manu.dungeonintroubles.screen////PointingToDeclaration/core/com.github.manu.dungeonintroubles.screen/index.html
 $dokka.location:com.github.manu.dungeonintroubles.screen/GameScreen.Companion///PointingToDeclaration/core/com.github.manu.dungeonintroubles.screen/-game-screen/-companion/index.html
 $dokka.location:com.github.manu.dungeonintroubles.screen/GameScreen///PointingToDeclaration/core/com.github.manu.dungeonintroubles.screen/-game-screen/index.html
@@ -476,7 +461,6 @@ com.github.manu.dungeonintroubles.event
 com.github.manu.dungeonintroubles.extension
 com.github.manu.dungeonintroubles.input
 com.github.manu.dungeonintroubles.screen
-com.github.manu.dungeonintroubles.screen.debug
 com.github.manu.dungeonintroubles.system
 com.github.manu.dungeonintroubles.ui
 com.github.manu.dungeonintroubles.ui.model

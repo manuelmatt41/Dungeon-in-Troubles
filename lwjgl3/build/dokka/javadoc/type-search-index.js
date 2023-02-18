@@ -1,0 +1,1 @@
+var typeSearchIndex = [{"p":"com.github.manu.dungeonintroubles.lwjgl3","l":"Lwjgl3Launcher","url":"com/github/manu/dungeonintroubles/lwjgl3/Lwjgl3Launcher.html"}, {"l":"All classes","url":"allclasses.html"}]

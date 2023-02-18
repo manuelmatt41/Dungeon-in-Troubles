@@ -1,16 +1,11 @@
 package com.github.manu.dungeonintroubles.system
 
-import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.manu.dungeonintroubles.component.*
-import com.github.manu.dungeonintroubles.event.DeathHPopUpEvent
-import com.github.manu.dungeonintroubles.event.PausePopUpEvent
-import com.github.manu.dungeonintroubles.event.SetMenuScreenEvent
+import com.github.manu.dungeonintroubles.event.DeadPopUpEvent
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.quillraven.fleks.*
-import ktx.log.debug
 import ktx.log.logger
-import ktx.math.vec2
 
 @AnyOf([DespawnComponent::class, TrapComponent::class, CoinComponent::class, PlayerComponent::class])
 @NoneOf([SpawnComponent::class])
@@ -24,7 +19,7 @@ class DespawnSystem(
     override fun onTickEntity(entity: Entity) {
         if (entity in despawnCmps) {
             if (entity in playerCmps) {
-                gameStage.fire(DeathHPopUpEvent(playerCmps[entity]))
+                gameStage.fire(DeadPopUpEvent(playerCmps[entity]))
             }
 
 

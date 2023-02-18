@@ -12,6 +12,16 @@ import ktx.app.gdxError
 import ktx.box2d.*
 import ktx.math.vec2
 
+/**
+ * Extension de la clase EntityCreateCfg para crear un PhysicComponent en la relacion de los datos de una imagen
+ *
+ * @param world Mundo donde se ejecuta las fisicas del juego
+ * @param image Imagen donde se saca los datos
+ * @param bodyType Tipo de cuerpo que se va iniciar
+ * @param fixtureAction Funcion para crear la definicion del cuerpo
+ *
+ * @return Devuelve un physicComponent con el cuerpo inicializado y definido
+ */
 fun EntityCreateCfg.physicCmpFromImage(
     world: World,
     image: Image,
@@ -33,6 +43,16 @@ fun EntityCreateCfg.physicCmpFromImage(
     }
 }
 
+/**
+ * Extension de la clase EntityCreateCfg para crear un PhysicComponent en la relacion de los datos de una forma geometrica
+ *
+ * @param world Mundo donde se ejecuta las fisicas del juego
+ * @param x Coordenada X donde se encuentra la forma en el mapa
+ * @param y Coordenada Y donde se encuentra la forma en el mapa
+ * @param shape Tipo de forma geometrica
+ *
+ * @return Devuelve un physicComponent con el cuerpo inicializado y definido
+ */
 fun EntityCreateCfg.physicCmpFromShape2D(
     world: World,
     x: Int,

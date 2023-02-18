@@ -32,7 +32,7 @@ class MoveSystem(
             in playerCmps -> {
                 with((playerCmps[entity])) {
                     distance += (moveCmp.speed * deltaTime) * 4f
-                    uiStage.fire(MoveEvent(AnimationModel.PLAYER, distance))
+                    uiStage.fire(MoveEvent(distance))
 
                     if (distance < LIMIT_SPEED && distance >= flagToIncreaseSpeed) {
                         moveCmp.speed += 1f

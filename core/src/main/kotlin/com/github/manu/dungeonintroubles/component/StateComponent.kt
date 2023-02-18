@@ -10,25 +10,25 @@ import com.github.quillraven.fleks.World
 
 /**
  * Componente que represeta el estado de la entidad en el sistema
+ *
+ * @property nextState Estado que se va a establecer, por defecto es RUN
+ * @property stateMachine Maquina donde se va a ejecutar los cambios de esatdo de la entidad
+ *
+ * @constructor Crea un StateCompoent con valores por defecto
  */
 data class StateComponent(
-    /**
-     * Estado que se va a establecer, por defecto es RUN
-     */
     var nextState: EntityState = PlayerState.RUN,
-    /**
-     * Maquina donde se va a ejecutar los cambios de esatdo de la entidad
-     */
     val stateMachine: DefaultStateMachine<AiEntity, EntityState> = DefaultStateMachine()
 ) {
     companion object {
         /**
          * Clase que escucha cuando se añade o elimina un entidad en el sisema con el componente estado
+         *
+         * @property world Mundo que contiene las entidades que se inicializa en el mundo donde se introduzca
+         *
+         * @constructor Crea un StateComponentStateListener con valores por defecto
          */
         class StateComponentListener(
-            /**
-             * Mundo que contiene las entidades
-             */
             private val world: World,
         ) : ComponentListener<StateComponent> {
             /**

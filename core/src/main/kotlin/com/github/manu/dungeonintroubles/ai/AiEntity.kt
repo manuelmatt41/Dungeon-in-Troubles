@@ -9,31 +9,21 @@ import com.github.quillraven.fleks.World
 
 /**
  * Almacena los datos para saber que estado se encuentra la entidad y funcione la StateMachine
+ *
+ * @property entity Entidad del sistema
+ * @property world Mundo donde se encuentra la entidad
+ * @property animationCmps Array de entidades con AnimationComponent
+ * @property stateCmps Array de entidades con StateCompont
+ * @property jumpCmps  Array de entidades con JumpComponent
+ * @property moveCmps Array de entidades con MoveComponent
+ * @constructor Creaate a emrpty AiEntity
  */
 data class AiEntity(
-    /**
-     * Entidad del sistema
-     */
     private val entity: Entity,
-    /**
-     * Mundo donde se encuentra la entidad
-     */
     private val world: World,
-    /**
-     * Array de entidades con AnimationComponent
-     */
     private val animationCmps: ComponentMapper<AnimationComponent> = world.mapper(),
-    /**
-     * Array de entidades con StateCompont
-     */
     private val stateCmps: ComponentMapper<StateComponent> = world.mapper(),
-    /**
-     * Array de entidades con JumpComponent
-     */
     private val jumpCmps: ComponentMapper<JumpComponent> = world.mapper(),
-    /**
-     * Array de entidades con MoveComponent
-     */
     private val moveCmps: ComponentMapper<MoveComponent> = world.mapper(),
 ) {
     /**

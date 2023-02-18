@@ -26,48 +26,36 @@ const val DEFAULT_SPEED_Y = 0.7f
 
 /**
  * Clase con los datos para poder aparecer una entidad en el sistema
+ *
+ * @property model Modelo de imagen que usara la entidad
+ * @property speedScaling Escalado de velocidad de la entidad, por defecto es 1
+ * @property physicOffset Posicion del cuerpo de físicas en el sistema en relación a la posicion de la imagen, por defecto es 0
+ * @property physicScaling Escalado del tamaño del cuerpo de físicas del sistema en la relación al tamaño de la imagen, por defecto es 0
+ * @property bodyType Tipo de cuerpo que tendra la entidad, por defecto es dinamico
+ *
+ * @constructor Crea un SpawnConfiguration con valores por defectos menos el modelo
  */
 data class SpawnConfiguration(
-    /**
-     * Modelo de imagen que usara la entidad
-     */
     val model: AnimationModel,
-    /**
-     * Escalado de velocidad de la entidad, por defecto es 1
-     */
     val speedScaling: Float = 1f,
-    /**
-     * Posicion del cuerpo de físicas en el sistema en relación a la posicion de la imagen, por defecto es 0
-     */
     val physicOffset: Vector2 = vec2(0f, 0f),
-    /**
-     * Escalado del tamaño del cuerpo de físicas del sistema en la relación al tamaño de la imagen, por defecto es 0
-     */
     val physicScaling: Vector2 = vec2(),
-    /**
-     * Tipo de cuerpo que tendra la entidad, por defecto es dinamico
-     */
     val bodyType: BodyType = DynamicBody
 )
 
 /**
  * Componente que representa a la entidad que va a aparecer en el sistema
+ *
+ * @property name Tipo de de entidad que va a aparecer, por defecto es indefinido
+ * @property location Posicion donde va a aparecer en la pantalla, por defecto es 0
+ * @property size Tamaño de la entidad en el sistema, por defecto es 0
+ * @property shape Forma que tiene la entidad, por defecto es restangular
+ *
+ * @constructor Crea un SpawnComponent con valores por defecto
  */
 data class SpawnComponent(
-    /**
-     * Tipo de de entidad que va a aparecer, por defecto es indefinido
-     */
     var name: EntityType = EntityType.UNDEFINED,
-    /**
-     * Posicion donde va a aparecer en la pantalla, por defecto es 0
-     */
     var location: Vector2 = vec2(),
-    /**
-     * Tamaño de la entidad en el sistema, por defecto es 0
-     */
     var size: Vector2 = vec2(),
-    /**
-     * Forma que tiene la entidad, por defecto es restangular
-     */
     var shape: Shape2D = Rectangle()
 )

@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TransformDrawable
 /**
  * Clase que permite girar la imagen en el eje x
  */
-class FlipImage() : Image() {
+class FlipImage : Image() {
     /**
      * Valor para dibujar la imagen invertida si esta en true
      */

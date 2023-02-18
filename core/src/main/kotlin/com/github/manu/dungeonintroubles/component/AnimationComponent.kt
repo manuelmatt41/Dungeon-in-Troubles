@@ -30,19 +30,16 @@ enum class AnimationType {
 
 /**
  * Componente que es la animacion de la entidad
+ *
+ * @property model Modelo de la entidad que sera la imagen que lo representa, por defecto esta indefinido
+ * @property stateTime Tiempo que hay entre frames de la animación, por defecto es 0f
+ * @property playMode EL modo que se va a reproducir la aniamción, por defecto está en LOOP
+ *
+ * @constructor Crea un AnimationComponent con valores por defecto
  */
 data class AnimationComponent(
-    /**
-     * Modelo de la entidad que sera la imagen que lo representa, por defecto esta indefinado
-     */
     var model: AnimationModel = AnimationModel.UNDEFINED,
-    /**
-     * Tiempo que hay entre frames de la animación, por defecto es 0f
-     */
     var stateTime: Float = 0f,
-    /**
-     * EL modo que se va a reproducir la aniamción, por defecto está en LOOP
-     */
     var playMode: PlayMode = PlayMode.LOOP,
 ) {
     /**

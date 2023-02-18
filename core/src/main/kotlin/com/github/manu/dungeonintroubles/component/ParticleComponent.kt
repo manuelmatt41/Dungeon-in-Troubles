@@ -16,11 +16,12 @@ enum class ParticleType {
 
 /**
  * Componente que representa a las particulas en el sistema
+ *
+ * @property particle Tipo de particula que va a reproducir la entidad en el estado que se encuentre, por defecto es indefinido
+ *
+ * @constructor Crea un ParticleComponent con valores por defecto
  */
 data class ParticleComponent(
-    /**
-     * Tipo de particula que va a reproducir la entidad en el estado que se encuentre, por defecto es indefinido
-     */
     var particle: ParticleType = ParticleType.UNDEFINED,
 ) {
     /**

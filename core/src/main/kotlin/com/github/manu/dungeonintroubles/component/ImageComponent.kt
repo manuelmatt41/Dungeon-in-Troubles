@@ -18,11 +18,12 @@ class ImageComponent {
     companion object {
         /**
          * Clase que escucha cuando se añade o elimina una entidad con el componente imagen del sistema
+         *
+         * @property gameStage Escenario donde se va a dibujar la entidad, inicia el valor mediantes los inyectables del sistema
+         *
+         * @constructor Crea una ImageComponentListener con valores por defecto
          */
         class ImageComponentListener(
-            /**
-             * Escenario donde se va a dibujar la entidad
-             */
             @Qualifier("gameStage") private val gameStage: Stage,
         ) : ComponentListener<ImageComponent> {
             /**
