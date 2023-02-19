@@ -24,18 +24,38 @@ import ktx.log.logger
 import ktx.math.vec2
 import ktx.tiled.*
 
+/**
+ * Sistema que se encarga de hacer aparecer las entidades con SpawnComponent en el juego
+ *
+ * @property physicWorld Mundo de fsicas, se incializa de forma automatica
+ * @property textureAtlas Atlas de texturas, se incicializa de forma automatica
+ * @property spawnCmps Conjunto de entidades con SpawnComponent
+ * @property playerCmps Conjuntos de entidades con PlayerComponent
+ */
 @AllOf([SpawnComponent::class])
 class EntitySpawnSystem(
-    @Qualifier("gameStage") private val gameStage: Stage,
     private val physicWorld: World,
     private val textureAtlas: TextureAtlas,
     private val spawnCmps: ComponentMapper<SpawnComponent>,
     private val playerCmps: ComponentMapper<PlayerComponent>
 ) : EventListener, IteratingSystem() {
 
+    /**
+     * Mapa de configuracion de entidades cargadas para ahorrar recursos
+     */
     private val cachedConfigs = mutableMapOf<EntityType, SpawnConfiguration>()
+
+    /**
+     * Mapa de tamaños de imagenes escaladas para ahorrar recursos
+     */
     private val cachedSizes = mutableMapOf<AnimationModel, Vector2>()
 
+    /**
+     * Por cada entidad crea una entidad con todos los componentes que la componagan para que funcione en diversos sistemas
+     *
+     * @param entity Entidad a ejecutar
+     *
+     */
     override fun onTickEntity(entity: Entity) { //TODO Refactor this system to specify all entities to much generic
         with(spawnCmps[entity]) {
             val config = spawnCfg(name)
@@ -180,6 +200,13 @@ class EntitySpawnSystem(
         world.remove(entity)
     }
 
+    /**
+     * Dependiendo de la entidad se crea una configuracion en especifico y la guarda en el cache
+     *
+     * @param type Tipo de entidad
+     *
+     * @return Devuelve la configuracion de la entidad
+     */
     private fun spawnCfg(type: EntityType): SpawnConfiguration = cachedConfigs.getOrPut(type) {
         when (type) {
             EntityType.PLAYER -> SpawnConfiguration(
@@ -237,6 +264,9 @@ class EntitySpawnSystem(
         }
     }
 
+    /**
+     * Calcula el tamaño relativo de la imagen respecto a las resoluciones del juego
+     */
     private fun size(model: AnimationModel) = cachedSizes.getOrPut(model) {
         val regions = textureAtlas.findRegions("${model.atlasKey}/${AnimationType.RUN.atlasKey}")
 
@@ -248,6 +278,9 @@ class EntitySpawnSystem(
         vec2(firstFrame.originalWidth * UNIT_SCALE, firstFrame.originalHeight * UNIT_SCALE)
     }
 
+    /**
+     * Lee un.tmx y crea las entidades a traves de la capa de entidades del mapa
+     */
     private fun createEntitiesForLayers(layer: MapLayer, customLocation: Vector2 = vec2()) {
         layer.objects.forEach { mapObject ->
             val name = mapObject.name ?: gdxError("MapObject $mapObject does not have a name!")
@@ -259,7 +292,7 @@ class EntitySpawnSystem(
                         (mapObject.x + customLocation.x) * UNIT_SCALE,
                         (mapObject.y + customLocation.y) * UNIT_SCALE
                     )
-//                    log.debug { "Layer name: ${layer.name}" }
+
                     if (this.name == EntityType.SPAWNPOINT) {
                         this.size.set(mapObject.width * UNIT_SCALE, mapObject.height * UNIT_SCALE)
                         this.shape = mapObject.shape
@@ -269,6 +302,9 @@ class EntitySpawnSystem(
         }
     }
 
+    /**
+     * Se ejecuta  al lanzar un evento y comprueba que contenga el evento y ejecuta codigo
+     */
     override fun handle(event: Event): Boolean {
         return when (event) {
             is MapChangeEvent -> {
@@ -305,6 +341,10 @@ class EntitySpawnSystem(
 
     companion object {
         private val log = logger<EntitySpawnSystem>()
+
+        /**
+         * Nombre de el cuerpo de fisicas
+         */
         const val HIT_BOX_SENSOR = "Hitbox"
     }
 }

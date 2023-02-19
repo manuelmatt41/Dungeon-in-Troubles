@@ -60,52 +60,87 @@ ch_unchecked
   orig: 10, 10
   offset: 0, 0
   index: -1
-deathpopupbgd
+coin
   rotate: false
   xy: 1280, 0
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+deathpopupbgd
+  rotate: false
+  xy: 1440, 0
   size: 65, 90
   orig: 65, 90
   offset: 0, 0
   index: -1
+demon
+  rotate: false
+  xy: 1600, 0
+  size: 16, 24
+  orig: 16, 24
+  offset: 0, 0
+  index: -1
+fireball
+  rotate: false
+  xy: 1760, 0
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 knob_pressed
   rotate: false
-  xy: 1440, 0
+  xy: 0, 90
   size: 16, 14
   orig: 16, 14
   offset: 0, 0
   index: -1
 knob_unpressed
   rotate: false
-  xy: 1600, 0
+  xy: 160, 90
   size: 16, 14
   orig: 16, 14
   offset: 0, 0
   index: -1
 minimalpixel
   rotate: false
-  xy: 1760, 0
+  xy: 320, 90
   size: 128, 64
   orig: 128, 64
   offset: 0, 0
   index: -1
 pausepopupbgd
   rotate: false
-  xy: 0, 90
+  xy: 480, 90
   size: 160, 90
   orig: 160, 90
   offset: 0, 0
   index: -1
 player
   rotate: false
-  xy: 160, 90
+  xy: 640, 90
   size: 16, 28
   orig: 16, 28
   offset: 0, 0
   index: -1
 playerinfo
   rotate: false
-  xy: 320, 90
+  xy: 800, 90
   size: 65, 24
   orig: 65, 24
+  offset: 0, 0
+  index: -1
+portal
+  rotate: false
+  xy: 960, 90
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+trap
+  rotate: false
+  xy: 1120, 90
+  size: 23, 23
+  orig: 23, 23
   offset: 0, 0
   index: -1

@@ -14,7 +14,7 @@ import com.github.manu.dungeonintroubles.component.PlayerComponent
  *
  *  @constructor Crea un MapChangeEvent sin map
  */
-class MapChangeEvent(val map: TiledMap, val playerCmp: PlayerComponent = PlayerComponent()) : Event()
+class MapChangeEvent(val map: TiledMap, val playerCmp: PlayerComponent) : Event()
 
 /**
  * Evento que se lanza al coger una moneda
@@ -117,3 +117,20 @@ class HideSettingsEvent : Event()
  * Evento que se lanza al aplicar los cambios en los ajustes
  */
 class ChangeSettingsEvent : Event()
+
+/**
+ * Evento que se lanza al enseñar la vista de creditos
+ */
+class ShowCreditsEvent : Event()
+/**
+ * Evento que se lanza al esconder la vista de creditos
+ */
+class  HideCreditsEvent : Event()
+/**
+ * Evento que se lanza al enseñar la vista de tutorial
+ */
+class ShowTutorialEvent : Event()
+/**
+ * Evento que se lanza al esconder la vista de tutorial
+ */
+class  HideTutorialEvent : Event()

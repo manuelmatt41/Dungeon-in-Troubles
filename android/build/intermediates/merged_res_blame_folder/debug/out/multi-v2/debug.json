@@ -1,14 +1,16 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Manu\\.gradle\\daemon\\7.6\\com.github.manu.dungeonintroubles.android-merged_res-5:\\values_values.arsc.flat",
+            "outputFile": "com.github.manu.dungeonintroubles.android-merged_res-5:/values_values.arsc.flat",
             "map": [
                 {
                     "source": "C:\\Users\\Manu\\Documents\\repositories\\Dungeon-in-Troubles\\android\\res\\values\\strings.xml",
                     "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "56",
+                        "endOffsets": "109"
                     },
                     "to": {
                         "startLines": "3",
@@ -38,9 +40,12 @@
                 {
                     "source": "C:\\Users\\Manu\\Documents\\repositories\\Dungeon-in-Troubles\\android\\res\\values\\styles.xml",
                     "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endLines": "8",
+                        "endColumns": "12",
+                        "endOffsets": "482"
                     },
                     "to": {
                         "startLines": "4",

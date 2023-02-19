@@ -191,6 +191,8 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
 
     /**
      * Establece el mapa que se va a cargar
+     *
+     * @param path Path del archivo tmx que contiene la informacion del mapa
      */
     private fun setMap(path: String) {
         currentMap?.disposeSafely()
@@ -201,6 +203,8 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
 
     /**
      * Se ejecuta cada frame para renderizar la ventana
+     *
+     * @param delta Tiempo transcurrido entre frames
      */
     override fun render(delta: Float) {
         //Establece un valor maximo al deltaTime y actualiza el mundo entidades con ese valor

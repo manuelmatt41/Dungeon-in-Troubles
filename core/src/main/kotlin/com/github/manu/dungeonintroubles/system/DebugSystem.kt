@@ -8,27 +8,36 @@ import com.github.quillraven.fleks.IntervalSystem
 import com.github.quillraven.fleks.Qualifier
 import ktx.assets.disposeSafely
 
+/**
+ * Sistema para representar las fisicas del juego y obtener diferentes datos del juego
+ *
+ * @property physicWorld Mundo de fisicas, se inicializa de forma automatica
+ */
 class DebugSystem(
     private val physicWorld: World,
     @Qualifier("gameStage") private val gameStage: Stage
 ) : IntervalSystem(enabled = false) {
 
+    /**
+     * Valor que se encarga de dibujar las fisicas en pantalla
+     */
     private lateinit var physicsRenderer: Box2DDebugRenderer
-//    private lateinit var shapeRenderer: ShapeRenderer
 
+    /**
+     * Inicia el renderizadp si esta activado el sistema
+     */
     init {
         if (enabled) {
             physicsRenderer = Box2DDebugRenderer()
-//            shapeRenderer = ShapeRenderer()
         }
     }
 
+    /**
+     * Cada vez que se ejecuta el sistema pinta en pantalla la posicion actual de las fisicas del juego y pone en el titulos coloca diferentes datos
+     */
     override fun onTick() {
         physicsRenderer.render(physicWorld, gameStage.camera.combined)
-//        shapeRenderer.use(ShapeType.Line, gameStage.camera.combined) {
-//            it.setColor(1f, 0f, 0f, 0f)
-//            it.rect(AABB_RECT.x, AABB_RECT.y, AABB_RECT.width - AABB_RECT.x, AABB_RECT.height - AABB_RECT.y)
-//        }
+
         Gdx.graphics.setTitle(
             buildString {
                 append(Gdx.app.graphics.framesPerSecond)
@@ -40,10 +49,12 @@ class DebugSystem(
         )
     }
 
+    /**
+     * Libera recursos al cerrar el mundo de entidades
+     */
     override fun onDispose() {
         if (enabled) {
             physicsRenderer.disposeSafely()
-//            shapeRenderer.disposeSafely()
         }
     }
 }

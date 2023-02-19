@@ -16,7 +16,7 @@ import com.github.quillraven.fleks.World
  * @property stateCmps Array de entidades con StateCompont
  * @property jumpCmps  Array de entidades con JumpComponent
  * @property moveCmps Array de entidades con MoveComponent
- * @constructor Creaate a emrpty AiEntity
+ * @constructor Crea una AiEntity vacio
  */
 data class AiEntity(
     private val entity: Entity,

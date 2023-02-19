@@ -13,6 +13,11 @@ enum class Drawables(
     val atlasKey: String
 ) {
     PLAYER("player"),
+    TRAP("trap"),
+    FIREBALL("fireball"),
+    COIN("coin"),
+    DEMON("demon"),
+    PORTAL("portal"),
     PLAYER_INFO("playerinfo"),
     BACKGROUND_COIN("bgdCoin"),
     BACKGROUND_DISTANCE("bgdDistance"),
@@ -64,8 +69,8 @@ enum class Fonts(
     val atlasRegionKey: String,
     val scaling: Float,
 ) {
-    DEFAULT("minimalpixel", 0.75f),
-    TITLE("minimalpixel", 2f);
+    DEFAULT("minimalpixel", 1f),
+    TITLE("minimalpixel", 2.2f);
 
     val skinKey = "Font_${this.name.lowercase()}"
     val fontPath = "ui/${this.atlasRegionKey}.fnt"
@@ -98,7 +103,6 @@ fun loadSkin() {
         }
 
         scrollPane(ScrollPanes.DEFAULT.skinKey) {
-            background = skin[Drawables.BACKGROUND_DISTANCE]
         }
 
         slider(Sliders.DEFAULT.skinKey) {

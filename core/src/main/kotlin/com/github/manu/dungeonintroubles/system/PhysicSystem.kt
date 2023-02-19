@@ -22,6 +22,21 @@ import ktx.math.component2
 import ktx.math.vec2
 import ktx.tiled.width
 
+/**
+ * Sistema que se encarga de aplicar las fisicas de las entidades con PhysicComponent
+ *
+ * @property physicWorld Mundo de fisicas, se inicializa de forma automatica
+ * @property gameStage Escenario que representa el juego, se inciaiiza de forma automatica
+ * @property uiStage Escenario que representa la interfaz del juego, se inicializa de forma automatica
+ * @property prefs Datos guardado del juego, se incializa de forma automatica
+ * @property imgCmps Conjunto de entidades con ImageComponent, se incializa de forma automatica
+ * @property physicsCmps Conjunto de entidades con PhysicComponent, se incializa de forma automatica
+ * @property playerCmps Conjunto de entidades con PlayerComponent, se incializa de forma automatica
+ * @property trapCmps Conjunto de entidades con TrapComponent, se incializa de forma automatica
+ * @property coinCmps Conjunto de entidades con CoinComponent, se incializa de forma automatica
+ * @property spawnPointCmps Conjunto de entidades con SpawnPointComponent, se incializa de forma automatica
+ * @property npcCmps Conjunto de entidades con NpcsComponent, se incializa de forma automatica
+ */
 @AllOf([PhysicComponent::class, ImageComponent::class])
 @NoneOf([DespawnComponent::class])
 class PhysicSystem(
@@ -39,13 +54,26 @@ class PhysicSystem(
     private val npcCmps: ComponentMapper<NpcComponent>,
 ) : ContactListener, IteratingSystem(interval = Fixed(1 / 60f)) {
 
+    /**
+     * Valor que si esta true hace aparecer trampas o sino monedas
+     */
     private var trapOrCoin: Boolean = true
+
+    /**
+     * Mapa con las trampas o monedas que va a hacer aparecer
+     */
     private var map: TiledMap? = null;
 
+    /**
+     * Al iniciar se establece la misma clase como clase que escucha los contactos de las fisicas
+     */
     init {
         physicWorld.setContactListener(this)
     }
 
+    /**
+     * Por cada actualizacion del sistema limpia la fuerzas aplicadas anteriormente
+     */
     override fun onUpdate() {
         if (physicWorld.autoClearForces) {
             log.debug { "AutoClearForces must be set to false to guarantee a correct physic simulation." }
@@ -56,11 +84,20 @@ class PhysicSystem(
         physicWorld.clearForces()
     }
 
+    /**
+     * En cada frame del sistema actualiza el mundo de fisicas
+     */
     override fun onTick() {
         super.onTick()
         physicWorld.step(deltaTime, 6, 2)
     }
 
+    /**
+     * Por cada entidad si aplican las fisicas calculadas
+     *
+     * @param entity Entidad a ejecutar
+     *
+     */
     override fun onTickEntity(entity: Entity) {
         val physicCmp = physicsCmps[entity]
 
@@ -69,6 +106,9 @@ class PhysicSystem(
         physicCmp.impulse.setZero()
     }
 
+    /**
+     * Calcula la interpolacion de las renderizacion de la imagen y el cuerpo de fisicas de la entidad
+     */
     override fun onAlphaEntity(entity: Entity, alpha: Float) {
         val physicCmp = physicsCmps[entity]
         val imgCmp = imgCmps[entity]
@@ -84,7 +124,11 @@ class PhysicSystem(
         }
     }
 
-
+    /**
+     * Se ejecuta al empezar el contacto de dos cuerpos en el mundo de fisicas
+     *
+     * @param contact Contacto con los datos de los dos cuerpos que se chocaron
+     */
     override fun beginContact(contact: Contact) {
         val entityA = contact.fixtureA.entity
         val entityB = contact.fixtureB.entity
@@ -204,11 +248,14 @@ class PhysicSystem(
     }
 
     override fun endContact(contact: Contact) {
-        val entityA = contact.fixtureA.entity
-        val entityB = contact.fixtureB.entity
-
     }
 
+    /**
+     * Se ejecuta antes de empezar el contacto de dos cuerpos en el mundo de fisicas
+     *
+     * @param contact Contacto con los datos de los dos cuerpos que se chocaron
+     * @param oldManifold
+     */
     override fun preSolve(contact: Contact, oldManifold: Manifold) {
         val entityA = contact.fixtureA.entity
         val entityB = contact.fixtureB.entity

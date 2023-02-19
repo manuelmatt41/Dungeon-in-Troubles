@@ -23,20 +23,20 @@
 16
 17    <application
 17-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:7:2-27:16
-18        android:name="android.support.multidex.MultiDexApplication"
-19        android:allowBackup="true"
-19-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:8:4-30
-20        android:appCategory="game"
-20-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:12:4-30
-21        android:debuggable="true"
-22        android:fullBackupContent="true"
-22-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:9:10-42
-23        android:icon="@mipmap/game_icon"
-23-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:10:4-36
-24        android:isGame="true"
-24-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:11:4-25
-25        android:label="@string/app_name"
-25-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:13:10-42
+18        android:allowBackup="true"
+18-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:8:4-30
+19        android:appCategory="game"
+19-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:12:4-30
+20        android:debuggable="true"
+21        android:fullBackupContent="true"
+21-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:9:10-42
+22        android:icon="@mipmap/game_icon"
+22-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:10:4-36
+23        android:isGame="true"
+23-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:11:4-25
+24        android:label="@string/app_name"
+24-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:13:10-42
+25        android:testOnly="true"
 26        android:theme="@style/GdxTheme" >
 26-->C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:15:4-35
 27        <activity

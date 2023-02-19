@@ -11,14 +11,33 @@ import com.github.quillraven.fleks.IntervalSystem
 import ktx.assets.disposeSafely
 import ktx.log.logger
 
+/**
+ * Sistema que se encarga de la musica y los sonidos del juego
+ * @property prefs Datos guardados que contiene las canciones
+ *
+ */
 class AudioSystem(
     private val prefs: Preferences
 ) : EventListener, IntervalSystem() {
 
+    /**
+     * Mapa que guarda las canciones cargadas para ahorrar recursos
+     */
     private val musicCache = mutableMapOf<String, Music>()
+
+    /**
+     * Mapa que guarda los sonidos cargadas para ahorrar recursos
+     */
     private val soundCache = mutableMapOf<String, Sound>()
+
+    /**
+     * Lista de espera de sonidos para reproducir de forma ordenada por la entrada del sonido
+     */
     private val soundRequest = mutableMapOf<String, Sound>()
 
+    /**
+     * Por cada vez que se ejecuta el sistema repoduce los sonidos que estan en cola y pone una cancion de fondo si no hay ninguna iniciada
+     */
     override fun onTick() {
         if (musicCache.isEmpty()) {
             playnNewMusic(if (!prefs.contains("song")) "1.ogg" else prefs.getString("song"))
@@ -33,6 +52,13 @@ class AudioSystem(
         soundRequest.clear()
     }
 
+    /**
+     * Se ejecuta cuando se lanza un evento y mira si el e evento lanzado lo coge y ejecuta una parte de codigo
+     *
+     * @param event Evento que se ha lanzado
+     *
+     * @return Devuelve true si se coge el evento sino devuelve false
+     */
     override fun handle(event: Event): Boolean {
         return when (event) {
             is GetCoinSoundEvent -> {
@@ -41,7 +67,6 @@ class AudioSystem(
             }
 
             is CrossPortalSoundEvent -> {
-
                 queueSound("audio/sounds/portal.ogg")
                 true
             }
@@ -57,6 +82,7 @@ class AudioSystem(
             }
 
             is ChangeSettingsEvent -> {
+                //Guarda los cambios de los ajustes
                 log.debug { "Cambio config" }
                 musicCache.forEach { it.value.volume = prefs.getInteger("music") / 100f }
                 playnNewMusic(prefs.getString("song"))
@@ -67,6 +93,11 @@ class AudioSystem(
         }
     }
 
+    /**
+     * Carga y guarda una cancion en el cache y la repoduce
+     *
+     * @param songName Nombre de la cancion que se va a cargar
+     */
     private fun playnNewMusic(songName: String) {
         val music = musicCache.getOrPut(songName) {
             Gdx.audio.newMusic(
@@ -89,6 +120,11 @@ class AudioSystem(
         music.play()
     }
 
+    /**
+     * Carga y guarda en cache los sonidos y los pone el cola de espera
+     *
+     * @param soundPath Nombre del sonido que se quiere cargar y reproducir
+     */
     private fun queueSound(soundPath: String) {
         if (soundPath in soundRequest) {
             // already queued -> do nothing
@@ -103,6 +139,9 @@ class AudioSystem(
         soundRequest[soundPath] = sound
     }
 
+    /**
+     * Al cerrar el mundo de entidades libera los recursos
+     */
     override fun onDispose() {
         musicCache.values.forEach { it.disposeSafely() }
         soundCache.values.forEach { it.disposeSafely() }

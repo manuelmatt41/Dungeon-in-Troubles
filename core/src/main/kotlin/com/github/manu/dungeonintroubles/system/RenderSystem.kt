@@ -24,23 +24,48 @@ import ktx.graphics.use
 import ktx.log.logger
 import ktx.tiled.forEachLayer
 
+/**
+ * Sistema que se encarga de renderizar las entidades con ImageCompoent
+ *
+ * @property gameStage Escenario que representa el juego, se inicializa de forma automatica
+ * @property uiStage Escenario que representa la interfaz del juego, se inicializa de forma automatica
+ * @property imgCmps Conjunto de entidades con ImageComponent, se inicializa de forma automatica
+ */
 @AllOf([ImageComponent::class])
 class RenderSystem(
     @Qualifier("gameStage") private val gameStage: Stage,
     @Qualifier("uiStage") private val uiStage: Stage,
-    private val textureAtlas: TextureAtlas,
     private val imgCmps: ComponentMapper<ImageComponent>,
 ) : EventListener, IteratingSystem() {
 
+    /**
+     * Capas de celdas del fondo del mapa
+     */
     private val bgdLayers = mutableListOf<TiledMapTileLayer>()
+
+    /**
+     * Capas de celdas del suelo del mapa
+     */
     private val floorLayers = mutableListOf<TiledMapTileLayer>()
+
+    /**
+     * Capas de celdas de decoracion del mapa
+     */
     private val decorationLayers = mutableListOf<TiledMapTileLayer>()
 
-
+    /**
+     * Mapa rendereizado en el juego
+     */
     private val mapRenderer = OrthogonalTiledMapRenderer(null, UNIT_SCALE, gameStage.batch)
+
+    /**
+     * Camara del escenario del juego
+     */
     private val orthoCam = gameStage.camera as OrthographicCamera
 
-
+    /**
+     * Por cada ejecucion del sistema se pinta los escenarios y sus actores respectivamente
+     */
     override fun onTick() {
         super.onTick()
 
@@ -80,14 +105,18 @@ class RenderSystem(
             act(deltaTime)
             draw()
         }
-
-
     }
 
+    /**
+     * Por cada entidad del sistema se pone al frente en orden
+     */
     override fun onTickEntity(entity: Entity) {
         imgCmps[entity].image.toFront()
     }
 
+    /**
+     * Se ejecuta cuando se lanza un evento y comprueba si lo tiene para ejecutar codigo
+     */
     override fun handle(event: Event?): Boolean {
         return when (event) {
             is MapChangeEvent -> {
@@ -115,8 +144,20 @@ class RenderSystem(
 
     companion object {
         private val log = logger<RenderSystem>()
+
+        /**
+         * Nombre de la capa del fondo
+         */
         const val BGD_LAYER = "bgd"
+
+        /**
+         * Nombre de la capa del suelo
+         */
         const val FLOOR_LAYER = "floor"
+
+        /**
+         * Nombre de la capa de decoracion
+         */
         const val DECORATION_LAYER = "decoration"
     }
 }

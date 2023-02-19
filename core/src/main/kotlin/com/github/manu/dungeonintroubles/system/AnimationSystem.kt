@@ -15,15 +15,29 @@ import ktx.app.gdxError
 import ktx.collections.map
 import ktx.log.logger
 
+/**
+ * Sistema de animaciones encargado de mostrar la animacion por pantalla a todas las entidades con la AnimationComponent
+ *
+ * @property textureAtlas Atlas con las animacion que se van cargar, se incializa de forma automatica
+ * @property animCmps Conjunto de entidades con AnimationComponent, se inicializa de forma automatica
+ * @property imgCmps Conjunto de entidades con ImageComponent, se inicializa de forma automatica
+ */
 @AllOf([AnimationComponent::class, ImageComponent::class])
 class AnimationSystem(
     private val textureAtlas: TextureAtlas,
     private val animCmps: ComponentMapper<AnimationComponent>,
     private val imgCmps: ComponentMapper<ImageComponent>,
 ) : IteratingSystem() {
-
+    /**
+     * Mapa de animaciones que estan cargadas para ahorrar tiempo de ejecucion
+     */
     private val cachedAnimations = mutableMapOf<String, Animation<TextureRegionDrawable>>()
 
+    /**
+     * Por cada entidad en el sistema actualiza la aniamcion o cambia la animacion que corresponda
+     *
+     * @param entity Entidad a ejecutar
+     */
     override fun onTickEntity(entity: Entity) {
         val animCmp = animCmps[entity]
 
@@ -39,6 +53,14 @@ class AnimationSystem(
         imgCmps[entity].image.drawable = animCmp.animation.getKeyFrame(animCmp.stateTime)
     }
 
+    /**
+     * Crea una animacion a traves del texture atlas y se guarda en el cache
+     *
+     * @param animationKeyPath Nombre de la animacin en el atlas
+     * @param model NOmbre del modelo que contienela animacion
+     *
+     * @return Devuelve una aniamcion cargada a traves del texture atlas
+     */
     private fun animation(animationKeyPath: String, model: AnimationModel): Animation<TextureRegionDrawable> {
         return cachedAnimations.getOrPut(animationKeyPath) {
             log.debug { "New animation is created for $animationKeyPath" }
@@ -54,6 +76,10 @@ class AnimationSystem(
 
     companion object {
         private val log = logger<AnimationSystem>()
+
+        /**
+         * Valor constante que define el tiempo entre frames de aniamcion
+         */
         private const val DEFAULT_FRAME_DURATION = 1 / 12f
     }
 }

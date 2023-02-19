@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup
 import com.badlogic.gdx.utils.I18NBundle
 import com.github.manu.dungeonintroubles.event.GameResumeEvent
+import com.github.manu.dungeonintroubles.event.SetGameEvent
 import com.github.manu.dungeonintroubles.event.SetMenuScreenEvent
 import com.github.manu.dungeonintroubles.event.ShowSettingsEvent
 import com.github.manu.dungeonintroubles.extension.fire
@@ -69,6 +70,7 @@ class DeathPopUp(
             textButton(text = bundle[MenuViewBundle.BTSETTING.bundle], style = Buttons.DEFAULT.skinKey) {
                 MenuView.attachTextMovement(this)
                 onClick { stage.fire(ShowSettingsEvent()) }
+                label.y -= 2
 
                 it.padBottom(10f)
                 it.row()
@@ -77,6 +79,7 @@ class DeathPopUp(
             textButton(text = bundle[PausePopUpBundle.BTBACK.bundle], style = Buttons.DEFAULT.skinKey) {
                 MenuView.attachTextMovement(this)
                 onClick { stage.fire(SetMenuScreenEvent()) }
+                label.y -= 2
 
                 it.padBottom(10f)
                 it.row()

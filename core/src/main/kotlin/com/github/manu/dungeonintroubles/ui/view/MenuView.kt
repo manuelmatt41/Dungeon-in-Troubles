@@ -5,9 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.badlogic.gdx.utils.I18NBundle
-import com.github.manu.dungeonintroubles.event.ExitGameEvent
-import com.github.manu.dungeonintroubles.event.SetGameEvent
-import com.github.manu.dungeonintroubles.event.ShowSettingsEvent
+import com.github.manu.dungeonintroubles.event.*
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.manu.dungeonintroubles.ui.Buttons
 import com.github.manu.dungeonintroubles.ui.Labels
@@ -29,6 +27,7 @@ class MenuView(
 
     private val btNewGame: TextButton
     private val btSetting: TextButton
+    private val btCredits: TextButton
     private val btExit: TextButton
 
     init {
@@ -55,6 +54,7 @@ class MenuView(
                 this@MenuView.btSetting =
                     textButton(text = bundle[MenuViewBundle.BTSETTING.bundle], style = Buttons.DEFAULT.skinKey) {
                         attachTextMovement(this)
+                        label.y -= 8
 
                         onClick {
                             stage.fire(ShowSettingsEvent())
@@ -64,9 +64,23 @@ class MenuView(
                         it.center().row()
                     }
 
+                this@MenuView.btCredits =
+                    textButton(text = bundle[CreditsViewBundle.LBCREDITS.bundle], style = Buttons.DEFAULT.skinKey) {
+                        attachTextMovement(this)
+                        label.y -= 2
+
+                        onClick {
+                            stage.fire(ShowCreditsEvent())
+                        }
+
+                        it.padBottom(10f)
+                        it.row()
+                    }
+
                 this@MenuView.btExit =
                     textButton(text = bundle[MenuViewBundle.BTEXIT.bundle], style = Buttons.DEFAULT.skinKey) {
                         attachTextMovement(this)
+                        label.y -= 2
 
                         it.padBottom(10f)
                         it.center()
@@ -76,7 +90,7 @@ class MenuView(
             }
 
             table {
-                label(text = "Version  0.9", style = Labels.DEFAULT.skinKey) {
+                label(text = "Version  1.0", style = Labels.DEFAULT.skinKey) {
                     it.padBottom(20f).padRight(12f).bottom().right().row()
                 }
 
@@ -88,7 +102,7 @@ class MenuView(
                 }
 
                 label(
-                    text = String.format("Distance: %.2f m", prefs.getFloat( "distance")),
+                    text = String.format("Distance: %.2f m", prefs.getFloat("distance")),
                     style = Labels.DEFAULT.skinKey
                 ) {
                     it.left()
@@ -100,7 +114,11 @@ class MenuView(
         }
 
         btNewGame.onClick {
-            stage.fire(SetGameEvent())
+            if (prefs.getFloat("distance") == 0f) {
+                stage.fire(ShowTutorialEvent())
+            } else {
+                stage.fire(SetGameEvent())
+            }
         }
 
         btSetting.onClick {
@@ -111,8 +129,6 @@ class MenuView(
             stage.fire(ExitGameEvent())
         }
     }
-
-
 
 
     companion object {

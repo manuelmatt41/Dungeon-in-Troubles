@@ -20,15 +20,29 @@ import ktx.math.vec2
 import ktx.tiled.height
 import ktx.tiled.width
 
+/**
+ * Sistema que se encarga de cambiar el mapa al alcanzar un posicion en el mapa
+ *
+ * @property gameStage Escenario que representa el juego, se inicializa de forma automatica
+ * @property physicWorld Mundo de fisicas, se inicializa de forma automatica
+ * @property imgCmps Conjunto de entidades con ImageComponent, se incicializa de forma automatica
+ * @property playerCmps Conjuntos de entidades con PlayerComponent, se incializa de forma automatica
+ */
 @AllOf([PlayerComponent::class])
+@NoneOf([SpawnComponent::class])
 class GenerateMapSystem(
     @Qualifier("gameStage") private val gameStage: Stage,
     private val physicWorld: World,
     private val imgCmps: ComponentMapper<ImageComponent>,
-    private val despaswnCmps: ComponentMapper<DespawnComponent>,
     private val playerCmps: ComponentMapper<PlayerComponent>,
 ) : EventListener, IteratingSystem() {
 
+    /**
+     * Por cada entidad se comprueba la posicion y al llegar ala posicion establecida lanza un evento para cambiar el mapa
+     *
+     * @param entity Entidad a ejecutar
+     *
+     */
     override fun onTickEntity(entity: Entity) {
         with(imgCmps[entity]) {
             if (entity in playerCmps) {
@@ -42,17 +56,23 @@ class GenerateMapSystem(
         }
     }
 
-    private fun changeMap(playerEntity: Entity? = null) {
+    /**
+     * Inicia el nuevo mapa de forma aleatoria y lamza el evento para cargarla
+     *
+     * @param playerEntity Entidad que alcanzo la posicion para guardar sus datos y mandarlos al nuevo mapa
+     */
+    private fun changeMap(playerEntity: Entity) {
         world.removeAll()
 
         val nextMap =
             TmxMapLoader().load(Gdx.files.internal("map/${MathUtils.random(1, NUMBER_OF_MAPS)}.tmx").path())
-
-        var playerCmp = if (playerEntity == null) PlayerComponent() else playerCmps[playerEntity]
-        log.debug { "Generate map: ${playerCmp.actualSpeed} : Coins ${playerCmp.coins}" }
-        gameStage.fire(MapChangeEvent(nextMap, playerCmp))
+        log.debug { "${playerCmps[playerEntity].actualSpeed}" }
+        gameStage.fire(MapChangeEvent(nextMap, playerCmps[playerEntity]))
     }
 
+    /**
+     * Se ejecuta al lanzar un evento y comprueba si se coge el evento para ejecutar codigo
+     */
     override fun handle(event: Event?): Boolean {
         return when (event) {
             is MapChangeEvent -> {
@@ -97,7 +117,10 @@ class GenerateMapSystem(
 
     companion object {
         private val log = logger<GenerateMapSystem>()
+
+        /**
+         * Constante que es el numero de mapas que se pueden cargar
+         */
         const val NUMBER_OF_MAPS = 3
-        const val LAYER_POSIBILITIES = 3
     }
 }
