@@ -1,5 +1,6 @@
 package com.github.manu.dungeonintroubles.system
 
+import com.badlogic.gdx.Preferences
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.maps.MapLayer
 import com.badlogic.gdx.math.Vector2
@@ -17,6 +18,7 @@ import com.github.manu.dungeonintroubles.event.MapChangeEvent
 import com.github.manu.dungeonintroubles.event.SpawnLayerObjectsEvent
 import com.github.manu.dungeonintroubles.extension.physicCmpFromImage
 import com.github.manu.dungeonintroubles.extension.physicCmpFromShape2D
+import com.github.manu.dungeonintroubles.ui.view.PlayerSkins
 import com.github.quillraven.fleks.*
 import ktx.app.gdxError
 import ktx.box2d.box
@@ -36,6 +38,7 @@ import ktx.tiled.*
 class EntitySpawnSystem(
     private val physicWorld: World,
     private val textureAtlas: TextureAtlas,
+    private val prefs: Preferences,
     private val spawnCmps: ComponentMapper<SpawnComponent>,
     private val playerCmps: ComponentMapper<PlayerComponent>
 ) : EventListener, IteratingSystem() {
@@ -70,7 +73,7 @@ class EntitySpawnSystem(
                     }
                 }
 
-                if (config.model != NONE) {
+                if (config.model != NONE && config.model != PLAYER) {
                     add<AnimationComponent> {
                         nextAnimation(config.model, AnimationType.RUN)
                     }
@@ -118,6 +121,17 @@ class EntitySpawnSystem(
                 when (name) {
                     EntityType.PLAYER -> {
                         var actualSpeed: Float = 0f
+                        add<AnimationComponent> {
+                            nextAnimation(
+                                if (prefs.getString("selectedSkin") == "") PlayerSkins.DEFAULT else enumValueOf(
+                                    prefs.getString(
+                                        "selectedSkin"
+                                    ).uppercase()
+                                ),
+                                config.model,
+                                AnimationType.RUN
+                            )
+                        }
                         add<PlayerComponent>() {
                             with(playerCmps[entity]) {
                                 this@add.coins = this.coins
@@ -268,7 +282,7 @@ class EntitySpawnSystem(
      * Calcula el tamaño relativo de la imagen respecto a las resoluciones del juego
      */
     private fun size(model: AnimationModel) = cachedSizes.getOrPut(model) {
-        val regions = textureAtlas.findRegions("${model.atlasKey}/${AnimationType.RUN.atlasKey}")
+        val regions = if (model != PLAYER) textureAtlas.findRegions("${model.atlasKey}/${AnimationType.RUN.atlasKey}") else textureAtlas.findRegions("${model.atlasKey}/${PlayerSkins.DEFAULT.atlasKey}/${AnimationType.RUN.atlasKey}")
 
         if (regions.isEmpty) {
             gdxError("There are no regions for the ${AnimationType.RUN.atlasKey} animation of ${model.atlasKey}")

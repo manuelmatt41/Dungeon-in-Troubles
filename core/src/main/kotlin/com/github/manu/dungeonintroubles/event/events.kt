@@ -114,6 +114,16 @@ class ShowSettingsEvent : Event()
 class HideSettingsEvent : Event()
 
 /**
+ * Evento que se lanza para mostrar la vista de la tienda
+ */
+class ShowStoreEvent : Event()
+
+/**
+ * Evento que se lanza para esconder la vista de la tienda
+ */
+class HideStoreEvent : Event()
+
+/**
  * Evento que se lanza al aplicar los cambios en los ajustes
  */
 class ChangeSettingsEvent : Event()
@@ -122,15 +132,18 @@ class ChangeSettingsEvent : Event()
  * Evento que se lanza al enseñar la vista de creditos
  */
 class ShowCreditsEvent : Event()
+
 /**
  * Evento que se lanza al esconder la vista de creditos
  */
-class  HideCreditsEvent : Event()
+class HideCreditsEvent : Event()
+
 /**
  * Evento que se lanza al enseñar la vista de tutorial
  */
 class ShowTutorialEvent : Event()
+
 /**
  * Evento que se lanza al esconder la vista de tutorial
  */
-class  HideTutorialEvent : Event()
+class HideTutorialEvent : Event()

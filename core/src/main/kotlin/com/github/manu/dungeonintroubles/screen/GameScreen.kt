@@ -145,7 +145,7 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
 
         //Añade al escenario de UI los actores a las vistas que actuan como UI
         uiStage.actors {
-            gameView = gameView(GameModel(eWorld, uiStage), game.bundle, playerPrefs)
+            gameView = gameView(GameModel(eWorld, uiStage), game.bundle, playerPrefs, settingsPrefs)
             settingsView = settingsView(bundle = game.bundle, prefs = settingsPrefs)
         }
         //Añade al escenario del juego y UI esta msima clase
@@ -300,6 +300,18 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
 
                 settingsView.alpha = 0f
                 settingsView.touchable = Touchable.disabled
+            }
+
+            is SetGameEvent -> {
+                gameStage.clear()
+                uiStage.clear()
+
+
+                game.removeScreen<GameScreen>()
+                game.addScreen(GameScreen(game))
+                game.setScreen<GameScreen>()
+                super.hide()
+                this.dispose()
             }
 
             else -> return false

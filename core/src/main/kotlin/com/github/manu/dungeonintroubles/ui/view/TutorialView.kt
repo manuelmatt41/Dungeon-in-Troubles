@@ -64,7 +64,7 @@ class TutorialView(
                     it.padTop(10f).minWidth(200f).minHeight(25f).row()
                 }
 
-                image(skin[Drawables.PLAYER]) {
+                image(skin[Drawables.DEFAULT]) {
                     setScaling(Scaling.fill)
                     it.width(25f).height(25f)
                 }

@@ -1,37 +1,27 @@
 package com.github.manu.dungeonintroubles.ui.view
 
 import com.badlogic.gdx.Preferences
-import com.badlogic.gdx.graphics.Color
-import com.badlogic.gdx.scenes.scene2d.Touchable
 import com.badlogic.gdx.scenes.scene2d.ui.Image
-import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.utils.I18NBundle
-import com.github.manu.dungeonintroubles.component.PlayerComponent
-import com.github.manu.dungeonintroubles.event.GameResumeEvent
 import com.github.manu.dungeonintroubles.event.PausePopUpEvent
-import com.github.manu.dungeonintroubles.event.SetMenuScreenEvent
 import com.github.manu.dungeonintroubles.extension.fire
-import com.github.manu.dungeonintroubles.ui.Buttons
 import com.github.manu.dungeonintroubles.ui.Drawables
-import com.github.manu.dungeonintroubles.ui.Labels
 import com.github.manu.dungeonintroubles.ui.get
 import com.github.manu.dungeonintroubles.ui.model.GameModel
 import com.github.manu.dungeonintroubles.ui.widget.*
 import ktx.actors.alpha
 import ktx.actors.onClick
-import ktx.actors.onTouchDown
 import ktx.actors.plusAssign
-import ktx.app.KtxInputAdapter
 import ktx.log.logger
 import ktx.scene2d.*
-import javax.swing.event.PopupMenuEvent
 
 class GameView(
     model: GameModel,
     val bundle: I18NBundle,
-    val prefs: Preferences,
+    val playerPrefs: Preferences,
+    val settingsPrefs: Preferences,
     skin: Skin
 ) : Table(skin), KTable {
 
@@ -44,7 +34,10 @@ class GameView(
         // UI
         setFillParent(true)
 
-        this@GameView.playerInfo = playerInfo(Drawables.PLAYER, skin) {
+        this@GameView.playerInfo = playerInfo(
+            if (settingsPrefs.getString("selectedSkin") == "") Drawables.DEFAULT else enumValueOf(settingsPrefs.getString("selectedSkin").uppercase()),
+            skin
+        ) {
             this.alpha = 1f
             it.expand().padTop(2f).padLeft(2f).left().top()
         }
@@ -71,7 +64,7 @@ class GameView(
 
     fun pause() {
         this.clear()
-         pausePopup = pausePopUp(skin, bundle) {
+        pausePopup = pausePopUp(skin, bundle) {
             it.expand().center()
 
         }
@@ -90,7 +83,7 @@ class GameView(
         this += deathPopUp(
             skin,
             bundle,
-            prefs,
+            playerPrefs,
             distance.substring(0, distance.length - 1).replace(',', '.').toFloat(),
             playerInfo.labelCoins.text.toString().toInt()
         ) {
@@ -107,7 +100,8 @@ class GameView(
 fun <S> KWidget<S>.gameView(
     model: GameModel,
     bundle: I18NBundle,
-    prefs: Preferences,
+    playerPrefs: Preferences,
+    setiingsPrefs: Preferences,
     skin: Skin = Scene2DSkin.defaultSkin,
     init: GameView.(S) -> Unit = {}
-): GameView = actor(GameView(model, bundle, prefs, skin), init)
+): GameView = actor(GameView(model, bundle, playerPrefs, setiingsPrefs,skin), init)

@@ -15,11 +15,11 @@ import ktx.scene2d.*
 
 @Scene2dDsl
 class PlayerInfo(
-    charDrawables: Drawables?,
+    charDrawables: Drawables,
     private val skin: Skin,
 ) : WidgetGroup(), KGroup {
     private val background: Image = Image(skin[Drawables.PLAYER_INFO])
-    private val playerBgd: Image = Image(if (charDrawables == null) null else skin[Drawables.PLAYER])
+    private val playerBgd: Image = Image(skin[charDrawables])
     val labelDistance: Label
     val labelCoins: Label
 
@@ -60,7 +60,7 @@ class PlayerInfo(
 
 @Scene2dDsl
 fun <S> KWidget<S>.playerInfo(
-    charDrawable: Drawables?,
+    charDrawable: Drawables,
     skin: Skin = Scene2DSkin.defaultSkin,
     init: PlayerInfo.(S) -> Unit = {}
 ): PlayerInfo = actor(PlayerInfo(charDrawable, skin), init)

@@ -39,7 +39,7 @@ enum class PlayerState : EntityState {
          * @param entity Entidad que entra en el estado
          */
         override fun enter(entity: AiEntity) {
-            entity.animation(AnimationType.HIT)
+            entity.animation(AnimationType.FLY)
         }
 
         /**

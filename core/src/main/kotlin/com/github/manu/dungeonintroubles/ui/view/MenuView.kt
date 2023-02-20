@@ -14,7 +14,7 @@ import ktx.log.logger
 import ktx.scene2d.*
 
 enum class MenuViewBundle {
-    BTNEWGAME, BTSETTING, BTEXIT;
+    BTNEWGAME, BTSTORE, BTSETTING, BTEXIT;
 
     var bundle: String = "MenuView.${this.toString().lowercase()}"
 }
@@ -26,6 +26,7 @@ class MenuView(
 ) : Table(), KTable {
 
     private val btNewGame: TextButton
+    private val btStoreMenu: TextButton
     private val btSetting: TextButton
     private val btCredits: TextButton
     private val btExit: TextButton
@@ -45,6 +46,14 @@ class MenuView(
 
                 this@MenuView.btNewGame =
                     textButton(text = bundle[MenuViewBundle.BTNEWGAME.bundle], style = Buttons.DEFAULT.skinKey) {
+                        attachTextMovement(this)
+
+                        it.padBottom(9f)
+                        it.center().row()
+                    }
+
+                this@MenuView.btStoreMenu =
+                    textButton(text = bundle[MenuViewBundle.BTSTORE.bundle], style = Buttons.DEFAULT.skinKey) {
                         attachTextMovement(this)
 
                         it.padBottom(9f)
@@ -119,6 +128,10 @@ class MenuView(
             } else {
                 stage.fire(SetGameEvent())
             }
+        }
+
+        btStoreMenu.onClick {
+            stage.fire(ShowStoreEvent())
         }
 
         btSetting.onClick {

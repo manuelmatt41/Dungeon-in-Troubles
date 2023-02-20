@@ -12,7 +12,16 @@ import ktx.style.*
 enum class Drawables(
     val atlasKey: String
 ) {
-    PLAYER("player"),
+    DEFAULT("default"),
+    ELF_F("elf_f"),
+    ELF_M("elf_m"),
+    KNIGHT_F("knight_f"),
+    KNIGHT_M("knight_m"),
+    LIZARD("lizard"),
+    WITCH("witch"),
+    WITCHER("witcher"),
+    PUMPKIN_DUDE("pumpkin_dude"),
+    DOCTOR("doctor"),
     TRAP("trap"),
     FIREBALL("fireball"),
     COIN("coin"),

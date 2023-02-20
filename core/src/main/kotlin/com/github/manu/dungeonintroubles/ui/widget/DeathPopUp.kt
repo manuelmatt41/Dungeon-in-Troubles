@@ -67,9 +67,9 @@ class DeathPopUp(
                 it.row()
             }
 
-            textButton(text = bundle[MenuViewBundle.BTSETTING.bundle], style = Buttons.DEFAULT.skinKey) {
+            textButton(text = bundle[MenuViewBundle.BTNEWGAME.bundle], style = Buttons.DEFAULT.skinKey) {
                 MenuView.attachTextMovement(this)
-                onClick { stage.fire(ShowSettingsEvent()) }
+                onClick { stage.fire(SetGameEvent()) }
                 label.y -= 2
 
                 it.padBottom(10f)

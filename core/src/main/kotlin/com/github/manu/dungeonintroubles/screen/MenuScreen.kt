@@ -21,6 +21,7 @@ import ktx.actors.alpha
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
 import ktx.box2d.createWorld
+import ktx.log.logger
 import ktx.math.vec2
 import ktx.scene2d.actors
 import ktx.tiled.height
@@ -43,6 +44,11 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
      * Vista que contiene el menu
      */
     private var menuView: MenuView
+
+    /**
+     * Vista que contiene la tienda
+     */
+    private lateinit var storeView: StoreView
 
     /**
      * Vista que contiene los ajustes
@@ -128,7 +134,8 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
 
         Gdx.input.inputProcessor = uiStage
         uiStage.actors {
-            menuView = menuView(bundle = game.bundle, prefs = game.playerPrefs)
+            menuView = menuView(bundle = game.bundle, prefs = playerPrefs)
+//            storeView = storeView(bundle = game.bundle, playerPrefs, settingsPrefs)
             settingsView = settingsView(game.bundle, game.settingsPrefs)
             creditsView = creditsView(game.bundle, game.settingsPrefs)
             tutorialView = tutorialView(game.bundle, game.settingsPrefs)
@@ -224,6 +231,22 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
                 settingsView.touchable = Touchable.disabled
             }
 
+            is ShowStoreEvent -> {
+                menuView.touchable = Touchable.disabled //TODO Refactor all views for this way
+                menuView.alpha = 0f
+                log.debug { "Store view" }
+                uiStage.actors {
+                    storeView = storeView(bundle = game.bundle, playerPrefs, settingsPrefs)
+                }
+            }
+
+            is HideStoreEvent -> {
+                menuView.touchable = Touchable.enabled
+                menuView.alpha = 1f
+
+                uiStage.actors.removeValue(storeView, true)
+            }
+
             is ShowCreditsEvent -> {
                 menuView.touchable = Touchable.disabled
                 menuView.alpha = 0f
@@ -266,5 +289,9 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
             else -> return false
         }
         return true;
+    }
+
+    companion object {
+        private val log = logger<MenuScreen>()
     }
 }

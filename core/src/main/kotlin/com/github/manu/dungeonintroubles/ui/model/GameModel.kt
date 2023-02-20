@@ -19,8 +19,6 @@ class GameModel(
     gameStage: Stage,
 ) : PropertyChangeSource(), EventListener {
 
-    private val playerCmps: ComponentMapper<PlayerComponent> = world.mapper()
-
     var playerCoins by propertyNotify(0)
     var playerDistance by propertyNotify(0f)
 

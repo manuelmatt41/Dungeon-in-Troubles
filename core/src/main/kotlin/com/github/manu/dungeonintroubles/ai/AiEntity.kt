@@ -1,8 +1,10 @@
 package com.github.manu.dungeonintroubles.ai
 
+import com.badlogic.gdx.Preferences
 import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode
 import com.github.manu.dungeonintroubles.component.*
+import com.github.manu.dungeonintroubles.ui.view.PlayerSkins
 import com.github.quillraven.fleks.ComponentMapper
 import com.github.quillraven.fleks.Entity
 import com.github.quillraven.fleks.World
@@ -21,6 +23,7 @@ import com.github.quillraven.fleks.World
 data class AiEntity(
     private val entity: Entity,
     private val world: World,
+    private val prefs: Preferences,
     private val animationCmps: ComponentMapper<AnimationComponent> = world.mapper(),
     private val stateCmps: ComponentMapper<StateComponent> = world.mapper(),
     private val jumpCmps: ComponentMapper<JumpComponent> = world.mapper(),
@@ -63,7 +66,10 @@ data class AiEntity(
      */
     fun animation(type: AnimationType, mode: PlayMode = PlayMode.LOOP, resetAnimation: Boolean = false) {
         with(animationCmps[entity]) {
-            nextAnimation(type)
+            nextAnimation(
+                type,
+                if (prefs.getString("selectedSkin") == "") PlayerSkins.DEFAULT else enumValueOf(prefs.getString("selectedSkin").uppercase())
+            )
             this.playMode = mode
 
             if (resetAnimation) {

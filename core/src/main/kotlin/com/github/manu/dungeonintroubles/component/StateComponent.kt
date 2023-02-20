@@ -1,5 +1,6 @@
 package com.github.manu.dungeonintroubles.component
 
+import com.badlogic.gdx.Preferences
 import com.badlogic.gdx.ai.fsm.DefaultStateMachine
 import com.github.manu.dungeonintroubles.ai.AiEntity
 import com.github.manu.dungeonintroubles.ai.EntityState
@@ -30,6 +31,7 @@ data class StateComponent(
          */
         class StateComponentListener(
             private val world: World,
+            private val prefs: Preferences
         ) : ComponentListener<StateComponent> {
             /**
              * Se ejecuta cuando se añade una entidad al sistema con el componente estado
@@ -39,7 +41,7 @@ data class StateComponent(
              */
             override fun onComponentAdded(entity: Entity, component: StateComponent) {
                 //Añade a maquina de estados la entidad
-                component.stateMachine.owner = AiEntity(entity, world)
+                component.stateMachine.owner = AiEntity(entity, world, prefs = prefs)
             }
             /**
              * Se ejecuta cuando se elimina una entidad al sistema con el componente estado

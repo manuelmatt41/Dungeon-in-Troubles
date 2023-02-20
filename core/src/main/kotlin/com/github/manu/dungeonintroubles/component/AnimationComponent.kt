@@ -3,6 +3,7 @@ package com.github.manu.dungeonintroubles.component
 import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
+import com.github.manu.dungeonintroubles.ui.view.PlayerSkins
 
 /**
  * Enumerado que representa al modelo de imagen
@@ -20,13 +21,15 @@ enum class AnimationModel {
  * Tipo de animacion que se ejecuta en el sistema
  */
 enum class AnimationType {
-    RUN, HIT;
+    RUN, FLY;
 
     /**
      * Nombre que tiene la animación en el  texture atlas
      */
     var atlasKey: String = this.toString().lowercase()
 }
+
+
 
 /**
  * Componente que es la animacion de la entidad
@@ -63,13 +66,18 @@ data class AnimationComponent(
         nextAnimation = "${model.atlasKey}/${type.atlasKey}"
     }
 
+    fun nextAnimation(skin: PlayerSkins ,model: AnimationModel, type: AnimationType) {
+        this.model = model
+        nextAnimation = "${model.atlasKey}/${skin.atlasKey}/${type.atlasKey}"
+    }
+
     /**
      * Cambia la aniamcion actual por otra
      *
      * @param type El tipo  de animacion que se va a usar
      */
-    fun nextAnimation(type: AnimationType) {
-        nextAnimation = "${model.atlasKey}/${type.atlasKey}"
+    fun nextAnimation(type: AnimationType, skin: PlayerSkins) {
+        nextAnimation = "${model.atlasKey}/${skin.atlasKey}/${type.atlasKey}"
     }
 
     companion object {

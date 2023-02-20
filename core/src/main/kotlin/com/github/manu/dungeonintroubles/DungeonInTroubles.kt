@@ -32,6 +32,8 @@ class DungeonInTroubles : KtxGame<KtxScreen>() {
         textureAtlas = TextureAtlas(Gdx.files.internal("graphics/gameObjects.atlas"))
         addScreen(MenuScreen(this))
         setScreen<MenuScreen>()
+//        addScreen(UiScreen(this))
+//        setScreen<UiScreen>()
     }
 
     override fun resize(width: Int, height: Int) {
