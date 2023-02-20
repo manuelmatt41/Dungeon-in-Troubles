@@ -135,7 +135,7 @@ var pathtoroot = "../../../../../../";
 public final class <span class="typeNameLabel"><a href=DeathPopUp.html>DeathPopUp</a></span>
 extends WidgetGroup implements KGroup
                     </pre>
-                    <div class="block"></div>
+                    <div class="block"><p>Clase que representa un componente de la UI, que es un menu al perder la partida</p></div>
                 </li>
             </ul>
         </div>
@@ -286,7 +286,7 @@ extends WidgetGroup implements KGroup
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#DeathPopUp(Skin,I18NBundle,Preferences,Float,Integer)">DeathPopUp</a></span>(Skin skin, I18NBundle bundle, Preferences prefs, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html>Float</a> distance, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> coins)</code></th>
+                                                        href="#DeathPopUp(Skin,I18NBundle,Preferences,Float)">DeathPopUp</a></span>(Skin skin, I18NBundle bundle, Preferences prefs, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html>Float</a> distance)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -344,7 +344,7 @@ extends WidgetGroup implements KGroup
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=DeathPopUp.html#getPrefWidth()>getPrefWidth</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Devuelve el ancho minimo del componente</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
@@ -352,7 +352,7 @@ extends WidgetGroup implements KGroup
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=DeathPopUp.html#getPrefHeight()>getPrefHeight</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Devuelve el altura minimo del componente</td>
                                         </tr>
                                         
                                         </tbody>
@@ -404,12 +404,33 @@ extends WidgetGroup implements KGroup
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="DeathPopUp(Skin,I18NBundle,Preferences,Float,Integer)"></a>
+                                <a name="DeathPopUp(Skin,I18NBundle,Preferences,Float)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>DeathPopUp</h4>
-                                        <pre>DeathPopUp(Skin skin, I18NBundle bundle, Preferences prefs, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html>Float</a> distance, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> coins)</pre>
+                                        <pre>DeathPopUp(Skin skin, I18NBundle bundle, Preferences prefs, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html>Float</a> distance)</pre>
                                         <div class="block"></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>skin</code> - Skin de los componentes</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>bundle</code> - Conjunto de cadenas que pueden ser traducidas</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>prefs</code> - Datos guardados del juego</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>distance</code> - Distancia recorrida por el jugador para establecer si es nuevo record</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                     </li>
                                 </ul>
@@ -436,7 +457,7 @@ extends WidgetGroup implements KGroup
                                     <li class="blockList">
                                         <h4>getPrefWidth</h4>
                                         <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html>Float</a> <a href=DeathPopUp.html#getPrefWidth()>getPrefWidth</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Devuelve el ancho minimo del componente</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -451,7 +472,7 @@ extends WidgetGroup implements KGroup
                                     <li class="blockList">
                                         <h4>getPrefHeight</h4>
                                         <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html>Float</a> <a href=DeathPopUp.html#getPrefHeight()>getPrefHeight</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Devuelve el altura minimo del componente</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

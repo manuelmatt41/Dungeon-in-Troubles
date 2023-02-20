@@ -10,6 +10,7 @@ $dokka.location:com.github.manu.dungeonintroubles.component/PhysicComponent.Comp
 $dokka.location:com.github.manu.dungeonintroubles.component/StateComponent.Companion.StateComponentListener///PointingToDeclaration/com/github/manu/dungeonintroubles/component/StateComponent.Companion.StateComponentListener.html
 $dokka.location:com.github.manu.dungeonintroubles.component/StateComponent.Companion///PointingToDeclaration/com/github/manu/dungeonintroubles/component/StateComponent.Companion.html
 $dokka.location:com.github.manu.dungeonintroubles.screen/GameScreen.Companion///PointingToDeclaration/com/github/manu/dungeonintroubles/screen/GameScreen.Companion.html
+$dokka.location:com.github.manu.dungeonintroubles.screen/MenuScreen.Companion///PointingToDeclaration/com/github/manu/dungeonintroubles/screen/MenuScreen.Companion.html
 $dokka.location:com.github.manu.dungeonintroubles.system/AlertProjectileSystem.Companion///PointingToDeclaration/com/github/manu/dungeonintroubles/system/AlertProjectileSystem.Companion.html
 $dokka.location:com.github.manu.dungeonintroubles.system/AnimationSystem.Companion///PointingToDeclaration/com/github/manu/dungeonintroubles/system/AnimationSystem.Companion.html
 $dokka.location:com.github.manu.dungeonintroubles.system/AudioSystem.Companion///PointingToDeclaration/com/github/manu/dungeonintroubles/system/AudioSystem.Companion.html
@@ -28,6 +29,7 @@ $dokka.location:com.github.manu.dungeonintroubles.ui.model/GameModel.Companion//
 $dokka.location:com.github.manu.dungeonintroubles.ui.view/GameView.Companion///PointingToDeclaration/com/github/manu/dungeonintroubles/ui/view/GameView.Companion.html
 $dokka.location:com.github.manu.dungeonintroubles.ui.view/MenuView.Companion///PointingToDeclaration/com/github/manu/dungeonintroubles/ui/view/MenuView.Companion.html
 $dokka.location:com.github.manu.dungeonintroubles.ui.widget/PlayerInfo.Companion///PointingToDeclaration/com/github/manu/dungeonintroubles/ui/widget/PlayerInfo.Companion.html
+$dokka.location:com.github.manu.dungeonintroubles.ui.widget/SkinStoreRow.Companion///PointingToDeclaration/com/github/manu/dungeonintroubles/ui/widget/SkinStoreRow.Companion.html
 $dokka.location:com.github.manu.dungeonintroubles/DungeonInTroubles.Companion///PointingToDeclaration/com/github/manu/dungeonintroubles/DungeonInTroubles.Companion.html
 com.github.manu.dungeonintroubles
 com.github.manu.dungeonintroubles.actor

@@ -17,19 +17,41 @@ import ktx.actors.plusAssign
 import ktx.log.logger
 import ktx.scene2d.*
 
+/**
+ * Vista que representa la interfaz del juego, se enseña informacion de la partida actual, menu de pausa o de menu de muerte
+ *
+ * @param model Modelo de la vista que recibe y notifica los cambios
+ * @property bundle Conjunto de cadenas que pueden ser traducidas
+ * @property playerPrefs Datos guardados del jugador del juego
+ * @param settingsPrefs Datos guardados de los ajustes del juego
+ * @param skin Skin de los componentes
+ */
 class GameView(
     model: GameModel,
     val bundle: I18NBundle,
     val playerPrefs: Preferences,
-    val settingsPrefs: Preferences,
+    settingsPrefs: Preferences,
     skin: Skin
 ) : Table(skin), KTable {
 
+    /**
+     * Componente que muestra informacion del personaje
+     */
     var playerInfo: PlayerInfo
-    var pause: Image
-    lateinit var pausePopup: PausePopUp
-    lateinit var deathPopup: DeathPopUp
 
+    /**
+     * Imagen para pausar el juego
+     */
+    var pause: Image
+
+    /**
+     * Componente que es el menu de pausa del juego
+     */
+    lateinit var pausePopup: PausePopUp
+
+    /**
+     * Inicia la vista y sus componentes
+     */
     init {
         // UI
         setFillParent(true)
@@ -79,7 +101,7 @@ class GameView(
 
     fun death() {
         this.clear()
-        var distance = playerInfo.labelDistance.text.toString()
+        val distance = playerInfo.labelDistance.text.toString()
         this += deathPopUp(
             skin,
             bundle,
@@ -96,6 +118,9 @@ class GameView(
     }
 }
 
+/**
+ * Extension que hace de contructor de la vista al crearla directamente a un actor para los escenarios
+ */
 @Scene2dDsl
 fun <S> KWidget<S>.gameView(
     model: GameModel,

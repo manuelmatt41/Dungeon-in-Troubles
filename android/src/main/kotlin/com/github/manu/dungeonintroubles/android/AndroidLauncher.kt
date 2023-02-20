@@ -12,7 +12,6 @@ class AndroidLauncher : AndroidApplication() {
         super.onCreate(savedInstanceState)
         initialize(DungeonInTroubles(), AndroidApplicationConfiguration().apply {
             // Configure your application here.
-            useGyroscope = true
             useAccelerometer = true
             useImmersiveMode = true
         })

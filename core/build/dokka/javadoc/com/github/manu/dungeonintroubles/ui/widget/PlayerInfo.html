@@ -135,7 +135,7 @@ var pathtoroot = "../../../../../../";
 public final class <span class="typeNameLabel"><a href=PlayerInfo.html>PlayerInfo</a></span>
 extends WidgetGroup implements KGroup
                     </pre>
-                    <div class="block"></div>
+                    <div class="block"><p>Clase que representa un componente de la UI, que es un menu al pausar el juego</p></div>
                 </li>
             </ul>
         </div>
@@ -363,7 +363,7 @@ extends WidgetGroup implements KGroup
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=PlayerInfo.html#getLabelDistance()>getLabelDistance</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Etiqueta que muestra la distancia del jugador durante la partida</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
@@ -371,7 +371,7 @@ extends WidgetGroup implements KGroup
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=PlayerInfo.html#getLabelCoins()>getLabelCoins</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Etiqueta que muestra las monedas que tiene el jugador en la partida</td>
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
@@ -379,7 +379,7 @@ extends WidgetGroup implements KGroup
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=PlayerInfo.html#getPrefWidth()>getPrefWidth</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Devuelve el ancho minimo del componente</td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
@@ -387,7 +387,7 @@ extends WidgetGroup implements KGroup
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=PlayerInfo.html#getPrefHeight()>getPrefHeight</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Devuelve el altura minimo del componente</td>
                                         </tr>
                                         
                                         <tr id="i4" class="altColor">
@@ -395,7 +395,7 @@ extends WidgetGroup implements KGroup
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=PlayerInfo.html#getCoin(Integer)>getCoin</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> coins) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Cambia el texto de la etiqueta de las monedas</td>
                                         </tr>
                                         
                                         <tr id="i5" class="rowColor">
@@ -403,7 +403,7 @@ extends WidgetGroup implements KGroup
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=PlayerInfo.html#move(Float)>move</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html>Float</a> distance) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Cambia el texto de la etiqueta de la distancia</td>
                                         </tr>
                                         
                                         </tbody>
@@ -462,6 +462,19 @@ extends WidgetGroup implements KGroup
                                         <pre>PlayerInfo(<a href=../Drawables.html>Drawables</a> charDrawables, Skin skin)</pre>
                                         <div class="block"></div>
                                         
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>charDrawables</code> - Imagen que representa a skin que esta usando el jugador</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>skin</code> - Skin de los componentes</dd>
+                                            
+                                            
+                                        </dl>
+                                        
                                     </li>
                                 </ul>
                                 
@@ -487,7 +500,7 @@ extends WidgetGroup implements KGroup
                                     <li class="blockList">
                                         <h4>getLabelDistance</h4>
                                         <pre class="methodSignature"> final Label <a href=PlayerInfo.html#getLabelDistance()>getLabelDistance</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Etiqueta que muestra la distancia del jugador durante la partida</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -502,7 +515,7 @@ extends WidgetGroup implements KGroup
                                     <li class="blockList">
                                         <h4>getLabelCoins</h4>
                                         <pre class="methodSignature"> final Label <a href=PlayerInfo.html#getLabelCoins()>getLabelCoins</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Etiqueta que muestra las monedas que tiene el jugador en la partida</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -517,7 +530,7 @@ extends WidgetGroup implements KGroup
                                     <li class="blockList">
                                         <h4>getPrefWidth</h4>
                                         <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html>Float</a> <a href=PlayerInfo.html#getPrefWidth()>getPrefWidth</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Devuelve el ancho minimo del componente</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -532,7 +545,7 @@ extends WidgetGroup implements KGroup
                                     <li class="blockList">
                                         <h4>getPrefHeight</h4>
                                         <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html>Float</a> <a href=PlayerInfo.html#getPrefHeight()>getPrefHeight</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Devuelve el altura minimo del componente</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -547,7 +560,16 @@ extends WidgetGroup implements KGroup
                                     <li class="blockList">
                                         <h4>getCoin</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=PlayerInfo.html#getCoin(Integer)>getCoin</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> coins)</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Cambia el texto de la etiqueta de las monedas</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>coins</code> - Cantidad de monedas que se van a mostrar</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -562,7 +584,16 @@ extends WidgetGroup implements KGroup
                                     <li class="blockList">
                                         <h4>move</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=PlayerInfo.html#move(Float)>move</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html>Float</a> distance)</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Cambia el texto de la etiqueta de la distancia</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>distance</code> - Distancia recorrida que se va mostrar</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

@@ -84,7 +84,7 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
     /**
      * Vista de los ajustes del juego
      */
-    private var settingsView: SettingsView
+    private lateinit var settingsView: SettingsView
 
     /**
      * Mundo de entidades que se va usar en la ventana
@@ -145,8 +145,7 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
 
         //Añade al escenario de UI los actores a las vistas que actuan como UI
         uiStage.actors {
-            gameView = gameView(GameModel(eWorld, uiStage), game.bundle, playerPrefs, settingsPrefs)
-            settingsView = settingsView(bundle = game.bundle, prefs = settingsPrefs)
+            gameView = gameView(GameModel(uiStage), game.bundle, playerPrefs, settingsPrefs)
         }
         //Añade al escenario del juego y UI esta msima clase
         gameStage.addListener(this)
@@ -184,7 +183,7 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
      */
     override fun resume() {
         //Quita la puasa solo si no estaba en menu de pausa o de los ajustes
-        if (gameView.pausePopup.alpha != 1f || settingsView.alpha != 1f) {
+        if (gameView.pausePopup !in uiStage.actors || settingsView !in uiStage.actors ) {
             pauseWorld(false)
         }
     }
@@ -290,16 +289,16 @@ class GameScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
                 gameView.touchable = Touchable.disabled
                 gameView.alpha = 0f
 
-                settingsView.alpha = 1f
-                settingsView.touchable = Touchable.enabled
+                uiStage.actors {
+                    settingsView = settingsView(bundle = game.bundle, prefs = settingsPrefs)
+                }
             }
 
             is HideSettingsEvent -> {
                 gameView.touchable = Touchable.enabled
                 gameView.alpha = 1f
 
-                settingsView.alpha = 0f
-                settingsView.touchable = Touchable.disabled
+                uiStage.actors.removeValue(settingsView, true)
             }
 
             is SetGameEvent -> {

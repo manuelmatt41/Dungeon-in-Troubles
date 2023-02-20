@@ -14,6 +14,11 @@ import com.github.manu.dungeonintroubles.ui.widget.SkinStoreRow
 import ktx.actors.onClick
 import ktx.scene2d.*
 
+/**
+ * Enumerado que representa la cantidad de skins que tiene el jugador para el juego
+ *
+ * @param coin Monedas que vale la skin para poder comprar
+ */
 enum class PlayerSkins(var coin: Int) {
     DEFAULT(0),
     ELF_F(100),
@@ -25,19 +30,35 @@ enum class PlayerSkins(var coin: Int) {
     LIZARD(1000),
     PUMPKIN_DUDE(1500),
     DOCTOR(2000);
-
+    /**
+     * Convierte el enumerado en la key para el texture atlas
+     */
     var atlasKey: String = this.toString().lowercase()
 }
 
+/**
+ * Vista que representa la tienda del juego donde se puede gastar las monedas del juego comprando skins para el personaje y la partida
+ *
+ * @param skin Skin de los componentes
+ * @param playerPrefs Datos guardados del jugador del juego
+ * @param settingsPrefs Datos guardados de los ajustes del juego
+ * @param bundle Conjunto de cadenas que pueden ser traducidas
+ */
 class StoreView(
     skin: Skin,
     playerPrefs: Preferences,
     settingsPrefs: Preferences,
     bundle: I18NBundle
-) : Table(), KTable {
+) : Table(skin), KTable {
 
-    lateinit var skinsTable: Table
+    /*+
+    Tabal que contiene los componentes para comprar skins
+     */
+    var skinsTable: Table
 
+    /**
+     * Inicia la vista y sus componentes
+     */
     init {
         setFillParent(true)
 
@@ -82,6 +103,9 @@ class StoreView(
     }
 }
 
+/**
+ * Extension que hace de contructor de la vista al crearla directamente a un actor para los escenarios
+ */
 @Scene2dDsl
 fun <S> KWidget<S>.storeView(
     bundle: I18NBundle,

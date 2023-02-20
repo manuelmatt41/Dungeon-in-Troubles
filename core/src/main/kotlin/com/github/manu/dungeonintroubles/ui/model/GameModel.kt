@@ -14,18 +14,33 @@ import com.github.quillraven.fleks.ComponentMapper
 import com.github.quillraven.fleks.World
 import ktx.log.logger
 
+/**
+ * Modelo de la vista GameView que notifica de los cambios en las propiedades del jugador
+ *
+ *@param gameStage Escenario que representa el juego
+ */
 class GameModel(
-    world: World,
     gameStage: Stage,
 ) : PropertyChangeSource(), EventListener {
-
+    /**
+     * Monedas del jugador que notifica del cambio cuando se establece un valor nuevo
+     */
     var playerCoins by propertyNotify(0)
+    /**
+     * Distancia del jugador que notifica del cambio cuando se establece un valor nuevo
+     */
     var playerDistance by propertyNotify(0f)
 
+    /**
+     * Al iniciar establece como escuchador de eventos esta misma clase
+     */
     init {
         gameStage.addListener(this)
     }
 
+    /**
+     * Se ejecuta cuando se lanza un evento y comprueba si puede coger el evento y ejecutar codigo
+     */
     override fun handle(event: Event): Boolean {
         return when (event) {
             is GetCoinEvent -> {

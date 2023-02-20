@@ -21,13 +21,28 @@ import ktx.actors.onClick
 import ktx.actors.plusAssign
 import ktx.log.logger
 import ktx.scene2d.*
-
+/**
+ * Enumerado para llamar al bundle de idiomas de forma mas legible
+ */
 enum class SkinStoreRowBundle {
     PURCHASED;
-
+    /**
+     * Convierte el enumerado en la Key del bundle
+     */
     var bundle: String = "SkinStoreRowBundle.${this.toString().lowercase()}"
 }
 
+/**
+ * Clase que representa un componente de la UI, que es a fila de la tienda para comprar skins
+ *
+ * @param charDrawables Imagen que representa a skin que se puede comprar
+ * @param name Nombre de la skin
+ * @param isPurchased Valor para comprobar si esta comprada la skin
+ * @param bundle Conjunto de cadenas que pueden ser traducidas
+ * @param playerPrefs Datos guardados del jugador del juego
+ * @param settingsPrefs Datos guardados de los ajustes del juego
+ * @param skin Skin de los componentes
+ */
 class SkinStoreRow(
     charDrawables: Drawables,
     name: PlayerSkins,
@@ -38,9 +53,19 @@ class SkinStoreRow(
     private val skin: Skin,
 ) : WidgetGroup(), KGroup {
 
+    /**
+     * Tabla que contiene los componentes
+     */
     private val table: Table
+
+    /**
+     * Buton para poder comprar
+     */
     var button: TextButton
 
+    /**
+     * Inicia la clase y sus componentes
+     */
     init {
         table = table {
 
@@ -94,6 +119,9 @@ class SkinStoreRow(
     }
 }
 
+/**
+ * Extension que hace de contructor de la vista al crearla directamente a un actor para los escenarios
+ */
 @Scene2dDsl
 fun <S> KWidget<S>.skinStoreRow(
     charDrawable: Drawables,

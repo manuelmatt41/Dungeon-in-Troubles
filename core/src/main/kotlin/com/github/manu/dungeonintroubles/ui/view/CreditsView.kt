@@ -14,16 +14,32 @@ import ktx.actors.alpha
 import ktx.actors.onClick
 import ktx.scene2d.*
 
+/**
+ * Enumerado para llamar al bundle de idiomas de forma mas legible
+ */
 enum class CreditsViewBundle {
     LBCREDITS, LBASSETS, LBMUSIC, LBTHANKS, LBCOUPLE, LBBROTHER, LBFAMILY, LBFRIENDS;
 
+    /**
+     * Convierte el enumerado en la Key del bundle
+     */
     var bundle: String = "CreditsView.${this.toString().lowercase()}"
 }
 
+/**
+ * Vista que representa los creditos del juego, se hace mencion de todos los recursos usados y gente que poyo el poryecto
+ *
+ * @param skin Skin de los componentes
+ * @param prefs Datos guardados del juego
+ * @param bundle Conjunto de cadenas que pueden ser traducidas
+ */
 class CreditsView(
     skin: Skin, prefs: Preferences, bundle: I18NBundle
 ) : Table(), KTable {
 
+    /**
+     * Inicia la vista y sus componentes
+     */
     init {
         setFillParent(true)
 
@@ -204,11 +220,12 @@ class CreditsView(
             }
             it.expand().fill()
         }
-        alpha = 0f
-        touchable = Touchable.disabled
     }
 }
 
+/**
+ * Extension que hace de contructor de la vista al crearla directamente a un actor para los escenarios
+ */
 @Scene2dDsl
 fun <S> KWidget<S>.creditsView(
     bundle: I18NBundle, prefs: Preferences, skin: Skin = Scene2DSkin.defaultSkin, init: CreditsView.(S) -> Unit = {}

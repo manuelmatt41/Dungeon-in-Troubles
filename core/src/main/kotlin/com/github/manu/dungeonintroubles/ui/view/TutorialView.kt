@@ -18,19 +18,34 @@ import ktx.actors.alpha
 import ktx.actors.onClick
 import ktx.scene2d.*
 
+/**
+ * Enumerado para llamar al bundle de idiomas de forma mas legible
+ */
 enum class TutorialViewBundle {
     LBTAP, LBTRAP, LBFIREBALL, LBCOIN, LBPLAYER;
-
+    /**
+     * Convierte el enumerado en la Key del bundle
+     */
     var bundle: String = "TutorialView.${this.toString().lowercase()}"
 
 }
 
+/**
+ * Vista que representa el tutorial qu explica brevemente como funciona el juego
+ *
+ * @param bundle Conjunto de cadenas que pueden ser traducidas
+ * @param prefs Datos guardados del juego
+ * @param skin Skin de los componentes
+ */
 class TutorialView(
     bundle: I18NBundle,
     val prefs: Preferences,
     skin: Skin
 ) : Table(skin), KTable {
 
+    /**
+     * Inicia la vista y sus componentes
+     */
     init {
         setFillParent(true)
 
@@ -85,12 +100,12 @@ class TutorialView(
             stage.fire(HideTutorialEvent())
             stage.fire(SetGameEvent())
         }
-
-        alpha = 0f
-        touchable = Touchable.disabled
     }
 }
 
+/**
+ * Extension que hace de contructor de la vista al crearla directamente a un actor para los escenarios
+ */
 @Scene2dDsl
 fun <S> KWidget<S>.tutorialView(
     bundle: I18NBundle,

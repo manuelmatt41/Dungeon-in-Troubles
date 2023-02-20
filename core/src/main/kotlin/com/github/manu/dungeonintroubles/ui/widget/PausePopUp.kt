@@ -18,20 +18,42 @@ import ktx.actors.onClick
 import ktx.actors.plusAssign
 import ktx.scene2d.*
 
+/**
+ * Enumerado para llamar al bundle de idiomas de forma mas legible
+ */
 enum class PausePopUpBundle {
-    BTRESUME, BTSETTINGS, BTBACK;
+    BTRESUME, BTBACK;
 
+    /**
+     * Convierte el enumerado en la Key del bundle
+     */
     var bundle: String = "PausePopUp.${this.toString().lowercase()}"
 }
 
+/**
+ * Clase que representa un componente de la UI, que es un menu al pausar el juego
+ *
+ * @param skin Skin de los componentes
+ * @param bundle Conjunto de cadenas que pueden ser traducidas
+ */
 class PausePopUp(
     private val skin: Skin,
     bundle: I18NBundle
 ) : WidgetGroup(), KGroup {
 
+    /**
+     * Imagen que es el fondo del componente
+     */
     private val background: Image = Image(skin[Drawables.PAUSE_POPUP_BACKGROUND])
+
+    /**
+     * Tabla que contiene lo componentes que componen la clase
+     */
     private val table: Table
 
+    /**
+     * Inicia la clase y sus componentes
+     */
     init {
         this += background
 
@@ -65,12 +87,19 @@ class PausePopUp(
 
         this += table
     }
-
+    /**
+     * Devuelve el ancho minimo del componente
+     */
     override fun getPrefWidth() = background.drawable.minWidth
-
+    /**
+     * Devuelve la altura minimo del componente
+     */
     override fun getPrefHeight() = background.drawable.minHeight
 }
 
+/**
+ * Extension que hace de contructor de la vista al crearla directamente a un actor para los escenarios
+ */
 @Scene2dDsl
 fun <S> KWidget<S>.pausePopUp(
     skin: Skin = Scene2DSkin.defaultSkin,

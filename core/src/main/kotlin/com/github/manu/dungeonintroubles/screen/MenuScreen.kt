@@ -53,17 +53,17 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
     /**
      * Vista que contiene los ajustes
      */
-    private var settingsView: SettingsView
+    private lateinit var settingsView: SettingsView
 
     /**
      * Vista que contiene los creditos
      */
-    private var creditsView: CreditsView
+    private lateinit var creditsView: CreditsView
 
     /**
      * Vista que contiene el tutorial
      */
-    private var tutorialView: TutorialView
+    private lateinit var tutorialView: TutorialView
 
     /**
      * Datos que se guardan sobre el jugador
@@ -133,12 +133,13 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
         }
 
         Gdx.input.inputProcessor = uiStage
+
         uiStage.actors {
             menuView = menuView(bundle = game.bundle, prefs = playerPrefs)
-//            storeView = storeView(bundle = game.bundle, playerPrefs, settingsPrefs)
-            settingsView = settingsView(game.bundle, game.settingsPrefs)
-            creditsView = creditsView(game.bundle, game.settingsPrefs)
-            tutorialView = tutorialView(game.bundle, game.settingsPrefs)
+            settingsView = settingsView(game.bundle, game.settingsPrefs) {
+                alpha = 0f
+                touchable = Touchable.disabled
+            }
         }
 
         uiStage.addListener(this)
@@ -232,7 +233,7 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
             }
 
             is ShowStoreEvent -> {
-                menuView.touchable = Touchable.disabled //TODO Refactor all views for this way
+                menuView.touchable = Touchable.disabled
                 menuView.alpha = 0f
                 log.debug { "Store view" }
                 uiStage.actors {
@@ -245,22 +246,26 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
                 menuView.alpha = 1f
 
                 uiStage.actors.removeValue(storeView, true)
+                uiStage.actors.removeValue(menuView, true)
+                uiStage.actors {
+                    menuView = menuView(bundle = game.bundle, prefs = playerPrefs)
+                }
             }
 
             is ShowCreditsEvent -> {
                 menuView.touchable = Touchable.disabled
                 menuView.alpha = 0f
 
-                creditsView.alpha = 1f
-                creditsView.touchable = Touchable.enabled
+                uiStage.actors {
+                    creditsView = creditsView(game.bundle, game.settingsPrefs)
+                }
             }
 
             is HideCreditsEvent -> {
                 menuView.touchable = Touchable.enabled
                 menuView.alpha = 1f
 
-                creditsView.alpha = 0f
-                creditsView.touchable = Touchable.disabled
+                uiStage.actors.removeValue(creditsView, true)
             }
 
             is ShowTutorialEvent -> {
@@ -268,8 +273,9 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
                 menuView.alpha = 0f
                 gameStage.alpha = 0.2f
 
-                tutorialView.alpha = 1f
-                tutorialView.touchable = Touchable.enabled
+                uiStage.actors {
+                    tutorialView = tutorialView(game.bundle, game.settingsPrefs)
+                }
             }
 
             is HideTutorialEvent -> {
@@ -277,8 +283,7 @@ class MenuScreen(val game: DungeonInTroubles) : KtxScreen, EventListener {
                 menuView.alpha = 1f
                 gameStage.alpha = 1f
 
-                tutorialView.alpha = 0f
-                tutorialView.touchable = Touchable.disabled
+                uiStage.actors.removeValue(tutorialView, true)
             }
 
             is ExitGameEvent -> {

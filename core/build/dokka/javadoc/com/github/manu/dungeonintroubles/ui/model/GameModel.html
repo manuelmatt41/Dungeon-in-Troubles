@@ -120,7 +120,7 @@ var pathtoroot = "../../../../../../";
 public final class <span class="typeNameLabel"><a href=GameModel.html>GameModel</a></span>
 extends <a href=PropertyChangeSource.html>PropertyChangeSource</a> implements EventListener
                     </pre>
-                    <div class="block"></div>
+                    <div class="block"><p>Modelo de la vista GameView que notifica de los cambios en las propiedades del jugador</p></div>
                 </li>
             </ul>
         </div>
@@ -212,7 +212,7 @@ extends <a href=PropertyChangeSource.html>PropertyChangeSource</a> implements Ev
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#GameModel(World,Stage)">GameModel</a></span>(World world, Stage gameStage)</code></th>
+                                                        href="#GameModel(Stage)">GameModel</a></span>(Stage gameStage)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -270,7 +270,7 @@ extends <a href=PropertyChangeSource.html>PropertyChangeSource</a> implements Ev
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=GameModel.html#getPlayerCoins()>getPlayerCoins</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Monedas del jugador que notifica del cambio cuando se establece un valor nuevo</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
@@ -278,7 +278,7 @@ extends <a href=PropertyChangeSource.html>PropertyChangeSource</a> implements Ev
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=GameModel.html#setPlayerCoins(Integer)>setPlayerCoins</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> playerCoins) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Monedas del jugador que notifica del cambio cuando se establece un valor nuevo</td>
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
@@ -286,7 +286,7 @@ extends <a href=PropertyChangeSource.html>PropertyChangeSource</a> implements Ev
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=GameModel.html#getPlayerDistance()>getPlayerDistance</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Distancia del jugador que notifica del cambio cuando se establece un valor nuevo</td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
@@ -294,7 +294,7 @@ extends <a href=PropertyChangeSource.html>PropertyChangeSource</a> implements Ev
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=GameModel.html#setPlayerDistance(Float)>setPlayerDistance</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html>Float</a> playerDistance) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Distancia del jugador que notifica del cambio cuando se establece un valor nuevo</td>
                                         </tr>
                                         
                                         <tr id="i4" class="altColor">
@@ -302,7 +302,7 @@ extends <a href=PropertyChangeSource.html>PropertyChangeSource</a> implements Ev
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=GameModel.html#handle(Event)>handle</a>(Event event) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Se ejecuta cuando se lanza un evento y comprueba si puede coger el evento y ejecutar codigo</td>
                                         </tr>
                                         
                                         </tbody>
@@ -342,12 +342,21 @@ extends <a href=PropertyChangeSource.html>PropertyChangeSource</a> implements Ev
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="GameModel(World,Stage)"></a>
+                                <a name="GameModel(Stage)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>GameModel</h4>
-                                        <pre>GameModel(World world, Stage gameStage)</pre>
+                                        <pre>GameModel(Stage gameStage)</pre>
                                         <div class="block"></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>gameStage</code> - Escenario que representa el juego</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                     </li>
                                 </ul>
@@ -374,7 +383,7 @@ extends <a href=PropertyChangeSource.html>PropertyChangeSource</a> implements Ev
                                     <li class="blockList">
                                         <h4>getPlayerCoins</h4>
                                         <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> <a href=GameModel.html#getPlayerCoins()>getPlayerCoins</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Monedas del jugador que notifica del cambio cuando se establece un valor nuevo</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -389,7 +398,7 @@ extends <a href=PropertyChangeSource.html>PropertyChangeSource</a> implements Ev
                                     <li class="blockList">
                                         <h4>setPlayerCoins</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=GameModel.html#setPlayerCoins(Integer)>setPlayerCoins</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> playerCoins)</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Monedas del jugador que notifica del cambio cuando se establece un valor nuevo</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -404,7 +413,7 @@ extends <a href=PropertyChangeSource.html>PropertyChangeSource</a> implements Ev
                                     <li class="blockList">
                                         <h4>getPlayerDistance</h4>
                                         <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html>Float</a> <a href=GameModel.html#getPlayerDistance()>getPlayerDistance</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Distancia del jugador que notifica del cambio cuando se establece un valor nuevo</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -419,7 +428,7 @@ extends <a href=PropertyChangeSource.html>PropertyChangeSource</a> implements Ev
                                     <li class="blockList">
                                         <h4>setPlayerDistance</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=GameModel.html#setPlayerDistance(Float)>setPlayerDistance</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html>Float</a> playerDistance)</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Distancia del jugador que notifica del cambio cuando se establece un valor nuevo</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -434,7 +443,7 @@ extends <a href=PropertyChangeSource.html>PropertyChangeSource</a> implements Ev
                                     <li class="blockList">
                                         <h4>handle</h4>
                                         <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=GameModel.html#handle(Event)>handle</a>(Event event)</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Se ejecuta cuando se lanza un evento y comprueba si puede coger el evento y ejecutar codigo</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

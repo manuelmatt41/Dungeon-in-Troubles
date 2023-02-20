@@ -1,7 +1,6 @@
 package com.github.manu.dungeonintroubles.ui.view
 
 import com.badlogic.gdx.Preferences
-import com.badlogic.gdx.scenes.scene2d.Touchable
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox
 import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
@@ -13,36 +12,88 @@ import com.github.manu.dungeonintroubles.event.HideSettingsEvent
 import com.github.manu.dungeonintroubles.extension.fire
 import com.github.manu.dungeonintroubles.ui.*
 import com.github.manu.dungeonintroubles.ui.widget.PausePopUpBundle
-import ktx.actors.alpha
 import ktx.actors.onChange
 import ktx.actors.onClick
 import ktx.actors.onTouchDown
 import ktx.scene2d.*
 
+/**
+ * Enumerado para llamar al bundle de idiomas de forma mas legible
+ */
 enum class SettingsViewBundle {
-    LBMUSIC, LBSOUND, CHVIBRATE, CHGIROSCOPE, BTAPPLY, BTCANCEL, LBSONG;
-
+    LBMUSIC, LBSOUND, CHVIBRATE, CHACCELEROMTER, BTAPPLY, BTCANCEL, LBSONG;
+    /**
+     * Convierte el enumerado en la Key del bundle
+     */
     var bundle: String = "SettingsView.${this.toString().lowercase()}"
 }
 
+/**
+ * Vista que representa los ajustes del juego, donde se puede modificar parametros generales como el volumen de la musica o sonidos, activar la vibracion o acelerometro
+ *
+ * @param skin Skin de los componentes
+ * @param bundle Conjunto de cadenas que pueden ser traducidas
+ * @param prefs Datos guardados del juego
+ */
 class SettingsView(
     skin: Skin,
     prefs: Preferences,
     bundle: I18NBundle
-) : Table(), KTable {
+) : Table(skin), KTable {
 
-    //    lateinit var scrollPane: ScrollPane
+    /**
+     * Tabla que contiene los componente
+     */
     val table: Table
+
+    /**
+     * Etiqueta que muesta el nivel de volumen de la musica
+     */
     lateinit var labelMusic: Label
-    lateinit var sliderMusic: Slider
+
+    /**
+     * Deslizador para cambiar el valor del volumen de la musica
+     */
+    var sliderMusic: Slider
+
+    /**
+     *Etiqueta que muesta el nivel de volumen de los efectos de sonido
+     */
     lateinit var labelEffects: Label
-    lateinit var sliderEffects: Slider
-    lateinit var cbVibrate: CheckBox
-    lateinit var cbGyroscope: CheckBox
-    lateinit var cbSong1: CheckBox
+
+    /**
+     * Deslizador para cambiar el valor del volumen de los efectos de sonido
+     */
+    var sliderEffects: Slider
+
+    /**
+     * Casilla para activar la vibracion
+     */
+    var cbVibrate: CheckBox
+
+    /**
+     * Casilla para activar el acelerometro
+     */
+    var cbAccelerometer: CheckBox
+
+    /**
+     * Casilla para activar la primera cancion
+     */
+    var cbSong1: CheckBox
+
+    /**
+     * Casila para activar la segunda cancion
+     */
     lateinit var cbSong2: CheckBox // TODO Do a select option with all songs
+
+    /**
+     * Casilla para activar la tercera cancion
+     */
     lateinit var cbSong3: CheckBox
 
+    /**
+     * Inicia la vista y sus componentes
+     */
     init {
         setFillParent(true)
 
@@ -60,7 +111,7 @@ class SettingsView(
                     }
 
                     this@SettingsView.sliderMusic = slider(0f, 100f, 1f, false, Sliders.DEFAULT.skinKey) {
-                        value = prefs.getInteger("music").toFloat()
+                        value = if (prefs.contains("music")) prefs.getInteger("music").toFloat() else 100f
                         onChange {
                             this@SettingsView.labelMusic.setText(value.toInt().toString())
                         }
@@ -69,6 +120,7 @@ class SettingsView(
 
                     this@SettingsView.labelMusic =
                         label(text = prefs.getInteger("music").toString(), style = Labels.DEFAULT.skinKey) {
+                           setText(if (prefs.contains("music")) prefs.getInteger("music").toString() else 100.toString())
                             it.width(10f).padTop(2f).padLeft(2f)
                         }
 
@@ -81,7 +133,7 @@ class SettingsView(
                     }
 
                     this@SettingsView.sliderEffects = slider(0f, 100f, 1f, false, Sliders.DEFAULT.skinKey) {
-                        value = prefs.getInteger("sound").toFloat()
+                        value = if (prefs.contains("sound")) prefs.getInteger("sound").toFloat() else 100f
 
                         onChange {
                             this@SettingsView.labelEffects.setText(value.toInt().toString())
@@ -91,6 +143,7 @@ class SettingsView(
 
                     this@SettingsView.labelEffects =
                         label(text = prefs.getInteger("sound").toString(), style = Labels.DEFAULT.skinKey) {
+                           setText(if (prefs.contains("music")) prefs.getInteger("music").toString() else 100.toString())
                             it.width(10f).padTop(2f).padLeft(2f)
                         }
 
@@ -108,13 +161,13 @@ class SettingsView(
                 }
 
                 table {
-                    this@SettingsView.cbGyroscope = checkBox(text = "", style = CheckBoxes.DEFAULT.skinKey) {
-                        isChecked = prefs.getBoolean("gyroscope")
+                    this@SettingsView.cbAccelerometer = checkBox(text = "", style = CheckBoxes.DEFAULT.skinKey) {
+                        isChecked = prefs.getBoolean("accelerometer")
 
                         it.padRight(2f)
                     }
 
-                    label(text = bundle[SettingsViewBundle.CHGIROSCOPE.bundle])
+                    label(text = bundle[SettingsViewBundle.CHACCELEROMTER.bundle])
                     it.padBottom(10f).left().row()
                 }
 
@@ -173,7 +226,7 @@ class SettingsView(
                             prefs.putInteger("music", this@SettingsView.labelMusic.text.toString().toInt())
                             prefs.putInteger("sound", this@SettingsView.labelEffects.text.toString().toInt())
                             prefs.putBoolean("vibrate", this@SettingsView.cbVibrate.isChecked)
-                            prefs.putBoolean("gyroscope", this@SettingsView.cbGyroscope.isChecked)
+                            prefs.putBoolean("accelerometer", this@SettingsView.cbAccelerometer.isChecked)
 
                             if (this@SettingsView.cbSong1.isChecked) {
                                 prefs.putString("song", "1.ogg")
@@ -181,7 +234,7 @@ class SettingsView(
                                 prefs.putString("song", "2.ogg") //TODO This need a refactor
                             } else if (this@SettingsView.cbSong3.isChecked) {
                                 prefs.putString("song", "3.ogg")
-                            } else{
+                            } else {
                                 prefs.putString("song", "1.ogg")
                             }
 
@@ -201,7 +254,7 @@ class SettingsView(
                             this@SettingsView.sliderEffects.value = prefs.getInteger("sound").toFloat()
                             this@SettingsView.labelEffects.setText(prefs.getInteger("sound"))
                             this@SettingsView.cbVibrate.isChecked = prefs.getBoolean("vibrate")
-                            this@SettingsView.cbGyroscope.isChecked = prefs.getBoolean("gyroscope")
+                            this@SettingsView.cbAccelerometer.isChecked = prefs.getBoolean("accelerometer")
                         }
 
                         it.padRight(3f)
@@ -221,16 +274,15 @@ class SettingsView(
                 it.expand().top().padLeft(10f).padTop(10f)
             }
 
-            it.expand().fill().left()
+            it.expand().fill()
         }
-//        scrollPane = scrollPane(style = ScrollPanes.DEFAULT.skinKey) {
-//        }
-        alpha = 0f
-        touchable = Touchable.disabled
         pad(5f)
     }
 }
 
+/**
+ * Extension que hace de contructor de la vista al crearla directamente a un actor para los escenarios
+ */
 @Scene2dDsl
 fun <S> KWidget<S>.settingsView(
     bundle: I18NBundle,

@@ -13,24 +13,59 @@ import ktx.actors.*
 import ktx.log.logger
 import ktx.scene2d.*
 
+/**
+ * Enumerado para llamar al bundle de idiomas de forma mas legible
+ */
 enum class MenuViewBundle {
     BTNEWGAME, BTSTORE, BTSETTING, BTEXIT;
-
+    /**
+     * Convierte el enumerado en la Key del bundle
+     */
     var bundle: String = "MenuView.${this.toString().lowercase()}"
 }
 
+/**
+ * Vista que representa el menu principal del juego, donde se puede elegir varias opciones como empezar el juego, abrir la tienda, los ajustes, ver lo creditos o cerrar el juego
+ *
+ * @param skin Skin de los componentes
+ * @param bundle Conjunto de cadenas que pueden ser traducidas
+ * @param prefs Datos guardados del juego
+ */
 class MenuView(
     skin: Skin,
     bundle: I18NBundle,
     prefs: Preferences
-) : Table(), KTable {
+) : Table(skin), KTable {
 
+    /**
+     * Componente boton para empezar el juego
+     */
     private val btNewGame: TextButton
+
+    /**
+     * Componente boton para abrir la tienda del juego
+     */
     private val btStoreMenu: TextButton
+
+    /**
+     * Componente boton para abrir los ajustes del juego
+     */
     private val btSetting: TextButton
+
+    /**
+     * Componente boton para mostrar los creditos del juego
+     */
     private val btCredits: TextButton
+
+    /**
+     * Componente boton para salir del juego
+     */
     private val btExit: TextButton
 
+
+    /**
+     * Inicia la vista y sus componentes
+     */
     init {
         log.debug { "${prefs.getInteger("coins")}" }
         setFillParent(true)
@@ -146,6 +181,12 @@ class MenuView(
 
     companion object {
         private val log = logger<MenuView>()
+
+        /**
+         * Vinvula el boton a varios eventos para hacer que la label que contiene los TextButton se muevan con la imagen
+         *
+         * @param button Boton que va a ser vinculado
+         */
         fun attachTextMovement(button: KTextButton) {
             with(button) {
                 onTouchDown {
@@ -170,6 +211,9 @@ class MenuView(
     }
 }
 
+/**
+ * Extension que hace de contructor de la vista al crearla directamente a un actor para los escenarios
+ */
 @Scene2dDsl
 fun <S> KWidget<S>.menuView(
     skin: Skin = Scene2DSkin.defaultSkin,

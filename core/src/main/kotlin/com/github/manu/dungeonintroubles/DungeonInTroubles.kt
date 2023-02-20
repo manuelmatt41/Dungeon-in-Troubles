@@ -15,15 +15,46 @@ import ktx.app.KtxGame
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
 
+/**
+ * Clase donde se inicia el juego y las principales variables
+ */
 class DungeonInTroubles : KtxGame<KtxScreen>() {
+    /**
+     * Donde se va a pintar la interfaz del juego
+     */
     private val batch: Batch by lazy { SpriteBatch() }
+
+    /**
+     * Escenario que representa el juego con una vista de resolucion 16:9, con un valor lazy para iniciar con seguridad de hilos y si no se cnsiguiera iniciar se reintentaria
+     */
     val gameStage by lazy { Stage(ExtendViewport(16f, 9f)) }
+    /**
+     * Escenario que representa la UI del juego con una vista de resolucion de 320px:180px, con un valor lazy para iniciar con seguridad de hilos y si no se cnsiguiera iniciar se reintentaria
+     */
     val uiStage by lazy { Stage(ExtendViewport(320f, 180f), batch) }
+
+    /**
+     * Datos guardados del jugador del juego
+     */
     lateinit var playerPrefs: Preferences
+    /**
+     * Datos guardados de los ajustes del juego
+     */
     lateinit var settingsPrefs: Preferences
+
+    /**
+     * Donde se guarda las cadenas utilizadas del juego que pueden ser traducidas
+     */
     lateinit var bundle: I18NBundle
+
+    /**
+     * Texture atlas para los graficos del juego
+     */
     lateinit var textureAtlas: TextureAtlas
 
+    /**
+     * Se ejecuta al crear la clase inicializando las variables y añadiendo y estableciendo el MenuScreen
+     */
     override fun create() {
         Gdx.app.logLevel = Application.LOG_DEBUG
         playerPrefs = Gdx.app.getPreferences("player")
@@ -32,16 +63,20 @@ class DungeonInTroubles : KtxGame<KtxScreen>() {
         textureAtlas = TextureAtlas(Gdx.files.internal("graphics/gameObjects.atlas"))
         addScreen(MenuScreen(this))
         setScreen<MenuScreen>()
-//        addScreen(UiScreen(this))
-//        setScreen<UiScreen>()
     }
 
+    /**
+     * Se ejecuta al redimensionar la ventana actualiza el tamaño de resolucion de los escenarios
+     */
     override fun resize(width: Int, height: Int) {
         super.resize(width, height)
         gameStage.viewport.update(width, height, true)
         uiStage.viewport.update(width, height, true)
     }
 
+    /**
+     * Se ejecuta al cerrar la ventana para liberar los recursos usados
+     */
     override fun dispose() {
         super.dispose()
         gameStage.disposeSafely()

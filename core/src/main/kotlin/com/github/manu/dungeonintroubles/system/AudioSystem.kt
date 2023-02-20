@@ -48,7 +48,7 @@ class AudioSystem(
             return
         }
 
-        soundRequest.values.forEach { it.play(prefs.getInteger("sound") / 100f) }
+        soundRequest.values.forEach { if (prefs.contains("sound")) prefs.getInteger("sound").toFloat() / 100f else 1f }
         soundRequest.clear()
     }
 
@@ -106,7 +106,7 @@ class AudioSystem(
                 )
             ).apply {
                 isLooping = true
-                volume = prefs.getInteger("music") / 100f
+                volume =if (prefs.contains("music")) prefs.getInteger("music").toFloat() / 100f else 1f
             }
         }
 

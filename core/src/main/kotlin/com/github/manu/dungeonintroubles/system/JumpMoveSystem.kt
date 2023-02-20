@@ -38,7 +38,7 @@ class JumpMoveSystem(
         val jumpCmp = jumpCmps[entity]
 
         //Calcula el impulsa con el giroscopio o si se pulsa la pantalla
-        if (prefs.getBoolean("gyroscope")) {
+        if (prefs.getBoolean("accelerometer")) {
             log.debug { "Z: ${Gdx.input.accelerometerZ}" }
             jumpCmp.sin = if (Gdx.input.accelerometerZ >= 8f) 1f else 0f
             physcmp.impulse.y = if (Gdx.input.accelerometerZ >= 8f) jumpCmp.speed else 0f
