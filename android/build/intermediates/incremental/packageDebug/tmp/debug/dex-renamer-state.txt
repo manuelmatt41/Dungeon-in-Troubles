@@ -1,4 +1,4 @@
-#Sun Feb 19 22:19:50 CET 2023
+#Mon Feb 20 14:51:48 CET 2023
 base.0=C\:\\Users\\Manu\\Documents\\repositories\\Dungeon-in-Troubles\\android\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\Manu\\Documents\\repositories\\Dungeon-in-Troubles\\android\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\11\\classes.dex
 base.10=C\:\\Users\\Manu\\Documents\\repositories\\Dungeon-in-Troubles\\android\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex

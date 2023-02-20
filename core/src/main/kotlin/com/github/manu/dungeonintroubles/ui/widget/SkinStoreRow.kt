@@ -75,7 +75,7 @@ class SkinStoreRow(
                             settingsPrefs.putBoolean("skin/${name.name}", true)
                             settingsPrefs.flush()
                             playerPrefs.putInteger("coins", playerPrefs.getInteger("coins") - name.coin)
-
+                            playerPrefs.flush()
                             stage.fire(HideStoreEvent())
                         }
                     }
