@@ -59,7 +59,7 @@ class SkinStoreRow(
     private val table: Table
 
     /**
-     * Buton para poder comprar
+     * Boton para poder comprar
      */
     var button: TextButton
 

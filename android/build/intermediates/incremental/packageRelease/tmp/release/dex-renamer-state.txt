@@ -1,4 +1,4 @@
-#Wed Feb 22 21:32:37 CET 2023
+#Thu Feb 23 21:12:36 CET 2023
 base.0=C\:\\Users\\manue\\Documents\\repositories\\Dungeon-in-Troubles\\android\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
 base.1=C\:\\Users\\manue\\Documents\\repositories\\Dungeon-in-Troubles\\android\\build\\intermediates\\desugar_lib_dex\\release\\classes1000.dex
 path.0=classes.dex
