@@ -1,4 +1,4 @@
-C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:18: Warning: Redundant label can be removed [RedundantLabel]
+C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:18: Warning: Redundant label can be removed [RedundantLabel]
     android:label="@string/app_name"
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -7,7 +7,7 @@ C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest
    the application tag. Since the application has already specified the same
    label, the label on this activity can be omitted.
 
-C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:9: Warning: The attribute android:fullBackupContent is deprecated from Android 12 and higher and may be removed in future versions. Consider adding the attribute android:dataExtractionRules specifying an @xml resource which configures cloud backups and device transfers on Android 12 and higher. [DataExtractionRules]
+C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml:9: Warning: The attribute android:fullBackupContent is deprecated from Android 12 and higher and may be removed in future versions. Consider adding the attribute android:dataExtractionRules specifying an @xml resource which configures cloud backups and device transfers on Android 12 and higher. [DataExtractionRules]
          android:fullBackupContent="true"
                                     ~~~~
 
@@ -26,7 +26,7 @@ C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest
 
    https://developer.android.com/about/versions/12/backup-restore#xml-changes
 
-C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-anydpi-v26\game_icon_round.xml:2: Warning: The resource R.mipmap.game_icon_round appears to be unused [UnusedResources]
+C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-anydpi-v26\game_icon_round.xml:2: Warning: The resource R.mipmap.game_icon_round appears to be unused [UnusedResources]
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
 ^
 
@@ -42,11 +42,11 @@ C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-anyd
    them (usually for performance reasons), use
    lint.unused-resources.exclude-tests=true.
 
-C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-hdpi\game_icon_round.png: Warning: The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png [IconDuplicates]
-C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-mdpi\game_icon_round.png: Warning: The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png [IconDuplicates]
-C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xhdpi\game_icon_round.png: Warning: The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png [IconDuplicates]
-C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxhdpi\game_icon_round.png: Warning: The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png [IconDuplicates]
-C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxxhdpi\game_icon_round.png: Warning: The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png [IconDuplicates]
+C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-hdpi\game_icon_round.png: Warning: The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png [IconDuplicates]
+C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-mdpi\game_icon_round.png: Warning: The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png [IconDuplicates]
+C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xhdpi\game_icon_round.png: Warning: The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png [IconDuplicates]
+C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxhdpi\game_icon_round.png: Warning: The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png [IconDuplicates]
+C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxxhdpi\game_icon_round.png: Warning: The following unrelated icon files have identical contents: game_icon.png, game_icon_round.png [IconDuplicates]
 
    Explanation for issues of type "IconDuplicates":
    If an icon is repeated under different names, you can consolidate and just

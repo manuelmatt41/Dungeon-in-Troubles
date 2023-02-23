@@ -16,7 +16,7 @@
         manifest="AndroidManifest.xml"
         javaDirectories="src\main\java;src\main\kotlin"
         resDirectories="res"
-        assetsDirectories="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\assets"/>
+        assetsDirectories="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\assets"/>
     <sourceProvider
         manifest="src\debug\AndroidManifest.xml"
         javaDirectories="src\debug\java;src\debug\kotlin"

@@ -1,12 +1,12 @@
 <lint-module
     format="1"
-    dir="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android"
+    dir="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android"
     name=":android"
     type="APP"
     maven="Dungeon-in-Troubles:android:"
     gradle="7.2.2"
     buildFolder="build"
-    bootClassPath="C:\Users\Manu\AppData\Local\Android\Sdk\platforms\android-33\android.jar;C:\Users\Manu\AppData\Local\Android\Sdk\build-tools\30.0.3\core-lambda-stubs.jar"
+    bootClassPath="C:\Users\manue\AppData\Local\Android\Sdk\platforms\android-33\android.jar;C:\Users\manue\AppData\Local\Android\Sdk\build-tools\30.0.3\core-lambda-stubs.jar"
     javaSourceLevel="1.8"
     compileTarget="android-33"
     neverShrinking="true">

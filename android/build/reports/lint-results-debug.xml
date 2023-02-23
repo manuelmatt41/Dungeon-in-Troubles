@@ -12,7 +12,7 @@
         errorLine1="    android:label=&quot;@string/app_name&quot;"
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml"
+            file="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml"
             line="18"
             column="5"/>
     </issue>
@@ -30,7 +30,7 @@
         errorLine1="         android:fullBackupContent=&quot;true&quot;"
         errorLine2="                                    ~~~~">
         <location
-            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml"
+            file="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\AndroidManifest.xml"
             line="9"
             column="37"/>
     </issue>
@@ -46,7 +46,7 @@
         errorLine1="&lt;adaptive-icon xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;>"
         errorLine2="^">
         <location
-            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-anydpi-v26\game_icon_round.xml"
+            file="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-anydpi-v26\game_icon_round.xml"
             line="2"
             column="1"/>
     </issue>
@@ -60,9 +60,9 @@
         summary="Duplicated icons under different names"
         explanation="If an icon is repeated under different names, you can consolidate and just use one of the icons and delete the others to make your application smaller. However, duplicated icons usually are not intentional and can sometimes point to icons that were accidentally overwritten or accidentally not updated.">
         <location
-            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-hdpi\game_icon_round.png"/>
+            file="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-hdpi\game_icon_round.png"/>
         <location
-            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-hdpi\game_icon.png"/>
+            file="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-hdpi\game_icon.png"/>
     </issue>
 
     <issue
@@ -74,9 +74,9 @@
         summary="Duplicated icons under different names"
         explanation="If an icon is repeated under different names, you can consolidate and just use one of the icons and delete the others to make your application smaller. However, duplicated icons usually are not intentional and can sometimes point to icons that were accidentally overwritten or accidentally not updated.">
         <location
-            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-mdpi\game_icon_round.png"/>
+            file="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-mdpi\game_icon_round.png"/>
         <location
-            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-mdpi\game_icon.png"/>
+            file="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-mdpi\game_icon.png"/>
     </issue>
 
     <issue
@@ -88,9 +88,9 @@
         summary="Duplicated icons under different names"
         explanation="If an icon is repeated under different names, you can consolidate and just use one of the icons and delete the others to make your application smaller. However, duplicated icons usually are not intentional and can sometimes point to icons that were accidentally overwritten or accidentally not updated.">
         <location
-            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xhdpi\game_icon_round.png"/>
+            file="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xhdpi\game_icon_round.png"/>
         <location
-            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xhdpi\game_icon.png"/>
+            file="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xhdpi\game_icon.png"/>
     </issue>
 
     <issue
@@ -102,9 +102,9 @@
         summary="Duplicated icons under different names"
         explanation="If an icon is repeated under different names, you can consolidate and just use one of the icons and delete the others to make your application smaller. However, duplicated icons usually are not intentional and can sometimes point to icons that were accidentally overwritten or accidentally not updated.">
         <location
-            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxhdpi\game_icon_round.png"/>
+            file="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxhdpi\game_icon_round.png"/>
         <location
-            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxhdpi\game_icon.png"/>
+            file="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxhdpi\game_icon.png"/>
     </issue>
 
     <issue
@@ -116,9 +116,9 @@
         summary="Duplicated icons under different names"
         explanation="If an icon is repeated under different names, you can consolidate and just use one of the icons and delete the others to make your application smaller. However, duplicated icons usually are not intentional and can sometimes point to icons that were accidentally overwritten or accidentally not updated.">
         <location
-            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxxhdpi\game_icon_round.png"/>
+            file="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxxhdpi\game_icon_round.png"/>
         <location
-            file="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxxhdpi\game_icon.png"/>
+            file="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\res\mipmap-xxxhdpi\game_icon.png"/>
     </issue>
 
 </issues>

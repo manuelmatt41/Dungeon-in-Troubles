@@ -1,8 +1,8 @@
 <dependencies>
   <compile
-      roots="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles@@:android::debug,org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10@jar,com.android.support:multidex-instrumentation:1.0.2@aar,com.android.support:multidex:1.0.2@aar,com.badlogicgames.gdx:gdx-backend-android:1.11.0@jar,C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles@@:core,org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10@jar,org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar,com.badlogicgames.gdx:gdx-ai:1.8.2@jar,com.badlogicgames.box2dlights:box2dlights:1.5@jar,io.github.libktx:ktx-box2d:1.11.0-rc3@jar,com.badlogicgames.gdx:gdx-box2d:1.11.0@jar,com.badlogicgames.gdx:gdx:1.11.0@jar,io.github.libktx:ktx-actors:1.11.0-rc3@jar,io.github.libktx:ktx-app:1.11.0-rc3@jar,io.github.libktx:ktx-assets:1.11.0-rc3@jar,io.github.libktx:ktx-collections:1.11.0-rc3@jar,io.github.libktx:ktx-graphics:1.11.0-rc3@jar,io.github.libktx:ktx-log:1.11.0-rc3@jar,io.github.libktx:ktx-math:1.11.0-rc3@jar,io.github.libktx:ktx-scene2d:1.11.0-rc3@jar,io.github.libktx:ktx-style:1.11.0-rc3@jar,io.github.libktx:ktx-tiled:1.11.0-rc3@jar,io.github.quillraven.fleks:Fleks:1.6-JVM@jar,org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar,org.jetbrains:annotations:13.0@jar,com.badlogicgames.gdx:gdx-jnigen-loader:2.3.1@jar">
+      roots="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles@@:android::debug,org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10@jar,com.android.support:multidex-instrumentation:1.0.2@aar,com.android.support:multidex:1.0.2@aar,com.badlogicgames.gdx:gdx-backend-android:1.11.0@jar,C:\Users\manue\Documents\repositories\Dungeon-in-Troubles@@:core,org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10@jar,org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar,com.badlogicgames.gdx:gdx-ai:1.8.2@jar,com.badlogicgames.box2dlights:box2dlights:1.5@jar,io.github.libktx:ktx-box2d:1.11.0-rc3@jar,com.badlogicgames.gdx:gdx-box2d:1.11.0@jar,com.badlogicgames.gdx:gdx:1.11.0@jar,io.github.libktx:ktx-actors:1.11.0-rc3@jar,io.github.libktx:ktx-app:1.11.0-rc3@jar,io.github.libktx:ktx-assets:1.11.0-rc3@jar,io.github.libktx:ktx-collections:1.11.0-rc3@jar,io.github.libktx:ktx-graphics:1.11.0-rc3@jar,io.github.libktx:ktx-log:1.11.0-rc3@jar,io.github.libktx:ktx-math:1.11.0-rc3@jar,io.github.libktx:ktx-scene2d:1.11.0-rc3@jar,io.github.libktx:ktx-style:1.11.0-rc3@jar,io.github.libktx:ktx-tiled:1.11.0-rc3@jar,io.github.quillraven.fleks:Fleks:1.6-JVM@jar,org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar,org.jetbrains:annotations:13.0@jar,com.badlogicgames.gdx:gdx-jnigen-loader:2.3.1@jar">
     <dependency
-        name="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles@@:android::debug"
+        name="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles@@:android::debug"
         simpleName=":"/>
     <dependency
         name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10@jar"
@@ -17,7 +17,7 @@
         name="com.badlogicgames.gdx:gdx-backend-android:1.11.0@jar"
         simpleName="com.badlogicgames.gdx:gdx-backend-android"/>
     <dependency
-        name="C:\Users\Manu\Documents\repositories\Dungeon-in-Troubles@@:core"
+        name="C:\Users\manue\Documents\repositories\Dungeon-in-Troubles@@:core"
         simpleName=":"/>
     <dependency
         name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10@jar"
