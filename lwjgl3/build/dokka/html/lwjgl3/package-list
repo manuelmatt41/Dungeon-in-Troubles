@@ -1,6 +1,0 @@
-$dokka.format:html-v1
-$dokka.linkExtension:html
-$dokka.location:com.github.manu.dungeonintroubles.lwjgl3////PointingToDeclaration/lwjgl3/com.github.manu.dungeonintroubles.lwjgl3/index.html
-$dokka.location:com.github.manu.dungeonintroubles.lwjgl3//main/#/PointingToDeclaration/lwjgl3/com.github.manu.dungeonintroubles.lwjgl3/main.html
-com.github.manu.dungeonintroubles.lwjgl3
-
