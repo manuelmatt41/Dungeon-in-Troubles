@@ -1,6 +1,0 @@
-int color game_icon_background 0x7f010000
-int mipmap game_icon 0x7f020000
-int mipmap game_icon_foreground 0x7f020001
-int mipmap game_icon_round 0x7f020002
-int string app_name 0x7f030000
-int style GdxTheme 0x7f040000

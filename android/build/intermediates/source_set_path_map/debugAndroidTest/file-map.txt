@@ -1,7 +1,0 @@
-com.github.manu.dungeonintroubles.test.android-androidTest-0 C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\build\generated\res\resValues\androidTest\debug
-com.github.manu.dungeonintroubles.test.android-androidTest-1 C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\build\generated\res\rs\androidTest\debug
-com.github.manu.dungeonintroubles.test.android-mergeDebugAndroidTestResources-2 C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
-com.github.manu.dungeonintroubles.test.android-mergeDebugAndroidTestResources-3 C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
-com.github.manu.dungeonintroubles.test.android-merged_res-4 C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\build\intermediates\merged_res\debugAndroidTest
-com.github.manu.dungeonintroubles.test.android-androidTest-5 C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\src\androidTest\res
-com.github.manu.dungeonintroubles.test.android-androidTestDebug-6 C:\Users\manue\Documents\repositories\Dungeon-in-Troubles\android\src\androidTestDebug\res

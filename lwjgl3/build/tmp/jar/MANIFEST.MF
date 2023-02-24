@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: com.github.manu.dungeonintroubles.lwjgl3.Lwjgl3Launcher
-

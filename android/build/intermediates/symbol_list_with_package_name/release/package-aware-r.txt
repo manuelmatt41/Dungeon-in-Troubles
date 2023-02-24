@@ -1,7 +1,0 @@
-com.github.manu.dungeonintroubles
-color game_icon_background
-mipmap game_icon
-mipmap game_icon_foreground
-mipmap game_icon_round
-string app_name
-style GdxTheme
